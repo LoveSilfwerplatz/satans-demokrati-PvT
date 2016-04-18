@@ -1,4 +1,10 @@
-name := """satans-demokrati-72"""
+import NativePackagerKeys._
+
+herokuAppName in Compile := "satans-demokrati-72"
+
+libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.38"
+
+name := """sd-rest-api"""
 
 version := "1.0-SNAPSHOT"
 
