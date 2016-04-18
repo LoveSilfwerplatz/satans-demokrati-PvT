@@ -1,6 +1,8 @@
 package controllers;
 
 import play.mvc.*;
+import play.db.*;
+import java.sql.*;
 
 import views.html.*;
 
@@ -17,7 +19,25 @@ public class HomeController extends Controller {
      * <code>GET</code> request with a path of <code>/</code>.
      */
     public Result index() {
-        return ok(index.render("Your new application is ready."));
+        Connection conn = null;
+        Statement stmt = null;
+
+        String result = "";
+
+        try {
+            conn = DB.getConnection();
+            stmt = conn.createStatement();
+            String sql = "SELECT * FROM test_data";
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                result += rs.getString("name");
+                result += "\n";
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return ok(index.render(result));
     }
 
 }
