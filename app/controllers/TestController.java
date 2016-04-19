@@ -34,6 +34,8 @@ public class TestController extends Controller {
             System.out.println(e);
         }
 
+        response().setHeader("Access-Control-Allow-Origin", "*");
+
         // Gson converts Java collections to/from Json
         return ok(new Gson().toJson(result));
     }
