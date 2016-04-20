@@ -3,17 +3,27 @@
  */
 var fetchStuffFromDB = function() {
 
-    console.log("ett");
+    // bara för test, det här borde göras med jQuery istället
     var request = new XMLHttpRequest();
-    console.log("två");
     request.open("GET", "https://satans-demokrati-72.herokuapp.com/test", true);
-    console.log("tre");
     request.onreadystatechange = function() {
         console.log("fyra");
         if (request.readyState == 4) {
             if (request.status == 200 || request.status == 0) {
-                var data = JSON.parse(request.responseText);
-                console.log(data);
+                var result = JSON.parse(request.responseText);
+                console.log(result);
+                var data = "<table cellspacing='0'>";
+                for (i = 0; i < result.length; i++) {
+                    data += "<tr style='border: 1px solid black'>";
+                    data += "<td>";
+                    data += result[i];
+                    data += "</td>";
+                    data += "</tr>"
+                }
+                data += "</table>";
+                var div = document.getElementById("DBStuff");
+                div.innerHTML = data;
+
             }
         }
     }
