@@ -31,7 +31,7 @@ var fetchStuffFromDB = function() {
                     data += "</tr>"
                 }
                 data += "</table>";
-                var div = document.getElementById("DBStuff");
+                var div = document.getElementById("DBStuffz");
                 div.innerHTML = data;
 
             }
