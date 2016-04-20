@@ -15,10 +15,18 @@ var fetchStuffFromDB = function() {
                 for (i = 0; i < result.length; i++) {
                     data += "<tr style='border: 1px solid black'>";
                     data += "<td>";
+
+                    // Json key
                     data += result[i].name;
+
                     data += "</td>";
+                    data += "</tr>";
+                    data += "<tr>";
                     data += "<td>";
-                    data += result[i].filepath;
+
+                    // Json key
+                    data += '<a href="' + result[i].filepath + '">' + result[i].filepath + '</a>';
+
                     data += "</td>";
                     data += "</tr>"
                 }
