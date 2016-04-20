@@ -19,21 +19,26 @@ public class TestController extends Controller {
         Connection conn = null;
         Statement stmt = null;
 
-        List<String> result = new ArrayList<String>();
+        List<Map<String, String>> result = new ArrayList<>();
 
         try {
             conn = DB.getConnection();
             stmt = conn.createStatement();
-            String sql = "SELECT * FROM test_data";
+            String sql = "SELECT * FROM Soundtest";
             ResultSet rs = stmt.executeQuery(sql);
 
-            while (rs.next())
-                result.add(rs.getString("name"));
+            while (rs.next()) {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("name", rs.getString("name"));
+                map.put("filepath", rs.getString("filepath"));
+                result.add(map);
+            }
 
         } catch (Exception e) {
             System.out.println(e);
         }
 
+        // important!!! for allowing cross domain requests
         response().setHeader("Access-Control-Allow-Origin", "*");
 
         // Gson converts Java collections to/from Json
