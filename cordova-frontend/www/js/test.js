@@ -5,7 +5,7 @@
 
 var newUser = function(){
     var request = new XMLHttpRequest();
-    request.open("POST", "https://satans-demokrati-72.herokuapp.com/addUser", true);
+    request.open("GET", "http://localhost:9000/addUsers", true);
     request.send("new user");
     
 

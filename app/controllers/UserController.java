@@ -17,23 +17,25 @@ import static play.libs.Json.toJson;
  */
 public class UserController extends Controller {
 
-    public static Result addUser(){
-        //Users person = Form.form(Users.class).bindFromRequest().get();
-        Form<Users> userForm = Form.form(Users.class);
-        userForm.fill(new Users("bob@se.se","hej", "hemligthemligt" ));
-        Users user = userForm.bindFromRequest().get();
+    public Result addUsers(){
+        //Fungerar hårdkodat
+
+        Users user = new Users(3,"bob@se.se", "sshemligthemligt", "hoasdrseface");
         user.save();
 
         return redirect(routes.HomeController.index());
     }
     public Result getUsers() {
+        //Fungerar hårdkodat
         Model.Finder<Integer, Users> finder = new Model.Finder<>(Users.class);
-        List<Users> users = finder.all();
+        List<Users> allUsers = finder.all();
 
         response().setHeader("Access-Control-Allow-Origin", "*");
 
         // Gson converts Java collections to/from Json
-        return ok(new Gson().toJson(users));
+        return ok(toJson(allUsers));
+
+
     }
 
 }
