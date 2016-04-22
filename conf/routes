@@ -18,6 +18,8 @@ GET     /test                       controllers.TestController.test
 
 #Test new user
 
-GET     /users                         controllers.UserController.getUsers
 
-POST   /addPerson                      controllers.UserController.addPerson
+
+POST   /addUser                      controllers.UserController.addUser
+
+GET     /users                         controllers.UserController.getUsers

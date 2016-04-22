@@ -5,8 +5,9 @@
 
 var newUser = function(){
     var request = new XMLHttpRequest();
-    request.open("POST", "https://satans-demokrati-72.herokuapp.com/person", true);
+    request.open("POST", "https://satans-demokrati-72.herokuapp.com/addUser", true);
     request.send("new user");
+    
 
 }
 
