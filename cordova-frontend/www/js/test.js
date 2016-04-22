@@ -4,11 +4,16 @@
 
 
 var newUser = function(){
-    var request = new XMLHttpRequest();
-    request.open("GET", "http://localhost:9000/addUsers", true);
-    request.send("new user");
-    
+    var reqxuest = new XMLHttpRequest();
+    reqxuest.open("POST", "https://satans-demokrati-72.herokuapp.com/addUsers", true);
+    reqxuest.send("send");
 
+}
+
+var getUsers = function(){
+    var xreq = new XMLHttpRequest();
+    xreq.open("GET", "https://satans-demokrati-72.herokuapp.com/getUsers", true);
+    xreq.send();
 }
 
 

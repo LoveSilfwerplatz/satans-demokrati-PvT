@@ -20,8 +20,10 @@ public class UserController extends Controller {
     public Result addUsers(){
         //Fungerar hårdkodat
 
-        Users user = new Users(3,"bob@se.se", "sshemligthemligt", "hoasdrseface");
+        Users user = new Users(4,"bob@se.se", "sshemligthemligt", "hoasdrsasdasdeface");
         user.save();
+
+        response().setHeader("Access-Control-Allow-Origin", "*");
 
         return redirect(routes.HomeController.index());
     }
