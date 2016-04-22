@@ -14,3 +14,9 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 
 # Test for getting stuff from the database
 GET     /test                       controllers.TestController.test
+
+
+#Test new user
+GET    /                     controllers.UserController.index()
+
+POST   /person               controllers.UserController.addPerson()

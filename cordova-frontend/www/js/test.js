@@ -1,12 +1,26 @@
 /**
  * Created by carl-johanlindblad on 2016-04-19.
  */
+
+
+var newUser = function(){
+    var request = new XMLHttpRequest();
+    request.open("POST", "https://satans-demokrati-72.herokuapp.com/person", true);
+    request.send("new user");
+
+}
+
+
+
 var fetchStuffFromDB = function() {
 
     // bara för test, det här borde göras med jQuery istället
     var request = new XMLHttpRequest();
     request.open("GET", "https://satans-demokrati-72.herokuapp.com/test", true);
-    request.onreadystatechange = function() {
+
+
+    request.onreadystatechange= function() {
+
         if (request.readyState == 4) {
             if (request.status == 200 || request.status == 0) {
                 var result = JSON.parse(request.responseText);
