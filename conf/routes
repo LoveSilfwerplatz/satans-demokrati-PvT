@@ -17,6 +17,7 @@ GET     /test                       controllers.TestController.test
 
 
 #Test new user
-GET    /                     controllers.UserController.index()
 
-POST   /person               controllers.UserController.addPerson()
+GET     /users                         controllers.UserController.getUsers
+
+POST   /addPerson                      controllers.UserController.addPerson
