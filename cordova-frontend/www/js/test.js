@@ -40,13 +40,3 @@ var fetchStuffFromDB = function() {
     request.send();
 
 }
-var playStream =  function () {
-    try {
-        var myaudioURL = 'http://stream.4zzzfm.org.au:789/;';
-        var myaudio = new Audio(myaudioURL);
-        myaudio.id = 'playerMyAdio';
-        myaudio.play();
-    } catch (e) {
-        alert('no audio support!');
-    }
-}
