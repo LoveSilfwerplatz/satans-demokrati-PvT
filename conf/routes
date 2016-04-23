@@ -14,10 +14,12 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 
 # Test for getting stuff from the database
 GET     /test                       controllers.TestController.test
+GET     /testTwo                       controllers.TestController.testTwo
 
 
 #Test new user
-
+GET     /userTest                       controllers.UserController.test
 POST   /addUsers                         controllers.UserController.addUsers
 
-GET    /getUsers                            controllers.UserController.getUsers
+GET    /getUsers                          controllers.UserController.getUsers
+
