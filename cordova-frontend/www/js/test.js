@@ -45,7 +45,11 @@ var playStream = function () {
             myaudio = new Audio(myaudioURL);
             myaudio.id = 'playerMyAdio';
             myaudio.play();
-            playing = true;
+            playing = true
+            myaudio.addEventListener("ended",function () {
+                playing = false;
+                myaudio.src ="";
+            })
         } catch (e) {
             alert('no audio support!');
         }
