@@ -14,3 +14,5 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 
 # Test for getting stuff from the database
 GET     /test                       controllers.TestController.test
+
+GET     /bajs                       controllers.DatabaseController.getRadio(file:String, source:String)

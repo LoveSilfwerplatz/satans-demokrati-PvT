@@ -17,19 +17,25 @@ public class DatabaseController extends Controller {
 
         Connection conn = null;
         Statement stmt = null;
+        boolean alreadyExecuted = false;
 
         List<Map<String, String>> result = new ArrayList<>();
 
         try {
             conn = DB.getConnection();
             stmt = conn.createStatement();
-            String sql = "SELECT file, filepath FROM "+source+" WHERE file = '"+file+"'";
+            String sql = "SELECT name, filepath FROM "+source+" WHERE name='"+file+"';";
             ResultSet rs = stmt.executeQuery(sql);
+            rs.next();
+            
+            if(!alreadyExecuted) {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("File ", rs.getString("name"));
+                map.put("Filepath ", rs.getString("filepath"));
+                result.add(map);
+                alreadyExecuted = true;
+            }
 
-            HashMap<String, String> map = new HashMap<>();
-            map.put("File", rs.getString(file));
-            map.put("filepath", rs.getString("filepath"));
-            result.add(map);
 
 
         } catch (Exception e) {
