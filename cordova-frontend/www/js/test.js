@@ -51,6 +51,10 @@ var playStream = function () {
             myaudio.play();
             playing = true;
             $("#playButton").html("Pause");
+            myaudio.addEventListener("ended", function(){
+                stopStream()
+                $("#playButton").html("Play");
+            })
         } catch (e) {
             alert('no audio support!');
         }

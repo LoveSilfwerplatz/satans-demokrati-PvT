@@ -1,5 +1,5 @@
 // set to true for local play framework development
-var debug = true;
+var debug = false;
 var play_url = debug ? "http://localhost:9000" : "https://satans-demokrati-72.herokuapp.com";
 
 var myaudio = new Audio();
@@ -51,6 +51,10 @@ var playStream = function () {
             myaudio.play();
             playing = true;
             $("#playButton").html("Pause");
+            myaudio.addEventListener("ended", function(){
+                stopStream()
+                $("#playButton").html("Play");
+            })
         } catch (e) {
             alert('no audio support!');
         }
