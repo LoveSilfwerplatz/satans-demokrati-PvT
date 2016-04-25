@@ -17,3 +17,9 @@ GET     /test                       controllers.TestController.test
 
 #Use the according to form: http://localhost:9000/radio?file=Radio&source=Soundtest
 GET     /radio                       controllers.DatabaseController.getRadio(file:String, source:String)
+
+#Test new user
+GET     /userTest                       controllers.UserController.test
+POST   /addUsers                         controllers.UserController.addUsers
+
+GET    /getUsers                          controllers.UserController.getUsers
