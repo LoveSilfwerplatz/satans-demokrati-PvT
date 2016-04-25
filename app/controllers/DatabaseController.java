@@ -27,7 +27,7 @@ public class DatabaseController extends Controller {
             String sql = "SELECT name, filepath FROM "+source+" WHERE name='"+file+"';";
             ResultSet rs = stmt.executeQuery(sql);
             rs.next();
-            
+
             if(!alreadyExecuted) {
                 HashMap<String, String> map = new HashMap<>();
                 map.put("File ", rs.getString("name"));
