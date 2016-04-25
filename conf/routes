@@ -14,3 +14,6 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 
 # Test for getting stuff from the database
 GET     /test                       controllers.TestController.test
+
+#Use the according to form: http://localhost:9000/radio?file=Radio&source=Soundtest
+GET     /radio                       controllers.DatabaseController.getRadio(file:String, source:String)
