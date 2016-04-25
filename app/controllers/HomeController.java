@@ -27,10 +27,12 @@ public class HomeController extends Controller {
         try {
             conn = DB.getConnection();
             stmt = conn.createStatement();
-            String sql = "SELECT * FROM test_data";
+            String sql = "SELECT * FROM Soundtest";
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 result += rs.getString("name");
+                result += ": ";
+                result += rs.getString("filepath");
                 result += "\n";
             }
         } catch (Exception e) {
