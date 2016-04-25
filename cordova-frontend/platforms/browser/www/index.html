@@ -44,11 +44,17 @@
         <p class="event listening"><!-- Connecting to Device --></p>
         <p class="event received"><!-- Device is Ready --></p>
     </div>
+    <div data-role="content">
+        <ul data-role="listview" data-inset="true"  id="radioList"></ul>
+        </div>
     <button onclick="fetchStuffFromDB()">Hämta databasgrejer!!!</button>
     <button onclick="playStream()">Play</button>
+    <button onclick="stopStream()">Stop</button>
     <div id="DBStuff"></div>
 </div>
 <script   src="https://code.jquery.com/jquery-2.2.3.js"   integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4="   crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js" ></script>
+<script scr="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" ></script>
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="js/test.js"></script>
 <script type="text/javascript" src="js/index.js"></script>

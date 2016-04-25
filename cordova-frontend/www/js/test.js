@@ -1,8 +1,9 @@
 /**
  * Created by carl-johanlindblad on 2016-04-19.
  */
-
+var myaudio = new Audio();
 var myaudioURL = null;
+var playing = false;
 
 function fetchStuffFromDB() {
         $.getJSON("https://satans-demokrati-72.herokuapp.com/test", function(radios){
@@ -32,16 +33,28 @@ function generateRadioLink(radio){
 }
 
 function swapRadio(radioName, filepath){
+
     myaudioURL = filepath;
 }
 
 var playStream =  function () {
-    try {
-       // var myaudioURL = 'http://stream.4zzzfm.org.au:789/;';
-        var myaudio = new Audio(myaudioURL);
-        myaudio.id = 'playerMyAdio';
-        myaudio.play();
-    } catch (e) {
-        alert('no audio support!');
+    if (!playing) {
+        try {
+
+            myaudio = new Audio(myaudioURL);
+            myaudio.id = 'playerMyAdio';
+            myaudio.play();
+            playing = true;
+        } catch (e) {
+            alert('no audio support!');
+        }
+    }else{
+        playing = false;
+        myaudio.src ="";
     }
+
+}
+function stopStream() {
+    playing = false;
+    myaudio.src ="";
 }
