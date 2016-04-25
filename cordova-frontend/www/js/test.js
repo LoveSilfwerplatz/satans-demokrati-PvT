@@ -11,13 +11,24 @@ var newUser = function(){
 }
 
 var getUsers = function(){
+    console.log('test213');
     var xreq = new XMLHttpRequest();
     xreq.open("GET", "https://satans-demokrati-72.herokuapp.com/getUsers", true);
+    xreq.onreadystatechange= function() {
+
+        if (xreq.readyState == 4) {
+            if (xreq.status == 200 || xreq.status == 0) {
+                var result = JSON.parse(xreq.responseText);
+                console.log(result);
+            }
+        }
+    }
     xreq.send();
 }
 
-
-
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById('getUser').addEventListener('click', getUsers, false);
+});
 var fetchStuffFromDB = function() {
 
     // bara för test, det här borde göras med jQuery istället
