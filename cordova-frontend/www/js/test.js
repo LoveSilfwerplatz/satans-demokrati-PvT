@@ -81,25 +81,53 @@ function stopStream() {
   //  reqxuest.send("send");
 //}
 
-/*var getUsers = function(){
+var getUsers = function(){
     console.log('test213');
     var xreq = new XMLHttpRequest();
-    xreq.open("POST", "http://localhost:9000", true);
+    xreq.open("POST", "https://satans-demokrati-72.herokuapp.com/signUp", true);
     xreq.send();
 }
 
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('getUser').addEventListener('click', getUsers, false);
-});*/
+})
+$.post()
 
 
 //testskit ftp 165 hby kenta kofot
 var takeMeAway = function(){
-    console.log('suck my yarac');
     window.location.replace("http://localhost:8000/form.html");
 
 };
 
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('takeMeAway').addEventListener('click',takeMeAway,false);
+});
+
+/*
+$("#plsstop").on('submit', function() {
+    //window.location.replace("http://localhost:9000/signUp")
+    $email = $("#eemail").val();
+    $password = $("#ppassword").val();
+    $name = $("#nname").val();
+    console.log($.getJSON($email, $password, $name));
+    $.ajax({
+        url: 'http://localhost:9000/signUp',
+        data: $this.serialize(),
+        type: 'POST'
+    });
+    return false;
+});
+*/
+
+var formData = $("#myform").serializeArray();
+var URL = $("#myform").attr("action");
+$.post(URL,
+    formData,
+    function(data, textStatus, jqXHR)
+    {
+        //data: Data from server.
+    }).fail(function(jqXHR, textStatus, errorThrown)
+{
+
 });

@@ -21,8 +21,8 @@
 }
 
 @font-face{
-    font-family: Baron Neue;
-    src: url("../font/baron_neue");
+    font-family: "Baron_Neue_Black";
+    src: url("../font/baron_neue/Baron Neue Black.otf");
 }
 
 body {
@@ -43,12 +43,12 @@ body {
     );
     */
     background-attachment:fixed;
-    font-family:'Baron Neue Black', 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-family: Baron_Neue_Black, 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     font-size:14px;
     height:100%;
     margin:0px;
     padding:0px;
-    /* text-transform:uppercase; */
+    text-transform:uppercase; /* Keeping the text uppercase ensures that the right font variant is used */
     width:100%;
 }
 
@@ -76,31 +76,42 @@ body {
     }
 }
 
+/* Class for every piece set to use the official font. */
+.officialFont {
+    font-family: Baron_Neue_Black, sans-serif;
+    /* Code below *should* ensure that we use the correct stylistic set. Seems unnecessary. */
+    /*-moz-font-feature-settings:"ss01" 1;*/
+    /*-ms-font-feature-settings:"ss01" 1;*/
+    /*-o-font-feature-settings:"ss01" 1;*/
+    /*-webkit-font-feature-settings:"ss01" 1;*/
+    /*font-feature-settings:"ss01" 1;*/
+}
+
 h1 {
     font-size:24px;
     font-weight:normal;
-    margin:0px;
+    margin:0;
     overflow:visible;
-    padding:0px;
+    padding:0;
     text-align:center;
     color: #fff;
 }
 
 button {
     font-size: 1.5em;
-    font-family: "Book Antiqua";
     background-color: black;
+    border: 0;
 }
 
 button:hover {
     background-color: darkslategrey;
+    border-radius: 10%;
 }
 
 #radioList {
     color: #fff;
     text-align: center;
     padding: 0;
-    font-family: 'Baron Neue Black', "Book Antiqua";
 }
 
 #radioList a {
@@ -111,7 +122,7 @@ button:hover {
 
 #takeMeAway {
     padding: 0;
-    border: none;
+
     background: none;
 }
 

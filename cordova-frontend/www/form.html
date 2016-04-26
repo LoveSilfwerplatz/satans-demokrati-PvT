@@ -37,16 +37,28 @@
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <title>Hello World</title>
 
-<form action="" method="post">
-    <input id="email" name="email" placeholder="Email" type="text">
+    <!--<form id="plsstop">-->
+        <!--&lt;!&ndash;Setting "on" and "of" value from js&ndash;&gt;-->
+        <!--<input id="email" name="email" placeholder="Email" type="text">-->
+        <!--<input id="password" name="password" placeholder="Password" type="password">-->
+        <!--<input id="name" name="name" placeholder="Username" type="text">-->
 
-    <input id="name" name="username" placeholder="Username" type="text">
 
-    <input id="password" name="password" placeholder="Password" type="password">
+        <!--<input type="submit" >-->
+    <!--</form>-->
+    <form name="myform" id="myform" action="http://localhost:9000/signUp">
+        <input id="eemail" name="email" placeholder="Email" type="text">
+        <input id="ppassword" name="password" placeholder="Password" type="password">
+        <input id="nname" name="name" placeholder="Username" type="text">s
+        <input type="submit">
+    </form>
 
-    <input id="getUser" type="submit" value="Register">
-
-</form>
+    <!--<form action="/signUp?email=eemail&password=ppassword&name=nname" method="POST">-->
+        <!--<input id="eemail" name="email" placeholder="Email" type="text">-->
+        <!--<input id="ppassword" name="password" placeholder="Password" type="password">-->
+        <!--<input id="nname" name="name" placeholder="Username" type="text">-->
+        <!--<input type="submit" >-->
+    <!--</form>-->
 <script   src="https://code.jquery.com/jquery-2.2.3.js"   integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4="   crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js" ></script>
 <script scr="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" ></script>
