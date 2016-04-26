@@ -104,6 +104,12 @@ button:hover {
     color: #fff;
 }
 
+#takeMeAway {
+    padding: 0;
+    border: none;
+    background: none;
+}
+
 ul#radioList {
     list-style-type: none;
 }
