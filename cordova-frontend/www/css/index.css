@@ -43,7 +43,7 @@ body {
     );
     */
     background-attachment:fixed;
-    font-family:"Baron_Neue_Black", 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-family: Baron_Neue_Black, 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     font-size:14px;
     height:100%;
     margin:0px;
@@ -88,7 +88,6 @@ h1 {
 
 button {
     font-size: 1.5em;
-    font-family: "Book Antiqua";
     background-color: black;
 }
 
@@ -100,7 +99,7 @@ button:hover {
     color: #fff;
     text-align: center;
     padding: 0;
-    font-family: 'Baron Neue Black', "Book Antiqua";
+    font-family: Baron_Neue_Black, sans-serif;
 }
 
 #radioList a {
