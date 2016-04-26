@@ -21,5 +21,6 @@ libraryDependencies ++= Seq(
   javaWs
 )
 
+
 lazy val myProject = (project in file("."))
   .enablePlugins(PlayJava, PlayEbean)
