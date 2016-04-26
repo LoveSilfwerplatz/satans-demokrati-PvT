@@ -12,20 +12,30 @@ import static play.libs.Json.toJson;
 
 public class UserController extends Controller{
 
-    public static Result addUser() {
-        return Results.TODO;
-    }
-
     public Result addUsers(){
         //Fungerar hårdkodat
 
-        User user = new User("bob@se.se", "sshemligthemligt", "hoasdrsasdasdeface");
+        User user = new User("bob@se.se", "hemligt", "Bob");
         user.save();
 
         response().setHeader("Access-Control-Allow-Origin", "*");
 
-        return ok();
+        return redirect(routes.HomeController.index());
     }
+
+    public Result signUp(String email, String password, String name){
+        User user = new User(email, password, name);
+        user.save();
+
+        response().setHeader("Access-Control-Allow-Origin", "*");
+
+        return redirect(routes.HomeController.index());
+
+    }
+
+
+
+
     public Result getUsers() {
 
 

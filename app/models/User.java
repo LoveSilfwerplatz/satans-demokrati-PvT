@@ -9,7 +9,6 @@ public class User extends Model{
     public String email;
     public String password;
 
-
     @Id
     public int ID;
 
@@ -56,8 +55,7 @@ public class User extends Model{
         this.name = name;
     }
 
-    public User(String email, String password, String name) {
-
+    public User( String email, String password, String name) {
 
         this.email = email;
         this.password = password;
