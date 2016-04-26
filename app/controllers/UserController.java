@@ -12,15 +12,19 @@ import static play.libs.Json.toJson;
 
 public class UserController extends Controller{
 
+    public static Result addUser() {
+        return Results.TODO;
+    }
+
     public Result addUsers(){
         //Fungerar hårdkodat
 
-        User user = new User(235,"bob@se.se", "sshemligthemligt", "hoasdrsasdasdeface");
+        User user = new User("bob@se.se", "sshemligthemligt", "hoasdrsasdasdeface");
         user.save();
 
         response().setHeader("Access-Control-Allow-Origin", "*");
 
-        return redirect(routes.HomeController.index());
+        return ok();
     }
     public Result getUsers() {
 
