@@ -20,6 +20,11 @@
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
 
+@font-face{
+    font-family: Baron Neue;
+    src: url("../font/baron_neue");
+}
+
 body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
@@ -38,7 +43,7 @@ body {
     );
     */
     background-attachment:fixed;
-    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-family:'Baron Neue Black', 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     font-size:14px;
     height:100%;
     margin:0px;
@@ -95,7 +100,7 @@ button:hover {
     color: #fff;
     text-align: center;
     padding: 0;
-    font-family: "Book Antiqua";
+    font-family: 'Baron Neue Black', "Book Antiqua";
 }
 
 #radioList a {

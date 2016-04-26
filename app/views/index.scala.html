@@ -1,40 +1,71 @@
 @(message: String)
 
-Grejer från datorbasen:
+
+<p>
+    <html>
+        <!DOCTYPE html>
+
+            <h1>PLAY BACKEND</h1>
+            <br>
+
+            <h1>Local</h1>
+            <form action="http://localhost:9000/addUsers">
+                <input type="submit" value="addUsers">
+            </form>
+
+            <form action="http://localhost:9000/getUsers">
+                <input type="submit" value="getUsers">
+            </form>
+
+            <br>
+            <br>
+
+            <h1>Heroku</h1>
+
+            <form action="http://satans-demokrati-72.herokuapp.com/addUsers">
+                <input type="submit" value="addUsers">
+            </form>
+
+            <form action="http://satans-demokrati-72.herokuapp.com/getUsers">
+                <input type="submit" value="getUsers">
+            </form>
+
+            <br>
+            <br>
+    </html>
+</p>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        body {
+            background-color: black;
+        }
+
+        h1 {
+            font-family:Helvetica;
+            color:white;
+            text-align: center
+        }
+
+        p {
+            background-color: rgb(255,0,255);
+        }
+
+        form {
+            text-align: center
+        }
+        </style>
+    </head>
+</html>
+
+
+@*********************
+* Grejer från datorbasen
 <pre>
-  @message
-</pre>
+@message
+</pre> *
+*********************@
 
 
-<form action="http://localhost:9000/addUsers">
-  <input type="submit" value="local/addUsers">
-</form>
-
-<form action="http://localhost:9000/getUsers">
-    <input type="submit" value="local/getUsers">
-</form>
-
-<form action="http://satans-demokrati-72.herokuapp.com/addUsers">
-    <input type="submit" value="herokua/addUsers">
-</form>
-
-<form action="http://satans-demokrati-72.herokuapp.com/getUsers">
-    <input type="submit" value="herokua/getUsers">
-</form>
-
-
-<form action="http://satans-demokrati-72.herokuapp.com/getUsers">
-    <input type="submit" value="Sign up">
-</form>
-
-
-<form action="" method="post">
-    <input id="email" name="email" placeholder="Email" type="text">
-
-    <input id="name" name="username" placeholder="Username" type="text">
-
-    <input id="password" name="password" placeholder="Password" type="password">
-
-    <input name="signup" type="submit" value="Register">
-
-</form>
