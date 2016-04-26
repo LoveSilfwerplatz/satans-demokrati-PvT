@@ -120,14 +120,18 @@ button:hover {
     color: #fff;
 }
 
+ul#radioList {
+    list-style-type: none;
+}
+
+.active-radio-choice {
+    list-style-type: square;
+}
+
 #takeMeAway {
     padding: 0;
 
     background: none;
-}
-
-ul#radioList {
-    list-style-type: none;
 }
 
 .event {
