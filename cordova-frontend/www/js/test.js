@@ -4,6 +4,7 @@ var play_url = debug ? "http://localhost:9000" : "https://satans-demokrati-72.he
 
 var myaudio = new Audio();
 var myaudioURL = null;
+// false = locally, true = on server ?
 var playing = false;
 
 $(document).ready(function() {

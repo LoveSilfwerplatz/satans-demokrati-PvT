@@ -21,8 +21,8 @@
 }
 
 @font-face{
-    font-family: Baron Neue;
-    src: url("../font/baron_neue");
+    font-family: "Baron_Neue_Black";
+    src: url("../font/baron_neue/Baron Neue Black.otf");
 }
 
 body {
@@ -43,7 +43,7 @@ body {
     );
     */
     background-attachment:fixed;
-    font-family:'Baron Neue Black', 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-family:"Baron_Neue_Black", 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     font-size:14px;
     height:100%;
     margin:0px;
