@@ -26,8 +26,7 @@ GET    /getUsers                     controllers.UserController.getUsers
 # Lets you add user via URL, for example:
 #localhost:9000/signUp?email="andre@hej.com"&password="hidden"&name="Andree"
 
-GET    /signUp                       controllers.UserController.signUp(email:String, password:String, name:String)
+#GET    /signUp                       controllers.UserController.signUp(email:String, password:String, name:String)
 
-#POST   /signUp                       controllers.UserController.signUp(email:String, password:String, name:String)
-
+POST   /signin                       controllers.UserController.signin
 
