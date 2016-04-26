@@ -48,7 +48,7 @@ body {
     height:100%;
     margin:0px;
     padding:0px;
-    /* text-transform:uppercase; */
+    text-transform:uppercase; /* Keeping the text uppercase ensures that the right font variant is used */
     width:100%;
 }
 
@@ -79,17 +79,20 @@ body {
 /* Class for every piece set to use the official font. */
 .officialFont {
     font-family: Baron_Neue_Black, sans-serif;
-    -moz-font-feature-settings: "ss01";
-    -webkit-font-feature-settings: "ss01";
-    font-feature-settings: "ss01";
+    /* Code below *should* ensure that we use the correct stylistic set. Seems unnecessary. */
+    /*-moz-font-feature-settings:"ss01" 1;*/
+    /*-ms-font-feature-settings:"ss01" 1;*/
+    /*-o-font-feature-settings:"ss01" 1;*/
+    /*-webkit-font-feature-settings:"ss01" 1;*/
+    /*font-feature-settings:"ss01" 1;*/
 }
 
 h1 {
     font-size:24px;
     font-weight:normal;
-    margin:0px;
+    margin:0;
     overflow:visible;
-    padding:0px;
+    padding:0;
     text-align:center;
     color: #fff;
 }
