@@ -76,6 +76,14 @@ body {
     }
 }
 
+/* Class for every piece set to use the official font. */
+.officialFont {
+    font-family: Baron_Neue_Black, sans-serif;
+    -moz-font-feature-settings: "ss01";
+    -webkit-font-feature-settings: "ss01";
+    font-feature-settings: "ss01";
+}
+
 h1 {
     font-size:24px;
     font-weight:normal;
@@ -89,6 +97,7 @@ h1 {
 button {
     font-size: 1.5em;
     background-color: black;
+    border: 0;
 }
 
 button:hover {
@@ -99,7 +108,6 @@ button:hover {
     color: #fff;
     text-align: center;
     padding: 0;
-    font-family: Baron_Neue_Black, sans-serif;
 }
 
 #radioList a {
