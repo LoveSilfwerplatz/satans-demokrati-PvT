@@ -1,5 +1,5 @@
 // set to true for local play framework development
-var debug = false;
+var debug = true;
 var play_url = debug ? "http://localhost:9000" : "https://satans-demokrati-72.herokuapp.com";
 
 var myaudio = new Audio();
@@ -50,10 +50,10 @@ var playStream = function () {
             myaudio.id = 'playerMyAdio';
             myaudio.play();
             playing = true;
-            $("#playButton").html("Pause");
+            document.getElementById("ppButtonImg").src = "img/Satan_Knapp_Paus.png";
             myaudio.addEventListener("ended", function(){
                 stopStream()
-                $("#playButton").html("Play");
+                document.getElementById("ppButtonImg").src = "img/Satan_Knapp_Play.png";
             })
         } catch (e) {
             alert('no audio support!');
@@ -61,7 +61,7 @@ var playStream = function () {
     } else {
         playing = false;
         myaudio.src = "";
-        $("#playButton").html("Play");
+        document.getElementById("ppButtonImg").src = "img/Satan_Knapp_Play.png";
     }
 
 }

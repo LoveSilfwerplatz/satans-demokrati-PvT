@@ -40,6 +40,7 @@ function generateRadioLink(radio) {
 function swapRadio(radioName, filepath) {
 
     myaudioURL = filepath;
+    playStream();
 }
 
 var playStream = function () {
