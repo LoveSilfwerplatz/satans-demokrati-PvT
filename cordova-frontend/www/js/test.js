@@ -72,3 +72,34 @@ function stopStream() {
     myaudio.src = "";
 
 }
+
+
+
+//var signUp = function(){
+  //  var reqxuest = new XMLHttpRequest();
+  //  reqxuest.open("POST", "http://localhost:8000/index.html", true);
+  //  reqxuest.send("send");
+//}
+
+/*var getUsers = function(){
+    console.log('test213');
+    var xreq = new XMLHttpRequest();
+    xreq.open("POST", "http://localhost:9000", true);
+    xreq.send();
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById('getUser').addEventListener('click', getUsers, false);
+});*/
+
+
+//testskit ftp 165 hby kenta kofot
+var takeMeAway = function(){
+    console.log('suck my yarac');
+    window.location.replace("http://localhost:8000/form.html");
+
+};
+
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById('takeMeAway').addEventListener('click',takeMeAway,false);
+});
