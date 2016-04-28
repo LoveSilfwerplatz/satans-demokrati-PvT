@@ -28,10 +28,14 @@ public class Sound extends Model {
 
     public String getCharacter(){ return character; };
 
-    public void setCharacter(){ this.character = character; };
+    public void setCharacter(String character){ this.character = character; };
 
     public String getSoundLink(){ return soundLink; };
 
-    public void setSoundLink(){ this.soundLink = soundLink; };
+    public void setSoundLink(String soundLink){ this.soundLink = soundLink; };
+
+    public String getMessage(){ return message; };
+
+    public void setMessage(String message){ this.message = message; };
 
 }
