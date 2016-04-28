@@ -10,5 +10,5 @@ import javax.persistence.*;
 public class Sound extends Model {
 
     public String name;
-
+    //ftp
 }
