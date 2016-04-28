@@ -61,11 +61,12 @@ public class HomeController extends Controller {
 
     public Result formattedUsers(){
         String result = "";
+        String padding = "          ";
         Model.Finder<Integer, User> finder = new Model.Finder<>(User.class);
         List<User> allUsers = finder.all();
 
         for(User u: allUsers){
-            result += "ID: " + u.getID() + "\t" + u.getName() + "\n";
+            result += "ID: " + u.getID() + padding + u.getName() + "\n";
         }
 
         return ok(adminTEMP.render(result));
@@ -74,14 +75,19 @@ public class HomeController extends Controller {
 
     public Result formattedSounds(){
         String result = "";
+        String padding = "          ";
         Model.Finder<Integer, Sound> finder = new Model.Finder<>(Sound.class);
         List<Sound> allSounds = finder.all();
 
         for(Sound s: allSounds){
-            result += "ID: " + s.getID() + "\t" + s.getName() + "\n";
+            result += "ID: " + s.getID() + padding + s.getName() + "\n";
         }
 
         return ok(adminTEMP.render(result));
+    }
+
+    public Result addSound(){
+        return ok(adminTEMP.render("Ingen funktionalitet ännu"));
     }
 
 }

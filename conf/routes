@@ -9,10 +9,12 @@ GET     /count                      controllers.CountController.count
 # An example controller showing how to write asynchronous code
 GET     /message                    controllers.AsyncController.message
 
+# Admin view stuff
 GET     /admin                      controllers.HomeController.admin
-GET     /adminT                    controllers.HomeController.adminTemp
+GET     /adminT                     controllers.HomeController.adminTemp
 GET     /formUsers                  controllers.HomeController.formattedUsers
-GET     /formSounds                  controllers.HomeController.formattedSounds
+GET     /formSounds                 controllers.HomeController.formattedSounds
+GET     /addSound                   controllers.HomeController.addSound
 
 
 
