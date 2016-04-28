@@ -10,6 +10,10 @@ GET     /count                      controllers.CountController.count
 GET     /message                    controllers.AsyncController.message
 
 GET     /admin                      controllers.HomeController.admin
+GET     /adminT                    controllers.HomeController.adminTemp
+GET     /formUsers                  controllers.HomeController.formattedUsers
+GET     /formSounds                  controllers.HomeController.formattedSounds
+
 
 
 # Map static resources from the /public folder to the /assets URL path
@@ -25,16 +29,11 @@ GET     /radio                       controllers.DatabaseController.getRadio(fil
 
 GET    /getUsers                     controllers.UserController.getUsers
 
-# Lets you add user via URL, for example:
-#localhost:9000/signUp?email="andre@hej.com"&password="hidden"&name="Andree"
-
-#GET    /signUp                       controllers.UserController.signUp(email:String, password:String, name:String)
-
 POST   /signin                       controllers.UserController.signin
 
 # Hårdkodade saker
 GET    /addSound                     controllers.SoundController.addSound
-GET    /addUser                     controllers.UserController.addUser
+GET    /addUser                      controllers.UserController.addUser
 
 
 
