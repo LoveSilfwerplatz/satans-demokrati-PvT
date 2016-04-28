@@ -42,4 +42,8 @@ public class HomeController extends Controller {
         return ok(index.render(result));
     }
 
+
+    public Result admin(){
+        return ok(admin.render());
+    }
 }
