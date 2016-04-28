@@ -1,20 +1,28 @@
-
-
 package controllers;
 
-
-import models.User;
 import com.avaje.ebean.Model;
 import play.mvc.*;
-
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
+import models.User;
 import static play.libs.Json.toJson;
 
 
 public class UserController extends Controller{
+
+
+    // Metod enbart för att hårdkoda en "användare" för att underlätta testning,
+    public Result addUser(){
+
+        User user = new User("mail@google,com", "hidden", "Arne Anka");
+        user.save();
+
+        response().setHeader("Access-Control-Allow-Origin", "*");
+
+        return redirect(routes.HomeController.index());
+    }
+
 
 
 
