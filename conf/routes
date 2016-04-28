@@ -19,7 +19,6 @@ GET     /test                       controllers.TestController.test
 GET     /radio                       controllers.DatabaseController.getRadio(file:String, source:String)
 
 #Test new user
-GET   /addUsers                      controllers.UserController.addUsers
 
 GET    /getUsers                     controllers.UserController.getUsers
 

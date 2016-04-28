@@ -16,27 +16,10 @@ import static play.libs.Json.toJson;
 
 public class UserController extends Controller{
 
-    public Result addUsers(){
-        //Fungerar hårdkodat
 
-        User user = new User("bob@se.se", "hemligt", "Bob");
-        user.save();
 
-        response().setHeader("Access-Control-Allow-Origin", "*");
-
-        return redirect(routes.HomeController.index());
-    }
-
-    public Result signUp(String email, String password, String name){
-        User user = new User(email, password, name);
-        user.save();
-
-        response().setHeader("Access-Control-Allow-Origin", "*");
-
-        return redirect(routes.HomeController.index());
-
-    }
     public Result signin(){
+        //kan göras snyggare
         Http.RequestBody body = request().body();
         Map<String, String[]> map = body.asFormUrlEncoded();
         String[] email = map.get("email");
@@ -48,6 +31,7 @@ public class UserController extends Controller{
         response().setHeader("Access-Control-Allow-Origin", "*");
 
         return redirect(routes.HomeController.index());
+        //return redirect("http://localhost:9000/signin");
     }
 
 
