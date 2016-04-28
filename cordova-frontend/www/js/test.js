@@ -11,6 +11,16 @@ $(document).ready(function() {
    fetchStuffFromDB();
 });
 
+// register onclick function for list items in #radioList
+$('#radioList').on('click', 'li', function() {
+    
+    // remove active css class from all list items
+    $('#radioList li').removeClass('active-radio-choice');
+
+    // get the element we just clicked and add active css class to it
+    $(this).addClass('active-radio-choice');
+});
+
 function fetchStuffFromDB() {
     $.getJSON(play_url + "/test", function (radios) {
         // empty List

@@ -49,4 +49,53 @@ public class DatabaseController extends Controller {
         return ok(new Gson().toJson(result));
     }
 
+
+
+    public Result getPod(float latitude, float longitude){
+        Connection conn = null;
+        Statement stmt = null;
+
+        List<Map<String, String>> result = new ArrayList<>();
+        boolean matched = false;
+
+        try {
+            conn = DB.getConnection();
+            stmt = conn.createStatement();
+            String sql = "SELECT * FROM SoundCoordTest;";
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while(!matched){
+                rs.next();
+
+                if((latitude - rs.getFloat("latitude") < 0.000002 || latitude - rs.getFloat("latitude") > -0.000002)
+                        &&(longitude - rs.getFloat("longitude") < 0.000002 || longitude - rs.getFloat("longitude") > -0.000002)){
+                    HashMap<String, String> map = new HashMap<>();
+                    map.put("name",rs.getString("name"));
+                    map.put("filepath",rs.getString("filepath"));
+                    result.add(map);
+                    matched = true;
+                }
+                else if(rs.isLast()){
+                    sql = "SELECT * FROM SoundCoordTest Where id='0';";
+                    rs = stmt.executeQuery(sql);
+                    rs.next();
+                    HashMap<String, String> map = new HashMap<>();
+                    map.put("name",rs.getString("name"));
+                    map.put("filepath",rs.getString("filepath"));
+                    result.add(map);
+                    matched = true;
+
+                }
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        // important!!! for allowing cross domain requests
+        response().setHeader("Access-Control-Allow-Origin", "*");
+
+
+        return ok(new Gson().toJson(result));
+    }
+
 }
