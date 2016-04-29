@@ -110,6 +110,11 @@ var takeMeAway = function(){
 
 };
 
+var mapTest = function(){
+    window.location.replace("http://localhost:8000/map.html");
+
+};
+
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('takeMeAway').addEventListener('click',takeMeAway,false);
 });
