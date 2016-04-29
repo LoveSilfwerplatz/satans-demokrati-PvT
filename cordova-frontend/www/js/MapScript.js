@@ -15,6 +15,10 @@ function initMap() {
 
 
     });
+    // Sets the Map Style (Colors and  Stuff
+    var Style = [{"featureType":"all","elementType":"all","stylers":[{"saturation":-100},{"gamma":0.5}]}]
+    map.setOptions({styles: Style});
+    
     markerTest();
     var infoWindow = new google.maps.InfoWindow({map: map});
 
@@ -54,3 +58,4 @@ var marker = new google.maps.Marker({
     map: map,
     icon: iconBase + 'schools_maps.png'
 })};
+
