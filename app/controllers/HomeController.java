@@ -1,10 +1,16 @@
 package controllers;
 
+import com.avaje.ebean.Model;
+import models.User;
+import models.Sound;
 import play.mvc.*;
 import play.db.*;
 import java.sql.*;
+import java.util.List;
 
 import views.html.*;
+
+import static play.libs.Json.toJson;
 
 /**
  * This controller contains an action to handle HTTP requests
@@ -46,4 +52,42 @@ public class HomeController extends Controller {
     public Result admin(){
         return ok(admin.render());
     }
+
+
+    public Result adminTemp(){
+        return ok(adminTEMP.render(""));
+    }
+
+
+    public Result formattedUsers(){
+        String result = "";
+        String padding = "          ";
+        Model.Finder<Integer, User> finder = new Model.Finder<>(User.class);
+        List<User> allUsers = finder.all();
+
+        for(User u: allUsers){
+            result += "ID: " + u.getID() + padding + u.getName() + "\n";
+        }
+
+        return ok(adminTEMP.render(result));
+    }
+
+
+    public Result formattedSounds(){
+        String result = "";
+        String padding = "          ";
+        Model.Finder<Integer, Sound> finder = new Model.Finder<>(Sound.class);
+        List<Sound> allSounds = finder.all();
+
+        for(Sound s: allSounds){
+            result += "ID: " + s.getID() + padding + s.getName() + "\n";
+        }
+
+        return ok(adminTEMP.render(result));
+    }
+
+    public Result addSound(){
+        return ok(adminTEMP.render("Ingen funktionalitet ännu"));
+    }
+
 }

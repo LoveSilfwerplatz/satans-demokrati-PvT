@@ -1,19 +1,40 @@
 package models;
-
-/**
- * Created by andre on 2016-04-28.
- */
-
 import com.avaje.ebean.Model;
-import com.sun.org.apache.xpath.internal.operations.String;
-
 import javax.persistence.*;
 
-public class Sound extends Model {
+@Entity
+public class Sound extends Model{
 
     public String name;
-    //ftp
+
+    @Id
+    public int ID;
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Sound(String name) {
+        this.name = name;
+    }
 }
+
+
+
+
 /*
 package models;
         import com.avaje.ebean.Model;
