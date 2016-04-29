@@ -11,7 +11,7 @@ function initMap() {
     });
     var infoWindow = new google.maps.InfoWindow({map: map});
 
-    // Try HTML5 geolocation.
+    // Try HTML5 geolocationa.
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
             var pos = {
