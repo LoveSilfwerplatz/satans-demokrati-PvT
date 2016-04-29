@@ -7,6 +7,7 @@ import play.db.*;
 import scala.tools.fusesource_embedded.jansi.AnsiConsole;
 import scala.util.parsing.json.JSONArray;
 
+import java.math.BigDecimal;
 import java.sql.*;
 import java.util.*;
 
@@ -48,6 +49,33 @@ public class DatabaseController extends Controller {
         // Gson converts Java collections to/from Json
         return ok(new Gson().toJson(result));
     }
+
+/*    public Result getTowers(){
+        Connection conn = null;
+        Statement stmt = null;
+        boolean alreadyExecuted = false;
+
+        List<Map<String, BigDecimal, BigDecimal, Integer>> result = new ArrayList<>();
+
+        try {
+            conn = DB.getConnection();
+            stmt = conn.createStatement();
+            String sql = "SELECT * FROM Towers";
+            ResultSet rs = stmt.executeQuery(sql);
+            rs.next();
+
+            if (!alreadyExecuted){
+
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        response.setHeader("Access-Control-Allow-Origin", "*");
+
+        return ok(new Gson().toJson(result));
+    }*/
 
 
 
