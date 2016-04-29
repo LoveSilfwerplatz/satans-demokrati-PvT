@@ -4,10 +4,21 @@ var play_url = debug ? "http://localhost:9000" : "https://satans-demokrati-72.he
 
 var myaudio = new Audio();
 var myaudioURL = null;
+// false = locally, true = on server ?
 var playing = false;
 
-$(document).ready(function() {
-   fetchStuffFromDB();
+$(document).ready(function () {
+    fetchStuffFromDB();
+});
+
+// register onclick function for list items in #radioList
+$('#radioList').on('click', 'li', function () {
+
+    // remove active css class from all list items
+    $('#radioList li').removeClass('active-radio-choice');
+
+    // get the element we just clicked and add active css class to it
+    $(this).addClass('active-radio-choice');
 });
 
 function fetchStuffFromDB() {
@@ -40,6 +51,7 @@ function generateRadioLink(radio) {
 function swapRadio(radioName, filepath) {
 
     myaudioURL = filepath;
+    playStream();
 }
 
 var playStream = function () {
@@ -50,14 +62,18 @@ var playStream = function () {
             myaudio.id = 'playerMyAdio';
             myaudio.play();
             playing = true;
-            $("#playButton").html("Pause");
+            document.getElementById("ppButtonImg").src = "img/Satan_Knapp_Paus.png";
+            myaudio.addEventListener("ended", function () {
+                stopStream()
+                document.getElementById("ppButtonImg").src = "img/Satan_Knapp_Play.png";
+            })
         } catch (e) {
             alert('no audio support!');
         }
     } else {
         playing = false;
         myaudio.src = "";
-        $("#playButton").html("Play");
+        document.getElementById("ppButtonImg").src = "img/Satan_Knapp_Play.png";
     }
 
 }
@@ -66,3 +82,59 @@ function stopStream() {
     myaudio.src = "";
 
 }
+
+
+//var signUp = function(){
+//  var reqxuest = new XMLHttpRequest();
+//  reqxuest.open("POST", "http://localhost:8000/index.html", true);
+//  reqxuest.send("send");
+//}
+
+var getUsers = function () {
+    console.log('test213');
+    var xreq = new XMLHttpRequest();
+    xreq.open("POST", "https://satans-demokrati-72.herokuapp.com/signUp", true);
+    xreq.send();
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById('getUser').addEventListener('click', getUsers, false);
+})
+$.post()
+
+
+//testskit ftp 165 hby kenta kofot
+var takeMeAway = function () {
+    window.location.replace("http://localhost:8000/form.html");
+
+};
+
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById('takeMeAway').addEventListener('click', takeMeAway, false);
+});
+
+/*
+ $("#plsstop").on('submit', function() {
+ //window.location.replace("http://localhost:9000/signUp")
+ $email = $("#eemail").val();
+ $password = $("#ppassword").val();
+ $name = $("#nname").val();
+ console.log($.getJSON($email, $password, $name));
+ $.ajax({
+ url: 'http://localhost:9000/signUp',
+ data: $this.serialize(),
+ type: 'POST'
+ });
+ return false;
+ });
+ */
+
+var formData = $("#myform").serializeArray();
+var URL = $("#myform").attr("action");
+$.post(URL,
+    formData,
+    function (data, textStatus, jqXHR) {
+        //data: Data from server.
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+
+});
