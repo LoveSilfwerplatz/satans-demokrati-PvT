@@ -7,6 +7,7 @@ import play.db.*;
 import scala.tools.fusesource_embedded.jansi.AnsiConsole;
 import scala.util.parsing.json.JSONArray;
 
+import java.math.BigDecimal;
 import java.sql.*;
 import java.util.*;
 
@@ -49,28 +50,22 @@ public class DatabaseController extends Controller {
         return ok(new Gson().toJson(result));
     }
 
-    public Result getTowers(String source){
+/*    public Result getTowers(){
         Connection conn = null;
         Statement stmt = null;
         boolean alreadyExecuted = false;
 
-        List<Map<String, float, float, int>> result = new ArrayList<>();
+        List<Map<String, BigDecimal, BigDecimal, Integer>> result = new ArrayList<>();
 
         try {
             conn = DB.getConnection();
             stmt = conn.createStatement();
-            String sql = "SELECT * FROM "+source;
+            String sql = "SELECT * FROM Towers";
             ResultSet rs = stmt.executeQuery(sql);
             rs.next();
 
             if (!alreadyExecuted){
-                HashMap<String, float, float, int> map = new HashMap<>();
-                map.put("Tower name ", rs.getString("towerName"));
-                map.put("Latitude ", rs.getFloat("latCoordDD"));
-                map.put("Longitude ", rs.getFloat("longCoordDD"));
-                map.put("Range ", rs.getFloat("range"));
-                results.add(map);
-                alreadyExecuted = true;
+
             }
 
         } catch (Exception e) {
@@ -80,7 +75,7 @@ public class DatabaseController extends Controller {
         response.setHeader("Access-Control-Allow-Origin", "*");
 
         return ok(new Gson().toJson(result));
-    }
+    }*/
 
 
 
