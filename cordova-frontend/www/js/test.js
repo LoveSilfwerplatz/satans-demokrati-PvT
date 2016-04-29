@@ -107,7 +107,6 @@ $.post()
 //testskit ftp 165 hby kenta kofot
 var takeMeAway = function(){
     window.location.replace("http://localhost:8000/form.html");
-
 };
 
 var mapTest = function(){
