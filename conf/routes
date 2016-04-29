@@ -15,6 +15,7 @@ GET     /adminT                     controllers.HomeController.adminTemp
 GET     /formUsers                  controllers.HomeController.formattedUsers
 GET     /formSounds                 controllers.HomeController.formattedSounds
 GET     /addSound                   controllers.HomeController.addSound
+GET     /addTower                   controllers.HomeController.addTower
 
 
 
