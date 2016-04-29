@@ -1,48 +1,37 @@
 package models;
 import com.avaje.ebean.Model;
-import com.sun.org.apache.xpath.internal.operations.String;
-import java.util.*;
 import javax.persistence.*;
 
+/**
+ * Created by Theo on 29/04/2016.
+ *
+ * Basically just a copy of Sound.java right now, format-wise.
+ */
 @Entity
-public class Tower {
+public class Tower extends Model {
 
-    public String tower;
-    public String character;
-    public float latitude;
-    public float longitude;
-    List<Sound> towerSounds = new ArrayList();
+    private String towerName;
+    private int broadcastRange;
+    private double latCoordDD, longCoordDD;
 
-
-    public Tower(String tower, String character, float latitude, float longitude){
-        this.tower = tower;
-        this.character = character;
-        this.latitude = latitude;
-        this.longitude = longitude;
-
+    public Tower(String towerName) {
+        this.towerName = towerName;
     }
 
-    @Id
-    public int ID;
+    public String getTowerName(){ return towerName; }
 
-    public String getTower(){ return tower; }
+    public void setTowerName(String towerName) { this.towerName = towerName; }
 
-    public void setTower(String tower){ this.tower = tower; };
+    public int getRange() { return broadcastRange; }
 
-    public String getCharacter(){ return character; };
+    public void setRange(int broadcastRange) { this.broadcastRange = broadcastRange; }
 
-    public void setCharacter(String character){ this.character = character; };
+    public double getLatCoordDD(){ return latCoordDD; }
 
-    public float getLatitude(){ return latitude; };
+    public void setLatCoordDD(int latCoordDD){ this.latCoordDD = latCoordDD; }
 
-    public void setLatitude(float latitude){ this.latitude = latitude; };
+    public double getLongCoordDD(){ return longCoordDD; }
 
-    public float getLongitude(){ return longitude; };
-
-    public void setLongitude(float longitude){ this.longitude = longitude; };
-
-    public List<Sound> getTowerSounds(){ return towerSounds; };
-
-    public void setTowerSounds(Sound object){ towerSounds.add(object); };
+    public void setLongCoordDD(int longCoordDD){ this.longCoordDD = longCoordDD; }
 
 }
