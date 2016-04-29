@@ -6,6 +6,7 @@ import javax.persistence.*;
 public class Sound extends Model{
 
     public String name;
+    private String towerName;
 
     @Id
     public int ID;
@@ -25,6 +26,15 @@ public class Sound extends Model{
 
     public void setName(String name) {
         this.name = name;
+    }
+
+
+    public String getTowerName(){
+        return towerName;
+    }
+
+    public void setTowerName(String towerName) {
+        this.towerName = towerName;
     }
 
     public Sound(String name) {

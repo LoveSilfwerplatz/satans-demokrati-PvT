@@ -68,8 +68,11 @@ public class HomeController extends Controller {
         for(User u: allUsers){
             result += "ID: " + u.getID() + padding + u.getName() + "\n";
         }
-
-        return ok(adminTEMP.render(result));
+        if (result == ""){
+            return ok(adminTEMP.render("No users to list"));
+        } else {
+            return ok(adminTEMP.render(result));
+        }
     }
 
 
@@ -82,8 +85,11 @@ public class HomeController extends Controller {
         for(Sound s: allSounds){
             result += "ID: " + s.getID() + padding + s.getName() + "\n";
         }
-
-        return ok(adminTEMP.render(result));
+        if (result == ""){
+            return ok(adminTEMP.render("No sounds to list"));
+        } else {
+            return ok(adminTEMP.render(result));
+        }
     }
 
     public Result addSound(){
