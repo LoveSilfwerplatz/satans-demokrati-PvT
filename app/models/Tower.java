@@ -18,6 +18,8 @@ public class Tower extends Model {
         this.towerName = towerName;
     }
 
+
+
     public String getTowerName(){ return towerName; }
 
     public void setTowerName(String towerName) { this.towerName = towerName; }

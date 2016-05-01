@@ -2,9 +2,7 @@
 
 @(message: String)
 
-@*********************
-Denna fil kommer troligtvis kunna tas bort sen. Men är just nu en andra admin sida för att testa logik utan att blanda in Andres CSS saker.
-*********************@
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +13,13 @@ Denna fil kommer troligtvis kunna tas bort sen. Men är just nu en andra admin s
 
     <h1>Administratörssida för Satan PLAY</h1>
 
+      <form name="myTower" id="myTower" action="http://localhost:9000/submitTower" method="POST">
+          <div align="center">
+              <pre>Tower name:</pre> <input type="text" name="towerName" id="towerName" required><br>
+              <pre>Tower radius:</pre> <input type="number" min="1" name="towerRadius" id="towerRadius" required><br>
+              <input type="submit" value="Lägg till torn" class="myButton">
+          </div>
+      </form>
 
     <br>
 
@@ -100,7 +105,7 @@ Denna fil kommer troligtvis kunna tas bort sen. Men är just nu en andra admin s
         text-decoration:none;
         text-shadow:0px 1px 0px #263666;
         alignment: center;
-        text-align: center
+        text-align: center;
     }
     .myButton:hover {
         background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #0688fa), color-stop(1, #2dabf9));

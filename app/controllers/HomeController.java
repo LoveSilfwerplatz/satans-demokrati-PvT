@@ -96,6 +96,6 @@ public class HomeController extends Controller {
         return ok(adminTEMP.render("Ingen funktionalitet ännu"));
     }
 
-    public Result addTower() { return ok(adminAddTower.render("To be implemented be Elias"));}
+    public Result addTower() { return ok(adminAddTower.render(""));}
 
 }
