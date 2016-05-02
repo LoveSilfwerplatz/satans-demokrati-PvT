@@ -7,16 +7,34 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-      <div id="map"></div>
-      <script src="https://code.jquery.com/jquery-2.2.3.js"   integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4="   crossorigin="anonymous"></script>
-      <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js" ></script>
-      <script src="@routes.Assets.versioned("js/MapScript.js")\"></script>
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0VKA6LegNq1Tp5I8Y1SJ7gtsZQSRaANA&callback=initMap"></script>
-    <meta charset="UTF-8">
-    <title>AdminTEMP</title>
+      <meta charset="UTF-8">
+
+
+
+
+
+      <button id="mapTest" onclick="clicker()">Map</button>
+
+
+
+
+
+
+
+
+
+  </head>
+  <body>
+
+
+      <title>AdminTEMP</title>
       <a href="http://localhost:9000/" class="myButton">Backend</a>
 
-    <h1>Administratörssida för Satan PLAY</h1>
+
+
+      <h1>Administratörssida för Satan PLAY</h1>
+      <p>Klicka på kartan för att lägga till radiotorn.</p>
+
 
 
 
@@ -25,11 +43,11 @@
           <div align="center">
               <pre>Tower name:</pre> <input type="text" name="towerName" id="towerName" required><br>
               <pre>Tower radius:</pre> <input type="number" min="1" name="towerRadius" id="towerRadius" required><br>
-              <input type="submit" value="Lägg till torn" class="myButton">
+              <input type="submit" value="Submit" class="myButton">
           </div>
       </form>
 
-    <br>
+      <br>
 
       <div id="wrap">
           <div id="content">
@@ -40,9 +58,18 @@
 
 
 
+      <div id="map">
+          <script src="https://code.jquery.com/jquery-2.2.3.js"   integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4="   crossorigin="anonymous"></script>
+          <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js" ></script>
+          <script src="@routes.Assets.versioned("js/MapScript.js")\"></script>
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0VKA6LegNq1Tp5I8Y1SJ7gtsZQSRaANA&callback=initMap"></script>
+      </div>
 
-  </head>
-  <body>
+
+
+
+
+
 
   </body>
 </html>
@@ -66,6 +93,14 @@
     }
 
 
+    #map {
+        border: 2px solid red;
+
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+
     body {
       background-color: black;
     }
@@ -74,6 +109,10 @@
       font-family:Arial;
       color:white;
       text-align: center
+    }
+
+    p{
+        color:white;
     }
 
     pre {
@@ -133,6 +172,9 @@
         position:relative;
         top:1px;
     }
+
+
+
 
 
 
