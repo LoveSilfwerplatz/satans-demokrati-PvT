@@ -20,9 +20,9 @@ public class Tower extends Model {
 
 
 
-    public String getTowerName(){ return towerName; }
+    public String getName(){ return towerName; }
 
-    public void setTowerName(String towerName) { this.towerName = towerName; }
+    public void setName(String towerName) { this.towerName = towerName; }
 
     public int getRange() { return broadcastRange; }
 

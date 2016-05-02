@@ -14,6 +14,7 @@ GET     /admin                      controllers.HomeController.admin
 GET     /adminT                     controllers.HomeController.adminTemp
 GET     /formUsers                  controllers.HomeController.formattedUsers
 GET     /formSounds                 controllers.HomeController.formattedSounds
+GET     /formTowers                 controllers.HomeController.formattedTowers
 GET     /addSound                   controllers.HomeController.addSound
 GET     /addTower                   controllers.HomeController.addTower
 POST    /submitTower                controllers.DatabaseController.setTower
@@ -40,5 +41,5 @@ GET    /addSound                     controllers.SoundController.addSound
 GET    /addUser                      controllers.UserController.addUser
 
 
-
+#kom ihåg att kunna ta bort saker
 

@@ -1,6 +1,7 @@
 package controllers;
 
 import com.avaje.ebean.Model;
+import models.Tower;
 import models.User;
 import models.Sound;
 import play.mvc.*;
@@ -87,6 +88,22 @@ public class HomeController extends Controller {
         }
         if (result == ""){
             return ok(adminTEMP.render("No sounds to list"));
+        } else {
+            return ok(adminTEMP.render(result));
+        }
+    }
+
+    public Result formattedTowers(){
+        String result = "";
+        String padding = "          ";
+        Model.Finder<Integer, Tower> finder = new Model.Finder<>(Tower.class);
+        List<Tower> allTowers = finder.all();
+
+        for(Tower t: allTowers){
+            result += "Tower: " + t.getName() + "\n";
+        }
+        if (result == ""){
+            return ok(adminTEMP.render("No towers to list"));
         } else {
             return ok(adminTEMP.render(result));
         }

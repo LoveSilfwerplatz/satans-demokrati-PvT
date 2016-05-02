@@ -29,14 +29,6 @@ public class Sound extends Model{
     }
 
 
-    public String getTowerName(){
-        return towerName;
-    }
-
-    public void setTowerName(String towerName) {
-        this.towerName = towerName;
-    }
-
     public Sound(String name) {
         this.name = name;
     }
