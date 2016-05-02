@@ -1,6 +1,8 @@
 /**
  * Created by MachinaDeus on 28/04/2016.
  */
+var debug = true;
+var play_url = debug ? "http://localhost:9000" : "https://satans-demokrati-72.herokuapp.com";
 
 //Only Temp Script, Should probly be combined later when doing the html dynamically
 var map;
@@ -51,11 +53,20 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 // Marker Test, HardCoded Location untiil BackEnd gets back with help to convert To json
 function markerTest() {
+    $.getJSON(play_url + "/getTowers", function (marker){
+        $.each(marker,function(i, mark) {
 
-var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
-var marker = new google.maps.Marker({
-    position:testPos,
-    map: map,
-    icon: iconBase + 'schools_maps.png'
+        var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+        var addmark = new google.maps.Marker({
+            position: loadpos = {
+                lat: mark.latCoordDD,
+                lng: mark.longCoordDD
+            },
+            map: map,
+            icon: iconBase + 'schools_maps.png',})
+        })
+
+
+
 })};
 
