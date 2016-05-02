@@ -62,6 +62,8 @@ public class DatabaseController extends Controller {
         response().setHeader("Access-Control-Allow-Origin", "*");
 
         return ok(toJson(allTowers));
+        //return ok(new Gson().toJson(result));
+
     }
 
     public Result setTower(){
@@ -75,7 +77,8 @@ public class DatabaseController extends Controller {
 
         response().setHeader("Access-Control-Allow-Origin", "*");
 
-        return ok(adminAddTower.render("Success!"));
+        return ok(adminAddTower.render("Success"));
+
     }
 
 

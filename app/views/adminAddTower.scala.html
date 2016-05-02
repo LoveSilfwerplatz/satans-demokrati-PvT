@@ -12,28 +12,21 @@
 
 
 
-
-      <button id="mapTest" onclick="clicker()">Map</button>
-
-
-
-
-
-
-
-
-
   </head>
   <body>
 
 
       <title>AdminTEMP</title>
       <a href="http://localhost:9000/" class="myButton">Backend</a>
+      <button id="mapTest" onclick="clicker()">Testknapp (ska tas bort)</button>
 
 
 
-      <h1>Administratörssida för Satan PLAY</h1>
-      <p>Klicka på kartan för att lägga till radiotorn.</p>
+
+
+
+      <h1>Lägg till radiotorn</h1>
+      <p align="center">Klicka på kartan för att lägga till radiotorn.</p>
 
 
 
@@ -42,10 +35,11 @@
       <form name="myTower" id="myTower" action="http://localhost:9000/submitTower" method="POST">
           <div align="center">
               <pre>Tower name:</pre> <input type="text" name="towerName" id="towerName" required><br>
-              <pre>Tower radius:</pre> <input type="number" min="1" name="towerRadius" id="towerRadius" required><br>
+              <pre>Broadcast range:</pre> <input type="number" min="1" name="towerRadius" id="towerRadius" required><br>
               <input type="submit" value="Submit" class="myButton">
           </div>
       </form>
+
 
       <br>
 
