@@ -55,32 +55,6 @@ public class DatabaseController extends Controller {
         return ok(new Gson().toJson(result));
     }
 
-    public Result getTowers() {
-        Model.Finder<Integer, Tower> finder = new Model.Finder<>(Tower.class);
-        List<Tower> allTowers = finder.all();
-
-        response().setHeader("Access-Control-Allow-Origin", "*");
-
-        return ok(toJson(allTowers));
-        //return ok(new Gson().toJson(result));
-
-    }
-
-    public Result setTower(){
-        Http.RequestBody body = request().body();
-        Map<String, String[]> map = body.asFormUrlEncoded();
-        String[] towerName = map.get("towerName");
-        String[] towerRadius = map.get("towerRadius");
-
-        Tower tower = new Tower(towerName[0]);
-        tower.save();
-
-        response().setHeader("Access-Control-Allow-Origin", "*");
-
-        return ok(adminAddTower.render("Success"));
-
-    }
-
 
 
     public Result getPod(float latitude, float longitude){

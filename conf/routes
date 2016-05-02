@@ -16,10 +16,10 @@ GET     /adminT                     controllers.HomeController.adminTemp
 GET     /formUsers                  controllers.HomeController.formattedUsers
 GET     /formSounds                 controllers.HomeController.formattedSounds
 GET     /formTowers                 controllers.HomeController.formattedTowers
-GET     /addSound                   controllers.HomeController.addSound
-GET     /addTower                   controllers.HomeController.addTower
+GET     /addSound                   controllers.HomeController.addSound()
+GET     /addTower                   controllers.HomeController.addTower()
 GET     /map                        controllers.HomeController.map
-POST    /submitTower                controllers.DatabaseController.setTower
+POST    /submitTower                controllers.TowerController.setTower()
 
 
 
@@ -39,11 +39,11 @@ GET    /getUsers                     controllers.UserController.getUsers
 POST   /signin                       controllers.UserController.signin
 
 # Hårdkodade saker
-GET    /addSound                     controllers.SoundController.addSound
-GET    /addUser                      controllers.UserController.addUser
+GET    /addSound                     controllers.SoundController.addSound()
+GET    /addUser                      controllers.UserController.addUser()
 
 
-GET    /getTowers                    controllers.DatabaseController.getTowers
+GET    /getTowers                    controllers.TowerController.getTowers
 
 
 #kom ihåg att kunna ta bort saker
