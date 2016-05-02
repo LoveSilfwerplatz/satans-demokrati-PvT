@@ -108,6 +108,11 @@ button:hover {
     border-radius: 10%;
 }
 
+#ppButtonImg{
+    width:30%;
+    height:30%;
+}
+
 #radioList {
     color: #fff;
     text-align: center;

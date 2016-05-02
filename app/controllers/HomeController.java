@@ -66,7 +66,7 @@ public class HomeController extends Controller {
 
 
     public Result formattedUsers(){
-        String result = "";
+        String result = "Användare\n\n";
         String padding = "          ";
         Model.Finder<Integer, User> finder = new Model.Finder<>(User.class);
         List<User> allUsers = finder.all();
@@ -83,7 +83,7 @@ public class HomeController extends Controller {
 
 
     public Result formattedSounds(){
-        String result = "";
+        String result = "Ljudfiler\n\n";
         String padding = "          ";
         Model.Finder<Integer, Sound> finder = new Model.Finder<>(Sound.class);
         List<Sound> allSounds = finder.all();
@@ -99,13 +99,14 @@ public class HomeController extends Controller {
     }
 
     public Result formattedTowers(){
-        String result = "";
+        String result = "Radiotorn\n\n";
         String padding = "          ";
         Model.Finder<Integer, Tower> finder = new Model.Finder<>(Tower.class);
         List<Tower> allTowers = finder.all();
 
         for(Tower t: allTowers){
-            result += "Tower: " + t.getName() + "\n";
+            //result += "Tower: " + t.getName() + "\n";
+            result += "ID: " + t.getID() + padding + t.getName() + padding + "Range: " + t.getRange() + "\n";
         }
         if (result == ""){
             return ok(adminTEMP.render("No towers to list"));
