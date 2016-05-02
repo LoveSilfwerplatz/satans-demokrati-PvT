@@ -8,6 +8,7 @@ var testPos = {
     lat: 59.4069349,
     lng: 17.945128
 };
+
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 1, lng: 10},
@@ -25,10 +26,12 @@ function initMap() {
     // Try HTML5 geolocationa.
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
+
             var pos = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             };
+
 
             infoWindow.setPosition(pos);
             infoWindow.setContent('Location found.');
@@ -40,6 +43,7 @@ function initMap() {
         // Browser doesn't support Geolocation
         handleLocationError(false, infoWindow, map.getCenter());
     }
+
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -58,4 +62,5 @@ function markerTest() {
         map: map,
         icon: iconBase + 'schools_maps.png'
     })};
+
 

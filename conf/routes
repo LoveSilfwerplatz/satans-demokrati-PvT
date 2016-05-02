@@ -18,6 +18,7 @@ GET     /formSounds                 controllers.HomeController.formattedSounds
 GET     /formTowers                 controllers.HomeController.formattedTowers
 GET     /addSound                   controllers.HomeController.addSound
 GET     /addTower                   controllers.HomeController.addTower
+GET     /map                        controllers.HomeController.map
 POST    /submitTower                controllers.DatabaseController.setTower
 
 

@@ -20,6 +20,8 @@ import static play.libs.Json.toJson;
 public class HomeController extends Controller {
 
 
+    public Result map() { return ok(map.render());}
+
 
     /**
      * An action that renders an HTML page with a welcome message.
