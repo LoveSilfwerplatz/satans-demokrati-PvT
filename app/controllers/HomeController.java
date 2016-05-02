@@ -117,6 +117,6 @@ public class HomeController extends Controller {
     public Result addSound(){ return ok(adminAddSound.render(""));
     }
 
-    public Result addTower() { return ok(adminAddTower.render(""));}
+    public Result addTower() { return ok(adminAddTower.render("hej"));}
 
 }

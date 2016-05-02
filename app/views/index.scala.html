@@ -1,102 +1,40 @@
 @(message: String)
 
 
-<p>
-    <html>
-        <!DOCTYPE html>
-
-            <h1>PLAY BACKEND</h1>
-            <br>
-
-            <h1>Local</h1>
-            <form action="http://localhost:9000/addUsers">
-                <input type="submit" value="addUsers">
-            </form>
-
-
-
-
-
-            <form action="http://localhost:9000/getUsers">
-                <input type="submit" value="getUsers">
-            </form>
-
-            <br>
-            <br>
-
-            <h1>Heroku</h1>
-
-            <form action="http://satans-demokrati-72.herokuapp.com/addUsers">
-                <input type="submit" value="addUsers">
-            </form>
-
-            <form action="http://satans-demokrati-72.herokuapp.com/getUsers">
-                <input type="submit" value="getUsers">
-            </form>
-
-            <br>
-            <br>
-
-
-            <h2>Ifall databasen töms, fyll den med hårdkodade saker med hjälp av knappen</h2>
-             <form action="http://localhost:9000/addSound">
-                <input type="submit" value="lägg till hårdkodade ljud">
-            </form>
-
-            <form action="http://localhost:9000/addUser">
-                <input type="submit" value="lägg till hårdkodade användare">
-            </form>
-
-
-            <br>
-            <br>
-
-             <form action="http://localhost:9000/adminT">
-                <input type="submit" value="Admin (temporär)">
-            </form>
-
-
-
-    </html>
-</p>
-
 <!DOCTYPE html>
 <html>
     <head>
-        <style>
-        body {
-            background-color: black;
-        }
+        <link rel="stylesheet" href="@routes.Assets.versioned("css/backendUI.css")">
 
-        h1 {
-            font-family:Helvetica;
-            color:white;
-            text-align: center
-        }
-
-        h2 {
-            font-family:Helvetica;
-            color:white;
-            text-align: center
-        }
-
-        p {
-            background-color: rgb(255,0,255);
-        }
-
-        form {
-            text-align: center
-        }
-        </style>
     </head>
+
+    <body>
+
+        <div align="center">
+            <p>PLAY BACKEND</p>
+            <a href="http://localhost:9000/adminT" class="blueButton">ADMIN (temporär)</a>
+            <br><br><br><br>
+        </div>
+
+        <div align="center">
+            <p>Databas</p>
+            <a href="http://localhost:9000/addSound" class="blueButton">Lägg till ljud (hårdkodat)</a>
+            <a href="http://localhost:9000/addUser" class="blueButton">Lägg till användare (hårdkodat)</a>
+            <br><br><br><br>
+        </div>
+
+
+        @ */
+        http://satans-demokrati-72.herokuapp.com/addUsers och http://satans-demokrati-72.herokuapp.com/getUsers
+        Herokus knappar disabled tills vi löst Jenkins
+        *@
+
+        <div align="center">
+            <p>Heroku (disabled tillsvidare)</p>
+            <a href="" class="blueButton" id="disabled">addUsers</a>
+            <a href="" class="blueButton" id="disabled">getUsers</a>
+            <br><br><br><br>
+        </div>
+    </body>
+
 </html>
-
-
-@*********************
-* Grejer från datorbasen
-<pre>
-@message
-</pre> *
-*********************@
-
-
