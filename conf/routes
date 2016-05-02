@@ -20,6 +20,8 @@ GET     /addSound                   controllers.HomeController.addSound()
 GET     /addTower                   controllers.HomeController.addTower()
 GET     /map                        controllers.HomeController.map
 POST    /submitTower                controllers.TowerController.setTower()
+POST    /submitSound                controllers.SoundController.setSound()
+
 
 
 
@@ -39,7 +41,6 @@ GET    /getUsers                     controllers.UserController.getUsers
 POST   /signin                       controllers.UserController.signin
 
 # Hårdkodade saker
-GET    /addSound                     controllers.SoundController.addSound()
 GET    /addUser                      controllers.UserController.addUser()
 
 

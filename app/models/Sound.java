@@ -3,10 +3,14 @@ import com.avaje.ebean.Model;
 import javax.persistence.*;
 
 @Entity
-public class Sound extends Model{
+public class Sound extends Model {
 
     public String name;
     private String towerName;
+
+    public Sound(String name) {
+        this.name = name;
+    }
 
     @Id
     public int ID;
@@ -24,15 +28,12 @@ public class Sound extends Model{
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void setName(String name) { this.name = name; }
 
-
-    public Sound(String name) {
-        this.name = name;
-    }
 }
+
+
+
 
 
 
