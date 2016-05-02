@@ -1,6 +1,7 @@
 package models;
 import com.avaje.ebean.Model;
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 /**
  * Created by Theo on 29/04/2016.
@@ -12,7 +13,7 @@ public class Tower extends Model {
 
     private String towerName;
     private int broadcastRange;
-    private double latCoordDD, longCoordDD;
+    private BigDecimal latCoordDD, longCoordDD;
 
     public Tower(String towerName) {
         this.towerName = towerName;
@@ -28,12 +29,12 @@ public class Tower extends Model {
 
     public void setRange(int broadcastRange) { this.broadcastRange = broadcastRange; }
 
-    public double getLatCoordDD(){ return latCoordDD; }
+    public BigDecimal getLatCoordDD(){ return latCoordDD; }
 
-    public void setLatCoordDD(int latCoordDD){ this.latCoordDD = latCoordDD; }
+    public void setLatCoordDD(BigDecimal latCoordDD){ this.latCoordDD = latCoordDD; }
 
-    public double getLongCoordDD(){ return longCoordDD; }
+    public BigDecimal getLongCoordDD(){ return longCoordDD; }
 
-    public void setLongCoordDD(int longCoordDD){ this.longCoordDD = longCoordDD; }
+    public void setLongCoordDD(BigDecimal longCoordDD){ this.longCoordDD = longCoordDD; }
 
 }
