@@ -1,5 +1,6 @@
 package controllers;
 
+import com.avaje.ebean.Model;
 import com.google.gson.Gson;
 import models.Tower;
 import play.api.libs.json.Json;
@@ -12,6 +13,8 @@ import views.html.adminAddTower;
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.*;
+
+import static play.libs.Json.toJson;
 
 
 public class DatabaseController extends Controller {
@@ -52,32 +55,16 @@ public class DatabaseController extends Controller {
         return ok(new Gson().toJson(result));
     }
 
-/*    public Result getTowers(){
-        Connection conn = null;
-        Statement stmt = null;
-        boolean alreadyExecuted = false;
+    public Result getTowers() {
+        Model.Finder<Integer, Tower> finder = new Model.Finder<>(Tower.class);
+        List<Tower> allTowers = finder.all();
 
-        List<Map<String, BigDecimal, BigDecimal, Integer>> result = new ArrayList<>();
+        response().setHeader("Access-Control-Allow-Origin", "*");
 
-        try {
-            conn = DB.getConnection();
-            stmt = conn.createStatement();
-            String sql = "SELECT * FROM Towers";
-            ResultSet rs = stmt.executeQuery(sql);
-            rs.next();
+        return ok(toJson(allTowers));
+        //return ok(new Gson().toJson(result));
 
-            if (!alreadyExecuted){
-
-            }
-
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-
-        response.setHeader("Access-Control-Allow-Origin", "*");
-
-        return ok(new Gson().toJson(result));
-    }*/
+    }
 
     public Result setTower(){
         Http.RequestBody body = request().body();
@@ -90,7 +77,8 @@ public class DatabaseController extends Controller {
 
         response().setHeader("Access-Control-Allow-Origin", "*");
 
-        return ok(adminAddTower.render("Success!"));
+        return ok(adminAddTower.render("Success"));
+
     }
 
 
