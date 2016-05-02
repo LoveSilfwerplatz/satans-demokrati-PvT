@@ -7,11 +7,19 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+      <div id="map"></div>
+      <script src="https://code.jquery.com/jquery-2.2.3.js"   integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4="   crossorigin="anonymous"></script>
+      <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js" ></script>
+      <script src="@routes.Assets.versioned("js/MapScript.js")\"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0VKA6LegNq1Tp5I8Y1SJ7gtsZQSRaANA&callback=initMap"></script>
     <meta charset="UTF-8">
     <title>AdminTEMP</title>
-      <a href="http://localhost:9000/adminT" class="myButton">Tillbaka</a>
+      <a href="http://localhost:9000/" class="myButton">Backend</a>
 
     <h1>Administratörssida för Satan PLAY</h1>
+
+
+
 
       <form name="myTower" id="myTower" action="http://localhost:9000/submitTower" method="POST">
           <div align="center">
@@ -77,7 +85,11 @@
         white-space: pre;
         margin: 1em 0;
     }
-
+    #map {
+        width: 500px;
+        height: 400px;
+        background-color: #00acc1;
+    }
 
 
     .myButton {

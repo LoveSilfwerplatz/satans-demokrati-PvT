@@ -20,11 +20,17 @@
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
 
+@font-face{
+    font-family: "Baron_Neue_Black";
+    src: url("../font/baron_neue/Baron Neue Black.otf");
+}
+
 body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background-color:#E4E4E4;
+    background-color:#000;
+    /*
     background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
     background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
     background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
@@ -35,13 +41,14 @@ body {
         color-stop(0, #A7A7A7),
         color-stop(0.51, #E4E4E4)
     );
+    */
     background-attachment:fixed;
-    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-family: Baron_Neue_Black, 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     font-size:14px;
     height:100%;
     margin:0px;
     padding:0px;
-    /* text-transform:uppercase; */
+    text-transform:uppercase; /* Keeping the text uppercase ensures that the right font variant is used */
     width:100%;
 }
 
@@ -50,7 +57,7 @@ body {
     /* background:url(../img/logo.png) no-repeat center top; */ /* 170px x 200px */
     position:absolute;             /* position in the center of the screen */
     left:50%;
-    top:50%;
+    top:5%;
     height:50px;                   /* text area height */
     width:225px;                   /* text area width */
     text-align:center;
@@ -69,13 +76,62 @@ body {
     }
 }
 
+/* Class for every piece set to use the official font. */
+.officialFont {
+    font-family: Baron_Neue_Black, sans-serif;
+    /* Code below *should* ensure that we use the correct stylistic set. Seems unnecessary. */
+    /*-moz-font-feature-settings:"ss01" 1;*/
+    /*-ms-font-feature-settings:"ss01" 1;*/
+    /*-o-font-feature-settings:"ss01" 1;*/
+    /*-webkit-font-feature-settings:"ss01" 1;*/
+    /*font-feature-settings:"ss01" 1;*/
+}
+
 h1 {
     font-size:24px;
     font-weight:normal;
-    margin:0px;
+    margin:0;
     overflow:visible;
-    padding:0px;
+    padding:0;
     text-align:center;
+    color: #fff;
+}
+
+button {
+    font-size: 1.5em;
+    background-color: black;
+    border: 0;
+}
+
+button:hover {
+    background-color: darkslategrey;
+    border-radius: 10%;
+}
+
+#radioList {
+    color: #fff;
+    text-align: center;
+    padding: 0;
+}
+
+#radioList a {
+    font-size: 1.5em;
+    text-decoration: none;
+    color: #fff;
+}
+
+ul#radioList {
+    list-style-type: none;
+}
+
+.active-radio-choice {
+    list-style-type: square;
+}
+
+#takeMeAway {
+    padding: 0;
+
+    background: none;
 }
 
 .event {

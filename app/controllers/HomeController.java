@@ -19,6 +19,8 @@ import static play.libs.Json.toJson;
  */
 public class HomeController extends Controller {
 
+
+
     /**
      * An action that renders an HTML page with a welcome message.
      * The configuration in the <code>routes</code> file means that
@@ -53,6 +55,7 @@ public class HomeController extends Controller {
     public Result admin(){
         return ok(admin.render());
     }
+
 
 
     public Result adminTemp(){
