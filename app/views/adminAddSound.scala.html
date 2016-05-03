@@ -10,6 +10,8 @@ Denna fil kommer troligtvis kunna tas bort sen. Men är just nu en andra admin s
     <head>
         <meta charset="UTF-8">
         <title>AdminTEMP</title>
+
+
         <a href="http://localhost:9000/" class="myButton">Backend</a>
 
         <h1>Administratörssida för Satan PLAY</h1>
@@ -17,6 +19,9 @@ Denna fil kommer troligtvis kunna tas bort sen. Men är just nu en andra admin s
         <form name="mySound" id="mySound" action="http://localhost:9000/submitSound" method="POST">
             <div align="center">
                 <pre>Sound name:</pre> <input type="text" name="name" id="name" required><br>
+                <select id="towerDrop" name="towerDrop" onclick="populate()" required>
+                    <option>Towers</option>
+                </select>
                 <input type="submit" value="Submit" class="myButton">
             </div>
         </form>
@@ -39,11 +44,6 @@ Denna fil kommer troligtvis kunna tas bort sen. Men är just nu en andra admin s
 
     </body>
 </html>
-
-
-
-
-
 
 
 <!DOCTYPE html>
@@ -132,5 +132,7 @@ Denna fil kommer troligtvis kunna tas bort sen. Men är just nu en andra admin s
 
 
         </style>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script type="text/javascript" src="JavaScript/Scripts.js"></script>
     </head>
 </html>
