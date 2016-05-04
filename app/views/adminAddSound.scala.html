@@ -18,10 +18,10 @@ Denna fil kommer troligtvis kunna tas bort sen. Men är just nu en andra admin s
 
         <form name="mySound" id="mySound" action="http://localhost:9000/submitSound" method="POST">
             <div align="center">
-                <pre>Sound name:</pre> <input type="text" name="name" id="name" required><br>
-                <select id="towerDrop" name="towerDrop" onclick="populate()" required>
-                    <option>Towers</option>
-                </select>
+                <pre>Sound name:</pre> <input type="text" name="name" id="name" required><br><br>
+
+                <select id="towerDrop" name="towerDrop" required></select><br><br>
+
                 <input type="submit" value="Submit" class="myButton">
             </div>
         </form>
@@ -37,10 +37,29 @@ Denna fil kommer troligtvis kunna tas bort sen. Men är just nu en andra admin s
 
 
 
+        <script type="text/javascript">
+            var play_url = "http://localhost:9000";
+
+            function populate() {
+
+                $.getJSON(play_url + "/getTowers", function (towers) {
+
+                    var $towerDrop = $("#towerDrop");
+                    $towerDrop.empty();
+                    $.each(towers, function(index , value) {
+                        $.each(value, function(id, name){
+                            if(id == "name") {
+                                $towerDrop.append("<option>" + name + "</option>");
+                            }
+                        });
+                    });
+                });
+            };
+        </script>
 
 
     </head>
-    <body>
+    <body onload="populate();">
 
     </body>
 </html>
@@ -133,6 +152,6 @@ Denna fil kommer troligtvis kunna tas bort sen. Men är just nu en andra admin s
 
         </style>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-        <script type="text/javascript" src="JavaScript/Scripts.js"></script>
+        //<script type="text/javascript" src="JavaScript/Scripts.js"></script>
     </head>
 </html>
