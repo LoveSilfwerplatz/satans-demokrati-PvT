@@ -1,6 +1,7 @@
 package controllers;
 
 import com.google.gson.Gson;
+import models.Users;
 import play.api.libs.json.Json;
 import play.api.*;
 import play.mvc.*;
@@ -44,6 +45,16 @@ public class TestController extends Controller {
 
         // Gson converts Java collections to/from Json
         return ok(new Gson().toJson(result));
+    }
+
+    public Result testTwo() {
+        //Fungerar hårdkodat
+        Users user = new Users(5,"bob@se.se", "sshemligthemligt", "hoasdrsasdasdeface");
+        user.save();
+
+        response().setHeader("Access-Control-Allow-Origin", "*");
+
+        return redirect(routes.HomeController.index());
     }
 
 }
