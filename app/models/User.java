@@ -1,6 +1,9 @@
 package models;
 import com.avaje.ebean.Model;
+import org.openqa.selenium.lift.find.Finder;
+
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
 public class User extends Model{
@@ -8,6 +11,7 @@ public class User extends Model{
     public String name;
     public String email;
     public String password;
+    public String token;
 
     @Id
     public int ID;
@@ -47,7 +51,6 @@ public class User extends Model{
     }
 
     public String getName() {
-
         return name;
     }
 
@@ -55,11 +58,21 @@ public class User extends Model{
         this.name = name;
     }
 
-    public User( String email, String password, String name) {
+    public String getToken() {
+        return token;
+    }
 
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public User( String email, String password, String name) {
         this.email = email;
         this.password = password;
         this.name = name;
+        this.token = UUID.randomUUID().toString();
     }
 
+    public static Finder<Integer, User> find
+            = new Model.Finder<>(Integer.class, User.class);
 }

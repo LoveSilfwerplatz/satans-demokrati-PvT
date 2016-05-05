@@ -13,10 +13,8 @@ import static play.libs.Json.toJson;
 
 public class UserController extends Controller {
 
-
     // Metod enbart för att hårdkoda en "användare" för att underlätta testning,
     public Result addUser() {
-
         User user = new User("mail@google,com", "hidden", "Arne Anka");
         user.save();
 
@@ -25,14 +23,8 @@ public class UserController extends Controller {
         return redirect(routes.HomeController.index());
     }
 
-
-
     public User authenticate(String username, String password) {
-
-
-        Model.Finder<Integer, User> finders = new Model.Finder<>(User.class);
-        return finders.where().eq("name", username).eq("password", password).findUnique();
-
+        return User.find.where().eq("name", username).eq("password", password).findUnique();
     }
 
     public Result login() {
@@ -42,20 +34,18 @@ public class UserController extends Controller {
         String[] password = map.get("password");
         String[] name = map.get("name");
 
-        String pw = Arrays.toString(password);
-        String nm = Arrays.toString(name);
-
+        String pw = password[0];
+        String nm = name[0];
 
         User authUser = authenticate(nm, pw);
+
         if(authUser != null){
-            return ok();
+            return ok(authUser.token);
         } else {
             return redirect(routes.HomeController.index());
         }
 
     }
-
-
 
     public Result signin() {
         //kan göras snyggare
@@ -69,14 +59,14 @@ public class UserController extends Controller {
 
         response().setHeader("Access-Control-Allow-Origin", "*");
 
-        return redirect(routes.HomeController.index());
+        return ok(user.token);
+
+        //return redirect(routes.HomeController.index());
         //return redirect("http://localhost:9000/signin");
     }
 
 
     public Result getUsers() {
-
-
         Model.Finder<Integer, User> finder = new Model.Finder<>(User.class);
         List<User> allUsers = finder.all();
 
@@ -84,8 +74,5 @@ public class UserController extends Controller {
 
         // Gson converts Java collections to/from Json
         return ok(toJson(allUsers));
-
     }
-
-
 }

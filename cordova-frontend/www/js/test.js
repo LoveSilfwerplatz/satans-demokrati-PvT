@@ -1,3 +1,63 @@
+// Kör allt i document.ready
+
+$(document).ready(function() {
+    $('#login-form').submit(function(e) {
+        e.preventDefault();
+
+        var formData = $("#login-form").serializeArray();
+        var URL = $("#login-form").attr("action");
+
+        $.post(URL,
+            formData,
+            function(data, textStatus, jqXHR)
+            {
+                window.localStorage.setItem("token", data);
+
+                // För att hämta var value = window.localStorage.getItem("token");
+            }).fail(function(jqXHR, textStatus, errorThrown)
+        {
+
+        });
+    });
+
+    $('#register-form').submit(function(e) {
+        e.preventDefault();
+
+        var formData = $("#register-form").serializeArray();
+        var URL = $("#register-form").attr("action");
+
+        $.post(URL,
+            formData,
+            function(data, textStatus, jqXHR)
+            {
+                window.localStorage.setItem("token", data);
+                // För att hämta var value = window.localStorage.getItem("token");
+            }).fail(function(jqXHR, textStatus, errorThrown)
+        {
+
+        });
+    });
+
+    $('#secure-test').click(function(e) {
+        $.ajax({
+            type: "get",
+            beforeSend: function(request)
+            {
+                request.setRequestHeader("X-AUTH-TOKEN", window.localStorage.getItem("token"));
+            },
+            url: 'http://localhost:9000/securedContent',
+            success: function(data, status, request) {
+                console.log(data);
+            },
+            error: function(request, status, error) {
+                console.log("Gick inte igenom");
+            }
+        });
+    });
+}
+
+
+
 // set to true for local play framework development
 var debug = false;
 var play_url = debug ? "http://localhost:9000" : "https://satans-demokrati-72.herokuapp.com";
