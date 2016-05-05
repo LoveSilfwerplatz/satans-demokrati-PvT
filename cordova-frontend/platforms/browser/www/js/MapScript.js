@@ -66,10 +66,7 @@ function markerTest() {
                 lng: mark.longCoordDD
             },
             map: map,
-            icon: iconBase + 'schools_maps.png',})
+            icon: iconBase + 'schools_maps.png'})
         })
-
-
-
-})};
+})}
 
