@@ -2309,6 +2309,16 @@ audio:not([controls]) {
   display: none;
   height: 0;
 }
+.widget-item {
+  background-color: black;
+  margin-bottom: 38px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+
 
 /**
  * Address `[hidden]` styling not present in IE 8/9/10.
