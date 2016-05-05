@@ -4,6 +4,7 @@
 var debug = true;
 var play_url = debug ? "http://localhost:9000" : "https://satans-demokrati-72.herokuapp.com";
 
+
 //Only Temp Script, Should probly be combined later when doing the html dynamically
 var map;
 var testPos = {

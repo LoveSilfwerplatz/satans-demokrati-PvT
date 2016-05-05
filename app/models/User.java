@@ -1,6 +1,5 @@
 package models;
 import com.avaje.ebean.Model;
-import org.openqa.selenium.lift.find.Finder;
 
 import javax.persistence.*;
 import java.util.UUID;

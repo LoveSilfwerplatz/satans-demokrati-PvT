@@ -5,9 +5,7 @@ import play.mvc.Http;
 import play.mvc.Result;
 import play.mvc.Security;
 
-/*
-* MADE BY ANDRÈ
-* **/
+
 public class ActionAuthenticator extends Security.Authenticator {
 
     @Override
@@ -24,7 +22,7 @@ public class ActionAuthenticator extends Security.Authenticator {
 
     @Override
     public Result onUnauthorized(Http.Context context) {
-        return super.onUnauthorized(context);
+        return unauthorized();
     }
 
     private String getTokenFromHeader(Http.Context ctx) {

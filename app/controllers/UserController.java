@@ -28,23 +28,23 @@ public class UserController extends Controller {
     }
 
     public Result login() {
-        //Funkar inte, ger alltid null user.
         Http.RequestBody body = request().body();
+
         Map<String, String[]> map = body.asFormUrlEncoded();
         String[] password = map.get("password");
         String[] name = map.get("name");
-
         String pw = password[0];
         String nm = name[0];
 
         User authUser = authenticate(nm, pw);
 
-        if(authUser != null){
-            return ok(authUser.token);
-        } else {
-            return redirect(routes.HomeController.index());
-        }
+        response().setHeader("Access-Control-Allow-Origin", "*");
 
+        if (authUser == null) {
+            return notFound();
+        } // ta upp din cmd
+
+        return ok(authUser.token);
     }
 
     public Result signin() {

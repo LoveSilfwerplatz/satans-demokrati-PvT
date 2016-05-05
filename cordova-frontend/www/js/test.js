@@ -2,6 +2,7 @@
 
 $(document).ready(function() {
     $('#login-form').submit(function(e) {
+        console.log("NU KÖR VI"); // pröva logga in så ser vi ifall de här ens kör kkk
         e.preventDefault();
 
         var formData = $("#login-form").serializeArray();
@@ -9,14 +10,15 @@ $(document).ready(function() {
 
         $.post(URL,
             formData,
-            function(data, textStatus, jqXHR)
-            {
+            function(data, textStatus, jqXHR) {
+                console.log(data);
                 window.localStorage.setItem("token", data);
+                // token har vi för att göra inloggade request sen aa testa kk
+                window.location.replace("map.html"); //så typ? aa kk vi sec
 
                 // För att hämta var value = window.localStorage.getItem("token");
-            }).fail(function(jqXHR, textStatus, errorThrown)
-        {
-
+            }).fail(function(jqXHR, textStatus, errorThrown) {
+                Materialize.toast("Wrong password/username provided.", 10000); // Testa
         });
     });
 
@@ -39,11 +41,13 @@ $(document).ready(function() {
     });
 
     $('#secure-test').click(function(e) {
+        var token =  window.localStorage.getItem("token");
+        // ait lets go
         $.ajax({
-            type: "get",
+            type: "GET",
             beforeSend: function(request)
             {
-                request.setRequestHeader("X-AUTH-TOKEN", window.localStorage.getItem("token"));
+                request.setRequestHeader("X-AUTH-TOKEN", token);
             },
             url: 'http://localhost:9000/securedContent',
             success: function(data, status, request) {
@@ -54,7 +58,7 @@ $(document).ready(function() {
             }
         });
     });
-}
+});
 
 
 
@@ -165,6 +169,8 @@ $.post()
 
 //testskit ftp 165 hby kenta kofot
 var takeMeAway = function(){
+    console.log("aids");
+    //den här reroutar ju  ska ja göra en sån bara? aa kk k
     window.location.replace("form.html");
 };
 
