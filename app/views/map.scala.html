@@ -34,9 +34,9 @@ function updateMarkerAddress(str) {
 }
 
 function initialize() {
-  var latLng = new google.maps.LatLng(-34.397, 150.644);
+  var latLng = new google.maps.LatLng(59.40325123577938, 17.942347473144537);
   var map = new google.maps.Map(document.getElementById('mapCanvas'), {
-    zoom: 8,
+    zoom: 15,
     center: latLng,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   });
@@ -59,6 +59,13 @@ function initialize() {
   google.maps.event.addListener(marker, 'drag', function() {
     updateMarkerStatus('Dragging...');
     updateMarkerPosition(marker.getPosition());
+  });
+
+  google.maps.event.addListener(map, "click", function(event) {
+    var lat = event.latLng.lat();
+    var lng = event.latLng.lng();
+    // populate yor box/field with lat, lng
+    console.log(lat, lng);
   });
 
   google.maps.event.addListener(marker, 'dragend', function() {

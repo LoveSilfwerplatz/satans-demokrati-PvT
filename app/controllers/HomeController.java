@@ -106,7 +106,7 @@ public class HomeController extends Controller {
 
         for(Tower t: allTowers){
             //result += "Tower: " + t.getName() + "\n";
-            result += "ID: " + t.getID() + padding + t.getName() + padding + "Range: " + t.getRange() + "\n";
+            result += "ID: " + t.getID() + padding + t.getName() + padding + "Range: " + t.getRange() + "Longitude: " + t.getLongCoordDD() + "Latitude: " + t.getLatCoordDD() + "\n";
         }
         if (result == ""){
             return ok(adminTEMP.render("No towers to list"));

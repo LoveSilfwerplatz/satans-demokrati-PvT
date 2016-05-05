@@ -13,10 +13,15 @@ public class Tower extends Model {
 
     private String towerName;
     private int broadcastRange;
+
+    @Column(precision = 9, scale = 6)
     private BigDecimal latCoordDD, longCoordDD;
 
-    public Tower(String towerName) {
+    public Tower( String towerName, BigDecimal latCoordDD, BigDecimal longCoordDD) {
+
         this.towerName = towerName;
+        this.longCoordDD = longCoordDD;
+        this.latCoordDD = latCoordDD;
     }
 
     @Id

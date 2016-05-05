@@ -9,7 +9,7 @@ import play.db.*;
 import scala.tools.fusesource_embedded.jansi.AnsiConsole;
 import scala.util.parsing.json.JSONArray;
 import views.html.adminAddTower;
-
+import play.Logger;
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.*;
@@ -30,13 +30,19 @@ public class TowerController extends Controller {
     }
 
     public Result setTower(){
+
+
         Http.RequestBody body = request().body();
         Map<String, String[]> map = body.asFormUrlEncoded();
         String[] towerName = map.get("towerName");
         String[] towerRadius = map.get("towerRadius");
-
-        Tower tower = new Tower(towerName[0]);
+        String[] towerLat = map.get("latitude");
+        String[] towerLog = map.get("longitude");
+        BigDecimal lat = new BigDecimal(towerLat[0]);
+        BigDecimal log = new BigDecimal(towerLog[0]);
+        Tower tower = new Tower(towerName[0],  log, lat);
         tower.save();
+
 
         response().setHeader("Access-Control-Allow-Origin", "*");
 

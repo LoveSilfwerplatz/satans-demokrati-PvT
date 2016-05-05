@@ -40,6 +40,14 @@ function initMap() {
         // Browser doesn't support Geolocation
         handleLocationError(false, infoWindow, map.getCenter());
     }
+    google.maps.event.addListener(map, "click", function(event) {
+        var lat = event.latLng.lat();
+        var lng = event.latLng.lng();
+        // populate yor box/field with lat, lng
+        $("#latitude").val(lat)
+        $("#longitude").val(lng)
+        console.log(lat, lng);
+    });
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -66,3 +74,5 @@ function clicker(){
     });
     //$('mapTest').css( 'cursor', 'crosshair' );
 };
+
+

@@ -1,19 +1,21 @@
 package controllers;
 
 import com.avaje.ebean.Model;
+import com.fasterxml.jackson.databind.JsonNode;
 import play.mvc.*;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+
+import java.util.*;
+
 import models.User;
+
 import static play.libs.Json.toJson;
 
 
-public class UserController extends Controller{
+public class UserController extends Controller {
 
 
     // Metod enbart för att hårdkoda en "användare" för att underlätta testning,
-    public Result addUser(){
+    public Result addUser() {
 
         User user = new User("mail@google,com", "hidden", "Arne Anka");
         user.save();
@@ -25,8 +27,37 @@ public class UserController extends Controller{
 
 
 
+    public User authenticate(String username, String password) {
 
-    public Result signin(){
+
+        Model.Finder<Integer, User> finders = new Model.Finder<>(User.class);
+        return finders.where().eq("name", username).eq("password", password).findUnique();
+
+    }
+
+    public Result login() {
+        //Funkar inte, ger alltid null user.
+        Http.RequestBody body = request().body();
+        Map<String, String[]> map = body.asFormUrlEncoded();
+        String[] password = map.get("password");
+        String[] name = map.get("name");
+
+        String pw = Arrays.toString(password);
+        String nm = Arrays.toString(name);
+
+
+        User authUser = authenticate(nm, pw);
+        if(authUser != null){
+            return ok();
+        } else {
+            return redirect(routes.HomeController.index());
+        }
+
+    }
+
+
+
+    public Result signin() {
         //kan göras snyggare
         Http.RequestBody body = request().body();
         Map<String, String[]> map = body.asFormUrlEncoded();
@@ -43,10 +74,7 @@ public class UserController extends Controller{
     }
 
 
-
-
     public Result getUsers() {
-
 
 
         Model.Finder<Integer, User> finder = new Model.Finder<>(User.class);
