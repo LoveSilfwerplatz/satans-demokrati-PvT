@@ -37,7 +37,7 @@ span{
 }
 
 .navbtn{
-	width:25%; 
+	width:33%;
 	height:5%;
 	background-color:#000000;
 	color:#ffffff;
@@ -49,9 +49,10 @@ span{
 }
 
 .main{
-	height:80%;
+	height:400px;
 	width:90%;
 	padding:3px;
+	text-align:center;
 }
 
 
