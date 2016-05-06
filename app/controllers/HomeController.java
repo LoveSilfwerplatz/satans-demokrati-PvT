@@ -113,7 +113,11 @@ public class HomeController extends Controller {
         } else {
             return ok(adminTEMP.render(result));
         }
+
     }
+
+
+
 
     public Result addSound(){ return ok(adminAddSound.render(""));
     }

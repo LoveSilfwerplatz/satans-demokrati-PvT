@@ -49,4 +49,11 @@ public class TowerController extends Controller {
         return ok(adminAddTower.render("Success"));
 
     }
+
+    public Result nyTower(){
+        return ok(adminAddTower.render("Success"));
+
+    }
+
+
 }
