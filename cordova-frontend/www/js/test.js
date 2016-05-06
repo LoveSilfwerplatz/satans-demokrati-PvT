@@ -176,7 +176,14 @@ var takeMeAway = function(){
 
 var mapTest = function(){
     window.location.replace("map.html");
+    location.reload();
+    // alert("reloaded!");
+};
 
+var goToAudio = function(){
+    window.location.replace("audio.html");
+    location.reload();
+   // alert("reloaded!");
 };
 
 document.addEventListener("DOMContentLoaded", function() {
