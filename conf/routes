@@ -21,6 +21,7 @@ GET     /addTower                   controllers.HomeController.addTower()
 GET     /map                        controllers.HomeController.map
 POST    /submitTower                controllers.TowerController.setTower()
 POST    /submitSound                controllers.SoundController.setSound()
+GET     /hgiqktjZuxt                controllers.TowerController.getTowerByName(name:String)
 
 # Protected routes
 GET    /securedContent              controllers.SecureController.securedContent

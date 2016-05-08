@@ -2,6 +2,7 @@ package models;
 import com.avaje.ebean.Model;
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.UUID;
 
 /**
  * Created by Theo on 29/04/2016.
@@ -24,6 +25,9 @@ public class Tower extends Model {
         this.latCoordDD = latCoordDD;
     }
 
+    public static Finder<Integer, Tower> find
+            = new Model.Finder<>(Integer.class, Tower.class);
+
     @Id
     public int ID;
 
@@ -34,8 +38,6 @@ public class Tower extends Model {
     public void setID(int ID) {
         this.ID = ID;
     }
-
-
 
     public String getName(){ return towerName; }
 

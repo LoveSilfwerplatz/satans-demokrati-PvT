@@ -38,10 +38,10 @@ Denna fil kommer troligtvis kunna tas bort sen. Men är just nu en andra admin s
 
 
         <script type="text/javascript">
+
             var play_url = "http://localhost:9000";
 
             function populate() {
-
                 $.getJSON(play_url + "/getTowers", function (towers) {
 
                     var $towerDrop = $("#towerDrop");
@@ -53,21 +53,24 @@ Denna fil kommer troligtvis kunna tas bort sen. Men är just nu en andra admin s
                             }
                         });
                     });
+                    map();
                 });
-
             };
 
             function map(){
                 var $towerDrop = $("#towerDrop");
                 var tower = $towerDrop.val();
+                var lat;
+                var long;
 
-                $.getJSON(play_url + "/getTowers", function (towers) {
-                    $.each(towers, function(row , object) {
-                        $.each(object, function(column, value){
-                            if(column == "name") {
-                               if(value == tower){
-                                   alert("Skriv en java metod som skickar eftersökt torn!")
-                               }
+                $.getJSON(play_url + "/hgiqktjZuxt?name="+tower, function (tower) {
+                    $.each(tower, function(row , object) {
+                        $.each(object, function(column, value) {
+                            if (column == "latCoordDD") {
+                                lat = value;
+                            }
+                            else if(column == "longCoordDD"){
+                                long = value;
                             }
                         });
                     });
