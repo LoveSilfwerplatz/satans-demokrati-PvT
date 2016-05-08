@@ -9,14 +9,23 @@
     <meta charset="UTF-8">
 </head>
 <body>
-    <img src="http://googledrive.com/host/0B636f7sGUTKTcFdJdnNwQ1A0X3c"/>
+    <a href="#" id="connect"><img src="http://googledrive.com/host/0B636f7sGUTKTcFdJdnNwQ1A0X3c"/></a>
     <!--Stuff below is basically taken verbatim from Codecademy course, it's really no more than a placeholder right now.-->
     <ul>
-        <li id="startRecording"><a href="#">Start Recording</a></li>
+        <!--<li id="startRecording"><a href="#">Start Recording</a></li>
         <li id="stopRecording"><a href="#">Stop Recording</a></li>
-        <li id="playBack"><a href="#">Play Recorded Sound</a></li>
+        <li id="playBack"><a href="#">Play Recorded Sound</a></li>-->
         <li id="upload"><a href="#">Upload</a></li>
     </ul>
-    <p class="status"></p>
+    <div class="logged-in" style="display: one;">
+        <p>
+            Logged in as: <span id="username"></span>
+        </p>
+        Your profile description:
+        <input type="text" id="description" class="fullWidth" />
+        <button id="update" class="big button">Update your profile description</button>
+    </div>
 </body>
 </html>
+
+
