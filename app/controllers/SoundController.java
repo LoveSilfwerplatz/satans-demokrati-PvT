@@ -9,6 +9,7 @@ import play.db.*;
 import scala.tools.fusesource_embedded.jansi.AnsiConsole;
 import scala.util.parsing.json.JSONArray;
 import views.html.adminAddSound;
+import views.html.*;
 
 import java.math.BigDecimal;
 import java.sql.*;
@@ -44,6 +45,11 @@ public class SoundController extends Controller{
 
         return ok(adminAddSound.render("Success"));
 
+    }
+
+    public Result soundcloud() {
+        response().setHeader("Access-Control-Allow-Origin", "*");
+        return ok(sctest.render());
     }
 
 
