@@ -9,43 +9,74 @@ Denna fil kommer troligtvis kunna tas bort sen. Men är just nu en andra admin s
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <script type="text/javascript" src="javascript/jquery-1.3.2.min.js"></script>
         <link rel="stylesheet" href="@routes.Assets.versioned("css/admin.css")">
         <title>Administatör Satan PLAY</title>
     </head>
     <body>
 
-
-        <a href="http://localhost:9000/" class="myButton">Backend</a>
-        <h1>Administratörssida för Satan PLAY</h1>
-
-        <div class="fred">
-
-            <div class="user">
-                <p>Lista</p>
-                <a href="http://localhost:9000/formUsers" class="myButton" id="down">Användare</a><br>
-                <a href="http://localhost:9000/formSounds" class="myButton" id="down">Ljudfiler</a><br>
-                <a href="http://localhost:9000/formTowers" class="myButton" id="down">Radiotorn</a>
-            </div>
-
-            <div class="user">
-                <p>Lägg till</p>
-                <a href="http://localhost:9000/addSound" class="myButton" id="down">Ljudfil</a><br>
-                <a href="http://localhost:9000/addTower" class="myButton" id="down">Radiotorn</a>
-            </div>
-
+        <div id="backKnapp">
+            <button id="buttonBackToBackend" class="myButton">Backend</button><br>
 
 
         </div>
 
 
+        <h1>ADMIN: Satans Demokrati</h1><br><br>
 
-        <br><br><br>
 
-        <div id="wrap">
-            <div id="content">
-                <pre>@message</pre>
-            </div>
-        </div>
+        <table class="tab">
+            <tr>
+                <td>
+                    <div class="buttonContainer">
+
+
+
+                    <div class="user"><br><br>
+                        <p>View</p>
+                        <button id="buttonShowUsers" class="myButton">Users</button><br>
+                        <button id="buttonShowSounds" class="myButton">Sounds</button><br>
+                        <button id="buttonShowTowers" class="myButton">Towers</button>
+                    </div><br><br><br><br>
+
+                    <div class="user">
+                        <p>Add</p>
+                        <button id="buttonAddSound" class="myButton">Sound</button><br>
+                        <button id="buttonAddTower" class="myButton">Tower</button><br>
+                    </div>
+
+                </div>
+
+                </td>
+
+
+                <td>
+                    <div id="wrap">
+                    <div id="content">
+                        <p id="boxHeader" class="apa">f </p>
+                        <pre id="boxText">@message</pre>
+                    </div>
+                </div>
+                </td>
+
+
+
+            </tr>
+        </table>
+
+
+
+
+
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+        <script src="@routes.Assets.versioned("js/admin.js")"></script>
+
+
+
+
+
     </body>
 </html>
 

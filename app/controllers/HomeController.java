@@ -66,53 +66,54 @@ public class HomeController extends Controller {
 
 
     public Result formattedUsers(){
-        String result = "Användare\n\n";
-        String padding = "          ";
+        String tabs = "\t\t\t\t\t";
+        String result = "Användare\nID:" + "\t\t" + "Namn:\n";
+
         Model.Finder<Integer, User> finder = new Model.Finder<>(User.class);
         List<User> allUsers = finder.all();
 
         for(User u: allUsers){
-            result += "ID: " + u.getID() + padding + u.getName() + "\n";
+            result += u.getID() + "\t\t" + u.getName() + "\n";
         }
-        if (result == ""){
-            return ok(adminTEMP.render("No users to list"));
-        } else {
-            return ok(adminTEMP.render(result));
-        }
+
+
+        return ok(adminTEMP.render(result));
+
     }
 
 
     public Result formattedSounds(){
-        String result = "Ljudfiler\n\n";
-        String padding = "          ";
+        String tabs = "\t\t\t\t\t";
+        String result = "Ljudfiler\nID:" + "\t\t" + "Namn:\n";
+
         Model.Finder<Integer, Sound> finder = new Model.Finder<>(Sound.class);
         List<Sound> allSounds = finder.all();
 
         for(Sound s: allSounds){
-            result += "ID: " + s.getID() + padding + s.getName() + "\n";
+            result += s.getID() + "\t\t" + s.getName()+"\n";
+
         }
-        if (result == ""){
-            return ok(adminTEMP.render("No sounds to list"));
-        } else {
-            return ok(adminTEMP.render(result));
-        }
+
+
+        return ok(adminTEMP.render(result));
+
     }
 
     public Result formattedTowers(){
-        String result = "Radiotorn\n\n";
-        String padding = "          ";
+        String tabs = "\t\t";
+        String result = "Radiotorn\nID:" + "\t\t" + "Range:" + tabs + "Longitude:" + tabs + "Latitude:" + tabs + "\t\t\tName:" + tabs + "\n";
+
+
         Model.Finder<Integer, Tower> finder = new Model.Finder<>(Tower.class);
         List<Tower> allTowers = finder.all();
 
         for(Tower t: allTowers){
-            //result += "Tower: " + t.getName() + "\n";
-            result += "ID: " + t.getID() + padding + t.getName() + padding + "Range: " + t.getRange() + "Longitude: " + t.getLongCoordDD() + "Latitude: " + t.getLatCoordDD() + "\n";
+            result += t.getID() + "\t\t" + t.getRange() + tabs + "\t" + t.getLongCoordDD() + tabs + t.getLatCoordDD() + tabs + "\t\t" + t.getName() + "\n";
         }
-        if (result == ""){
-            return ok(adminTEMP.render("No towers to list"));
-        } else {
-            return ok(adminTEMP.render(result));
-        }
+
+
+        return ok(adminTEMP.render(result));
+
 
     }
 
