@@ -79,7 +79,7 @@ body {
 /* Class for every piece set to use the official font. */
 .officialFont {
     font-family: Baron_Neue_Black, sans-serif;
-    /* Code below *should* ensure that we use the correct stylistic set. Seems unnecessary. */
+    /* Code below *should* ensure that we use the correct stylistic set. Seems unnecessary given the discovery that case determines character style. */
     /*-moz-font-feature-settings:"ss01" 1;*/
     /*-ms-font-feature-settings:"ss01" 1;*/
     /*-o-font-feature-settings:"ss01" 1;*/
@@ -108,6 +108,11 @@ button:hover {
     border-radius: 10%;
 }
 
+#ppButtonImg{
+    width:30%;
+    height:30%;
+}
+
 #radioList {
     color: #fff;
     text-align: center;
@@ -125,6 +130,8 @@ ul#radioList {
 }
 
 .active-radio-choice {
+    text-transform: lowercase;
+    background-color: #222222;
     list-style-type: square;
 }
 

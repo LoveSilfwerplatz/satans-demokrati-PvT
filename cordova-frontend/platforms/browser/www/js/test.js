@@ -192,6 +192,15 @@ var goToAudio = function(){
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('takeMeAway').addEventListener('click',takeMeAway,false);
 });
+var back = function(){
+    window.location.replace("http://localhost:9000");
+    // alert("reloaded!");
+};
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById('back').addEventListener('click',back,false);
+});
 
 
 /*
