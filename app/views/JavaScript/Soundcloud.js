@@ -17,7 +17,7 @@ SC.initialize({
     alert('Hello, ' + me.username);
 });*/
 
-$("#connect").live("click", function(){
+$("#connect").on("click", function(){
     SC.connect(function(){
         SC.get("/me", function(me){
             $("#username").text(me.username);
@@ -26,7 +26,7 @@ $("#connect").live("click", function(){
     });
 });
 
-$("#update").live("click", function(){
+$("#update").on("click", function(){
     SC.put("/me", {user: {description: $("#description").val()}}, function(response, error){
         if(error){
             alert("Some error occured: " + error.message);
