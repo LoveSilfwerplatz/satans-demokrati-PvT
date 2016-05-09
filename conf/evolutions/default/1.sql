@@ -29,15 +29,6 @@ create table user (
   constraint pk_user primary key (id)
 );
 
-create table users (
-  id                            integer auto_increment not null,
-  name                          varchar(255),
-  email                         varchar(255),
-  password                      varchar(255),
-  is_admin                      tinyint(1) default 0,
-  constraint pk_users primary key (id)
-);
-
 
 # --- !Downs
 
@@ -46,6 +37,4 @@ drop table if exists sound;
 drop table if exists tower;
 
 drop table if exists user;
-
-drop table if exists users;
 

@@ -6,16 +6,14 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="@routes.Assets.versioned("css/addTower.css")">
         <title>ADMIN: Lägg till torn</title>
-
         @*Disables "loading" print-problem from jquerymobile*@
-        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
+        @*<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />*@
     </head>
+
     <body>
 
         <button id="buttonBackToAdmin" class="myButton">Tillbaka</button>
         <h1>ADMIN: Lägg till radiotorn</h1>
-
-
 
         <form name="myTower" id="myTower" action="http://localhost:9000/submitTower" method="POST">
             <div id="map">
@@ -23,22 +21,15 @@
                 <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js" ></script>
                 <script src="@routes.Assets.versioned("js/MapScript.js")"></script>
                 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0VKA6LegNq1Tp5I8Y1SJ7gtsZQSRaANA&callback=initMap"></script>
-            </div>
+            </div><br>
 
-
-            <br>
             <div float="right">
-
-
-
                 <ul>
                     <li>Klicka på kartan för att välja de koordinater där radiotornet ska placeras.</li><br>
                     <li><strong>Zooma in</strong>: Dubbelklicka</li>
                     <li><strong>Zooma ut</strong>: Högerklicka</li>
-                    <li><strong>Zooma in/ut</strong>: Scrolla</li>
-
-                </ul><br><br>
-
+                    <li><strong>Zooma in/ut</strong>: Scrolla</li><br><br>
+                </ul>
 
                 <pre>Tower name:</pre> <input type="text" name="towerName" id="towerName" required>
                 <pre>Broadcast range:</pre> <input type="number" min="1" name="towerRadius" id="towerRadius" required>
@@ -49,12 +40,6 @@
             </div>
         </form>
 
-
-
-
-
-
         <script src="@routes.Assets.versioned("js/admin.js")"></script>
-
     </body>
 </html>

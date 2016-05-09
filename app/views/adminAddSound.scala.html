@@ -1,20 +1,18 @@
-
 @(message: String)
-
-@*********************
-Denna fil kommer troligtvis kunna tas bort sen. Men är just nu en andra admin sida för att testa logik utan att blanda in Andres CSS saker.
-*********************@
 
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="@routes.Assets.versioned("css/addSound.css")">
         <title>AdminTEMP</title>
+    </head>
 
+    <body onload="populate();">
 
-        <a href="http://localhost:9000/" class="myButton">Backend</a>
+        <button id="buttonBackToAdmin" class="myButton">Tillbaka</button>
 
-        <h1>Administratörssida för Satan PLAY</h1>
+        <h1>ADMIN: Lägg till ljud</h1>
 
         <form name="mySound" id="mySound" action="http://localhost:9000/submitSound" method="POST">
             <div align="center">
@@ -28,151 +26,14 @@ Denna fil kommer troligtvis kunna tas bort sen. Men är just nu en andra admin s
 
 
         <br>
-
         <div id="wrap">
             <div id="content">
                 <pre>@message</pre>
             </div>
         </div>
 
-
-
-        <script type="text/javascript">
-
-            var play_url = "http://localhost:9000";
-
-            function populate() {
-                $.getJSON(play_url + "/getTowers", function (towers) {
-
-                    var $towerDrop = $("#towerDrop");
-                    $towerDrop.empty();
-                    $.each(towers, function(row , object) {
-                        $.each(object, function(column, value){
-                            if(column == "name") {
-                                $towerDrop.append("<option>" + value + "</option>");
-                            }
-                        });
-                    });
-                    map();
-                });
-            };
-
-            function map(){
-                var $towerDrop = $("#towerDrop");
-                var tower = $towerDrop.val();
-                var lat;
-                var long;
-
-                $.getJSON(play_url + "/hgiqktjZuxt?name="+tower, function (tower) {
-                    $.each(tower, function(row , object) {
-                        $.each(object, function(column, value) {
-                            if (column == "latCoordDD") {
-                                lat = value;
-                            }
-                            else if(column == "longCoordDD"){
-                                long = value;
-                            }
-                        });
-                    });
-                });
-            };
-        </script>
-
-
-    </head>
-    <body onload="populate();">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script src="@routes.Assets.versioned("js/admin.js")"></script>
 
     </body>
-</html>
-
-
-<!DOCTYPE html>
-<html>
-    <head>
-        <style>
-
-        #wrap {
-            float: left;
-            position: relative;
-            left: 50%;
-        }
-
-        #content {
-            float: left;
-            position: relative;
-            left: -50%;
-        }
-
-
-        body {
-            background-color: black;
-        }
-
-        h1 {
-            font-family:Arial;
-            color:white;
-            text-align: center
-        }
-
-        pre {
-            color:white;
-            font-family: Arial;
-            font-size: 12px;
-
-            display: block;
-            white-space: pre;
-            margin: 1em 0;
-        }
-
-
-
-        .myButton {
-            -moz-box-shadow:inset 0px -3px 7px 0px #29bbff;
-            -webkit-box-shadow:inset 0px -3px 7px 0px #29bbff;
-            box-shadow:inset 0px -3px 7px 0px #29bbff;
-            background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #2dabf9), color-stop(1, #0688fa));
-            background:-moz-linear-gradient(top, #2dabf9 5%, #0688fa 100%);
-            background:-webkit-linear-gradient(top, #2dabf9 5%, #0688fa 100%);
-            background:-o-linear-gradient(top, #2dabf9 5%, #0688fa 100%);
-            background:-ms-linear-gradient(top, #2dabf9 5%, #0688fa 100%);
-            background:linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
-            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#2dabf9', endColorstr='#0688fa',GradientType=0);
-            background-color:#2dabf9;
-            -moz-border-radius:3px;
-            -webkit-border-radius:3px;
-            border-radius:3px;
-            border:1px solid #0b0e07;
-            display:inline-block;
-            cursor:pointer;
-            color:#ffffff;
-            font-family:Arial;
-            font-size:15px;
-            padding:9px 23px;
-            text-decoration:none;
-            text-shadow:0px 1px 0px #263666;
-            alignment: center;
-            text-align: center
-        }
-        .myButton:hover {
-            background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #0688fa), color-stop(1, #2dabf9));
-            background:-moz-linear-gradient(top, #0688fa 5%, #2dabf9 100%);
-            background:-webkit-linear-gradient(top, #0688fa 5%, #2dabf9 100%);
-            background:-o-linear-gradient(top, #0688fa 5%, #2dabf9 100%);
-            background:-ms-linear-gradient(top, #0688fa 5%, #2dabf9 100%);
-            background:linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
-            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#0688fa', endColorstr='#2dabf9',GradientType=0);
-            background-color:#0688fa;
-        }
-        .myButton:active {
-            position:relative;
-            top:1px;
-        }
-
-
-
-
-        </style>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-        //<script type="text/javascript" src="JavaScript/Scripts.js"></script>
-    </head>
 </html>
