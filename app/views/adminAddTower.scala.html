@@ -6,13 +6,14 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="@routes.Assets.versioned("css/addTower.css")">
         <title>ADMIN: Lägg till torn</title>
+
+        @*Disables "loading" print-problem from jquerymobile*@
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
     </head>
     <body>
 
-
-        <a href="http://localhost:9000/" class="myButton">Backend</a>
-        <button id="back">Fly</button>
-        <h1>fml: Lägg till radiotorn</h1>
+        <button id="buttonBackToAdmin" class="myButton">Tillbaka</button>
+        <h1>ADMIN: Lägg till radiotorn</h1>
 
 
 
@@ -53,6 +54,7 @@
 
 
 
+        <script src="@routes.Assets.versioned("js/admin.js")"></script>
 
     </body>
 </html>
