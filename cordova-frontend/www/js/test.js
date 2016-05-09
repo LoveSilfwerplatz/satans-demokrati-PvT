@@ -13,12 +13,13 @@ $(document).ready(function() {
             function(data, textStatus, jqXHR) {
                 console.log(data);
                 window.localStorage.setItem("token", data);
-                // token har vi för att göra inloggade request sen aa testa kk
-                window.location.replace("map.html"); //så typ? aa kk vi sec
+             
+                window.location.replace("map.html"); 
 
                 // För att hämta var value = window.localStorage.getItem("token");
             }).fail(function(jqXHR, textStatus, errorThrown) {
                 Materialize.toast("Wrong password/username provided.", 10000); // Testa
+                
         });
     });
 
@@ -33,6 +34,8 @@ $(document).ready(function() {
             function(data, textStatus, jqXHR)
             {
                 window.localStorage.setItem("token", data);
+
+                window.location.replace("login.html");
                 // För att hämta var value = window.localStorage.getItem("token");
             }).fail(function(jqXHR, textStatus, errorThrown)
         {
@@ -169,8 +172,7 @@ $.post()
 
 //testskit ftp 165 hby kenta kofot
 var takeMeAway = function(){
-    console.log("aids");
-    //den här reroutar ju  ska ja göra en sån bara? aa kk k
+
     window.location.replace("form.html");
 };
 
@@ -186,9 +188,20 @@ var goToAudio = function(){
    // alert("reloaded!");
 };
 
+
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('takeMeAway').addEventListener('click',takeMeAway,false);
 });
+var back = function(){
+    window.location.replace("http://localhost:9000");
+    // alert("reloaded!");
+};
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById('back').addEventListener('click',back,false);
+});
+
 
 /*
 $("#plsstop").on('submit', function() {

@@ -40,6 +40,7 @@
         <title>Hello World</title>
     </head>
     <body>
+    <div class="container">
         <div class="center">
             <div class="row">
                 <form class ="col s8 offset-s2" name="register-form" id="register-form" action="http://localhost:9000/signin" method="POST">
@@ -47,11 +48,13 @@
                     <input id="password" name="password" placeholder="Password" type="password">
                     <input id="name" name="name" placeholder="Username" type="text">
                     <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+
                         <i class="material-icons right">send</i>
                     </button>
                 </form>
             </div>
         </div>
+    </div>
 
         <button id="secure-test">Secure route test</button>
 

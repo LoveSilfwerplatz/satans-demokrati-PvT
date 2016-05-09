@@ -75,4 +75,13 @@ function clicker(){
     //$('mapTest').css( 'cursor', 'crosshair' );
 };
 
+var back = function(){
+    window.location.replace("http://localhost:9000/");
+
+};
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById('back').addEventListener('click',back,false);
+});
 
