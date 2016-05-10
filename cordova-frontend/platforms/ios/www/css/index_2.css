@@ -67,3 +67,13 @@ span{
 	color:#ffffff;
 }
 
+/* Kill "loading" text */
+.ui-loader {
+	display:none !important;
+}
+
+/* Kill "loading" text */
+.ui-icon-loading {
+	background:none !important;
+}
+
