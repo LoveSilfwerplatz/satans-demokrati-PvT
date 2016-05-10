@@ -10,7 +10,7 @@ var pos = {
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: pos,
-        zoom: 15, disableDefaultUI: true
+        zoom: 11, disableDefaultUI: true
 
     });
     // Sets the Map Style (Colors and  Stuff
@@ -32,7 +32,8 @@ function setMarker(lat, long, tower) {
 
     infoWindow.setPosition(pos);
     infoWindow.setContent(tower);
-    map.setCenter();
+
+    map.setCenter(pos);
     map.center = pos;
 
 };
