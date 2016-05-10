@@ -53,7 +53,7 @@ public class TowerController extends Controller {
         String[] towerLog = map.get("longitude");
         BigDecimal lat = new BigDecimal(towerLat[0]);
         BigDecimal log = new BigDecimal(towerLog[0]);
-        Tower tower = new Tower(towerName[0],  log, lat);
+        Tower tower = new Tower(towerName[0],  lat, log);
         tower.save();
 
 

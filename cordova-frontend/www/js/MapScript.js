@@ -56,8 +56,9 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 // Marker Test, HardCoded Location untiil BackEnd gets back with help to convert To json
 function markerTest() {
-    $.getJSON(play_url + "/getTowers", function (marker){
+    $.getJSON("http://localhost:9000" + "/getTowers", function (marker){
         $.each(marker,function(i, mark) {
+
 
         var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
         var addmark = new google.maps.Marker({

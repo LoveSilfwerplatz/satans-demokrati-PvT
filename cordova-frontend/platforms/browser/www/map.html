@@ -4,16 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Satans Radio Map</title>
-    <div id="map"></div>
-    <script src="https://code.jquery.com/jquery-2.2.3.js"   integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4="   crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js" ></script>
-    <script type="text/javascript" src="js/MapScript.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0VKA6LegNq1Tp5I8Y1SJ7gtsZQSRaANA&callback=initMap"></script>
+
+    <script src="https://code.jquery.com/jquery-2.2.3.js"
+            integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js"></script>
 </head>
 <body>
-<style>
-    #map {
-        position: absolute; top: 0; right: 0; bottom: 0; left: 0;}
-</style>
+<div data-role="page" id="map_page">
+    <div data-role="content">
+        <div id="map"></div>
+        <div class="back_button_container">
+            <a class="back_button" href="home.html" data-transition="slide" data-direction="reverse">Tillbaka till start</a>
+        </div>
+        <style>
+            #map {
+                position: absolute;
+                float:top;
+                top: 0;
+                right: 0;
+                bottom: 50px;
+                left: 0;
+            }
+        </style>
+    </div>
+    <script type="text/javascript" src="js/MapScript.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0VKA6LegNq1Tp5I8Y1SJ7gtsZQSRaANA&callback=initMap"></script>
+</div>
 </body>
 </html>
