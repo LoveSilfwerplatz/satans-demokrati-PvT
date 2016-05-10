@@ -121,8 +121,8 @@ function map(){
     var lat;
     var long;
 
-    $.getJSON(play_url + "/hgiqktjZuxt?name="+tower, function (tower) {
-        $.each(tower, function(row , object) {
+    $.getJSON(play_url + "/hgiqktjZuxt?name="+tower, function (towerOb) {
+        $.each(towerOb, function(row , object) {
             $.each(object, function(column, value) {
                 if (column == "latCoordDD") {
                     lat = value;
@@ -131,6 +131,9 @@ function map(){
                     long = value;
                 }
             });
+            if(lat != null && long != null){
+                initMap(setMarker(lat, long, tower));
+            }
         });
     });
 };
