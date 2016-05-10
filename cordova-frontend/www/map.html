@@ -11,17 +11,18 @@
 </head>
 <body>
 <div data-role="page" id="map_page">
-
-
     <div data-role="content">
         <div id="map"></div>
-        <h1 class="back_button">Tillbaka</h1>
+        <div class="back_button_container">
+            <a class="back_button" href="home.html" data-transition="slide" data-direction="reverse">Tillbaka till start</a>
+        </div>
         <style>
             #map {
                 position: absolute;
+                float:top;
                 top: 0;
                 right: 0;
-                bottom: 0;
+                bottom: 50px;
                 left: 0;
             }
         </style>
