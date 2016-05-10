@@ -1,10 +1,21 @@
-<div data-role="page" id="audio_page">
-    <script type="text/javascript" src="js/test.js"></script>
-    <div data-role="content">
-        <h1 class="officialFont">SATANS DEMOKRATI</h1>
+<div data-role="page" id="audio_page" data-title="BROADCASTS">
+    <!-- <script type="text/javascript" src="js/test.js"></script> -->
+
+    <div data-role="content" class="officialFont">
+        <h1>SATANS DEMOKRATI</h1>
         <ul data-role="listview" data-inset="true" id="radioList" class="officialFont"></ul>
-        <button id="playButton" onclick="playStream()"><img id="ppButtonImg" src="img/Satan_Knapp_Play.png"/>
-        </button>
-        <a class="back_button" href="home.html" data-transition="slide" data-direction="reverse">Tillbaka</a>
+
+        <div id="playButton">
+            <button onclick="playStream()"><img id="ppButtonImg" src="img/Satan_Knapp_Play.png"/>
+            </button>
+        </div>
+
+        <div class="back_button_container">
+            <a class="back_button" href="home.html" data-transition="slide" data-direction="reverse">Tillbaka till start</a>
+        </div>
     </div>
+
+    <link type="text/css" rel="stylesheet" href="css/allViews.css" />
+    <link type="text/css" rel="stylesheet" href="css/audio.css" />
+    <script type="text/javascript" src="js/audio.js"></script>
 </div>

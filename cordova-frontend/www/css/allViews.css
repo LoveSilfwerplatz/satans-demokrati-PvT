@@ -1,0 +1,25 @@
+@font-face{
+    font-family: "Baron_Neue_Black";
+    src: url("../font/baron_neue/Baron Neue Black.otf");
+}
+
+.officialFont {
+    font-family: Baron_Neue_Black, sans-serif;
+    color:#fff;
+}
+
+.back_button{
+    text-decoration: none;
+    font-size:20px;
+    color:#fff;
+}
+.back_button_container{
+    text-align:center;
+    padding:5px;
+}
+
+*{
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+}
