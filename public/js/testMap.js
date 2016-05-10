@@ -1,6 +1,6 @@
 
 var map;
-var infoWindow
+var infoWindow;
 
 var pos = {
     lat: 59.326784654711666,
@@ -27,15 +27,16 @@ function initMap() {
 }
 
 function setMarker(lat, long, tower) {
-    pos.lat = 59.27927507759364;
-    pos.lng = 18.003501892089844
 
-    infoWindow.position = pos;
+    pos.lat = lat;
+    pos.lng = long;
+
+    infoWindow.setPosition(pos);
     infoWindow.setContent(tower);
+    map.setCenter();
     map.center = pos;
 
 };
-
 
 var back = function(){
     window.location.replace("http://localhost:9000/");
