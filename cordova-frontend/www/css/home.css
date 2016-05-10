@@ -3,6 +3,10 @@
     color: #fff;
 }
 
+#officialFont {
+    text-align: center;
+}
+
 #bottom-menu-grid img {
     max-width: 100%;
 }

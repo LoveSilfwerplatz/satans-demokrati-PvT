@@ -31,37 +31,47 @@
 
     <!-- Har ändrat massa säkerhetsinställningar för att få script att köra. Säkert livsfarlig?! /CJ -->
 
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; script-src 'unsafe-inline' *; connect-src 'unsafe-inline' *">
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src 'self' 'unsafe-inline' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; script-src 'unsafe-inline' *; connect-src 'unsafe-inline' *">
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <meta name="viewport"
+          content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
     <link rel="stylesheet" type="text/css" href="css/index_2.css">
-    <link rel="stylesheet" type="text/css" href="css/index.css">
+
     <title>Hello World</title>
 </head>
 <body>
 <div class="app">
-    <h1 class="officialFont">SATANS DEMOKRATI</h1>
-    <div> <!-- id="deviceready" class="blink" -->
-        <p class="event listening"><!-- Connecting to Device --></p>
-        <p class="event received"><!-- Device is Ready --></p>
+    <div data-role="page" id="audio_page">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <div data-role="content">
+            <h1 class="officialFont">SATANS DEMOKRATI</h1>
+            <div> <!-- id="deviceready" class="blink" -->
+                <p class="event listening"><!-- Connecting to Device --></p>
+                <p class="event received"><!-- Device is Ready --></p>
+            </div>
+            <div data-role="content">
+                <ul data-role="listview" data-inset="true" id="radioList" class="officialFont"></ul>
+            </div>
+            <!-- <button onclick="fetchStuffFromDB()">Hämta databasgrejer!!!</button> -->
+            <button id="playButton" onclick="playStream()"><img id="ppButtonImg" src="img/Satan_Knapp_Play.png"/>
+            </button>
+            <!-- <button onclick="stopStream()">Stop</button> -->
+            <div id="DBStuff"></div>
+            <br/>
+            <a href="javascript:history.back()">HEM</a><br/>
+            <a href="home.html" data-transition="slide">jQuery mobile HEM</a>
+        </div>
     </div>
-    <div data-role="content">
-        <ul data-role="listview" data-inset="true"  id="radioList" class="officialFont"></ul>
-    </div>
-    <!-- <button onclick="fetchStuffFromDB()">Hämta databasgrejer!!!</button> -->
-    <button id="playButton" onclick="playStream()"><img id="ppButtonImg" src="img/Satan_Knapp_Play.png"/></button>
-    <!-- <button onclick="stopStream()">Stop</button> -->
-    <div id="DBStuff"></div>
-    <br />
-    <a href="javascript:history.back()">HEM</a>
 </div>
 <button id="takeMeAway">Fly</button>
 <button id="mapTest" onclick="mapTest()">Map</button>
 
-<script src="https://code.jquery.com/jquery-2.2.3.js"   integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4="   crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js" ></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" ></script>
+<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4="
+        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></script>
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="js/test.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
