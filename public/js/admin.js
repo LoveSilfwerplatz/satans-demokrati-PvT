@@ -86,14 +86,10 @@ if(buttonState === "R"){
 
 
 
-
-
 $(document).ready(function() {
 
     $('#boxHeader').html(buttonState);
 });
-
-
 
 
 //addSoundView
