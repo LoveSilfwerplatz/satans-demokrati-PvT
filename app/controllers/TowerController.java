@@ -32,8 +32,8 @@ public class TowerController extends Controller {
     public Result getTowerByName(String name) {
 
         List<Tower> tower = Tower.find.select("longCoordDD").select("latCoordDD")
-                                .where().eq("towerName", name)
-                                .findList();
+                .where().eq("towerName", name)
+                .findList();
 
         response().setHeader("Access-Control-Allow-Origin", "*");
 

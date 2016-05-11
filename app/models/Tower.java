@@ -4,16 +4,12 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-/**
- * Created by Theo on 29/04/2016.
- *
- * Basically just a copy of Sound.java right now, format-wise.
- */
+
 @Entity
 public class Tower extends Model {
 
     private String towerName;
-    private int range;
+    private int broadcastRange;
 
     @Column(precision = 9, scale = 6)
     private BigDecimal latCoordDD, longCoordDD;
@@ -23,7 +19,7 @@ public class Tower extends Model {
         this.towerName = towerName;
         this.longCoordDD = longCoordDD;
         this.latCoordDD = latCoordDD;
-        this.range = range;
+        this.broadcastRange = range;
     }
 
     public static Finder<Integer, Tower> find
@@ -44,9 +40,9 @@ public class Tower extends Model {
 
     public void setName(String towerName) { this.towerName = towerName; }
 
-    public int getRange() { return range; }
+    public int getRange() { return broadcastRange; }
 
-    public void setRange(int range) { this.range = range; }
+    public void setRange(int broadcastRange) { this.broadcastRange = broadcastRange; }
 
     public BigDecimal getLatCoordDD(){ return latCoordDD; }
 
