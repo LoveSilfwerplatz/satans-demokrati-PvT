@@ -1,0 +1,8 @@
+#map {
+    position: absolute;
+    float:top;
+    top: 0;
+    right: 0;
+    bottom: 50px;
+    left: 0;
+}

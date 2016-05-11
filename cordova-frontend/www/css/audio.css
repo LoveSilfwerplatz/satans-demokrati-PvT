@@ -24,6 +24,15 @@ h1 {
     height:19%;
     margin-left:auto;
     margin-right:auto;
+    background-color: red;
+}
+
+#playButton:hover{
+    background-color: green;
+}
+
+#playButton:active{
+    background-color: blue;
 }
 
 button {
@@ -33,12 +42,12 @@ button {
     margin-left: auto;
     margin-right: auto;
 }
-
+/*
 button:hover {
     background-color: darkslategrey;
     border-radius: 10%;
 }
-
+*/
 #ppButtonImg{
     width:100%;
     height:100%;
