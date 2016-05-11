@@ -13,16 +13,17 @@ import java.util.UUID;
 public class Tower extends Model {
 
     private String towerName;
-    private int broadcastRange;
+    private int range;
 
     @Column(precision = 9, scale = 6)
     private BigDecimal latCoordDD, longCoordDD;
 
-    public Tower( String towerName, BigDecimal latCoordDD, BigDecimal longCoordDD) {
+    public Tower( String towerName, BigDecimal latCoordDD, BigDecimal longCoordDD, int range) {
 
         this.towerName = towerName;
         this.longCoordDD = longCoordDD;
         this.latCoordDD = latCoordDD;
+        this.range = range;
     }
 
     public static Finder<Integer, Tower> find
@@ -43,9 +44,9 @@ public class Tower extends Model {
 
     public void setName(String towerName) { this.towerName = towerName; }
 
-    public int getRange() { return broadcastRange; }
+    public int getRange() { return range; }
 
-    public void setRange(int broadcastRange) { this.broadcastRange = broadcastRange; }
+    public void setRange(int range) { this.range = range; }
 
     public BigDecimal getLatCoordDD(){ return latCoordDD; }
 
