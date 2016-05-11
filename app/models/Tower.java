@@ -4,11 +4,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-/**
- * Created by Theo on 29/04/2016.
- *
- * Basically just a copy of Sound.java right now, format-wise.
- */
+
 @Entity
 public class Tower extends Model {
 
@@ -18,11 +14,12 @@ public class Tower extends Model {
     @Column(precision = 9, scale = 6)
     private BigDecimal latCoordDD, longCoordDD;
 
-    public Tower( String towerName, BigDecimal latCoordDD, BigDecimal longCoordDD) {
+    public Tower( String towerName, BigDecimal latCoordDD, BigDecimal longCoordDD, int range) {
 
         this.towerName = towerName;
         this.longCoordDD = longCoordDD;
         this.latCoordDD = latCoordDD;
+        this.broadcastRange = range;
     }
 
     public static Finder<Integer, Tower> find

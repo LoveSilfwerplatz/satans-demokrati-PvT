@@ -32,8 +32,8 @@ public class TowerController extends Controller {
     public Result getTowerByName(String name) {
 
         List<Tower> tower = Tower.find.select("longCoordDD").select("latCoordDD")
-                                .where().eq("towerName", name)
-                                .findList();
+                .where().eq("towerName", name)
+                .findList();
 
         response().setHeader("Access-Control-Allow-Origin", "*");
 
@@ -53,7 +53,8 @@ public class TowerController extends Controller {
         String[] towerLog = map.get("longitude");
         BigDecimal lat = new BigDecimal(towerLat[0]);
         BigDecimal log = new BigDecimal(towerLog[0]);
-        Tower tower = new Tower(towerName[0],  lat, log);
+        int range = Integer.parseInt(towerRadius[0]);
+        Tower tower = new Tower(towerName[0], lat, log, range);
         tower.save();
 
 
