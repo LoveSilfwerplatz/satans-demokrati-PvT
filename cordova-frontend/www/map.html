@@ -11,30 +11,53 @@
 </head>
 <body>
 <div data-role="page" id="map_page">
-    <div data-role="content">
-        <div id="map-container">
+    <div data-role="content" id="map-content">
+        <h2 id="map-header">MAP OVER RADIO TOWERS</h2>
 
-            <h2 id="map-header">Map over radio towers</h2>
+        <div id="map-container">
             <div id="map"></div>
-            <style>
-                #map {
-                    position: absolute;
-                    top: 100px;
-                    right: 150px;
-                    bottom: 50px;
-                    left: 150px;
-                    border:3px solid black;
-                    border-radius: 5px;
-                }
-            </style>
         </div>
+
         <div class="back_button_container" id="map-back-button">
             <a class="back_button_link" href="home.html" data-transition="slide" data-direction="reverse">
                 <img class="back_button_img" src="img/back_arrow_02.png" />
             </a>
         </div>
+
     </div>
 
+    <style>
+        #map-header{
+            font-family:"Baron Neue";
+            text-align:center;
+            position: absolute;
+            top: 0;
+
+            bottom: 90%;
+
+            width:90%;
+            padding-bottom:10px;
+            margin-bottom:10px;
+            background-color:#000;
+            color:#fff;
+        }
+        #map {
+            position: absolute;
+            top: 10%;
+            right: 100px;
+            bottom: 25%;
+            left: 100px;
+            border: 3px solid black;
+            border-radius: 5px;
+        }
+        #map-back-button{
+            position:absolute;
+            top:500px;
+            margin-left:auto;
+            margin-right:auto;
+
+        }
+    </style>
     <script type="text/javascript" src="js/MapScript.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0VKA6LegNq1Tp5I8Y1SJ7gtsZQSRaANA&callback=initMap"></script>
 </div>
