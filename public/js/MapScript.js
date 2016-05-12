@@ -4,9 +4,9 @@
 
 //Only Temp Script, Should probly be combined later when doing the html dynamically
 var map;
-var testPos = {
-    lat: 59.4069349,
-    lng: 17.945128
+var TestPos = {
+    lat: 60.124271,
+    lng: 19.994100
 };
 function initMap() {
    var map = new google.maps.Map(document.getElementById('map'), {
@@ -84,11 +84,24 @@ function initMap() {
 
 
             });
+            var circle = new google.maps.Circle({
+                strokeColor: '#FF0000',
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: '#FF0000',
+                fillOpacity: 0.35,
+                center: new google.maps.LatLng (value.latCoordDD, value.longCoordDD),
+                map: map,
+                radius: value.range*2.0
+
+
+            });
 
         });
 
 
-    })
+    });
+
     // Try HTML5 geolocationa.
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
@@ -107,6 +120,7 @@ function initMap() {
         // Browser doesn't support Geolocation
         handleLocationError(false, infoWindow, map.getCenter());
     }
+    testRange();
     google.maps.event.addListener(map, "click", function (event) {
         var lat = event.latLng.lat();
         var lng = event.latLng.lng();
@@ -151,3 +165,48 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('back').addEventListener('click',back,false);
 });
 
+ function rangeCalc(recPosition){
+     $.getJSON("http://localhost:9000" + "/getTowers", function (towers){
+         $.each(towers,function(i, tower) {
+             console.log("TestStart " + recPosition.lng + " " + recPosition.lat);
+             var towerPos = new google.maps.LatLng(tower.latCoordDD,tower.longCoordDD);
+             var playerPos = new google.maps.LatLng(recPosition.lat,recPosition.lng);
+             if (google.maps.geometry.spherical.computeDistanceBetween(playerPos,towerPos) <= tower.range) {
+                 console.log(tower.name+' => is in searchArea');
+             }
+             else{
+                 console.log(tower.name + " Not Found");
+             }
+             console.log(" ");
+
+
+         })
+     })
+
+
+}
+
+function testRange(){
+
+    var Testpos2 = {
+        lat: 60.4069349,
+        lng: 19.945128
+    };
+    var Testpos3 = {
+        lat: 59.4069349,
+        lng: 17.945128
+    };
+    var Testpos4 = {
+        lat: 59.4069349,
+        lng: 13.945128
+    };
+    console.log("Test");
+    rangeCalc(TestPos);
+   // console.log("Test2");
+   // rangeCalc(Testpos2);
+   // console.log("Test3");
+   // rangeCalc(Testpos3);
+   // console.log("Test4");
+   // rangeCalc(Testpos4);
+   // prompt("TEST AVS");
+}
