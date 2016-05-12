@@ -1,53 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!--
-    Customize this policy to fit your own app's needs. For more guidance, see:
-        https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
-    Some notes:
-        * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-        * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-        * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-            * Enable inline JS: add 'unsafe-inline' to default-src
-    -->
-
-    <!-- Har ändrat massa säkerhetsinställningar för att få script att köra. Säkert livsfarlig?! /CJ -->
+    <meta http-equiv='Content-Type' content='text/html, charset=utf-8'/>
+ <!-- Har ändrat massa säkerhetsinställningar för att få script att köra. Säkert livsfarlig?! /CJ -->
     <meta http-equiv="Content-Security-Policy"
           content="default-src 'self' 'unsafe-inline' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; script-src 'unsafe-inline' *; connect-src 'unsafe-inline' *">
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
-    <meta name="viewport"
-          content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
     <link rel="stylesheet" type="text/css" href="css/materialize.css">
     <link rel="stylesheet" type="text/css" href="css/materialize.min.css">
     <title>Hello World</title>
+</head>
+<body>
+<div class="app">
+    <div data-role="page" id="login">
+        <div data-role="content">
+            <div class="center">
+                <div class="row">
 
+                    <form class ="col s8 offset-s2" name="login-form" id="login-form" action="http://localhost:9000/login" method="POST">
+                        <input id="name" name="name" placeholder="Username" type="text">
+                        <input id="password" name="password" placeholder="Password" type="password">
+                        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </form>
+                </div>
 
-    <div class="center">
-        <div class="row">
-
-            <form class ="col s8 offset-s2" name="login-form" id="login-form" action="http://localhost:9000/login" method="POST">
-                <input id="name" name="name" placeholder="Username" type="text">
-                <input id="password" name="password" placeholder="Password" type="password">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-                    <i class="material-icons right">send</i>
-                </button>
-            </form>
+                <div class="row">
+                    <div id="tmpHomeButton">
+                        <a href="home.html" data-transition="slide" data-prefetch="true"
+                           onclick="window.location.replace('home.html')">HOME</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-2.2.3.js"
             integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js"></script>
+<!--
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript" src="js/materialize.js"></script>
+   -->
     <script scr="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/test.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
-
-
-    </body>
-</head>
+</div>
+</body>
 </html>

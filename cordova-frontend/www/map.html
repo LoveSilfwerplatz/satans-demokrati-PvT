@@ -10,7 +10,7 @@
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js"></script>
 </head>
 <body>
-<div data-role="page" id="map_page">
+<div data-role="page" id="map_page" data-title="MAP">
     <div data-role="content" id="map-content">
         <div id="map-page-wrapper">
             <div class="back_button_container" id="map-back-button">
@@ -20,25 +20,13 @@
             </div>
 
             <div id="map-header-container">
-                <h1 id="map-header">MAP OVER RADIO TOWERS</h1>
+                <h1 id="map-header">KARTA ÖVER RADIOTORN</h1>
             </div>
         </div>
-<!--
-        <div id="map-header-container">
-            <h2 id="map-header">MAP OVER RADIO TOWERS</h2>
-        </div>
--->
 
         <div id="map-container">
             <div id="map"></div>
         </div>
-<!--
-        <div class="back_button_container" id="map-back-button">
-            <a class="back_button_link" href="home.html" data-transition="slide" data-direction="reverse">
-                <img class="back_button_img" src="img/back_arrow_02.png" />
-            </a>
-        </div>
--->
     </div>
 
     <style>
@@ -73,8 +61,8 @@
             border-radius: 5px;
         }
         .back_button_container{
-            width:13%;
-            height:26%;
+            width:12%;
+            height:0.5%;
         }
         #map-back-button{
             /*position:absolute;*/
@@ -82,6 +70,10 @@
             margin-top:-3.5%;
             margin-left:-20%;
             top:0px;
+        }
+        .back_button_img{
+            width:85%;
+            height:17%;
         }
     </style>
     <script type="text/javascript" src="js/MapScript.js"></script>

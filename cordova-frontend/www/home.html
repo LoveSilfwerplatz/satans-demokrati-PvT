@@ -1,88 +1,52 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>jQM Complex Demo</title>
-    <meta http-equiv='Content-Type' content='text/html, charset=utf-8'/>
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-    <!-- <meta http-equiv="Content-Security-Policy"
-          content="default-src 'self' 'unsafe-inline' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; script-src 'unsafe-inline' *; connect-src 'unsafe-inline' *"> -->
-    <!-- <meta name="format-detection" content="telephone=no"> -->
-    <!-- <meta name="msapplication-tap-highlight" content="no">
--->
+<div data-role="page" id="home_page" data-title="HOME">
+    <div data-role="content">
 
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css"/>
-    <!--
-     <link rel="stylesheet" href="http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview.css"/>
+        <div class="ui-grid-a" id="sd-logo-grid">
+            <div class="ui-block-a">
+                <!-- bilder MÅSTE ligga i samma mapp som html-filerna (?!) och får inte ha ett inledande forward slash. /CJ -->
+                <img src="satans-demokrati-logo.png"/>
+            </div>
+            <div class="ui-block-b"></div>
+        </div>
 
-     <link rel="stylesheet" href="http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview-pull.css"/>
+        <div class="ui-grid-b" id="sd-fasad-grid">
+            <div class="ui-block-b"></div>
+            <div class="ui-block-b">
+                <img src="satans-demokrati-fasad.png"/>
+            </div>
+            <div class="ui-block-b"></div>
+        </div>
 
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-      -->
+        <div class="ui-grid-b" id="radio-grid">
+            <div class="ui-block-b"></div>
+            <div class="ui-block-b" id="radio">
+                <p>105.6</p>
+            </div>
+            <div class="ui-block-b">
+            </div>
+        </div>
+
+        <div class="ui-grid-b" id="bottom-menu-grid">
+            <div class="ui-block-b">
+                <a href="audio_new.html" data-transition="slide" data-prefetch="true">
+                    <img src="Satan_Knapp_Arkiv_Reversed.png"/>
+                </a>
+            </div>
+            <div class="ui-block-b"></div>
+            <div class="ui-block-b">
+                <a href="map.html" data-transition="slide" >
+                    <img src="Satan_Knapp_Karta.png"/>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
     <script src="http://example.gajotres.net/iscrollview/iscroll.js"></script>
     <script src="http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview.js"></script>
-    <!--
-   <script type="text/css" rel="stylesheet" href="css/jquery/jquery.mobile.structure-1.4.5.css"></script>
-
-   <script type="text/javascript" src="cordova.js"></script>
-   <script type="text/javascript" src="js/index.js"></script>
-   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0VKA6LegNq1Tp5I8Y1SJ7gtsZQSRaANA&callback=initMap"></script>
--->
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/home.css">
-    <!--
-    <link rel="stylesheet" type="text/css" href="css/audio.css">
-     <link rel="stylesheet" type="text/css" href="css/index.css">
 
-    <link rel="stylesheet" type="text/css" href="css/index_2.css">
-      -->
-</head>
-<body>
-<div class="app">
-    <div data-role="page" id="home_page">
-        <div data-role="content">
-
-            <div class="ui-grid-a" id="sd-logo-grid">
-                <div class="ui-block-a">
-                    <!-- bilder MÅSTE ligga i samma mapp som html-filerna (?!) och får inte ha ett inledande forward slash. /CJ -->
-                    <img src="satans-demokrati-logo.png"/>
-                </div>
-                <div class="ui-block-b"></div>
-            </div>
-
-            <div class="ui-grid-b" id="sd-fasad-grid">
-                <div class="ui-block-b"></div>
-                <div class="ui-block-b">
-                    <img src="satans-demokrati-fasad.png"/>
-                </div>
-                <div class="ui-block-b"></div>
-            </div>
-
-            <div class="ui-grid-b" id="radio-grid">
-                <div class="ui-block-b"></div>
-                <div class="ui-block-b" id="radio">
-                    <p>105.6</p>
-                </div>
-                <div class="ui-block-b">
-                </div>
-            </div>
-
-            <div class="ui-grid-b" id="bottom-menu-grid">
-                <div class="ui-block-b">
-                    <a href="audio_new.html" data-transition="slide" data-prefetch="true">
-                        <img src="Satan_Knapp_Arkiv_Reversed.png"/>
-                    </a>
-                </div>
-                <div class="ui-block-b"></div>
-                <div class="ui-block-b">
-                    <a href="map.html" data-transition="slide">
-                        <img src="Satan_Knapp_Karta.png"/>
-                    </a>
-                </div>
-            </div>
-
-        </div>
-    </div>
 </div>
-</body>
-</html>
