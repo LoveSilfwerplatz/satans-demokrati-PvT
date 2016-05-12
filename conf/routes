@@ -28,7 +28,7 @@ GET     /hgiqktjZuxt                controllers.TowerController.getTowerByName(n
 
 # Protected routes
 GET    /securedContent              controllers.SecureController.securedContent
-
+GET    /sesh                        controllers.SecureController.sesh
 
 
 # Map static resources from the /public folder to the /assets URL path

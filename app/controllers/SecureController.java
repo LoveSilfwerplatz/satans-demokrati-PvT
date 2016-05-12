@@ -14,6 +14,12 @@ public class SecureController extends Controller {
 
         return ok("Inne.");
     }
+    public Result sesh() {
+
+        response().setHeader("Access-Control-Allow-Origin", "*");
+        return ok("Inne");
+
+    }
 
     // Implementera metoderna här som bara ska vara för inloggat läge. Döp om till ngt context baserat istället för securecontroller
 }
