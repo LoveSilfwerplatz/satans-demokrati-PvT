@@ -91,3 +91,5 @@ function updateTimer(ms) {
     // update the timer text. Used when we're recording
     $('.status').text(SC.Helper.millisecondsToHMS(ms));
 }
+
+// Bogus comment, man
