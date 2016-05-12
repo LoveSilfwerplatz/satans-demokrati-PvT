@@ -52,6 +52,11 @@ public class SoundController extends Controller{
         return ok(sctest.render());
     }
 
+    public Result callback(){
+        response().setHeader("Access-Control-Allow-Origin", "*");
+        return ok(callback.render());
+    }
+
 
 
 

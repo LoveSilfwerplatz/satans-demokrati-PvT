@@ -12,6 +12,7 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 
 # Soundcloud test route
 GET     /soundcloud                 controllers.SoundController.soundcloud
+GET     /callback                   controllers.SoundController.callback
 
 # Admin view stuff
 GET     /admin                      controllers.HomeController.admin
