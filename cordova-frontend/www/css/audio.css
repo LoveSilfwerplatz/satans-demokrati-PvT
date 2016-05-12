@@ -24,15 +24,17 @@ h1 {
     height:19%;
     margin-left:auto;
     margin-right:auto;
-    background-color: red;
+    background-color: #000;
 }
 
+/*
 #playButton:hover{
     background-color: green;
 }
+*/
 
 #playButton:active{
-    background-color: blue;
+    transform:scale(1.1, 1.1);
 }
 
 button {
