@@ -1,8 +1,21 @@
+#map-container{
+    float:top;
+    width:500px;
+    height:500px;
+    border:1px solid red;
+    border-radius: 5px;
+}
+
 #map {
     position: absolute;
     float:top;
-    top: 0;
-    right: 0;
+    top: 0px;
+    right: 50px;
     bottom: 50px;
-    left: 0;
+    left: 50px;
+}
+
+#map-back-button{
+    position:absolute;
+    top:600px;
 }

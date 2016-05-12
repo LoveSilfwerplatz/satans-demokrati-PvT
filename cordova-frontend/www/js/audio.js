@@ -3,7 +3,7 @@ var myaudioURL = null;
 var playing = false;
 
 $(document).ready(function() {
-    alert("audio.js körs!");
+    //alert("audio.js körs!");
     // register onclick function for list items in #radioList
     $('#radioList').on('click', 'li', function() {
         // remove active css class from all list items
