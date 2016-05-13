@@ -1,10 +1,23 @@
 @font-face{
     font-family: "Baron_Neue_Black";
     src: url("../font/baron_neue/Baron Neue Black.otf");
+    font-family: "Roboto-Medium";
+    src: url("../font/roboto/Roboto-Medium.ttf");
+}
+
+/* Ett sätt att hantera olika skärmar */
+@media only screen and (orientation: landscape) {
+    body {
+       /* background-color: lightblue; */
+    }
+}
+
+*{
+    box-sizing:border-box;
 }
 
 .officialFont {
-    font-family: Baron_Neue_Black, sans-serif;
+    font-family: Baron_Neue_Black, Roboto-Medium, sans-serif;
     color:#fff;
 }
 
