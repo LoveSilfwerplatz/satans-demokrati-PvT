@@ -9,87 +9,44 @@ SC.initialize({
     redirect_uri: 'http://localhost:9000/callback'
 });
 
-// initiate auth popup.
-// Supposed to autoclose after authenticating, but it's not doing that. Unsure why right now, probably some dumb mistake on my part.
+function addOption(selectbox, text, value) {
+    var optn = document.createElement("OPTION");
+    optn.text = text;
+    optn.value = value;
+    selectbox.append(optn);
+}
+
+// initiate auth popup, then populate page with username, profile text and list of uploaded tracks.
 $("#connect").on("click", function () {
     SC.connect().then(function () {
         return SC.get('/me');
     }).then(function (me) {
-        alert('Hello, ' + me.username);
         $("#username").text(me.username);
-        $("#description").val(me.description);
-    })
+        $("#description").text(me.description);
+        $("#tracks").removeAttr('disabled');
+    }).then(function () {
+        return SC.get('/me/tracks');
+    }).then(function (tracks) {
+        $(tracks).each(function (index, track) {
+            addOption($("#tracks"), track.title, track.id);
+        });
+    });
 });
 
-/*$("#connect").on("click", function(){
- SC.connect(function(){
- SC.get("/me", function(me){
- $("#username").text(me.username);
- $("#description").val(me.description);
- });
+/*Attempted upload function. Soundcloud API is only meant to allow uploading of sounds recorded within the app,
+ * this is based on a workaround for an older version of the API found here:
+ * http://stackoverflow.com/questions/13158717/uploading-song-to-soundcloud-account-using-javascript */
+/*$('form').submit(function(e) {
+ var fd = new FormData();
+ SC.connect({
+ connected: function () {
+ SC.upload({
+ track: {
+ file: fd.append("track[asset_data]", $(this).find('input[name=file]').prop('files')[0]),
+ title: fd.append("track[title]", $(this).find('input[name=title]').val()),
+ sharing: private
+ }
+ })
+ }
  });
  });*/
-
-/*$("#update").on("click", function () {
-    SC.put("/me", {user: {description: $("#description").val()}}, function (response, error) {
-        if (error) {
-            alert("Some error occured: " + error.message);
-        } else {
-            alert("Profile description updated!");
-        }
-    });
-});*/
-
-// Stuff below is basically taken verbatim from Codecademy course, it's really no more than a placeholder right now.
-$(document).ready(function () {
-    /*$('#startRecording a').click(function(e){
-     updateTimer(0);
-     $('#startRecording').hide();
-     $('#startRecording').show();
-     e.preventDefault();
-     SC.record({
-     progress: function(ms, avgPeak){
-     updateTimer(ms)
-     }
-     });
-     });
-     $('#stopRecording a').click(function(e){
-     SC.recordStop;
-     $('#playBack').show();
-     $('#upload').show();
-     $('#stopRecording').hide();
-     e.preventDefault();
-     });
-     $('#playBack a').click(function(e){
-     e.preventDefault();
-     updateTimer(0);
-     SC.recordPlay({
-     progress: function(ms){
-     updateTimer(ms);
-     }
-     });
-     });*/
-    $('#upload a').click(function (e) {
-        e.preventDefault();
-        SC.connect({
-            connected: function () {
-                SC.upload({
-                    track: {
-                        file: "fileGoesHere",
-                        title: "My Codecademy recording",
-                        sharing: "private"
-                    }
-                })
-            }
-        })
-    })
-});
-
-// Helper methods for our UI.
-
-function updateTimer(ms) {
-    // update the timer text. Used when we're recording
-    $('.status').text(SC.Helper.millisecondsToHMS(ms));
-}
-
-// Bogus comment, man
