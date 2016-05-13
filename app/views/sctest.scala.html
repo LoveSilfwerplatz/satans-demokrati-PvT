@@ -1,32 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Satans Radio Soundcloud Integration Test</title>
-    <script src="https://code.jquery.com/jquery-2.2.3.js"   integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4="   crossorigin="anonymous"></script>
-    <!--<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js" ></script>-->
-    <script src="https://connect.soundcloud.com/sdk/sdk-3.0.0.js"></script>
+    <head>
+        <title>Satans Radio Soundcloud Integration Test</title>
 
-    <meta charset="UTF-8">
-</head>
-<body>
-    <a href="#" id="connect"><img src="@routes.Assets.versioned("/images/scconnectbuttonL.png")"/></a>
-    <!--Stuff below is basically taken verbatim from Codecademy course, it's really no more than a placeholder right now.-->
-    <ul>
-        <!--<li id="startRecording"><a href="#">Start Recording</a></li>
-        <li id="stopRecording"><a href="#">Stop Recording</a></li>
-        <li id="playBack"><a href="#">Play Recorded Sound</a></li>-->
-        <li id="upload"><a href="#">Upload</a></li>
-    </ul>
-    <div class="logged-in" style="display: one;">
-        <p>
+            <!-- Scripts -->
+        <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+        <script src="https://connect.soundcloud.com/sdk/sdk-3.0.0.js"></script>
+
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <a href="#" id="connect"><img src="@routes.Assets.versioned("/images/scconnectbuttonL.png")"/></a>
+
+        <div>
+            <p>
             Logged in as: <span id="username"></span>
+        </p> <p>
+            Your profile description:
+            <span id="description"></span>
+        </p> <p>
+            <label for="tracks">Your tracks:</label> <select id="tracks" disabled></select>
         </p>
-        Your profile description:
-        <input type="text" id="description" class="fullWidth" />
-        <button id="update" class="big button">Update your profile description</button>
-    </div>
-    <script src="@routes.Assets.versioned("js/soundcloud.js")"></script>
-</body>
+
+                <!-- Upload form, currently out of service for reasons detailed in Soundcloud.js -->
+            @*<p>
+            Upload audio below:
+            </p>
+            <form>
+            <label>Title: <input name="title" disabled /></label><br>
+            <label>File: <input name="file" type="file" accept="audio/*" disabled /></label><br>
+            <button type="submit" disabled >Submit</button>
+            </form>*@
+        </div>
+
+            <!-- Scripts -->
+        <script src="@routes.Assets.versioned("js/soundcloud.js")"></script>
+    </body>
 </html>
 
 
