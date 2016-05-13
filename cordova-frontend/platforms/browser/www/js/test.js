@@ -127,9 +127,21 @@ var goToAudio = function(){
 };
 
 
+
+    $('#logout').click(function(e) {
+        var token =  window.localStorage.getItem("token");
+        var data = "";
+        window.localStorage.setItem("token", data);
+        window.location.replace("login.html");
+    });
+
+
+
+
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('takeMeAway').addEventListener('click',takeMeAway,false);
 });
+
 var back = function(){
     window.location.replace("http://localhost:9000");
     // alert("reloaded!");
