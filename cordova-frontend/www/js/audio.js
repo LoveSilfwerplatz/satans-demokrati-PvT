@@ -1,9 +1,12 @@
+// set to true for local play framework development
+var debug = true;
+var play_url = debug ? "http://localhost:9000" : "https://satans-demokrati-72.herokuapp.com";
+
 var myaudio = new Audio();
 var myaudioURL = null;
 var playing = false;
 
 $(document).ready(function() {
-    //alert("audio.js körs!");
     // register onclick function for list items in #radioList
     $('#radioList').on('click', 'li', function() {
         // remove active css class from all list items
