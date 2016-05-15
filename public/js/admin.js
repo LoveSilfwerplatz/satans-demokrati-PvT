@@ -128,7 +128,7 @@ function map(){
                 }
             });
             if(lat != null && long != null){
-                initMap(setMarker(lat, long, tower));
+                setMarker(lat, long, tower);
             }
         });
     });
