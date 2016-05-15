@@ -51,6 +51,7 @@ function generateRadioLink(radio) {
         + radio.name
         + '\',\''
         + radio.filepath + '\')">'
+        + '<img src="img/characters/03.jpg" />'
         + radio.name
         + '</a></li>';
 }
