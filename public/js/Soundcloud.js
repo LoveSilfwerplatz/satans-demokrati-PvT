@@ -9,6 +9,7 @@ SC.initialize({
     redirect_uri: 'http://localhost:9000/callback'
 });
 
+// Add entry to HTML dropdown menu.
 function addOption(selectbox, text, value) {
     var optn = document.createElement("OPTION");
     optn.text = text;
@@ -16,19 +17,18 @@ function addOption(selectbox, text, value) {
     selectbox.append(optn);
 }
 
-// initiate auth popup, then populate page with username, profile text and list of uploaded tracks.
+// initiate auth popup, then populate page with username and drop-down list of uploaded tracks.
 $("#connect").on("click", function () {
     SC.connect().then(function () {
         return SC.get('/me');
     }).then(function (me) {
         $("#username").text(me.username);
-        $("#description").text(me.description);
-        $("#tracks").removeAttr('disabled');
+        // $("#description").text(me.description);
     }).then(function () {
         return SC.get('/me/tracks');
     }).then(function (tracks) {
         $(tracks).each(function (index, track) {
-            addOption($("#tracks"), track.title, track.id);
+            addOption($("#tracksDrop"), track.title, track.id);
         });
     });
 });
