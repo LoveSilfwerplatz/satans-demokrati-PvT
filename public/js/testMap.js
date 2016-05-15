@@ -11,7 +11,7 @@ var pos = {
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: pos,
-        zoom: 11, disableDefaultUI: true
+        zoom: 10, disableDefaultUI: true
 
     });
 

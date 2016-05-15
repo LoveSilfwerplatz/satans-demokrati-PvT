@@ -18,6 +18,9 @@
     <feature name="Geolocation">
         <param name="ios-package" value="CDVLocation" />
     </feature>
+    <feature name="BackgroundGeoLocation">
+        <param name="ios-package" value="CDVBackgroundGeoLocation" />
+    </feature>
     <name>Satans Delirium</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
@@ -25,7 +28,7 @@
     <author email="dev@cordova.apache.org" href="http://cordova.io">
         Apache Cordova Team
     </author>
-    <content src="home.html" />
+    <content src="login.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />

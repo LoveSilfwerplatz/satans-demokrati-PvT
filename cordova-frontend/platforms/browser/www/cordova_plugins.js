@@ -186,6 +186,14 @@ module.exports = [
         "clobbers": [
             "CordovaHttpPlugin"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-mauron85-background-geolocation/www/backgroundGeoLocation.js",
+        "id": "cordova-plugin-mauron85-background-geolocation.backgroundGeoLocation",
+        "pluginId": "cordova-plugin-mauron85-background-geolocation",
+        "clobbers": [
+            "backgroundGeoLocation"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -195,7 +203,8 @@ module.exports.metadata =
     "cordova-plugin-compat": "1.0.0",
     "cordova-plugin-file": "4.2.0",
     "cordova-plugin-http": "0.2.0",
-    "cordova-plugin-geolocation": "2.2.0"
+    "cordova-plugin-geolocation": "2.2.0",
+    "cordova-plugin-mauron85-background-geolocation": "0.9.6"
 }
 // BOTTOM OF METADATA
 });

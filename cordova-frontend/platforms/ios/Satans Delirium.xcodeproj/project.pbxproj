@@ -17,6 +17,9 @@
 		3047A5141AB8059700498E2A /* build.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 3047A5111AB8059700498E2A /* build.xcconfig */; };
 		B5B2BCD8D80641A6B9780842 /* CDVLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 69360F3E9B774745A2D873F3 /* CDVLocation.m */; };
 		D41EC209FF154F82A3ACA667 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D37F22653A14499BAB9EFD5 /* CoreLocation.framework */; };
+		D24657A8F4074C8FAA84572F /* CDVBackgroundGeoLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C2E460BB34F5EBBAFD2E7 /* CDVBackgroundGeoLocation.m */; };
+		C9AECFE597B44FA88F6C29C4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51F56947AFC742C9A9C4D59C /* AudioToolbox.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		9C387AC79B8E4D83A3588F0B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C94F232892364A20A1EA7EC5 /* AVFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,10 @@
 		69360F3E9B774745A2D873F3 /* CDVLocation.m */ = {isa = PBXFileReference; name = "CDVLocation.m"; path = "cordova-plugin-geolocation/CDVLocation.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 		09F0AB647B9D4264A4629ABE /* CDVLocation.h */ = {isa = PBXFileReference; name = "CDVLocation.h"; path = "cordova-plugin-geolocation/CDVLocation.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		4D37F22653A14499BAB9EFD5 /* CoreLocation.framework */ = {isa = PBXFileReference; name = "CoreLocation.framework"; path = "System/Library/Frameworks/CoreLocation.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		8A5C2E460BB34F5EBBAFD2E7 /* CDVBackgroundGeoLocation.m */ = {isa = PBXFileReference; name = "CDVBackgroundGeoLocation.m"; path = "cordova-plugin-mauron85-background-geolocation/CDVBackgroundGeoLocation.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		7D57A9AE7EB04254A9ED27DA /* CDVBackgroundGeoLocation.h */ = {isa = PBXFileReference; name = "CDVBackgroundGeoLocation.h"; path = "cordova-plugin-mauron85-background-geolocation/CDVBackgroundGeoLocation.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		51F56947AFC742C9A9C4D59C /* AudioToolbox.framework */ = {isa = PBXFileReference; name = "AudioToolbox.framework"; path = "System/Library/Frameworks/AudioToolbox.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		C94F232892364A20A1EA7EC5 /* AVFoundation.framework */ = {isa = PBXFileReference; name = "AVFoundation.framework"; path = "System/Library/Frameworks/AVFoundation.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +75,8 @@
 			files = (
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
 				D41EC209FF154F82A3ACA667 /* CoreLocation.framework in Frameworks */,
+				C9AECFE597B44FA88F6C29C4 /* AudioToolbox.framework in Frameworks */,
+				9C387AC79B8E4D83A3588F0B /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				4D37F22653A14499BAB9EFD5 /* CoreLocation.framework */,
+				51F56947AFC742C9A9C4D59C /* AudioToolbox.framework */,
+				C94F232892364A20A1EA7EC5 /* AVFoundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -165,6 +176,8 @@
 			children = (
 				69360F3E9B774745A2D873F3 /* CDVLocation.m */,
 				09F0AB647B9D4264A4629ABE /* CDVLocation.h */,
+				8A5C2E460BB34F5EBBAFD2E7 /* CDVBackgroundGeoLocation.m */,
+				7D57A9AE7EB04254A9ED27DA /* CDVBackgroundGeoLocation.h */,
 			);
 			name = Plugins;
 			path = "Satans Delirium/Plugins";
@@ -280,6 +293,7 @@
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
 				B5B2BCD8D80641A6B9780842 /* CDVLocation.m in Sources */,
+				D24657A8F4074C8FAA84572F /* CDVBackgroundGeoLocation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

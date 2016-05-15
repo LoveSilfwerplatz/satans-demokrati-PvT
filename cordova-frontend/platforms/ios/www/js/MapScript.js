@@ -23,7 +23,22 @@ function initMap() {
     var Style = [{"featureType":"all","elementType":"labels.text.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"color":"#000000"},{"lightness":13}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#000000"}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#144b53"},{"lightness":14},{"weight":1.4}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#08304b"}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#0c4152"},{"lightness":5}]},{"featureType":"poi","elementType":"labels","stylers":[{visibility: 'off'}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#000000"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#0b434f"},{"lightness":25}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#000000"}]},{"featureType":"road.arterial","elementType":"geometry.stroke","stylers":[{"color":"#0b3d51"},{"lightness":16}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#000000"}]},{"featureType":"transit","elementType":"all","stylers":[{"color":"#146474"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#021019"}]}]
     map.setOptions({styles: Style});
 
-    markerTest();
+   // markerTest();
+    $.getJSON("http://localhost:9000" + "/getTowers", function (marker){
+        $.each(marker,function(i, mark) {
+
+
+            var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+            var addmark = new google.maps.Marker({
+                position: loadpos = {
+                    lat: mark.latCoordDD,
+                    lng: mark.longCoordDD
+                },
+                map: map,
+                icon: iconBase + 'schools_maps.png'})
+            addmark.setPosition(loadpos);
+        })})
+
     var infoWindow = new google.maps.InfoWindow({map: map});
 
     // Try HTML5 geolocationa.
@@ -56,8 +71,9 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 // Marker Test, HardCoded Location untiil BackEnd gets back with help to convert To json
 function markerTest() {
-    $.getJSON(play_url + "/getTowers", function (marker){
+    $.getJSON("http://localhost:9000" + "/getTowers", function (marker){
         $.each(marker,function(i, mark) {
+
 
         var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
         var addmark = new google.maps.Marker({
@@ -67,6 +83,7 @@ function markerTest() {
             },
             map: map,
             icon: iconBase + 'schools_maps.png'})
+            addmark.setPosition(loadpos);
         })
 })}
 

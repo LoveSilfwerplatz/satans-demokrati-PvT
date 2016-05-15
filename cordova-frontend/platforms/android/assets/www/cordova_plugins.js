@@ -16,6 +16,13 @@ module.exports = [
         "file": "plugins/cordova-plugin-whitelist/whitelist.js",
         "id": "cordova-plugin-whitelist.whitelist",
         "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-mauron85-background-geolocation/www/backgroundGeoLocation.js",
+        "id": "cordova-plugin-mauron85-background-geolocation.backgroundGeoLocation",
+        "clobbers": [
+            "backgroundGeoLocation"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -23,7 +30,8 @@ module.exports.metadata =
 {
     "cordova-plugin-compat": "1.0.0",
     "cordova-plugin-geolocation": "2.2.0",
-    "cordova-plugin-whitelist": "1.2.1"
+    "cordova-plugin-whitelist": "1.2.1",
+    "cordova-plugin-mauron85-background-geolocation": "0.9.6"
 };
 // BOTTOM OF METADATA
 });
