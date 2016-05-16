@@ -8,6 +8,12 @@ $(document).ready(function() {
 
 
 })
+
+document.addEventListener('deviceready', function () {
+    // cordova.plugins.backgroundMode is now available
+    //cordova.plugins.backgroundMode.disable();
+    //cordova.plugins.backgroundMode.enable();
+}, false);
 $(document).ready(function() {
     $('#login-form').submit(function(e) {
         console.log("NU KÖR VI"); 
