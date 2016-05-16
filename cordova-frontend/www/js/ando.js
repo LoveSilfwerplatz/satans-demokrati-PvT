@@ -28,7 +28,7 @@ $(document).ready(function() {
                 console.log(data);
                 window.localStorage.setItem("token", data);
 
-                window.location.replace("index.html");
+                window.location.replace("home.html");
 
                 // För att hämta var value = window.localStorage.getItem("token");
             }).fail(function(jqXHR, textStatus, errorThrown) {
@@ -69,7 +69,7 @@ $(document).ready(function() {
                 console.log(data);
                 window.localStorage.setItem("token", data);
 
-                window.location.replace("index.html");
+                window.location.replace("home.html");
 
                 // För att hämta var value = window.localStorage.getItem("token");
             }).fail(function(jqXHR, textStatus, errorThrown) {
@@ -89,7 +89,7 @@ $(document).ready(function() {
         url: 'http://localhost:9000/sesh',
         success: function(data, status, request) {
 
-            window.location.replace("index.html");
+            window.location.replace("home.html");
         },
         error: function(request, status, error) {
             console.log("Gick inte igenom");
