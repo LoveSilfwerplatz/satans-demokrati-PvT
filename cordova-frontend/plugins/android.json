@@ -7,24 +7,21 @@
         "files": {}
     },
     "installed_plugins": {
+        "cordova-plugin-background-mode": {
+            "PACKAGE_NAME": "io.cordova.hellocordova"
+        },
         "cordova-plugin-geolocation": {
             "PACKAGE_NAME": "io.cordova.hellocordova"
         },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "io.cordova.hellocordova"
-        },
-        "cordova-plugin-mauron85-background-geolocation": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
-        },
-        "cordova-plugin-background-mode": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
         }
     },
     "dependent_plugins": {
-        "cordova-plugin-compat": {
+        "cordova-plugin-device": {
             "PACKAGE_NAME": "io.cordova.hellocordova"
         },
-        "cordova-plugin-device": {
+        "cordova-plugin-compat": {
             "PACKAGE_NAME": "io.cordova.hellocordova"
         }
     }
