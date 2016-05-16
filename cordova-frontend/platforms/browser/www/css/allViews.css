@@ -1,0 +1,57 @@
+@font-face{
+    font-family: "Baron_Neue_Black";
+    src: url("../font/baron_neue/Baron Neue Black.otf");
+}
+
+@font-face{
+    font-family: "Roboto-Medium";
+    src: url("../font/roboto/Roboto-Medium.ttf");
+}
+
+/* Ett sätt att hantera olika skärmar */
+@media only screen and (orientation: landscape) {
+    body {
+       /* background-color: lightblue; */
+    }
+}
+
+*{
+    box-sizing:border-box;
+}
+
+.officialFont {
+    font-family: Baron_Neue_Black, Roboto-Medium, sans-serif;
+    color:#fff;
+}
+
+.back_button_link {
+    text-decoration: none;
+    font-size:20px;
+    color:#fff;
+}
+.back_button_container{
+   /* float:top; */
+    text-align:center;
+    padding:5px;
+    width:10%;
+    height:20%;
+   /* background-color: red; */
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.back_button_img{
+    width:80%;
+    height:17%;
+}
+
+
+*{
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+}
+
+#map-page{
+    background-color: #000;
+}

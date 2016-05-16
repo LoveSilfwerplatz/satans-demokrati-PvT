@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv='Content-Type' content='text/html, charset=utf-8' lang="SE"/>
+ <!-- Har ändrat massa säkerhetsinställningar för att få script att köra. Säkert livsfarlig?! /CJ -->
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src 'self' 'unsafe-inline' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; script-src 'unsafe-inline' *; connect-src 'unsafe-inline' *">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/materialize.css">
+    <link rel="stylesheet" type="text/css" href="css/materialize.min.css">
+    <title>SATANS DEMOKRATI</title>
+</head>
+<body>
+<div class="app black white-text">
+    <div data-role="page" id="login">
+        <div data-role="content">
+            <div class="center">
+                <div class="row">
+
+                    <form class ="col s8 offset-s2" name="login-form" id="login-form" action="http://localhost:9000/login" method="POST">
+                        <input id="name" name="name" placeholder="Username" type="text">
+                        <input id="password" name="password" placeholder="Password" type="password">
+                        <button class="btn waves-effect waves-light grey-darken-4" type="submit" name="action">Submit
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="row">
+                    <div id="tmpHomeButton">
+                        <a href="home.html" data-transition="slide" data-prefetch="true"
+                           onclick="window.location.replace('home.html')">HOME</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.2.3.js"
+            integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js"></script>
+<!--
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/materialize.js"></script>
+
+    <script scr="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></script>
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/test.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+         -->
+    <script type="text/javascript" src="js/ando.js"></script>
+</div>
+</body>
+</html>
