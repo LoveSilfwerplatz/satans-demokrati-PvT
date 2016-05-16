@@ -2,21 +2,41 @@ var radio;
 var searching;
 var geoLoc;
 var watchID;
+var lastPos;
 $( document ).ready(function() {
     bind();
 });
 
-
     function bind() {
         radio = $('#radio');
         searching = false;
+        lastPos = {
+            lat: null,
+            long:  null
+        }
     };
 
-    function onSuccess (err) {
-        alert("SUCCESS");
+    function onSuccess(pos) {
+        if(lastPos.lat == null && lastPos.long == null){
+
+            lastPos.lat = pos.coords.latitude;
+            lastPos.long = pos.coords.longitude;
+            tryPos();
+        }else if(lastPos.lat == pos.coords.latitude &&
+                    lastPos.long == pos.coords.longitude){
+            //Do nothing
+        }else{
+            lastPos.lat = pos.coords.latitude;
+            lastPos.long = pos.coords.longitude;
+            tryPos();
+        }
     };
 
-    function errorHandler (err) {
+    function tryPos(){
+        
+    };
+
+    function errorHandler(err) {
         if(err.code == 1) {
             alert("Error: Access is denied!");
         }
@@ -26,7 +46,7 @@ $( document ).ready(function() {
         }
     };
 
-    function startWatch (){
+    function startWatch(){
 
         if(!searching){
             if (navigator.geolocation) {
