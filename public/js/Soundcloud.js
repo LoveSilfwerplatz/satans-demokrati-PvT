@@ -10,10 +10,10 @@ SC.initialize({
 });
 
 // Add entry to HTML dropdown menu.
-function addOption(selectbox, text, value) {
+function addOption(selectbox, value, text) {
     var optn = document.createElement("OPTION");
-    optn.text = text;
     optn.value = value;
+    optn.text = text;
     selectbox.append(optn);
 }
 
@@ -28,10 +28,21 @@ $("#connect").on("click", function () {
         return SC.get('/me/tracks');
     }).then(function (tracks) {
         $(tracks).each(function (index, track) {
-            addOption($("#tracksDrop"), track.title, track.id);
+            addOption($("#tracksDrop"), track.id, track.title);
         });
     });
 });
+
+
+$("#tracksDrop").on("change", fetchTrack())
+
+function fetchTrack(){
+    var $tracksDrop = $("#tracksDrop");
+    var trackID = $tracksDrop.value;
+    var trackName = $tracksDrop.text;
+    $("#trackID").text(trackID);
+    $("#trackName").text(trackName);
+}
 
 /*Attempted upload function. Soundcloud API is only meant to allow uploading of sounds recorded within the app,
  * this is based on a workaround for an older version of the API found here:

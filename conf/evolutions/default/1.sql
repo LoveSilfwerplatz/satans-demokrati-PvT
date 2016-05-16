@@ -6,7 +6,8 @@
 create table sound (
   id                            integer auto_increment not null,
   name                          varchar(255),
-  tower_name                    varchar(255),
+  assigned_tower                varchar(255),
+  assigned_character            varchar(255),
   constraint pk_sound primary key (id)
 );
 

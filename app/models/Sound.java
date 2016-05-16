@@ -1,15 +1,26 @@
 package models;
+
 import com.avaje.ebean.Model;
+
 import javax.persistence.*;
 
 @Entity
 public class Sound extends Model {
 
     public String name;
-    private String towerName;
+    private String assignedTower, assignedCharacter;
 
+    // Barebones constructor.
     public Sound(String name) {
         this.name = name;
+    }
+
+    // Complete constructor.
+    public Sound(int ID, String name, String assignedTower, String assignedCharacter) {
+        this.ID = ID;
+        this.name = name;
+        this.assignedCharacter = assignedCharacter;
+        this.assignedTower = assignedTower;
     }
 
     @Id
@@ -28,7 +39,25 @@ public class Sound extends Model {
         return name;
     }
 
-    public void setName(String name) { this.name = name; }
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAssignedTower() {
+        return assignedTower;
+    }
+
+    public void setAssignedTower(String assignedTower) {
+        this.assignedTower = assignedTower;
+    }
+
+    public String getAssignedCharacter() {
+        return assignedCharacter;
+    }
+
+    public void setAssignedCharacter() {
+        this.assignedCharacter = assignedCharacter;
+    }
 
 }
 

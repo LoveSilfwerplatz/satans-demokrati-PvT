@@ -35,10 +35,19 @@
                 <pre><label for="tracks">Broadcast name:</label></pre>
                 <select id="tracksDrop" name="tracksDrop" required></select>
 
+                <!-- List of available towers -->
                 <pre><label for="towers">Assign to tower:</label></pre>
-                <select id="towerDrop" name="towerDrop" onchange="map()" required></select><br><br>
+                <select id="towerDrop" name="towerDrop" onchange="map()" required></select>
 
-                <input type="submit" value="Submit" class="myButton">
+                <!-- Name of character associated with the sound -->
+                <pre>Assign to character:</pre>
+                <input type="text" id="characterField" name="characterField" required><br><br>
+
+                <!-- Fields to store track data. Intended to be hidden, visible for testing purposes (they don't work) -->
+                <input type="text" id="trackName" name="trackName">
+                <input type="text" id="trackID" name="trackID">
+
+                <input type="submit" value="Submit" class="myButton" id="submitButton">
 
             </div>
         </form>
