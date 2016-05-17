@@ -90,6 +90,15 @@
         FB.api('/me?fields=id,name,first_name,last_name,email,friends', function (response) {
             console.log('response object: ');
             console.log(response);
+            if (response.friends.data.length > 0) {
+
+                var friends = "";
+                for (friend in response.friends.data) {
+                    console.log(response.friends.data[friend]);
+                    friends += response.friends.data[friend].name;
+                    document.getElementById('status').innerHTML = 'Gemensamma vänner som använder appen: ' + friends;
+                }
+            }
         });
     }
 
