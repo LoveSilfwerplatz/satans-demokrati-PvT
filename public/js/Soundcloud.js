@@ -34,15 +34,14 @@ $("#connect").on("click", function () {
 });
 
 
-$("#tracksDrop").on("change", fetchTrack())
+$("#tracksDrop").change(function () {
+    var drop = document.getElementById("tracksDrop");
+    var currentName = this.options[this.selectedIndex].text;
+    var currentID = drop.value;
 
-function fetchTrack(){
-    var $tracksDrop = $("#tracksDrop");
-    var trackID = $tracksDrop.value;
-    var trackName = $tracksDrop.text;
-    $("#trackID").text(trackID);
-    $("#trackName").text(trackName);
-}
+    document.getElementById("trackName").value = currentName;
+    document.getElementById("trackID").value = currentID;
+});
 
 /*Attempted upload function. Soundcloud API is only meant to allow uploading of sounds recorded within the app,
  * this is based on a workaround for an older version of the API found here:

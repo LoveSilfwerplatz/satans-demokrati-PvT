@@ -51,9 +51,9 @@ public class SoundController extends Controller{
     public Result setSound(){
         Http.RequestBody body = request().body();
         Map<String, String[]> map = body.asFormUrlEncoded();
-        String[] trackID = map.get("trackDrop.value");
+        String[] trackID = map.get("trackID");
         int ID = Integer.parseInt(trackID[0]);
-        String[] name = map.get("tracksDrop.text");
+        String[] name = map.get("trackName");
         String[] assignedTower = map.get("towerDrop.value");
         String[] assignedCharacter = map.get("characterField");
         Sound sound = new Sound(ID, name[0], assignedTower[0], assignedCharacter[0]);
