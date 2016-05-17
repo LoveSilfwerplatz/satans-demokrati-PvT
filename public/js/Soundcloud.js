@@ -43,6 +43,11 @@ $("#tracksDrop").change(function () {
     document.getElementById("trackID").value = currentID;
 });
 
+$("#towerDrop").change(function(){
+    var drop = document.getElementById("towerDrop");
+    document.getElementById("towerName").value = drop.value;
+})
+
 /*Attempted upload function. Soundcloud API is only meant to allow uploading of sounds recorded within the app,
  * this is based on a workaround for an older version of the API found here:
  * http://stackoverflow.com/questions/13158717/uploading-song-to-soundcloud-account-using-javascript */

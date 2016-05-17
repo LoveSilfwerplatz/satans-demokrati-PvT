@@ -54,7 +54,7 @@ public class SoundController extends Controller{
         String[] trackID = map.get("trackID");
         int ID = Integer.parseInt(trackID[0]);
         String[] name = map.get("trackName");
-        String[] assignedTower = map.get("towerDrop.value");
+        String[] assignedTower = map.get("towerName");
         String[] assignedCharacter = map.get("characterField");
         Sound sound = new Sound(ID, name[0], assignedTower[0], assignedCharacter[0]);
         sound.save();
