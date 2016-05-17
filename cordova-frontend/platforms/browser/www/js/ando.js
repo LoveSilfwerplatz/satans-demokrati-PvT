@@ -115,6 +115,9 @@ $(document).ready(function() {
             }
         });
     });
+    $('#register').click(function(e) {
+        window.location.replace("form.html");
+    });
     $('#sessions').click(function(e) {
         var token =  window.localStorage.getItem("token");
         // ait lets go
