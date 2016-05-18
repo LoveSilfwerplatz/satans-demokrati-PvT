@@ -13,6 +13,7 @@ document.addEventListener('deviceready', function () {
     // cordova.plugins.backgroundMode is now available
     //cordova.plugins.backgroundMode.disable();
     //cordova.plugins.backgroundMode.enable();
+
 }, false);
 $(document).ready(function() {
     $('#login-form').submit(function(e) {
@@ -21,17 +22,18 @@ $(document).ready(function() {
 
         var formData = $("#login-form").serializeArray();
         var URL = $("#login-form").attr("action");
-        alert("formData: " + formData);
 
 
+        
         $.post(URL, formData, function(data, textStatus, jqXHR) {
-                console.log(data);
-                window.localStorage.setItem("token", data);
-                window.location.replace("home.html");
+            console.log(data);
+            window.localStorage.setItem("token", data);
+            window.location.replace("home.html");
 
-                // För att hämta var value = window.localStorage.getItem("token");
-            }).fail(function(jqXHR, textStatus, errorThrown) {
-            Materialize.toast("Wrong password/username provided.", 10000); // Testa
+            // För att hämta var value = window.localStorage.getItem("token");
+        }).fail(function(jqXHR, textStatus, errorThrown) {
+            alert(textStatus + " " + errorThrown);
+            Materialize.toast("Wrong password/username provided.", 10000); 
 
         });
     });

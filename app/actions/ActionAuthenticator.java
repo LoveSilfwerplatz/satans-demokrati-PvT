@@ -14,6 +14,7 @@ public class ActionAuthenticator extends Security.Authenticator {
         if (token != null) {
             User user = User.find.where().eq("token", token).findUnique();
             if (user != null) {
+
                 return user.name;
             }
         }

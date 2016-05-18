@@ -11,7 +11,7 @@
         Apache Cordova Team
     </author>
     <content src="login.html" />
-    <access origin="*" />
+    <allow-navigation href="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
