@@ -17,7 +17,6 @@ document.addEventListener('deviceready', function () {
 $(document).ready(function() {
     $('#login-form').submit(function(e) {
         console.log("NU KÖR VI");
-        alert("DE FINNS GÄRIS BEEEEROOOR");
         e.preventDefault();
 
         var formData = $("#login-form").serializeArray();
@@ -28,7 +27,7 @@ $(document).ready(function() {
             function(data, textStatus, jqXHR) {
                 console.log(data);
                 window.localStorage.setItem("token", data);
-
+                alert("DE FINNS GÄRIS BEEEEROOOR");
                 window.location.replace("home.html");
 
                 // För att hämta var value = window.localStorage.getItem("token");

@@ -16,7 +16,8 @@ document.addEventListener('deviceready', function () {
 }, false);
 $(document).ready(function() {
     $('#login-form').submit(function(e) {
-        console.log("NU KÖR VI"); 
+        console.log("NU KÖR VI");
+        alert("DE FINNS GÄRIS BEEEEROOOR");
         e.preventDefault();
 
         var formData = $("#login-form").serializeArray();
