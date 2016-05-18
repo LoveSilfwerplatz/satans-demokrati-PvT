@@ -15,7 +15,7 @@ public class UserController extends Controller {
 
     // Metod enbart för att hårdkoda en "användare" för att underlätta testning,
     public Result addUser() {
-        User user = new User("mail@google,com", "hidden", "Arne Anka");
+        User user = new User("mail@google,com", "hidden", "Arne Anka", false);
         user.save();
 
         response().setHeader("Access-Control-Allow-Origin", "*");
@@ -54,7 +54,16 @@ public class UserController extends Controller {
         String[] email = map.get("email");
         String[] password = map.get("password");
         String[] name = map.get("name");
-        User user = new User(email[0], password[0], name[0]);
+        return signin(email[0], password[0], name[0], false);
+    }
+
+    public Result fbSignIn(String name, String email) {
+        // we don't save passwords for fb users
+        return signin(email, "", name, true);
+    }
+
+    public Result signin(String email, String password, String name, boolean isFbUser) {
+        User user = new User(email, password, name, isFbUser);
         user.save();
 
         response().setHeader("Access-Control-Allow-Origin", "*");
@@ -65,7 +74,6 @@ public class UserController extends Controller {
         //return redirect("http://localhost:9000/signin");
     }
 
-
     public Result getUsers() {
         Model.Finder<Integer, User> finder = new Model.Finder<>(User.class);
         List<User> allUsers = finder.all();
@@ -74,5 +82,16 @@ public class UserController extends Controller {
 
         // Gson converts Java collections to/from Json
         return ok(toJson(allUsers));
+    }
+
+    public Result hasUser(String email) {
+        User user = User.find.where().eq("email", email).findUnique();
+        boolean hasUser = user != null;
+
+        response().setHeader("Access-Control-Allow-Origin", "*");
+        response().setHeader("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, OPTIONS");
+        response().setHeader("Access-Control-Allow-Hedaers", "Content-Type, Content-Range, Content-Disposition, Content-Description");
+
+        return ok(toJson(hasUser));
     }
 }

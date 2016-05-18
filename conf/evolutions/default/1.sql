@@ -27,6 +27,7 @@ create table user (
   password                      varchar(255),
   token                         varchar(255),
   is_admin                      tinyint(1) default 0,
+  is_fb_user                    tinyint(1) default 0,
   constraint pk_user primary key (id)
 );
 

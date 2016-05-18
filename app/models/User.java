@@ -11,6 +11,8 @@ public class User extends Model{
     public String email;
     public String password;
     public String token;
+    public boolean isAdmin;
+    public boolean isFbUser;
 
     @Id
     public int ID;
@@ -22,8 +24,6 @@ public class User extends Model{
     public void setID(int ID) {
         this.ID = ID;
     }
-
-    public boolean isAdmin;
 
     public String getEmail() {
         return email;
@@ -49,6 +49,14 @@ public class User extends Model{
         isAdmin = admin;
     }
 
+    public boolean isFbUser() {
+        return isFbUser;
+    }
+
+    public void setFbUser(boolean fbUser) {
+        isFbUser = fbUser;
+    }
+
     public String getName() {
         return name;
     }
@@ -65,10 +73,11 @@ public class User extends Model{
         this.token = token;
     }
 
-    public User( String email, String password, String name) {
+    public User(String email, String password, String name, boolean fbUser) {
         this.email = email;
         this.password = password;
         this.name = name;
+        this.isFbUser = fbUser;
         this.token = UUID.randomUUID().toString();
     }
 
