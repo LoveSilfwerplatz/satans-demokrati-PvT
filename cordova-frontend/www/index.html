@@ -1,0 +1,51 @@
+<!-- THIS IS THE FIRST VIEW OF THE APP FROM WHERE THE USER GETS REROUTED TO EITHER HOME OR LOGIN -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv='Content-Type' content='text/html, charset=utf-8' lang="SE"/>
+    <!-- Har ändrat massa säkerhetsinställningar för att få script att köra. Säkert livsfarlig?! /CJ -->
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src 'self' 'unsafe-inline' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; script-src 'unsafe-inline' *; connect-src 'unsafe-inline' *">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/materialize.css">
+    <link rel="stylesheet" type="text/css" href="css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="css/jqm_overloads.css" />
+    <title>SATANS TRILOGI</title>
+</head>
+<body>
+<div class="app ui-overlay-a">
+    <div data-role="page" id="start">
+        <div data-role="content">
+            <div class="ui-grid-b" id="start-logo">
+                <div class="ui-block-a"></div>
+                <div class="ui-block-b">
+                    <p>TESTING</p>
+                    <img src="satans-demokrati-fasad.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.2.3.js"
+            integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js"></script>
+    <!--
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <script type="text/javascript" src="js/materialize.js"></script>
+
+        <script scr="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></script>
+
+
+        <script type="text/javascript" src="js/test.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+             -->
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/ando.js"></script>
+    <script type="text/javascript" src="js/test.js"></script>
+
+</div>
+</body>
+</html>
