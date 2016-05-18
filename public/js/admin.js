@@ -1,4 +1,15 @@
 //general buttons
+$(document).ready(function() {
+    $("#wrap").mouseenter(function(){
+        $("#wrap").fadeTo("fast", 1);
+    });
+    $("#wrap").mouseleave(function(){
+        $("#wrap").fadeTo("fast", 0.5);
+    });
+
+});
+
+
 var buttonBackToAdmin = function(){
     window.location.replace("http://localhost:9000/adminT");
 

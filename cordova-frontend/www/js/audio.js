@@ -47,10 +47,7 @@ function fetchStuffFromDB() {
 function generateRadioLink(radio) {
     // Suppose to make the object into proper format, Not sure if working
     return '<li><a href="javascript:void(0)'
-        + '" onclick="swapRadio(\' '
-        + radio.name
-        + '\',\''
-        + radio.filepath + '\')">'
+        + '" onclick="swapRadio(\' ' + radio.name + '\',\'' + radio.filepath + '\')">'
         + '<img src="img/characters/03.jpg" />'
         + radio.name
         + '</a></li>';

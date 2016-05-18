@@ -28,7 +28,7 @@ $("#connect").on("click", function () {
         return SC.get('/me/tracks');
     }).then(function (tracks) {
         $(tracks).each(function (index, track) {
-            addOption($("#tracksDrop"), track.id, track.title);
+            addOption($("#tracksDrop"), track.id, track.title, track.link);
         });
     });
 });
