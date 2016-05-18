@@ -48,7 +48,7 @@ POST   /hasUser                      controllers.UserController.hasUser(email:St
 
 POST   /signin                       controllers.UserController.signin
 POST   /fbSignin                     controllers.UserController.fbSignIn(name:String, email:String)
-GET   /login                        controllers.UserController.login
+POST   /login                        controllers.UserController.login
 
 # Hårdkodade saker
 GET    /addUser                      controllers.UserController.addUser()
