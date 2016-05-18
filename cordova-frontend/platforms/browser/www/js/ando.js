@@ -16,18 +16,17 @@ document.addEventListener('deviceready', function () {
 }, false);
 $(document).ready(function() {
     $('#login-form').submit(function(e) {
-        console.log("NU KÖR VI"); 
+        console.log("NU KÖR VI");
         e.preventDefault();
 
         var formData = $("#login-form").serializeArray();
         var URL = $("#login-form").attr("action");
+        alert("formData: " + formData);
 
-        $.post(URL,
-            formData,
-            function(data, textStatus, jqXHR) {
+
+        $.post(URL, formData, function(data, textStatus, jqXHR) {
                 console.log(data);
                 window.localStorage.setItem("token", data);
-
                 window.location.replace("home.html");
 
                 // För att hämta var value = window.localStorage.getItem("token");
