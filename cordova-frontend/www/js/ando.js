@@ -21,13 +21,12 @@ $(document).ready(function() {
 
         var formData = $("#login-form").serializeArray();
         var URL = $("#login-form").attr("action");
+        alert("formData: " + formData);
 
-        $.post(URL,
-            formData,
-            function(data, textStatus, jqXHR) {
+
+        $.post(URL, formData, function(data, textStatus, jqXHR) {
                 console.log(data);
                 window.localStorage.setItem("token", data);
-                alert("DE FINNS GÄRIS BEEEEROOOR");
                 window.location.replace("home.html");
 
                 // För att hämta var value = window.localStorage.getItem("token");
