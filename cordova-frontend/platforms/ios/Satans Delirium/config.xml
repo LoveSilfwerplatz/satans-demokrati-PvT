@@ -32,7 +32,6 @@
         Apache Cordova Team
     </author>
     <content src="login.html" />
-    <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
@@ -41,6 +40,9 @@
     <allow-intent href="geo:*" />
     <icon height="180" src="www/img/icon-180-180.png" width="180" />
     <splash height="960" src="www/img/splashscreen-iphone-960-640.png" width="640" />
+    <allow-navigation href="*" />
+    <allow-intent href="*" />
+    <access origin="*" />
     <allow-intent href="itms:*" />
     <allow-intent href="itms-apps:*" />
     <preference name="AllowInlineMediaPlayback" value="false" />

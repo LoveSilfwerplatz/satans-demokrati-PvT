@@ -13,26 +13,28 @@ document.addEventListener('deviceready', function () {
     // cordova.plugins.backgroundMode is now available
     //cordova.plugins.backgroundMode.disable();
     //cordova.plugins.backgroundMode.enable();
+
 }, false);
 $(document).ready(function() {
+
     $('#login-form').submit(function(e) {
-        console.log("NU KÖR VI"); 
+        console.log("NU KÖR VI");
         e.preventDefault();
 
         var formData = $("#login-form").serializeArray();
         var URL = $("#login-form").attr("action");
 
-        $.post(URL,
-            formData,
-            function(data, textStatus, jqXHR) {
-                console.log(data);
-                window.localStorage.setItem("token", data);
 
-                window.location.replace("index.html");
+        
+        $.post(URL, formData, function(data, textStatus, jqXHR) {
+            console.log(data);
+            window.localStorage.setItem("token", data);
+            window.location.replace("home.html");
 
-                // För att hämta var value = window.localStorage.getItem("token");
-            }).fail(function(jqXHR, textStatus, errorThrown) {
-            Materialize.toast("Wrong password/username provided.", 10000); // Testa
+            // För att hämta var value = window.localStorage.getItem("token");
+        }).fail(function(jqXHR, textStatus, errorThrown) {
+            alert(textStatus + " " + errorThrown);
+            Materialize.toast("Wrong password/username provided.", 10000); 
 
         });
     });
@@ -56,27 +58,7 @@ $(document).ready(function() {
 
         });
     });
-    $('#login-form').submit(function(e) {
-        console.log("NU KÖR VI");
-        e.preventDefault();
-
-        var formData = $("#login-form").serializeArray();
-        var URL = $("#login-form").attr("action");
-
-        $.post(URL,
-            formData,
-            function(data, textStatus, jqXHR) {
-                console.log(data);
-                window.localStorage.setItem("token", data);
-
-                window.location.replace("index.html");
-
-                // För att hämta var value = window.localStorage.getItem("token");
-            }).fail(function(jqXHR, textStatus, errorThrown) {
-            Materialize.toast("Wrong password/username provided.", 10000); // Testa
-
-        });
-    });
+    
     var token =  window.localStorage.getItem("token");
     // ait lets go
     $.ajax({
@@ -86,10 +68,10 @@ $(document).ready(function() {
             request.setRequestHeader("X-AUTH-TOKEN", token);
 
         },
-        url: 'http://localhost:9000/sesh',
+        url: 'https://satans-demokrati-72.herokuapp.com/sesh',
         success: function(data, status, request) {
 
-            window.location.replace("index.html");
+            window.location.replace("home.html");
         },
         error: function(request, status, error) {
             console.log("Gick inte igenom");
@@ -106,7 +88,7 @@ $(document).ready(function() {
                 request.setRequestHeader("X-AUTH-TOKEN", token);
 
             },
-            url: 'http://localhost:9000/securedContent',
+            url: 'https://satans-demokrati-72.herokuapp.com/securedContent',
             success: function(data, status, request) {
                 console.log(data);
             },
@@ -114,6 +96,9 @@ $(document).ready(function() {
                 console.log("Gick inte igenom");
             }
         });
+    });
+    $('#register').click(function(e) {
+        window.location.replace("form.html");
     });
     $('#sessions').click(function(e) {
         var token =  window.localStorage.getItem("token");
@@ -125,7 +110,7 @@ $(document).ready(function() {
                 request.setRequestHeader("X-AUTH-TOKEN", token);
 
             },
-            url: 'http://localhost:8000/',
+            url: 'https://satans-demokrati-72.herokuapp.com/',
             success: function(data, status, request) {
                 console.log(data);
             },

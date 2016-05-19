@@ -1,5 +1,5 @@
 // set to true for local play framework development
-var debug = true;
+var debug = false;
 var play_url = debug ? "http://localhost:9000" : "https://satans-demokrati-72.herokuapp.com";
 
 var myaudio = new Audio();
@@ -47,10 +47,7 @@ function fetchStuffFromDB() {
 function generateRadioLink(radio) {
     // Suppose to make the object into proper format, Not sure if working
     return '<li><a href="javascript:void(0)'
-        + '" onclick="swapRadio(\' '
-        + radio.name
-        + '\',\''
-        + radio.filepath + '\')">'
+        + '" onclick="swapRadio(\' ' + radio.name + '\',\'' + radio.filepath + '\')">'
         + '<img src="img/characters/03.jpg" />'
         + radio.name
         + '</a></li>';

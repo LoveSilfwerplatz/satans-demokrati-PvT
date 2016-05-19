@@ -16,6 +16,7 @@ document.addEventListener('deviceready', function () {
 
 }, false);
 $(document).ready(function() {
+
     $('#login-form').submit(function(e) {
         console.log("NU KÖR VI");
         e.preventDefault();
@@ -70,6 +71,7 @@ $(document).ready(function() {
 
         });
     });
+    
     var token =  window.localStorage.getItem("token");
     // ait lets go
     $.ajax({
