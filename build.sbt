@@ -4,8 +4,7 @@ herokuAppName in Compile := "satans-demokrati-72"
 
 libraryDependencies ++= Seq(
   "mysql" % "mysql-connector-java" % "5.1.38",
-  "com.google.code.gson" % "gson" % "2.2",
-  filters
+  "com.google.code.gson" % "gson" % "2.2"
 )
 
 
