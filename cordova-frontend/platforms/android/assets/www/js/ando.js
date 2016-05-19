@@ -25,7 +25,7 @@ $(document).ready(function() {
 
 
         
-        $.post(URL, formData, function(data, textStatus, jqXHR) {
+        $.get(URL, formData, function(data, textStatus, jqXHR) {
             console.log(data);
             window.localStorage.setItem("token", data);
             window.location.replace("home.html");
