@@ -25,7 +25,7 @@ $(document).ready(function() {
 
 
         
-        $.get(URL, formData, function(data, textStatus, jqXHR) {
+        $.post(URL, formData, function(data, textStatus, jqXHR) {
             console.log(data);
             window.localStorage.setItem("token", data);
             window.location.replace("home.html");
@@ -37,6 +37,19 @@ $(document).ready(function() {
 
         });
     });
+    function fetchStuffFromDB() {
+        $.getJSON(play_url + "/test", function (radios) {
+            // empty List
+            $('#radioList').empty();
+
+            //add to list
+            $.each(radios, function (i, radio) {
+                $('#radioList').append(generateRadioLink(radio));
+            });
+            // refresh list ( Seem to not do anything atm)
+            $('#radioList').listview("refresh");
+        });
+    }
 
     $('#register-form').submit(function(e) {
         e.preventDefault();
@@ -54,27 +67,6 @@ $(document).ready(function() {
                 // För att hämta var value = window.localStorage.getItem("token");
             }).fail(function(jqXHR, textStatus, errorThrown)
         {
-
-        });
-    });
-    $('#login-form').submit(function(e) {
-        console.log("NU KÖR VI");
-        e.preventDefault();
-
-        var formData = $("#login-form").serializeArray();
-        var URL = $("#login-form").attr("action");
-
-        $.post(URL,
-            formData,
-            function(data, textStatus, jqXHR) {
-                console.log(data);
-                window.localStorage.setItem("token", data);
-
-                window.location.replace("home.html");
-
-                // För att hämta var value = window.localStorage.getItem("token");
-            }).fail(function(jqXHR, textStatus, errorThrown) {
-            Materialize.toast("Wrong password/username provided.", 10000); // Testa
 
         });
     });
