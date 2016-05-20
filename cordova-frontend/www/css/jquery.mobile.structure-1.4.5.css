@@ -1076,9 +1076,9 @@ button.ui-btn-icon-notext,
 .ui-dialog.flow {
 	-webkit-transform-origin: none;
 	-webkit-box-shadow: none;
-	-moz-transform-origin: none;	
+	-moz-transform-origin: none;
 	-moz-box-shadow: none;
-	transform-origin: none;	
+	transform-origin: none;
 	box-shadow: none;
 }
 .flow.out {
