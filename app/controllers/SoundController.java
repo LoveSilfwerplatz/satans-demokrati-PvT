@@ -1,6 +1,9 @@
 package controllers;
 
+import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Model;
+import com.avaje.ebean.SqlQuery;
+import com.avaje.ebean.SqlRow;
 import com.google.gson.Gson;
 import models.Sound;
 import play.api.libs.json.Json;
@@ -62,6 +65,19 @@ public class SoundController extends Controller{
         response().setHeader("Access-Control-Allow-Origin", "*");
 
         return ok(adminAddSound.render("Success"));
+    }
+
+    public Result getTowerSounds(int towerId) {
+        // sound_tower
+        String query =  "select distinct sound.id, sound.name " +
+                        "from sound_tower " +
+                        "join sound on sound_tower.sound = sound.id " +
+                        "join tower on sound_tower.tower = tower.id " +
+                        "where tower.id = " + towerId;
+        SqlQuery sqlQuery = Ebean.createSqlQuery(query);
+        List<SqlRow> list = sqlQuery.findList();
+
+        return ok(new Gson().toJson(list));
     }
 
     // Hardcoded test to add sound. Proves that submit functionality is working even if something else isn't.

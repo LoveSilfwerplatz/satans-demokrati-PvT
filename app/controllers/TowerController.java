@@ -1,8 +1,12 @@
 package controllers;
 
+import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Model;
+import com.avaje.ebean.SqlQuery;
+import com.avaje.ebean.SqlRow;
 import com.google.gson.Gson;
 import models.Tower;
+import models.User;
 import play.api.libs.json.Json;
 import play.mvc.*;
 import play.db.*;
@@ -27,6 +31,24 @@ public class TowerController extends Controller {
         return ok(toJson(allTowers));
         //return ok(new Gson().toJson(result));
 
+    }
+
+    public Result getUserTowers(String userName) {
+
+        // get user id by user name (email)
+        User user = User.find.where().eq("email", userName).findUnique();
+        int userId = user.getID();
+
+        // get all towers by junction table
+        String query = "select distinct tower.id, tower.tower_name " +
+                "from user_tower " +
+                "join user on user_tower.user = user.id " +
+                "join tower on user_tower.tower = tower.id " +
+                "where user.id = " + userId;
+        SqlQuery sqlQuery = Ebean.createSqlQuery(query);
+        List<SqlRow> list = sqlQuery.findList();
+
+        return ok(new Gson().toJson(list));
     }
 
     public Result getTowerByName(String name) {
