@@ -2,11 +2,20 @@
 var debug = false;
 var play_url = debug ? "http://localhost:9000" : "https://satans-demokrati-72.herokuapp.com";
 
-var myaudio = new Audio();
-var myaudioURL = null;
-var playing = false;
+
+
+
 
 $(document).ready(function() {
+    if (!soundInit) {
+        alert("bbb");
+        myaudio = new Audio();
+        myaudioURL = null;
+        playing = false;
+        soundInit = true;
+    }
+    
+
     // register onclick function for list items in #radioList
     $('#radioList').on('click', 'li', function() {
         // remove active css class from all list items
@@ -14,6 +23,8 @@ $(document).ready(function() {
 
         // get the element we just clicked and add active css class to it
         $(this).addClass('active-radio-choice');
+
+        console(isActive(myaudio));
     });
     
     fetchStuffFromDB();
@@ -83,4 +94,17 @@ var playStream = function () {
 function stopStream() {
     playing = false;
     myaudio.src = "";
+}
+
+function muteStream(){
+    
+    if(playing){
+        if(myaudio.muted){
+            myaudio.muted = false;
+        }
+        else{
+            myaudio.muted = true;
+        }
+    }
+
 }

@@ -16,6 +16,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
+    soundInit = false;
+    myaudio;
+    myaudioURL;
+    playing;
+
+
 var app = {
     // Application Constructor
     initialize: function() {
