@@ -15,9 +15,10 @@
     color: #fff;
     border: 3px solid #fff;
     border-radius: 5px;
-    font-family:"Baron Neue Black";
+    font-family:"Baron_Neue_Black", Arial;
+    font-size:3em;
     text-decoration: none;
-    vertical-align: middle;
+    /*vertical-align: middle;*/
 }
 
 #start-logo-img{
