@@ -7,6 +7,9 @@ import javax.persistence.*;
 @Entity
 public class Sound extends Model {
 
+    @Id
+    public int ID;
+
     public String name;
     private String assignedTower, assignedCharacter;
 
@@ -22,9 +25,6 @@ public class Sound extends Model {
         this.assignedCharacter = assignedCharacter;
         this.assignedTower = assignedTower;
     }
-
-    @Id
-    public int ID;
 
     public int getID() {
         return ID;
@@ -58,6 +58,11 @@ public class Sound extends Model {
     public void setAssignedCharacter() {
         this.assignedCharacter = assignedCharacter;
     }
+
+    // public static Finder<Integer, Sound> find
+    //        = new Model.Finder<>(Integer.class, Sound.class);
+
+    public static Finder<Integer, Sound> find = new Finder<>(Sound.class);
 
 }
 

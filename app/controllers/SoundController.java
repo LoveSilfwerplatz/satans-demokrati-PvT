@@ -6,6 +6,7 @@ import com.avaje.ebean.SqlQuery;
 import com.avaje.ebean.SqlRow;
 import com.google.gson.Gson;
 import models.Sound;
+import models.User;
 import play.api.libs.json.Json;
 import play.mvc.*;
 import play.db.*;
@@ -68,16 +69,46 @@ public class SoundController extends Controller{
     }
 
     public Result getTowerSounds(int towerId) {
-        // sound_tower
+        // TODO refactor to separate method (filter/service?), used by getUserSounds
+
+        // get all sounds by junction table
         String query =  "select distinct sound.id, sound.name " +
                         "from sound_tower " +
                         "join sound on sound_tower.sound = sound.id " +
                         "join tower on sound_tower.tower = tower.id " +
                         "where tower.id = " + towerId;
-        SqlQuery sqlQuery = Ebean.createSqlQuery(query);
-        List<SqlRow> list = sqlQuery.findList();
 
-        return ok(new Gson().toJson(list));
+        SqlQuery sqlQuery = Ebean.createSqlQuery(query);
+        List<SqlRow> towerList = sqlQuery.findList();
+
+        return ok(new Gson().toJson(towerList));
+    }
+
+    public Result getUserSounds(String userName) {
+
+        // get user id by user name (email)
+        User user = User.find.where().eq("email", userName).findUnique();
+        int userId = user.getID();
+
+        // get all sounds from user by the two junction tables
+        String query =  "SELECT id, name " +
+                        "FROM sound " +
+                        "WHERE id IN ( " +
+                            "SELECT sound " +
+                            "FROM sound_tower " +
+                            "WHERE tower IN ( " +
+                                "SELECT DISTINCT tower.id " +
+                                "FROM user_tower " +
+                                    "JOIN user ON user_tower.user = user.id " +
+                                    "JOIN tower ON user_tower.tower = tower.id " +
+                                "WHERE user.id = " + userId +
+                            ")" +
+                        ")";
+
+        SqlQuery sqlQuery = Ebean.createSqlQuery(query);
+        List<SqlRow> soundList = sqlQuery.findList();
+
+        return ok(new Gson().toJson(soundList));
     }
 
     // Hardcoded test to add sound. Proves that submit functionality is working even if something else isn't.
