@@ -42,7 +42,7 @@ public class TestController extends Controller {
 
             while (rs.next()) {
                 HashMap<String, String> map = new HashMap<>();
-                String filepath = "http://api.soundcloud.com/tracks/" + rs.getInt("id") + "/stream";
+                String filepath = "http://api.soundcloud.com/tracks/" + rs.getInt("id") + "/stream?client_id=6a0f1d47b7df82417d31a6947ab0032c";
                 map.put("name", rs.getString("name"));
                 map.put("filepath", filepath);
                 result.add(map);
