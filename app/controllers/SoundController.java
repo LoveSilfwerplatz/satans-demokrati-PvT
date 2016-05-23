@@ -1,11 +1,9 @@
 package controllers;
 
-import com.avaje.ebean.Ebean;
-import com.avaje.ebean.Model;
-import com.avaje.ebean.SqlQuery;
-import com.avaje.ebean.SqlRow;
+import com.avaje.ebean.*;
 import com.google.gson.Gson;
 import models.Sound;
+import models.Tower;
 import models.User;
 import play.api.libs.json.Json;
 import play.mvc.*;
@@ -60,8 +58,31 @@ public class SoundController extends Controller{
         String[] name = map.get("trackName");
         String[] assignedTower = map.get("towerName");
         String[] assignedCharacter = map.get("characterField");
-        Sound sound = new Sound(ID, name[0], assignedTower[0], assignedCharacter[0]);
-        sound.save();
+
+        // check if sound exists in DB
+        Sound sound = Sound.find.select("ID")
+                .where().eq("ID", ID)
+                .findUnique();
+
+        // save sound to DB
+        if (sound == null) {
+            sound = new Sound(ID, name[0], assignedTower[0], assignedCharacter[0]);
+            sound.save();
+        }
+
+        // make connection between sound and tower
+        // TODO: Allows for multiple connections between same sound and tower :(
+        Tower tower = Tower.find
+                .select("ID")
+                .where().eq("tower_name", assignedTower[0])
+                .findUnique();
+
+        int towerId = tower.getID();
+
+        String update =  "insert into sound_tower (sound, tower) " +
+                        "values (" + ID + ", " + towerId + ")";
+        SqlUpdate sqlUpdate = Ebean.createSqlUpdate(update);
+        sqlUpdate.execute();
 
         response().setHeader("Access-Control-Allow-Origin", "*");
 
@@ -69,7 +90,6 @@ public class SoundController extends Controller{
     }
 
     public Result getTowerSounds(int towerId) {
-        // TODO refactor to separate method (filter/service?), used by getUserSounds
 
         // get all sounds by junction table
         String query =  "select distinct sound.id, sound.name " +
@@ -94,7 +114,7 @@ public class SoundController extends Controller{
         String query =  "SELECT id, name " +
                         "FROM sound " +
                         "WHERE id IN ( " +
-                            "SELECT sound " +
+                            "SELECT DISTINCT sound " +
                             "FROM sound_tower " +
                             "WHERE tower IN ( " +
                                 "SELECT DISTINCT tower.id " +
