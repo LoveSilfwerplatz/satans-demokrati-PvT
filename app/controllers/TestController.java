@@ -22,7 +22,7 @@ public class TestController extends Controller {
 
         List<Map<String, String>> result = new ArrayList<>();
 
-        try {
+        /*try {
             conn = DB.getConnection();
             stmt = conn.createStatement();
             String sql = "SELECT * FROM Soundtest";
@@ -32,6 +32,19 @@ public class TestController extends Controller {
                 HashMap<String, String> map = new HashMap<>();
                 map.put("name", rs.getString("name"));
                 map.put("filepath", rs.getString("filepath"));
+                result.add(map);
+            }*/
+        try {
+            conn = DB.getConnection();
+            stmt = conn.createStatement();
+            String sql = "SELECT * FROM sound";
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next()) {
+                HashMap<String, String> map = new HashMap<>();
+                String filepath = "http://api.soundcloud.com/tracks/" + rs.getInt("id") + "/stream";
+                map.put("name", rs.getString("name"));
+                map.put("filepath", filepath);
                 result.add(map);
             }
 
