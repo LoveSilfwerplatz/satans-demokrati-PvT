@@ -64,7 +64,7 @@ public class SoundController extends Controller{
                 .where().eq("ID", ID)
                 .findUnique();
 
-        // save sound to DB
+        // save sound to DB if it doesn't exist
         if (sound == null) {
             sound = new Sound(ID, name[0], assignedTower[0], assignedCharacter[0]);
             sound.save();
@@ -76,9 +76,7 @@ public class SoundController extends Controller{
                 .select("ID")
                 .where().eq("tower_name", assignedTower[0])
                 .findUnique();
-
         int towerId = tower.getID();
-
         String update =  "insert into sound_tower (sound, tower) " +
                         "values (" + ID + ", " + towerId + ")";
         SqlUpdate sqlUpdate = Ebean.createSqlUpdate(update);

@@ -83,6 +83,12 @@ pre {
     top:1px;
 }
 
+#tracksDrop-button span, #towerDrop-button span {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
 
 
 
