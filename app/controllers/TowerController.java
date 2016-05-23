@@ -33,6 +33,19 @@ public class TowerController extends Controller {
 
     }
 
+    public Result getTowerByName(String name) {
+
+        List<Tower> tower = Tower.find.select("longCoordDD").select("latCoordDD")
+                .where().eq("towerName", name)
+                .findList();
+
+        response().setHeader("Access-Control-Allow-Origin", "*");
+
+        return ok(toJson(tower));
+        //return ok(new Gson().toJson(result));
+
+    }
+
     public Result getUserTowers(String userName) {
 
         // TODO refactor to separate method (filter/service?), used by getUserSounds
@@ -51,19 +64,6 @@ public class TowerController extends Controller {
         List<SqlRow> list = sqlQuery.findList();
 
         return ok(new Gson().toJson(list));
-    }
-
-    public Result getTowerByName(String name) {
-
-        List<Tower> tower = Tower.find.select("longCoordDD").select("latCoordDD")
-                .where().eq("towerName", name)
-                .findList();
-
-        response().setHeader("Access-Control-Allow-Origin", "*");
-
-        return ok(toJson(tower));
-        //return ok(new Gson().toJson(result));
-
     }
 
     public Result setTower(){
