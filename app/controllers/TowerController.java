@@ -36,7 +36,6 @@ public class TowerController extends Controller {
     public Result getUserTowers(String userName) {
 
         // TODO refactor to separate method (filter/service?), used by getUserSounds
-
         // get user id by user name (email)
         User user = User.find.where().eq("email", userName).findUnique();
         int userId = user.getID();

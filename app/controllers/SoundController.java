@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import models.Sound;
 import models.Tower;
 import models.User;
+import play.Logger;
 import play.api.libs.json.Json;
 import play.mvc.*;
 import play.db.*;
@@ -71,7 +72,6 @@ public class SoundController extends Controller{
         }
 
         // make connection between sound and tower
-        // TODO: Allows for multiple connections between same sound and tower :(
         Tower tower = Tower.find
                 .select("ID")
                 .where().eq("tower_name", assignedTower[0])
@@ -79,8 +79,14 @@ public class SoundController extends Controller{
         int towerId = tower.getID();
         String update =  "insert into sound_tower (sound, tower) " +
                         "values (" + ID + ", " + towerId + ")";
-        SqlUpdate sqlUpdate = Ebean.createSqlUpdate(update);
-        sqlUpdate.execute();
+
+        try {
+            SqlUpdate sqlUpdate = Ebean.createSqlUpdate(update);
+            sqlUpdate.execute();
+        } catch (Exception e) {
+            // this happens when connection already exists
+            Logger.error(e.toString() + " - caused by: " + update);
+        }
 
         response().setHeader("Access-Control-Allow-Origin", "*");
 

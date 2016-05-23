@@ -1,7 +1,13 @@
 package controllers;
 
+import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Model;
+import com.avaje.ebean.SqlUpdate;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.google.gson.GsonBuilder;
+import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
+import models.Tower;
+import play.Logger;
 import play.mvc.*;
 
 import java.util.*;
@@ -90,8 +96,36 @@ public class UserController extends Controller {
 
         response().setHeader("Access-Control-Allow-Origin", "*");
         response().setHeader("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, OPTIONS");
-        response().setHeader("Access-Control-Allow-Hedaers", "Content-Type, Content-Range, Content-Disposition, Content-Description");
+        response().setHeader("Access-Control-Allow-Headers", "Content-Type, Content-Range, Content-Disposition, Content-Description");
 
         return ok(toJson(hasUser));
+    }
+
+    public Result addTower(String userName, String towerName) {
+        User user = User.find.select("ID")
+                .where().eq("name", userName)
+                .findUnique();
+
+        int userId = user.getID();
+
+        Tower tower = Tower.find.select("ID")
+                .where().eq("tower_name", towerName)
+                .findUnique();
+
+        int towerId = tower.getID();
+
+        String update = "INSERT INTO user_tower (user, tower) " +
+                        "VALUES (" + userId + ", " + towerId + ")";
+
+        try {
+            SqlUpdate sqlUpdate = Ebean.createSqlUpdate(update);
+            sqlUpdate.execute();
+        } catch (Exception e) {
+            // this happens when connection already exists
+            Logger.error(e.toString() + " - caused by: " + update);
+        }
+
+        // TODO Represent error in return data?
+        return ok();
     }
 }
