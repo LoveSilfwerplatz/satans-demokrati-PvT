@@ -111,12 +111,10 @@ function populate() {
 
         var $towerDrop = $("#towerDrop");
         $towerDrop.empty();
-        $.each(towers, function(row , object) {
-            $.each(object, function(column, value){
-                if(column == "name") {
-                    $towerDrop.append("<option>" + value + "</option>");
-                }
-            });
+        $.each(towers, function(row , tower) {
+
+            $towerDrop.append("<option>" + tower.name + "</option>");
+            
         });
         map();
     });
@@ -124,22 +122,17 @@ function populate() {
 
 function map(){
     var $towerDrop = $("#towerDrop");
-    var tower = $towerDrop.val();
-    var lat;
-    var long;
+    var name = $towerDrop.val();
+    var lat, long;
 
-    $.getJSON(play_url + "/hgiqktjZuxt?name="+tower, function (towerOb) {
-        $.each(towerOb, function(row , object) {
-            $.each(object, function(column, value) {
-                if (column == "latCoordDD") {
-                    lat = value;
-                }
-                else if(column == "longCoordDD"){
-                    long = value;
-                }
-            });
+    $.getJSON(play_url + "/getTowerByName?name="+name, function (towerOb) {
+        $.each(towerOb, function(row , tower) {
+
+            lat = tower.latCoordDD;
+            long = tower.longCoordDD;
+
             if(lat != null && long != null){
-                setMarker(lat, long, tower);
+                setMarker(lat, long, name);
             }
         });
     });
