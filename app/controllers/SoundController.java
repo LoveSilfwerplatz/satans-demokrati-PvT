@@ -67,7 +67,7 @@ public class SoundController extends Controller{
 
         // save sound to DB if it doesn't exist
         if (sound == null) {
-            sound = new Sound(ID, name[0], assignedTower[0], assignedCharacter[0]);
+            sound = new Sound(ID, name[0], assignedCharacter[0]);
             sound.save();
         }
 

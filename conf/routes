@@ -59,6 +59,7 @@ GET    /getUserTowers                controllers.TowerController.getUserTowers(u
 GET    /getTowerSounds               controllers.SoundController.getTowerSounds(towerId:Int)
 GET    /getUserSounds                controllers.SoundController.getUserSounds(userName:String)
 GET    /addTowerToUser               controllers.UserController.addTower(userName:String, towerName:String)
+GET    /getFBFriendsTowers           controllers.UserController.getFBFriendsTowers(userName:String)
 
 #kom ihåg att kunna ta bort saker
 

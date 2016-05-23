@@ -11,7 +11,7 @@ public class Sound extends Model {
     public int ID;
 
     public String name;
-    private String assignedTower, assignedCharacter;
+    private String assignedCharacter;
 
     // Barebones constructor.
     public Sound(String name) {
@@ -19,11 +19,10 @@ public class Sound extends Model {
     }
 
     // Complete constructor.
-    public Sound(int ID, String name, String assignedTower, String assignedCharacter) {
+    public Sound(int ID, String name, String assignedCharacter) {
         this.ID = ID;
         this.name = name;
         this.assignedCharacter = assignedCharacter;
-        this.assignedTower = assignedTower;
     }
 
     public int getID() {
@@ -41,14 +40,6 @@ public class Sound extends Model {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getAssignedTower() {
-        return assignedTower;
-    }
-
-    public void setAssignedTower(String assignedTower) {
-        this.assignedTower = assignedTower;
     }
 
     public String getAssignedCharacter() {

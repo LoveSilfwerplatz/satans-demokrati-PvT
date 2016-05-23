@@ -105,18 +105,15 @@ public class UserController extends Controller {
         User user = User.find.select("ID")
                 .where().eq("name", userName)
                 .findUnique();
-
         int userId = user.getID();
 
         Tower tower = Tower.find.select("ID")
                 .where().eq("tower_name", towerName)
                 .findUnique();
-
         int towerId = tower.getID();
 
         String update = "INSERT INTO user_tower (user, tower) " +
                         "VALUES (" + userId + ", " + towerId + ")";
-
         try {
             SqlUpdate sqlUpdate = Ebean.createSqlUpdate(update);
             sqlUpdate.execute();
@@ -128,6 +125,15 @@ public class UserController extends Controller {
         // TODO Represent error in return data?
         return ok();
 
+    }
+
+    public Result getFBFriendsTowers(String userName) {
+
+        User user = User.find.select("*")
+                .where().eq("email", userName)
+                .findUnique();
+
+        return ok(toJson(user));
     }
 
 }
