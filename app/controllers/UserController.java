@@ -1,8 +1,6 @@
 package controllers;
 
-import com.avaje.ebean.Ebean;
-import com.avaje.ebean.Model;
-import com.avaje.ebean.SqlUpdate;
+import com.avaje.ebean.*;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.gson.GsonBuilder;
 import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
@@ -14,6 +12,7 @@ import java.util.*;
 
 import models.User;
 
+import static play.libs.Json.newObject;
 import static play.libs.Json.toJson;
 
 
@@ -129,11 +128,37 @@ public class UserController extends Controller {
 
     public Result getFBFriendsTowers(String userName) {
 
-        User user = User.find.select("*")
+        User user = User.find.select("ID, isFbUser")
                 .where().eq("email", userName)
                 .findUnique();
 
+        if (user.isFbUser()) {
+
+            String query = "SELECT tower.tower_name\n" +
+                    "FROM user_tower\n" +
+                    "JOIN\n" +
+                    "  (SELECT users_b.id\n" +
+                    "  FROM fb_friends\n" +
+                    "  JOIN user AS users_a ON fb_friends.user_a = users_a.id\n" +
+                    "  JOIN user AS users_b ON fb_friends.user_b = users_b.id\n" +
+                    "  WHERE users_a.email = '" + userName + "') AS friends ON user_tower.user = friends.id\n" +
+                    "JOIN tower ON user_tower.tower = tower.id";
+
+            SqlQuery sqlQuery = Ebean.createSqlQuery(query);
+            List<SqlRow> towerList = sqlQuery.findList();
+            return ok(toJson(towerList));
+        }
+
         return ok(toJson(user));
+    }
+
+    public Result getUserByToken(String token) {
+
+        User user = User.find.select("email")
+                .where().eq("token", token)
+                .findUnique();
+
+        return ok(toJson(user.getEmail()));
     }
 
 }

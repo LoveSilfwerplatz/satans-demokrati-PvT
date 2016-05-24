@@ -59,7 +59,11 @@ GET    /getUserTowers                controllers.TowerController.getUserTowers(u
 GET    /getTowerSounds               controllers.SoundController.getTowerSounds(towerId:Int)
 GET    /getUserSounds                controllers.SoundController.getUserSounds(userName:String)
 GET    /addTowerToUser               controllers.UserController.addTower(userName:String, towerName:String)
+
+# TODO: Hämtar bara torn. Bör också ange vilka vänner man fått tornen ifrån(?) /CJ
 GET    /getFBFriendsTowers           controllers.UserController.getFBFriendsTowers(userName:String)
+
+GET    /getUserByToken               controllers.UserController.getUserByToken(token:String)
 
 #kom ihåg att kunna ta bort saker
 
