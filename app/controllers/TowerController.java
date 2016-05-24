@@ -62,6 +62,8 @@ public class TowerController extends Controller {
         SqlQuery sqlQuery = Ebean.createSqlQuery(query);
         List<SqlRow> list = sqlQuery.findList();
 
+        response().setHeader("Access-Control-Allow-Origin", "*");
+
         return ok(new Gson().toJson(list));
     }
 

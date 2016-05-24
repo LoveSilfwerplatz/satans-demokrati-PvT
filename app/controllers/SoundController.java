@@ -105,6 +105,8 @@ public class SoundController extends Controller{
         SqlQuery sqlQuery = Ebean.createSqlQuery(query);
         List<SqlRow> towerList = sqlQuery.findList();
 
+        response().setHeader("Access-Control-Allow-Origin", "*");
+
         return ok(new Gson().toJson(towerList));
     }
 
@@ -131,6 +133,8 @@ public class SoundController extends Controller{
 
         SqlQuery sqlQuery = Ebean.createSqlQuery(query);
         List<SqlRow> soundList = sqlQuery.findList();
+
+        response().setHeader("Access-Control-Allow-Origin", "*");
 
         return ok(new Gson().toJson(soundList));
     }

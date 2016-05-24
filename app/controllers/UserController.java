@@ -121,6 +121,8 @@ public class UserController extends Controller {
             Logger.error(e.toString() + " - caused by: " + update);
         }
 
+        response().setHeader("Access-Control-Allow-Origin", "*");
+
         // TODO Represent error in return data?
         return ok();
 
@@ -149,6 +151,8 @@ public class UserController extends Controller {
             return ok(toJson(towerList));
         }
 
+        response().setHeader("Access-Control-Allow-Origin", "*");
+
         return ok(toJson(user));
     }
 
@@ -157,6 +161,8 @@ public class UserController extends Controller {
         User user = User.find.select("email")
                 .where().eq("token", token)
                 .findUnique();
+
+        response().setHeader("Access-Control-Allow-Origin", "*");
 
         return ok(toJson(user.getEmail()));
     }
