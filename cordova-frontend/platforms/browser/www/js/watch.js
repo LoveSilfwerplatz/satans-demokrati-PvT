@@ -3,7 +3,7 @@ var searching, found;   //Booleans
 var geoLoc;             //HTML5 geolocation object
 var watchID;            //Var created to end watchPosition upon "Stop" "Button" press
 var lastPos;            //Used to preemptively kill unnecesary position checks
-var play_url = "http://localhost:9000"; //URL
+var watch_play_url = "http://localhost:9000"; //URL
 
 $( document ).ready(function() {
     bind();
@@ -15,11 +15,12 @@ $( document ).ready(function() {
         lastPos = {
             lat: null,
             long:  null
-        }
+        };
         found = false;
-    };
+    }
 
-    function onSuccess(pos) {
+    function posHandler(pos) {
+        console.log("ping");
         if(lastPos.lat == pos.coords.latitude &&
                     lastPos.long == pos.coords.longitude){
             //Do nothing
@@ -29,11 +30,12 @@ $( document ).ready(function() {
 
             tryPos(pos);
         }
-    };
+    }
 
     function tryPos(pos){
-
-        $.getJSON(play_url + "/getTowers", function (towers) {
+        console.log("New position");
+        $.getJSON(watch_play_url + "/getTowers", function (towers) {
+            console.log("Retrieved JSON");
             $.each(towers, function(i, tower) {
 
                 console.log("TestStart \n userPos: " + pos.coords.latitude + ", " + pos.coords.longitude + "\n towerPos: " + tower.latCoordDD + ", " + tower.longCoordDD + "\n");
@@ -43,7 +45,15 @@ $( document ).ready(function() {
 
                 if (google.maps.geometry.spherical.computeDistanceBetween(userPos,towerPos) <= tower.range) {
                     console.log(tower.name+' => is in searchArea');
+                    var token = window.localStorage.getItem("token");
+
+                    $.getJSON(play_url + "/getUserByToken?token=27661a62-029d-4b89-8ff6-acf9ac0f5967", function (userName) {
+                        alert(userName);
+                        //$.get(play_url + "/addTowerToUser?userName=" + userName + "&towerName=" + tower.name);
+                    });
+
                     alert("Tower found!");
+
                 }
                 else{
                     console.log(tower.name + " Not Found");
@@ -57,17 +67,7 @@ $( document ).ready(function() {
             })
 
         })
-    };
-
-    function errorHandler(err) {
-        if(err.code == 1) {
-            alert("Error: Access is denied!");
-        }
-
-        else if( err.code == 2) {
-            alert("Error: Position is unavailable!");
-        }
-    };
+    }
 
     function startWatch(){
 
@@ -76,7 +76,7 @@ $( document ).ready(function() {
                 // timeout at 30 seconds
                 var options = {timeout: 30000};
                 geoLoc = navigator.geolocation;
-                watchID = this.geoLoc.watchPosition(onSuccess, errorHandler, options);
+                watchID = this.geoLoc.watchPosition(posHandler, errorHandler, options);
             }
             else {
                 alert("This browser does not support geolocation!");
@@ -86,7 +86,7 @@ $( document ).ready(function() {
         }
         change();
 
-    };
+    }
 
     function change(){
 
@@ -98,5 +98,15 @@ $( document ).ready(function() {
             searching = false;
         }
 
-    };
+    }
+
+    function errorHandler(err) {
+        if(err.code == 1) {
+            alert("Error: Access is denied!");
+        }
+
+        else if( err.code == 2) {
+            alert("Error: Position is unavailable!");
+        }
+    }
 
