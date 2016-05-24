@@ -3,7 +3,7 @@ var searching, found;   //Booleans
 var geoLoc;             //HTML5 geolocation object
 var watchID;            //Var created to end watchPosition upon "Stop" "Button" press
 var lastPos;            //Used to preemptively kill unnecesary position checks
-var play_url = "http://localhost:9000"; //URL
+var watch_play_url = "http://localhost:9000"; //URL
 
 $( document ).ready(function() {
     bind();
@@ -34,7 +34,7 @@ $( document ).ready(function() {
 
     function tryPos(pos){
         console.log("New position");
-        $.getJSON(play_url + "/getTowers", function (towers) {
+        $.getJSON(watch_play_url + "/getTowers", function (towers) {
             console.log("Retrieved JSON");
             $.each(towers, function(i, tower) {
 
