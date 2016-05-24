@@ -4,6 +4,9 @@ var geoLoc;             //HTML5 geolocation object
 var watchID;            //Var created to end watchPosition upon "Stop" "Button" press
 var lastPos;            //Used to preemptively kill unnecesary position checks
 var watch_play_url;     //URL
+var myaudio = new Audio();
+var myaudioURL = null;
+var playing = false;
 
 $( document ).ready(function() {
     bind();
@@ -59,13 +62,13 @@ $( document ).ready(function() {
                     alert("Tower found!");
 
                     $.getJSON(watch_play_url + "/getTowerSounds?towerId="+tower.id, function (towerSounds) {
-                        
+                        playRadio(towerSounds);
                     })
 
                 }
                 else{
                     console.log(tower.name + " Not Found");
-
+                    // Play hardcoded radio?
                 }
                 console.log(" ");
 
@@ -118,3 +121,65 @@ $( document ).ready(function() {
         }
     }
 
+   function playRadio(towerAudio){
+       fadeout();
+       myaudioURL = towerAudio[0].filepath;
+               try {
+                   myaudio = new Audio(myaudioURL);
+
+                   //myaudio.id = 'playerMyAdio';
+                   myaudio.volume = 1;
+                   myaudio.play();
+                   playing = true;
+                   myaudio.addEventListener("ended", function(){
+                      // For looping the sound
+                       myaudio.load();
+                       myaudio.play();
+                   })
+               } catch (e) {
+                   alert('no audio support!');
+               }
+
+   }
+
+
+function fadeout() {
+    fadeoutAudio();
+
+};
+
+function fadeoutAudio () {
+
+    var fadeAudio = setInterval(function () {
+        var tempaudiovar = myaudio.volume;
+
+        if ((tempaudiovar - 0.1 > 0.0)) {
+            console.log("Fading");
+            myaudio.volume -= 0.1;
+        }
+        else {
+            console.log("ClearFade");
+            clearInterval(fadeAudio);
+            myaudio.pause();
+        }
+    }, 200);
+}
+
+
+//Untested
+function fadeinAudio () {
+
+    var fadeAudio = setInterval(function () {
+        var tempaudiovar = myaudio.volume;
+
+        if ((tempaudiovar + 0.1 < 1.0)) {
+            console.log("Fading");
+            myaudio.volume += 0.1;
+        }
+        else {
+            console.log("ClearFade");
+            clearInterval(fadeAudio);
+            myaudio.pause();
+        }
+    }, 200);
+}
