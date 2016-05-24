@@ -3,7 +3,7 @@ var searching, found;   //Booleans
 var geoLoc;             //HTML5 geolocation object
 var watchID;            //Var created to end watchPosition upon "Stop" "Button" press
 var lastPos;            //Used to preemptively kill unnecesary position checks
-var watch_play_url = "http://localhost:9000"; //URL
+var watch_play_url;     //URL
 
 $( document ).ready(function() {
     bind();
@@ -17,6 +17,7 @@ $( document ).ready(function() {
             long:  null
         };
         found = false;
+        watch_play_url = "http://localhost:9000";
     }
 
     function posHandler(pos) {
@@ -47,12 +48,19 @@ $( document ).ready(function() {
                     console.log(tower.name+' => is in searchArea');
                     var token = window.localStorage.getItem("token");
 
-                    $.getJSON(play_url + "/getUserByToken?token=27661a62-029d-4b89-8ff6-acf9ac0f5967", function (userName) {
-                        alert(userName);
-                        //$.get(play_url + "/addTowerToUser?userName=" + userName + "&towerName=" + tower.name);
+                    $.getJSON(watch_play_url + "/getUserByToken?token="+token, function (userName) {
+                        try {
+                            $.get(watch_play_url + "/addTowerToUser?userName="+userName+"&towerName="+tower.name);
+                        }catch(err){
+                            console.log(err);
+                        }
                     });
 
                     alert("Tower found!");
+
+                    $.getJSON(watch_play_url + "/getTowerSounds?towerId="+tower.id, function (towerSounds) {
+                        
+                    })
 
                 }
                 else{
