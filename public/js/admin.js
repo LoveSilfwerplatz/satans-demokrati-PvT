@@ -1,87 +1,47 @@
+var debug = true;
+/*
+ To correctly change debug (for backend), change is needed in following JS-files:
+ admin.js
+ Soundcloud.js
+ MapScript.js
+ */
+var play_url = debug ? "http://localhost:9000" : "https://satans-demokrati-72.herokuapp.com";
+
+
+
+
 //general buttons
-$(document).ready(function() {
-    $("#wrap").mouseenter(function(){
-        $("#wrap").fadeTo("fast", 1);
-    });
-    $("#wrap").mouseleave(function(){
-        $("#wrap").fadeTo("fast", 0.5);
-    });
 
+$('#buttonBackToAdmin').click(function(){
+    window.location.replace(play_url + "/adminT");
+});
+
+$('#buttonBackToBackend').click(function(){
+    window.location.replace(play_url);
+});
+
+$('#buttonShowUsers').click(function(){
+    window.location.replace(play_url + "/formUsers");
+});
+
+$('#buttonShowSounds').click(function(){
+    window.location.replace(play_url + "/formSounds");
+});
+
+$('#buttonShowTowers').click(function(){
+    window.location.replace(play_url + "/formTowers");
+});
+
+$('#buttonAddTower').click(function(){
+    window.location.replace(play_url + "/addTower");
+});
+
+$('#buttonAddSound').click(function(){
+    window.location.replace(play_url + "/addSound");
 });
 
 
-var buttonBackToAdmin = function(){
-    window.location.replace("http://localhost:9000/adminT");
-
-};
-document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById('buttonBackToAdmin').addEventListener('click',buttonBackToAdmin,false);
-});
-
-
-var buttonBackToBackend = function(){
-    window.location.replace("http://localhost:9000/");
-
-};
-document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById('buttonBackToBackend').addEventListener('click',buttonBackToBackend,false);
-});
-
-
-var buttonShowUsers = function(){
-    window.location.replace("http://localhost:9000/formUsers");
-};
-document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById('buttonShowUsers').addEventListener('click',buttonShowUsers,false);
-});
-
-
-var buttonShowSounds = function(){
-    window.location.replace("http://localhost:9000/formSounds");
-};
-document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById('buttonShowSounds').addEventListener('click',buttonShowSounds,false);
-});
-
-
-var buttonShowTowers = function(){
-    window.location.replace("http://localhost:9000/formTowers");
-};
-document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById('buttonShowTowers').addEventListener('click',buttonShowTowers,false);
-});
-
-
-var buttonAddTower = function(){
-    window.location.replace("http://localhost:9000/addTower");
-};
-document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById('buttonAddTower').addEventListener('click',buttonAddTower,false);
-});
-
-
-var buttonAddSound = function(){
-    window.location.replace("http://localhost:9000/addSound");
-};
-document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById('buttonAddSound').addEventListener('click',buttonAddSound,false);
-});
-
-//adminView
-
-
-
-
-/*Admin
-;
-:
-;*/
-
-
-
-
-
-
+// state stuff for formatting users/sounds/towers on admin
 var buttonState = $("#boxText").text().charAt(0).toUpperCase();
 
 if(buttonState === "R"){
@@ -95,16 +55,13 @@ if(buttonState === "R"){
     buttonState = "NOTHING TO DISPLAY"
 }
 
-
-
 $(document).ready(function() {
-
     $('#boxHeader').html(buttonState);
 });
 
 
+
 //addSoundView
-var play_url = "http://localhost:9000";
 
 function populate() {
     $.getJSON(play_url + "/getTowers", function (towers) {
@@ -118,7 +75,7 @@ function populate() {
         });
         map();
     });
-};
+}
 
 function map(){
     var $towerDrop = $("#towerDrop");
@@ -136,4 +93,4 @@ function map(){
             }
         });
     });
-};
+}

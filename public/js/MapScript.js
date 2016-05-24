@@ -2,6 +2,18 @@
  * Created by MachinaDeus on 28/04/2016.
  */
 
+var debug = true;
+/*
+ To correctly change debug (for backend), change is needed in following JS-files:
+ admin.js
+ Soundcloud.js
+ MapScript.js
+ */
+var play_url = debug ? "http://localhost:9000" : "https://satans-demokrati-72.herokuapp.com";
+
+
+
+
 //Only Temp Script, Should probly be combined later when doing the html dynamically
 var map;
 var TestPos = {
@@ -74,13 +86,13 @@ function initMap() {
 
     infoWindow = new google.maps.InfoWindow({map: map});
     var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
-    $.getJSON('http://localhost:9000/getTowers', function(tower) {
+    $.getJSON(play_url + '/getTowers', function(tower) {
         $.each( tower, function(i, value) {
             var marker = new google.maps.Marker({
 
                 position: new google.maps.LatLng (value.latCoordDD, value.longCoordDD),
                 map: map,
-                icon: iconBase + 'schools_maps.png',
+                icon: iconBase + 'schools_maps.png'
 
 
             });
@@ -156,7 +168,7 @@ function clicker(){
 };
 
 var back = function(){
-    window.location.replace("http://localhost:9000/");
+    window.location.replace(play_url);
 
 };
 
@@ -166,7 +178,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
  function rangeCalc(recPosition){
-     $.getJSON("http://localhost:9000" + "/getTowers", function (towers){
+     $.getJSON(play_url + "/getTowers", function (towers){
          $.each(towers,function(i, tower) {
              console.log("TestStart " + recPosition.lng + " " + recPosition.lat);
              var towerPos = new google.maps.LatLng(tower.latCoordDD,tower.longCoordDD);

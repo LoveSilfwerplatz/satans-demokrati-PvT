@@ -1,11 +1,7 @@
-
-
 @(message: String)
-
 @*********************
 Denna fil kommer troligtvis kunna tas bort sen. Men är just nu en andra admin sida för att testa logik utan att blanda in Andres CSS saker.
 *********************@
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -17,64 +13,50 @@ Denna fil kommer troligtvis kunna tas bort sen. Men är just nu en andra admin s
 
         <div id="backKnapp">
             <button id="buttonBackToBackend" class="myButton">Backend</button><br>
-
-
         </div>
 
-
         <h1>ADMIN: Satans Demokrati</h1><br><br>
-
 
         <table class="tab">
             <tr>
                 <td>
                     <div class="buttonContainer">
 
+                        <div class="user"><br><br>
+                            <p>View</p>
+                            <button id="buttonShowUsers" class="myButton">Users</button><br>
+                            <button id="buttonShowSounds" class="myButton">Sounds</button><br>
+                            <button id="buttonShowTowers" class="myButton">Towers</button>
+                        </div><br><br><br><br>
 
+                        <div class="user">
+                            <p>Add</p>
+                            <button id="buttonAddSound" class="myButton">Sound</button><br>
+                            <button id="buttonAddTower" class="myButton">Tower</button><br>
+                        </div>
 
-                    <div class="user"><br><br>
-                        <p>View</p>
-                        <button id="buttonShowUsers" class="myButton">Users</button><br>
-                        <button id="buttonShowSounds" class="myButton">Sounds</button><br>
-                        <button id="buttonShowTowers" class="myButton">Towers</button>
-                    </div><br><br><br><br>
-
-                    <div class="user">
-                        <p>Add</p>
-                        <button id="buttonAddSound" class="myButton">Sound</button><br>
-                        <button id="buttonAddTower" class="myButton">Tower</button><br>
                     </div>
-
-                </div>
 
                 </td>
 
 
                 <td>
                     <div id="wrap">
-                    <div id="content">
-                        <p id="boxHeader" class="apa">f </p>
-                        <pre id="boxText">@message</pre>
+                        <div id="content">
+                            <p id="boxHeader" class="apa">f </p>
+                            <pre id="boxText">@message</pre>
+                        </div>
                     </div>
-                </div>
                 </td>
-
 
 
             </tr>
         </table>
 
 
-
-
-
-
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 
         <script src="@routes.Assets.versioned("js/admin.js")"></script>
-
-
-
 
 
     </body>

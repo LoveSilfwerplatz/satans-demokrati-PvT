@@ -19,7 +19,7 @@
 
         <form name="mySound" id="mySound" action="http://localhost:9000/submitSound" method="POST">
 
-            <!-- Map-related scripts go here -->
+                <!-- Map-related scripts go here -->
             <div id="map">
                 <script src="https://code.jquery.com/jquery-2.2.3.js"   integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4="   crossorigin="anonymous"></script>
                 <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js" ></script>
@@ -32,19 +32,19 @@
                 <pre>Current user: <span id="username"></span></pre>
                 @*<pre>Sound name:</pre> <input type="text" name="name" id="name" required><br><br>*@
 
-                <!-- List of sounds uploaded to user's Soundcloud account, populated and enabled on login -->
+                    <!-- List of sounds uploaded to user's Soundcloud account, populated and enabled on login -->
                 <pre><label for="tracks">Broadcast name:</label></pre>
                 <select id="tracksDrop" name="tracksDrop" required></select>
 
-                <!-- List of available towers -->
+                    <!-- List of available towers -->
                 <pre><label for="towers">Assign to tower:</label></pre>
                 <select id="towerDrop" name="towerDrop" onchange="map()" required></select>
 
-                <!-- Name of character associated with the sound -->
+                    <!-- Name of character associated with the sound -->
                 <pre>Assign to character:</pre>
                 <input type="text" id="characterField" name="characterField" required><br><br>
 
-                <!-- Fields to store track data. Intended to be hidden, visible for testing purposes (they don't work) -->
+                    <!-- Fields to store track data. Intended to be hidden, visible for testing purposes (they don't work) -->
                 <input type="hidden" id="trackName" name="trackName">
                 <input type="hidden" id="trackID" name="trackID">
                 <input type="hidden" id="towerName" name="towerName">
@@ -63,7 +63,7 @@
             </div>
         </div>
 
-        <!-- All other scripts go here -->
+            <!-- All other scripts go here -->
         <script src="https://connect.soundcloud.com/sdk/sdk-3.0.0.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
         <script src="@routes.Assets.versioned("js/admin.js")"></script>
