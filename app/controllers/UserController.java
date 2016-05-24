@@ -59,6 +59,9 @@ public class UserController extends Controller {
         String[] email = map.get("email");
         String[] password = map.get("password");
         String[] name = map.get("name");
+
+        response().setHeader("Access-Control-Allow-Origin", "*");
+
         return signin(email[0], password[0], name[0], false);
     }
 
