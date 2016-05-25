@@ -1,5 +1,6 @@
 package controllers;
 
+import com.avaje.ebean.annotation.Transactional;
 import com.google.gson.Gson;
 import play.api.libs.json.Json;
 import play.api.*;
@@ -15,6 +16,7 @@ import java.util.*;
  */
 public class TestController extends Controller {
 
+    @Transactional
     public Result test() {
 
         Connection conn = null;

@@ -1,6 +1,7 @@
 package controllers;
 
 import com.avaje.ebean.Model;
+import com.avaje.ebean.annotation.Transactional;
 import com.google.gson.Gson;
 import models.Tower;
 import play.api.libs.json.Json;
@@ -19,6 +20,7 @@ import static play.libs.Json.toJson;
 
 public class DatabaseController extends Controller {
 
+    @Transactional
     public Result getRadio(String file, String source) {
 
         Connection conn = null;
@@ -57,6 +59,7 @@ public class DatabaseController extends Controller {
 
 
 
+    @Transactional
     public Result getPod(float latitude, float longitude){
         Connection conn = null;
         Statement stmt = null;
