@@ -88,6 +88,11 @@ function stopStream() {
 }
 
 
+function defaultPosKista(){
+    alert("hej");
+}
+
+
 
 //var signUp = function(){
   //  var reqxuest = new XMLHttpRequest();
