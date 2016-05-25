@@ -163,7 +163,9 @@ public class SoundController extends Controller{
         return ok(callback.render());
     }
 
-
-
+    public Result getDefaultBroadcast() {
+        response().setHeader("Access-Control-Allow-Origin", "*");
+        return ok("getDefaultBroadcast()");
+    }
 
 }

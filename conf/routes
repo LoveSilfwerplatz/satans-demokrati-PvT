@@ -63,7 +63,8 @@ GET    /addTowerToUser               controllers.UserController.addTower(userNam
 # TODO: Hämtar bara torn. Bör också ange vilka vänner man fått tornen ifrån(?) /CJ
 GET    /getFBFriendsTowers           controllers.UserController.getFBFriendsTowers(userName:String)
 
+GET    /getDefaultBroadcast          controllers.SoundController.getDefaultBroadcast()
+
 GET    /getUserByToken               controllers.UserController.getUserByToken(token:String)
 
 #kom ihåg att kunna ta bort saker
-
