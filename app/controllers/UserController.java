@@ -47,12 +47,12 @@ public class UserController extends Controller {
 
         User authUser = authenticate(nm, pw);
 
-        response().setHeader("Access-Control-Allow-Origin", "*");
+
 
         if (authUser == null) {
             return notFound();
         } // ta upp din cmd
-
+        response().setHeader("Access-Control-Allow-Origin", "*");
         return ok(authUser.token);
     }
 

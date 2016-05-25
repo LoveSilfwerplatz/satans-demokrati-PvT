@@ -15,7 +15,7 @@ var play_url = debug ? "http://localhost:9000" : "https://satans-demokrati-72.he
 
 SC.initialize({
     client_id: '6a0f1d47b7df82417d31a6947ab0032c',
-    redirect_uri: play_url + '/callback'
+    redirect_uri: debug + "/callback"
 });
 
 // Add entry to HTML dropdown menu.
@@ -55,7 +55,7 @@ $("#tracksDrop").change(function () {
 $("#towerDrop").change(function(){
     var drop = document.getElementById("towerDrop");
     document.getElementById("towerName").value = drop.value;
-})
+});
 
 /*Attempted upload function. Soundcloud API is only meant to allow uploading of sounds recorded within the app,
  * this is based on a workaround for an older version of the API found here:

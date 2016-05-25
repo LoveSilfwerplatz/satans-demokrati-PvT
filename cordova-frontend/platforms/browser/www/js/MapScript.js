@@ -1,7 +1,7 @@
 /**
  * Created by MachinaDeus on 28/04/2016.
  */
-var debug = false;
+var debug = true;
 var play_url = debug ? "http://localhost:9000" : "https://satans-demokrati-72.herokuapp.com";
 
 
