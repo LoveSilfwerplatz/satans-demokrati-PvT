@@ -9,15 +9,19 @@
 }
 
 .ui-btn{
+    font-family:"Baron_Neue_Black", Arial;
+    font-size:1em;
+    /*
     padding-bottom:10%;
     background-color: #333;
     color: #fff;
     border: 3px solid #fff;
     border-radius: 5px;
     font-family:"Baron_Neue_Black", Arial;
-    font-size:3em;
+    font-size:1em;
     text-decoration: none;
-    /*vertical-align: middle;*/
+    vertical-align: middle;
+    */
 }
 
 #start-logo-img{
@@ -28,17 +32,10 @@
     background-color: #000;
     color: #fff;
 }
-.ui-btn{
-    font-family: Baron_Neue_Black, Roboto-Medium, Arial;
-    font-size:3em;
-    color:#000;
-    border-radius: 5px;
-}
 
 .pvt-page{
     background-color: #000;
-    color: #fff;
-
+    /* color: #fff; */
 }
 
 #start-logo-container{
