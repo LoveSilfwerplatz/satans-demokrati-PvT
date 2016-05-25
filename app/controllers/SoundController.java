@@ -164,8 +164,17 @@ public class SoundController extends Controller{
     }
 
     public Result getDefaultBroadcast() {
+        // TODO Sätt en begränsning så att bara ett sound kan vara default broadcast
+        String query =  "SELECT sound.id, sound.name\n" +
+                        "FROM sound\n" +
+                        "WHERE sound.id IN\n" +
+                        "(SELECT sound FROM default_broadcast)";
+        SqlQuery sqlQuery = Ebean.createSqlQuery(query);
+        SqlRow sound = sqlQuery.findUnique();
+
         response().setHeader("Access-Control-Allow-Origin", "*");
-        return ok("getDefaultBroadcast()");
+
+        return ok(new Gson().toJson(sound));
     }
 
 }
