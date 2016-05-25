@@ -4,7 +4,7 @@
 
 
 // set to true for local play framework development
-var debug = true;
+var debug = false;
 var play_url = debug ? "http://localhost:9000" : "https://satans-demokrati-72.herokuapp.com";
 
 var myaudio = new Audio();
