@@ -6,7 +6,7 @@
     <meta http-equiv='Content-Type' content='text/html, charset=utf-8' lang="SE"/>
     <!-- Har ändrat massa säkerhetsinställningar för att få script att köra. Säkert livsfarlig?! /CJ -->
     <meta http-equiv="Content-Security-Policy"
-          content="default-src 'self' 'unsafe-inline' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; script-src 'unsafe-inline' *; connect-src 'unsafe-inline' *">
+          content="default-src 'self' 'unsafe-inline' data: gap: https://ssl.gstatic.com 'unsafe-eval' *; style-src 'self' 'unsafe-inline' *; media-src *; script-src 'unsafe-inline' *; connect-src 'unsafe-inline' *">
     <!-- Makes sure numbers in the page don't turn to phone number links. -->
     <meta name="format-detection" content="telephone=no">
     <!-- Turns off touch highlighting. -->
@@ -16,11 +16,11 @@
     <title>SATANS TRILOGI</title>
 
     <link rel="stylesheet" type="text/css"  href="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.css" />
-<!--    <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.css" /> -->
     <link rel="stylesheet" type="text/css" href="css/jqm_overloads.css" />
+    <link type="text/css" rel="stylesheet" href="css/allViews.css" />
+    <link type="text/css" rel="stylesheet" href="css/audio.css" />
     <!--
-    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css" />
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/home.css" />
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css">
     -->
 
@@ -40,7 +40,7 @@
             <div class="ui-grid-b" id="home-button-container">
                 <div class="ui-block-a"></div>
                 <div class="ui-block-b">
-                    <a class="ui-btn" href="home.html" data-transition="slide" id="home-button">HOME</a>
+                    <a class="ui-btn ui-btn-corner-all" href="home.html" data-transition="slide" id="home-button">HOME</a>
                 </div>
                 <div class="ui-block-c"></div>
             </div>
@@ -48,25 +48,24 @@
             <div class="ui-grid-b" id="login-button-container">
                 <div class="ui-block-a"></div>
                 <div class="ui-block-b">
-                    <a class="ui-btn" href="login.html" data-transition="slide" id="login-button">LOGIN</a>
+                    <a class="ui-btn ui-btn-corner-all" href="login.html" data-transition="slide" id="login-button">LOGIN</a>
                 </div>
                 <div class="ui-block-c"></div>
             </div>
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
-  <!--  <script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script> -->
     <script type="text/javascript" src="js/watch.js"></script>
     <script type="text/javascript" src="js/test.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/ando.js"></script>
+    <script type="text/javascript" src="js/audio.js"></script>
+    <script type="text/javascript" src="js/soundcloud.js"></script>
 
-<!--  <link rel="stylesheet" type="text/css"  href="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.css" /> -->
-     <!-- <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.css" /> -->
-    <link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.4.5.css" />
-    <link rel="stylesheet" type="text/css" href="css/jqm_overloads.css" />
+    <script type="text/javascript" src="js/MapScript.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0VKA6LegNq1Tp5I8Y1SJ7gtsZQSRaANA&callback=initMap"></script>
 
 </div>
 
