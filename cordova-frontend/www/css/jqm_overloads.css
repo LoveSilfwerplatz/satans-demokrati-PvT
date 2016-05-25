@@ -2,54 +2,26 @@
     font-family: "Baron_Neue_Black";
     src: url("../font/baron_neue/Baron Neue Black.otf");
 }
-
-#start-logo-container{
+.pvt-page {
+    background-color: #000;
+    /*color: #fff;*/
+}
+#index-logo-grid {
     max-width:100%;
     padding-top:10%;
 }
-
+#index-logo-grid div img {
+    max-width: 100%;
+}
 .ui-btn{
     font-family:"Baron_Neue_Black", Arial;
     font-size:1em;
-    /*
-    padding-bottom:10%;
-    background-color: #333;
-    color: #fff;
-    border: 3px solid #fff;
-    border-radius: 5px;
-    font-family:"Baron_Neue_Black", Arial;
-    font-size:1em;
-    text-decoration: none;
-    vertical-align: middle;
-    */
 }
-
-#start-logo-img{
-    max-width: 100%;
+/* Kill "loading" text */
+.ui-loader {
+    display:none !important;
 }
-
-.pvt_page {
-    background-color: #000;
-    color: #fff;
+/* Kill "loading" text */
+.ui-icon-loading {
+    background:none !important;
 }
-
-.pvt-page{
-    background-color: #000;
-    /* color: #fff; */
-}
-
-#start-logo-container{
-    padding-top:30%;
-}
-
-#start-logo-img{
-    max-width: 100%;
-}
-
-#start-home-button-container{
-    padding-top:10%
-}
-
-#start-home-button{
-}
-
