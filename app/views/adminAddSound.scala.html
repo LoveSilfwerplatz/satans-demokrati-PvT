@@ -29,19 +29,19 @@
 
             <div align="left">
                 <a href="#" id="connect"><img src="@routes.Assets.versioned("/images/scconnectbuttonL.png")"/></a>
-                <pre>Current user: <span id="username"></span></pre>
+                <pre>Inloggad som: <span id="username"></span></pre>
                 @*<pre>Sound name:</pre> <input type="text" name="name" id="name" required><br><br>*@
 
                     <!-- List of sounds uploaded to user's Soundcloud account, populated and enabled on login -->
-                <pre><label for="tracks">Broadcast name:</label></pre>
+                <pre><label for="tracks">Sändningsnamn:</label></pre>
                 <select id="tracksDrop" name="tracksDrop" required></select>
 
                     <!-- List of available towers -->
-                <pre><label for="towers">Assign to tower:</label></pre>
+                <pre><label for="towers">Tillhörande torn:</label></pre>
                 <select id="towerDrop" name="towerDrop" onchange="map()" required></select>
 
                     <!-- Name of character associated with the sound -->
-                <pre>Assign to character:</pre>
+                <pre>Tillhörande karaktär:</pre>
                 <input type="text" id="characterField" name="characterField" required><br><br>
 
                     <!-- Fields to store track data. Intended to be hidden, visible for testing purposes (they don't work) -->
@@ -49,7 +49,7 @@
                 <input type="hidden" id="trackID" name="trackID">
                 <input type="hidden" id="towerName" name="towerName">
 
-                <input type="submit" value="Submit" class="myButton" id="submitButton">
+                <input type="submit" value="Skicka" class="myButton" id="submitButton">
                 <br><br><br><br><p><img align="center" src="@routes.Assets.versioned("/images/sclogo2.png")"/></p>
 
             </div>

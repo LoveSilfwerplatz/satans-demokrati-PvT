@@ -52,7 +52,7 @@ if(buttonState === "R"){
     buttonState = "VIEW ALL USERS"
 
 } else if(buttonState === ""){
-    buttonState = "NOTHING TO DISPLAY"
+    buttonState = "INGENTING ATT VISA"
 }
 
 $(document).ready(function() {
