@@ -1,14 +1,39 @@
 /**
  * Created by Theo on 06/05/2016.
  */
-var debug = true;
-/*
- To correctly change debug (for backend), change is needed in following JS-files:
- admin.js
- Soundcloud.js
- MapScript.js
- */
-var play_url = debug ? "http://localhost:9000" : "https://satans-demokrati-72.herokuapp.com";
+
+//When document loads
+$(document).ready(function(){
+    hideFields();
+});
+
+
+// When user is logged in, show all relevant fields
+var showFields = function(){
+    $("#loggedInUserHead").show();
+    $("#tracksHead").show();
+    $("#tracksDrop").show();
+    $("#towerHead").show();
+    $("#towerDrop").show();
+    $("#characterHead").show();
+    $("#characterField").show();
+    $("#submitDiv").show();
+    $("#connect").hide();
+
+};
+
+// When user is not logged in, hide all relevant fields
+var hideFields = function(){
+    $("#loggedInUserHead").hide();
+    $("#tracksHead").hide();
+    $("#tracksDrop").hide();
+    $("#towerHead").hide();
+    $("#towerDrop").hide();
+    $("#characterHead").hide();
+    $("#characterField").hide();
+    $("#submitDiv").hide();
+    $("#connect").show();
+};
 
 
 
@@ -29,6 +54,7 @@ function addOption(selectbox, value, text) {
 // initiate auth popup, then populate page with username and drop-down list of uploaded tracks.
 $("#connect").on("click", function () {
     SC.connect().then(function () {
+        showFields();
         return SC.get('/me');
     }).then(function (me) {
         $("#username").text(me.username);
@@ -41,6 +67,7 @@ $("#connect").on("click", function () {
         });
     });
 });
+
 
 
 $("#tracksDrop").change(function () {

@@ -5,15 +5,15 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="@routes.Assets.versioned("css/addTower.css")">
-        <title>ADMIN: Lägg till torn</title>
+        <title>Skapa radiotorn</title>
         @*Disables "loading" print-problem from jquerymobile*@
         @*<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />*@
     </head>
 
     <body>
-
-        <button id="buttonBackToAdmin" class="myButton">Tillbaka</button>
-        <h1>ADMIN: Lägg till radiotorn</h1>
+        <br><br>
+        <div id="backDiv"><button id="buttonBackToAdmin" class="myButton">Tillbaka</button></div>
+        <h1>Skapa radiotorn</h1><br><br><br>
 
         <form name="myTower" id="myTower" action="http://localhost:9000/submitTower" method="POST">
             <div id="map">
@@ -27,17 +27,17 @@
             <div float="right">
                 <ul>
                     <li>Klicka på kartan för att välja de koordinater där radiotornet ska placeras.</li><br>
-                    <li><strong>Zooma in</strong>: Dubbelklicka</li>
-                    <li><strong>Zooma ut</strong>: Högerklicka</li>
-                    <li><strong>Zooma in/ut</strong>: Scrolla</li><br><br>
+                    <br>
                 </ul>
 
                 <pre>Radiotornnamn:</pre> <input type="text" name="towerName" id="towerName" required>
                 <pre>Sändningens räckvidd:</pre> <input type="number" min="1" name="towerRadius" id="towerRadius" required>
+                <br>
                 <pre>Koordinater:</pre>
                 <input type="text" id="latitude" name="latitude"><br>
                 <input type="text" id="longitude" name="longitude">
-                <input type="submit" value="Skicka" class="myButton" id="submitButton">
+                <br><br>
+                <div id="submitDiv"><input type="submit" value="Skicka" class="myButton" id="submitButton"></div>
             </div>
         </form>
 

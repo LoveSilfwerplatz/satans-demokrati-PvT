@@ -10,6 +10,7 @@ var play_url = debug ? "http://localhost:9000" : "https://satans-demokrati-72.he
 
 
 
+
 //general buttons
 
 $('#buttonBackToAdmin').click(function(){
@@ -45,11 +46,11 @@ $('#buttonAddSound').click(function(){
 var buttonState = $("#boxText").text().charAt(0).toUpperCase();
 
 if(buttonState === "R"){
-    buttonState = "VIEW ALL TOWERS";
+    buttonState = "VISA ALLA RADIOTORN";
 } else if(buttonState === "L"){
-    buttonState = "VIEW ALL SOUNDS";
+    buttonState = "VISA ALLA SÄNDNINGAR";
 } else if(buttonState === "A"){
-    buttonState = "VIEW ALL USERS"
+    buttonState = "VISA ALLA ANVÄNDARE"
 
 } else if(buttonState === ""){
     buttonState = "INGENTING ATT VISA"
@@ -94,3 +95,5 @@ function map(){
         });
     });
 }
+
+

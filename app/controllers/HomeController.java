@@ -88,13 +88,15 @@ public class HomeController extends Controller {
     @Transactional
     public Result formattedSounds(){
         String tabs = "\t\t\t\t\t";
-        String result = "Ljudfiler\nID:" + "\t\t" + "Namn:\n";
+        String result = "Ljudfiler\nID:" + "\t\t\t\t" + "Namn:" + "\n";
 
         Model.Finder<Integer, Sound> finder = new Model.Finder<>(Sound.class);
         List<Sound> allSounds = finder.all();
 
         for(Sound s: allSounds){
-            result += s.getID() + "\t\t" + s.getName()+"\n";
+
+
+            result += s.getID() + "\t\t" + s.getName() + "\t("+s.getAssignedCharacter()+")"+"\n";
 
         }
 
