@@ -1,67 +1,40 @@
-#home_page {
-
-    background-color: #000;
-    color: #fff;
-
+#home-st-logo-grid{
+    max-width:100%;
 }
-
-#home_page_title{
- /*   background-color:red; */
-    padding-right: 10px;
+#home-st-logo-grid div img{
+    max-width:100%;
 }
-
-#title_small{
-    text-align:right;
-    font-size:1em;
-    margin-bottom:-3%;
-    /* background-color: #3f51b5; */
+#home-st-fasad-grid {
+    max-width: 100%;
+    margin-top: 5%;
 }
-#title_large{
-    text-align:right;
-    font-size:5em;
-    margin-top:0;
-    /* background-color: #3f51b5; */
+#home-st-fasad-grid div img {
+    max-width: 100%;
 }
-
-
-
-#sd-logo-grid{
-
+#home-radio-grid {
+    max-width: 100%;
+    margin-top: 10%;
 }
-
-#officialFont {
+#radio {
+    max-width: 100%;
+    /*
+    border: 1px solid #fff;
     text-align: center;
+    */
 }
-
+#bottom-menu-grid {
+    margin-top: 25%;
+}
 #bottom-menu-grid img {
     max-width: 100%;
 }
-
-#bottom-menu-grid {
-    margin-top: 30%;
+#placeholder-black{
+    min-width:25%;
+    max-width:33%;
 }
-
-#sd-logo-grid img {
-    max-width: 80%;
-}
-
-#radio-grid {
-    margin-top: 10%;
-}
-
-#sd-fasad-grid img {
-    max-width: 100%;
-}
-
-#sd-fasad-grid {
-    margin-top: 5%;
-}
-
-#radio {
-    border: 1px solid #fff;
-    text-align: center;
-}
-
-.ui-block-b {
-    /* border: 1px solid red; */
+.middle-grid{
+    max-width:50%;
+    display:block;
+    margin-left:auto;
+    margin-top:auto;
 }

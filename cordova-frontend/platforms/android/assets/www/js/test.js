@@ -4,7 +4,7 @@
 
 
 // set to true for local play framework development
-var debug = false;
+var debug = true;
 var play_url = debug ? "http://localhost:9000" : "https://satans-demokrati-72.herokuapp.com";
 
 var myaudio = new Audio();
@@ -85,6 +85,11 @@ function stopStream() {
     playing = false;
     myaudio.src = "";
 
+}
+
+// hardcoded method to change default position
+function defaultPosKista(){
+    alert("hej");
 }
 
 

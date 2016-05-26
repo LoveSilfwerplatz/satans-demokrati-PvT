@@ -68,7 +68,7 @@ public class postrqplugin extends CordovaPlugin {
                 //conn.setConnectTimeout(15000);
                 //conn.setRequestMethod("POST");
                 //conn.setDoOutput(true);
-                // conn.setRequestProperty("User-Agent","Mozilla/5.0 ( compatible ) ");
+               // conn.setRequestProperty("User-Agent","Mozilla/5.0 ( compatible ) ");
                 //conn.setRequestProperty("Accept","*/*");
 
 
