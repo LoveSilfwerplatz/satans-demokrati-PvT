@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Facebook Login JavaScript Example</title>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-2.2.3.js"
+            integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+</head>
+<body>
+<style>
+    body {
+        background-color: #000;
+        color: #fff;
+    }
+</style>
+<script src="js/fb-login.js"></script>
+
+<fb:login-button scope="public_profile,email,user_friends" onlogin="checkLoginState();">
+</fb:login-button>
+
+<div id="status">
+</div>
+
+
+</body>
+</html>

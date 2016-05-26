@@ -16,13 +16,6 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
-    soundInit = false;
-    myaudio;
-    myaudioURL;
-    playing;
-
-
 var app = {
     // Application Constructor
     initialize: function() {
@@ -43,25 +36,97 @@ var app = {
         $(document).ready(function() {
             $('#login-form').submit(function(e) {
                 console.log("NU KÖR VI");
-                e.preventDefault();
-
                 var formData = $("#login-form").serializeArray();
                 var URL = $("#login-form").attr("action");
+                var name = $('#name').val();
+                var password = $('#password').val();
+
+                e.preventDefault();
+                if (device.platform == 'Android') {
 
 
+                    requestPlugin = function (str, callback) {
+                        cordova.exec(callback, callback, "postrqplugin", "login", str);
+                    };
 
-                $.post(URL, formData, function(data, textStatus, jqXHR) {
-                    console.log(data);
-                    window.localStorage.setItem("token", data);
-                    window.location.replace("home.html");
+                    requestPlugin(['https://satans-demokrati-72.herokuapp.com/login',
+                        'name=' + name + '&password=' + password], function (echoValue) {
 
-                    // För att hämta var value = window.localStorage.getItem("token");
-                }).fail(function(jqXHR, textStatus, errorThrown) {
-                    alert(textStatus + " " + errorThrown);
-                    Materialize.toast("Wrong password/username provided.", 10000);
 
-                });
+                        window.localStorage.setItem("token", echoValue);
+                        if (echoValue == "fail") {
+                            alert("Wrong name/password combination");
+                        }
+                        else {
+                            window.location.replace("home.html");
+
+                        }
+
+                    });
+                }
+                else{
+                    $.post(URL, formData, function(data, textStatus, jqXHR) {
+                        console.log(data);
+                        window.localStorage.setItem("token", data);
+                        window.location.replace("home.html");
+
+                        // För att hämta var value = window.localStorage.getItem("token");
+                    }).fail(function(jqXHR, textStatus, errorThrown) {
+                        alert("Wrong name/password combination");
+                        //Materialize.toast("Wrong password/username provided.", 10000);
+
+                    });
+
+                }
             });
+            $('#register-form').submit(function(e) {
+                e.preventDefault();
+
+                var name = $('#name').val();
+                var password = $('#password').val();
+                var email = $('#email').val();
+
+                if (device.platform == 'Android') {
+                    requestPlugin = function (str, callback) {
+                        cordova.exec(callback, callback, "BackgroundMode", "login", str);
+                    };
+
+                    requestPlugin(['https://satans-demokrati-72.herokuapp.com/signin',
+                        'email=' + email + '&password=' + password + '&name=' + name], function (echoValue) {
+
+
+                        window.localStorage.setItem("token", echoValue);
+                        if (echoValue == "fail") {
+                            alert("Wrong name/password combination");
+
+                        }
+                        else {
+                            window.location.replace("login.html");
+                        }
+
+
+                    });
+
+                } else {
+                    var formData = $("#register-form").serializeArray();
+                    var URL = $("#register-form").attr("action");
+
+                    $.post(URL,
+                        formData,
+                        function(data, textStatus, jqXHR)
+                        {
+                            window.localStorage.setItem("token", data);
+
+                            window.location.replace("login.html");
+                            // För att hämta var value = window.localStorage.getItem("token");
+                        }).fail(function(jqXHR, textStatus, errorThrown){
+                                alert("Username already exists!");
+
+                    });
+                }
+            });
+
+
             function fetchStuffFromDB() {
                 $.getJSON(play_url + "/test", function (radios) {
                     // empty List
@@ -76,25 +141,6 @@ var app = {
                 });
             }
 
-            $('#register-form').submit(function(e) {
-                e.preventDefault();
-
-                var formData = $("#register-form").serializeArray();
-                var URL = $("#register-form").attr("action");
-
-                $.post(URL,
-                    formData,
-                    function(data, textStatus, jqXHR)
-                    {
-                        window.localStorage.setItem("token", data);
-
-                        window.location.replace("login.html");
-                        // För att hämta var value = window.localStorage.getItem("token");
-                    }).fail(function(jqXHR, textStatus, errorThrown)
-                {
-
-                });
-            });
             var token =  window.localStorage.getItem("token");
             // ait lets go
             $.ajax({
@@ -114,6 +160,8 @@ var app = {
                 }
             });
 
+
+            
             $('#secure-test').click(function(e) {
                 var token =  window.localStorage.getItem("token");
                 // ait lets go
@@ -169,6 +217,7 @@ var app = {
 
         console.log('Received Event: ' + id);
     }
+
 };
 
 app.initialize();

@@ -8,7 +8,7 @@ var play_url = debug ? "http://localhost:9000" : "https://satans-demokrati-72.he
 
 $(document).ready(function() {
     if (!soundInit) {
-        alert("bbb");
+        // alert("bbb");
         myaudio = new Audio();
         myaudioURL = null;
         playing = false;

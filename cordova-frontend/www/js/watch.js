@@ -136,7 +136,7 @@ $( document ).ready(function() {
        if (playing == true)
            fadeout();
        else {
-           myaudioURL = towerAudio[0].filepath;
+           myaudioURL = "http://api.soundcloud.com/tracks/" + towerAudio[0].id + "/stream?client_id=6a0f1d47b7df82417d31a6947ab0032c";
            try {
                myaudio = new Audio(myaudioURL);
 

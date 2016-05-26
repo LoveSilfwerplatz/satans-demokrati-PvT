@@ -15,6 +15,9 @@
         },
         "cordova-plugin-background-mode": {
             "PACKAGE_NAME": "io.cordova.hellocordova"
+        },
+        "cordova-plugin-postrq": {
+            "PACKAGE_NAME": "io.cordova.hellocordova"
         }
     },
     "dependent_plugins": {
@@ -25,9 +28,6 @@
             "PACKAGE_NAME": "io.cordova.hellocordova"
         },
         "cordova-plugin-compat": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
-        },
-        "cordova-plugin-device": {
             "PACKAGE_NAME": "io.cordova.hellocordova"
         }
     }

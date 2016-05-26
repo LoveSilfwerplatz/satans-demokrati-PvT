@@ -1,0 +1,27 @@
+@font-face{
+    font-family: "Baron_Neue_Black";
+    src: url("../font/baron_neue/Baron Neue Black.otf");
+}
+.pvt-page {
+    background-color: #000;
+    /*color: #fff;*/
+}
+#index-logo-grid {
+    max-width:100%;
+    padding-top:10%;
+}
+#index-logo-grid div img {
+    max-width: 100%;
+}
+.ui-btn{
+    font-family:"Baron_Neue_Black", Arial;
+    font-size:1em;
+}
+/* Kill "loading" text */
+.ui-loader {
+    display:none !important;
+}
+/* Kill "loading" text */
+.ui-icon-loading {
+    background:none !important;
+}

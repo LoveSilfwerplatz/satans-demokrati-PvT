@@ -1,58 +1,23 @@
 #audio_page {
     background-color: #000;
     color: #fff;
-
 }
 
-
-h1 {
-    text-align:center;
-    /*
-
-    font-size:24px;
-    font-weight:normal;
-    margin:0;
-    overflow:visible;
-    padding:0;
-
-    color: #fff;
-   */
+#audio-title-grid img{
+    width:50%;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
 }
-
-#playButton{
-    float:top;
-    width:100px;
-    height:100px;
+#radio-button-grid div img{
+    max-width:100%;
+    display:block;
     margin-left:auto;
     margin-right:auto;
 }
 
-/*
-#playButton:hover{
-    background-color: green;
-}
-*/
-
 #playButton:active{
     transform:scale(1.1, 1.1);
-}
-
-button {
-    font-size: 1.5em;
-    background-color: black;
-    border: 0;
-    margin-left: auto;
-    margin-right: auto;
-}
-/*
-button:hover {
-    background-color: darkslategrey;
-    border-radius: 10%;
-}
-*/
-#ppButtonImg{
-    width:100%;
-    height:100%;
 }
 
 #radioList {
@@ -64,7 +29,6 @@ button:hover {
 #radioList a {
     font-size: 1.5em;
     text-decoration: none;
-    color: #fff;
     color: #000;
 }
 
@@ -78,7 +42,9 @@ ul#radioList {
     list-style-type: square;
 }
 
-#back_button {
-    text-decoration: none;
-    color: white;
+#audio-back-button-grid div a img{
+    width:100%;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
 }

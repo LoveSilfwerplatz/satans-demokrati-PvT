@@ -21,292 +21,101 @@
 
 package de.appplant.cordova.plugin.background;
 
-import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
+import org.apache.cordova.CallbackContext;
+
+
+// Post
+import java.io.*;
+import java.net.*;
+import java.util.*;
+// Post end
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.app.Activity;
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-
+/*
+*   TODO:
+*   - URL *
+*   - POST / GET *
+*   - Values
+*   - Custom headers
+*
+* */
 public class BackgroundMode extends CordovaPlugin {
 
-    // Event types for callbacks
-    private enum Event {
-        ACTIVATE, DEACTIVATE, FAILURE
-    }
-
-    // Plugin namespace
-    private static final String JS_NAMESPACE = "cordova.plugins.backgroundMode";
-
-    // Flag indicates if the app is in background or foreground
-    private boolean inBackground = false;
-
-    // Flag indicates if the plugin is enabled or disabled
-    private boolean isDisabled = true;
-
-    // Flag indicates if the service is bind
-    private boolean isBind = false;
-
-    // Default settings for the notification
-    private static JSONObject defaultSettings = new JSONObject();
-
-    // Tmp config settings for the notification
-    private static JSONObject updateSettings;
-
-    // Used to (un)bind the service to with the activity
-    private final ServiceConnection connection = new ServiceConnection() {
-
-        @Override
-        public void onServiceConnected(ComponentName name, IBinder binder) {
-            // Nothing to do here
-        }
-
-        @Override
-        public void onServiceDisconnected(ComponentName name) {
-            // Nothing to do here
-        }
-    };
-
-    /**
-     * Executes the request.
-     *
-     * @param action   The action to execute.
-     * @param args     The exec() arguments.
-     * @param callback The callback context used when
-     *                 calling back into JavaScript.
-     *
-     * @return
-     *      Returning false results in a "MethodNotFound" error.
-     *
-     * @throws JSONException
-     */
     @Override
-    public boolean execute (String action, JSONArray args,
-                            CallbackContext callback) throws JSONException {
+    public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+        if (action.equals("login")) {
+            String urlString = args.getString(0); // Vilken url som helst
+            //String urlParameters = args.getString(1); // Vilket data som helst
+            //String urlMethod = args.getString(2);
+            //String password = args.getString(1);
+            String resultString = "knas";
+            //String url = "https://satans-demokrati-72.herokuapp.com/login";
+            //"https://satans-demokrati-72.herokuapp.com/login"
+            /* POST REQUEST */
 
-        if (action.equalsIgnoreCase("configure")) {
-            JSONObject settings = args.getJSONObject(0);
-            boolean update = args.getBoolean(1);
+            String urlParameters = args.getString(1);
 
-            if (update) {
-                setUpdateSettings(settings);
-                updateNotifcation();
-            } else {
-                setDefaultSettings(settings);
+
+            try {
+
+                //URL url = new URL(urlString);
+                //HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                //conn.setReadTimeout(15000);
+                //conn.setConnectTimeout(15000);
+                //conn.setRequestMethod("POST");
+                //conn.setDoOutput(true);
+               // conn.setRequestProperty("User-Agent","Mozilla/5.0 ( compatible ) ");
+                //conn.setRequestProperty("Accept","*/*");
+
+
+                //String urlParameters = "name=322&password=322";
+                URL url = new URL(urlString);
+                URLConnection conn = url.openConnection();
+                
+
+                conn.setDoOutput(true);
+
+                OutputStreamWriter writer = new OutputStreamWriter(conn.getOutputStream());
+
+                writer.write(urlParameters);
+                writer.flush();
+
+                String line;
+                BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+                while ((line = reader.readLine()) != null) {
+                    resultString = line;
+                }
+
+                writer.close();
+                reader.close();
+
+            } catch (IOException e) {
+                this.echo("fail", callbackContext);
+                throw new RuntimeException(e);
             }
 
+
+
+
+            /*Post request end */
+
+            // return values
+            this.echo(resultString, callbackContext);
             return true;
         }
-
-        if (action.equalsIgnoreCase("enable")) {
-            enableMode();
-            return true;
-        }
-
-        if (action.equalsIgnoreCase("disable")) {
-            disableMode();
-            return true;
-        }
-
         return false;
     }
 
-    /**
-     * Called when the system is about to start resuming a previous activity.
-     *
-     * @param multitasking
-     *      Flag indicating if multitasking is turned on for app
-     */
-    @Override
-    public void onPause(boolean multitasking) {
-        super.onPause(multitasking);
-        inBackground = true;
-        startService();
-    }
-
-    /**
-     * Called when the activity will start interacting with the user.
-     *
-     * @param multitasking
-     *      Flag indicating if multitasking is turned on for app
-     */
-    @Override
-    public void onResume(boolean multitasking) {
-        super.onResume(multitasking);
-        inBackground = false;
-        stopService();
-    }
-
-    /**
-     * Called when the activity will be destroyed.
-     */
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        stopService();
-    }
-
-    /**
-     * Enable the background mode.
-     */
-    private void enableMode() {
-        isDisabled = false;
-
-        if (inBackground) {
-            startService();
+    private void echo(String message, CallbackContext callbackContext) {
+        if (message != null && message.length() > 0) {
+            callbackContext.success(message);
+        } else {
+            callbackContext.error("ngt");
         }
-    }
-
-    /**
-     * Disable the background mode.
-     */
-    private void disableMode() {
-        stopService();
-        isDisabled = true;
-    }
-
-    /**
-     * Update the default settings for the notification.
-     *
-     * @param settings
-     *      The new default settings
-     */
-    private void setDefaultSettings(JSONObject settings) {
-        defaultSettings = settings;
-    }
-
-    /**
-     * Update the config settings for the notification.
-     *
-     * @param settings
-     *      The tmp config settings
-     */
-    private void setUpdateSettings(JSONObject settings) {
-        updateSettings = settings;
-    }
-
-    /**
-     * The settings for the new/updated notification.
-     *
-     * @return
-     *      updateSettings if set or default settings
-     */
-    protected static JSONObject getSettings() {
-        if (updateSettings != null)
-            return updateSettings;
-
-        return defaultSettings;
-    }
-
-    /**
-     * Called by ForegroundService to delete the update settings.
-     */
-    protected static void deleteUpdateSettings() {
-        updateSettings = null;
-    }
-
-    /**
-     * Update the notification.
-     */
-    private void updateNotifcation() {
-        if (isBind) {
-            stopService();
-            startService();
-        }
-    }
-
-    /**
-     * Bind the activity to a background service and put them into foreground
-     * state.
-     */
-    private void startService() {
-        Activity context = cordova.getActivity();
-
-        Intent intent = new Intent(
-                context, ForegroundService.class);
-
-        if (isDisabled || isBind)
-            return;
-
-        try {
-            context.bindService(
-                    intent, connection, Context.BIND_AUTO_CREATE);
-
-            fireEvent(Event.ACTIVATE, null);
-
-            context.startService(intent);
-        } catch (Exception e) {
-            fireEvent(Event.FAILURE, e.getMessage());
-        }
-
-        isBind = true;
-    }
-
-    /**
-     * Bind the activity to a background service and put them into foreground
-     * state.
-     */
-    private void stopService() {
-        Activity context = cordova.getActivity();
-
-        Intent intent = new Intent(
-                context, ForegroundService.class);
-
-        if (!isBind)
-            return;
-
-        fireEvent(Event.DEACTIVATE, null);
-
-        context.unbindService(connection);
-        context.stopService(intent);
-
-        isBind = false;
-    }
-
-    /**
-     * Fire vent with some parameters inside the web view.
-     *
-     * @param event
-     *      The name of the event
-     * @param params
-     *      Optional arguments for the event
-     */
-    private void fireEvent (Event event, String params) {
-        String eventName;
-
-        if (updateSettings != null && event != Event.FAILURE)
-            return;
-
-        switch (event) {
-            case ACTIVATE:
-                eventName = "activate"; break;
-            case DEACTIVATE:
-                eventName = "deactivate"; break;
-            default:
-                eventName = "failure";
-        }
-
-        String active = event == Event.ACTIVATE ? "true" : "false";
-
-        String flag = String.format("%s._isActive=%s;",
-                JS_NAMESPACE, active);
-
-        String fn = String.format("setTimeout('%s.on%s(%s)',0);",
-                JS_NAMESPACE, eventName, params);
-
-        final String js = flag + fn;
-
-        cordova.getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                webView.loadUrl("javascript:" + js);
-            }
-        });
     }
 }

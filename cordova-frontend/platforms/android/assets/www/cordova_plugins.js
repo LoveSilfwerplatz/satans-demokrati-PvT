@@ -40,7 +40,8 @@ module.exports.metadata =
     "cordova-plugin-background-mode": "0.6.5",
     "cordova-plugin-compat": "1.0.0",
     "cordova-plugin-geolocation": "2.2.0",
-    "cordova-plugin-whitelist": "1.2.1"
+    "cordova-plugin-whitelist": "1.2.1",
+    "cordova-plugin-postrq": "1.0.2"
 };
 // BOTTOM OF METADATA
 });

@@ -1,12 +1,21 @@
 // set to true for local play framework development
-var debug = false;
+var debug = true;
 var play_url = debug ? "http://localhost:9000" : "https://satans-demokrati-72.herokuapp.com";
 
-var myaudio = new Audio();
-var myaudioURL = null;
-var playing = false;
+
+
+
 
 $(document).ready(function() {
+    if (!soundInit) {
+        // alert("bbb");
+        myaudio = new Audio();
+        myaudioURL = null;
+        playing = false;
+        soundInit = true;
+    }
+    
+
     // register onclick function for list items in #radioList
     $('#radioList').on('click', 'li', function() {
         // remove active css class from all list items
@@ -14,6 +23,8 @@ $(document).ready(function() {
 
         // get the element we just clicked and add active css class to it
         $(this).addClass('active-radio-choice');
+
+        console(isActive(myaudio));
     });
     
     fetchStuffFromDB();
@@ -58,6 +69,46 @@ function swapRadio(radioName, filepath) {
     playStream();
 }
 
+function fadeout() {
+//var beepTwo = $("#musicBeat");
+//beepTwo[0].play();
+
+  //  $("#dan").click(function () {
+            console.log ("querty if paused");
+        if (myaudio.paused == false) {
+            console.log("Lower it!");
+            // myaudio[0].animate({volume: 0}, 2000, 'swing', function () {
+            console.log("Paused it!");
+            fadeoutAudio();
+            // });
+
+        } else {
+            console.log ("restart!");
+            myaudio.volume = 1;
+            myaudio.play();
+            //myaudio[0].animate({volume: 1}, 2000);
+        }
+    };
+
+function fadeoutAudio () {
+
+    var fadeAudio = setInterval(function () {
+         var tempaudiovar = myaudio.volume;
+
+        if ((tempaudiovar - 0.1 > 0.0)) {
+            console.log("Fading");
+            myaudio.volume -= 0.1;
+        }
+        else {
+            console.log("ClearFade");
+            clearInterval(fadeAudio);
+            myaudio.pause();
+        }
+    }, 200);
+}
+
+
+
 var playStream = function () {
     if (!playing) {
         try {
@@ -83,4 +134,17 @@ var playStream = function () {
 function stopStream() {
     playing = false;
     myaudio.src = "";
+}
+
+function muteStream(){
+    fadeout();
+    if(playing){
+        if(myaudio.muted){
+            myaudio.muted = false;
+        }
+        else{
+            myaudio.muted = true;
+        }
+    }
+
 }
