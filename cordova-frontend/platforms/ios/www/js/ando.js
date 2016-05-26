@@ -38,6 +38,19 @@ $(document).ready(function() {
 
         });
     });
+    function fetchStuffFromDB() {
+        $.getJSON(play_url + "/test", function (radios) {
+            // empty List
+            $('#radioList').empty();
+
+            //add to list
+            $.each(radios, function (i, radio) {
+                $('#radioList').append(generateRadioLink(radio));
+            });
+            // refresh list ( Seem to not do anything atm)
+            $('#radioList').listview("refresh");
+        });
+    }
 
     $('#register-form').submit(function(e) {
         e.preventDefault();
