@@ -3,7 +3,7 @@
     src: url("../font/baron_neue/Baron Neue Black.otf");
 }
 .pvt-page {
-    background-color: #000;
+    background-color: #000 !important;
     /*color: #fff;*/
 }
 #index-logo-grid {
