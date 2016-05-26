@@ -1,6 +1,5 @@
 <div data-role="page" class="pvt-page" id="map_page" data-title="MAP">
     <div data-role="content" id="map-content">
-
         <div class="ui-grid-b" id="map-button-and-header-grid">
 
             <div class="ui-block-a" id="map-backbutton">
@@ -21,8 +20,9 @@
                 <div id="map"></div>
             </div>
         </div>
+    </div>
 
-        <style>
+    <style>
         #map-content{
            /* background-color: #000; */
         }
@@ -45,7 +45,6 @@
         }
 
         #map{
-
             position: absolute;
             top: 20%;
             right: 0;
@@ -53,18 +52,13 @@
             left: 0;
             border: 3px solid white;
             border-radius: 5px;
-
         }
-
     </style>
-
-        <script type="text/javascript" src="js/MapScript.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0VKA6LegNq1Tp5I8Y1SJ7gtsZQSRaANA&callback=initMap"></script>
-    </div>
-
     <!--
     <script src="https://code.jquery.com/jquery-2.2.3.js"
             integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
 -->
+    <script type="text/javascript" src="js/MapScript.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0VKA6LegNq1Tp5I8Y1SJ7gtsZQSRaANA&callback=initMap"></script>
 
 </div>

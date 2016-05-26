@@ -6,17 +6,15 @@ var play_url = debug ? "http://localhost:9000" : "https://satans-demokrati-72.he
 
 
 //Only Temp Script, Should probly be combined later when doing the html dynamically
-console.log("här");
 var map;
 var testPos = {
     lat: 59.4069349,
     lng: 17.945128
 };
-console.log("innan initMap");
 function initMap() {
     var mapCanvas = document.getElementById('map');
         mapOptions = {
-        center: {lat: 666, lng: 666},
+        center: {lat: 1, lng: 10},
         zoom: 15, disableDefaultUI: true
     };
     var map = new google.maps.Map(mapCanvas, mapOptions);
@@ -61,7 +59,7 @@ function initMap() {
         // Browser doesn't support Geolocation
         handleLocationError(false, infoWindow, map.getCenter());
     }
-    $("#map").addClass("map-loaded");
+    
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
