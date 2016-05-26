@@ -2,27 +2,50 @@
     <!-- <script type="text/javascript" src="js/test.js"></script> -->
 
     <div data-role="content" class="officialFont" data-enhance="false">
-        <h1>SÄNDNINGAR FRÅN SATANS TRILOGI</h1>
-        <ul data-role="listview" data-inset="true" id="radioList" class="officialFont"></ul>
-<!--
-        <div id="playButton">
-            <button onclick="playStream()"><img id="ppButtonImg" src="img/Satan_Knapp_Play.png"/>
-            </button>
+        <div class="ui-grid-solo" id="audio-title-grid">
+            <img src="img/transmissions.png" />
+            <ul data-role="listview" data-inset="true" id="radioList" class="officialFont"></ul>
+    <!--
+            <div id="playButton">
+                <button onclick="playStream()"><img id="ppButtonImg" src="img/Satan_Knapp_Play.png"/>
+                </button>
+            </div>
+    -->
         </div>
--->
-        <div id="playButton" onclick="playStream()">
-            <img id="ppButtonImg" src="img/Satan_Knapp_Play.png"/>
-        </div>
-        <br />
-        <div class="back_button_container">
-            <a class="back_button_link" href="home.html" data-transition="slide" data-direction="reverse">
-                <img class="back_button_img" src="img/back_arrow_02.png" />
-            </a>
-        </div>
-    </div>
 
+        <div class="ui-grid-b" id="radio-button-grid">
+            <div class="ui-block-a"></div>
+            <div class ="ui-block-b" id="playButton" onclick="playStream()">
+                <img id="ppButtonImg" src="img/Satan_Knapp_Play.png"/>
+            </div>
+            <div class="ui-block-c"></div>
+        </div>
+
+        <div class="ui-grid-b" id="audio-back-button-grid">
+            <div class="ui-block-a"></div>
+            <div class="ui-block-b">
+                <a href="home.html" data-transition="slide" data-direction="reverse">
+                    <img id="" src="img/back_arrow_02.png" />
+                </a>
+            </div>
+            <div class="ui-block-c"></div>
+        </div>
+        <div id="muteButton" onclick="muteStream()"><p>Mute</p></div>
+        <div id="credits"><p id="uploader">
+            Sändning uppladdad av
+        </p>
+        <p id="link">
+            Sändningslänk
+        </p>
+        <p id="logo">
+            <img src="sclogo.png"/>
+        </p></div>
+    </div>
+<!--
     <link type="text/css" rel="stylesheet" href="css/allViews.css" />
     <link type="text/css" rel="stylesheet" href="css/audio.css" />
     <script type="text/javascript" src="js/audio.js"></script>
+    -->
+    <script type="text/javascript" src="/public/js/Soundcloud.js"></script>
 
 </div>

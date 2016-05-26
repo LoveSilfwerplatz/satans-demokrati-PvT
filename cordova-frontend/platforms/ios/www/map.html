@@ -1,91 +1,64 @@
-<!--
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-<meta charset="UTF-8">
-<title>KARTA</title>
-
-<script src="https://code.jquery.com/jquery-2.2.3.js"
-        integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js"></script>
-
-</head>
-<body>
--->
-<div data-role="page" id="map_page" data-title="MAP" class="black">
+<div data-role="page" class="pvt-page" id="map_page" data-title="MAP">
     <div data-role="content" id="map-content">
-        <div id="map-page-wrapper">
-            <div class="back_button_container" id="map-back-button">
-                <a class="back_button_link" href="home.html" data-transition="slide" data-direction="reverse">
-                    <img class="back_button_img" src="img/back_arrow_02.png" />
+        <div class="ui-grid-b" id="map-button-and-header-grid">
+
+            <div class="ui-block-a" id="map-backbutton">
+                <a href="home.html" data-transition="slide" data-direction="reverse">
+                    <img src="img/back_arrow_02.png" />
                 </a>
             </div>
 
-            <div id="map-header-container">
-                <h1 id="map-header">KARTA ÖVER RADIOTORN</h1>
+            <div class="ui-block-b" id="map-header">
+                <img id="map-header-img" src="img/radiotorn.png" />
             </div>
+
+            <div class="ui-block-c"></div>
         </div>
 
-        <div id="map-container">
-            <div id="map"></div>
+        <div class="ui-grid-solo" id="map-container">
+            <div class="ui-block-a">
+                <div id="map"></div>
+            </div>
         </div>
     </div>
 
     <style>
-        #map-page-wrapper{
-           /* background-color:#000; */
-            margin-top:0;
-            margin-left:auto;
-            margin-right:auto;
-            width:70%;
+        #map-content{
+           /* background-color: #000; */
         }
-        #map-header-container{
-            background-color:#000;
-            margin-top:0;
-            margin-left:auto;
-            margin-right:auto;
-            width:50%;
+        #map-button-and-header-grid{
+            max-height:20%;
         }
         #map-header{
-            font-family:"Baron Neue Black", Roboto-Medium;
-            text-align:center;
-            padding:5px;
-            padding-bottom:3%;
-            color:#fff;
+            max-width:33%;
+            max-height:20%;
         }
+        #map-header img {
+            max-width:100%;
+        }
+        #map-backbutton{
+            width:33%;
+        }
+        #map-backbutton a img{
+            width:40%;
+            margin-top:0;
+        }
+
         #map{
             position: absolute;
-            top: 21%;
-            right: 1%;
-            bottom: 1%;
-            left: 1%;
-            border: 3px solid black;
+            top: 20%;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            border: 3px solid white;
             border-radius: 5px;
         }
-        .back_button_container{
-            width:12%;
-            height:0.5%;
-        }
-        #map-back-button{
-            /*position:absolute;*/
-            float:left;
-            margin-top:-3.5%;
-            margin-left:-20%;
-            top:0px;
-        }
-        .back_button_img{
-            width:85%;
-            height:17%;
-        }
     </style>
+    <!--
     <script src="https://code.jquery.com/jquery-2.2.3.js"
             integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+-->
     <script type="text/javascript" src="js/MapScript.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0VKA6LegNq1Tp5I8Y1SJ7gtsZQSRaANA&callback=initMap"></script>
+
 </div>
-<!--
-</body>
-</html>
--->

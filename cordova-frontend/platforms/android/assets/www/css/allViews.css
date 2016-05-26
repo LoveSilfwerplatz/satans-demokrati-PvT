@@ -25,24 +25,27 @@
 }
 
 .back_button_link {
+    /*
     text-decoration: none;
     font-size:20px;
     color:#fff;
+    */
 }
 .back_button_container{
-   /* float:top; */
+   /* float:top;
     text-align:center;
     padding:5px;
     width:10%;
     height:20%;
-   /* background-color: red; */
     margin-left:auto;
     margin-right:auto;
+    */
 }
 
 .back_button_img{
-    width:80%;
-    height:17%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
@@ -52,6 +55,9 @@
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
 }
 
+.view-title{
+    text-align:center;
+}
 #map-page{
     background-color: #000;
 }

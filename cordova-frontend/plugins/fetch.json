@@ -62,5 +62,13 @@
         },
         "is_top_level": false,
         "variables": {}
+    },
+    "cordova-plugin-postrq": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-postrq"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

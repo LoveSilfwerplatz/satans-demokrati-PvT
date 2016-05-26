@@ -7,6 +7,8 @@ var watch_play_url;     //URL
 var myaudio = new Audio();
 var myaudioURL = null;
 var playing = false;
+var defaultTower = "None" // Default vaule should be None, otherwise it will not no what to do!
+var currentTower = defaultTower // Will Be set to other vaules during script.
 
 $( document ).ready(function() {
     bind();
@@ -60,15 +62,24 @@ $( document ).ready(function() {
                     });
 
                     alert("Tower found!");
-
+                   
+                    
+                    if (currentTower != tower.name){
                     $.getJSON(watch_play_url + "/getTowerSounds?towerId="+tower.id, function (towerSounds) {
+                        currentTower = tower.name;
                         playRadio(towerSounds);
-                    })
+                        
+                    })}
 
                 }
                 else{
                     console.log(tower.name + " Not Found");
-                    // Play hardcoded radio?
+                    if(currentTower != defaultTower);
+                    $.getJSON(watch_play_url + "/getDefaultBroadcast?", function (defaultBroadcast) {
+                        currentTower = defaultTower;
+                        playRadio(defaultBroadcast);
+                    })
+                    
                 }
                 console.log(" ");
 
@@ -121,25 +132,28 @@ $( document ).ready(function() {
         }
     }
 
-   function playRadio(towerAudio){
-       fadeout();
-       myaudioURL = towerAudio[0].filepath;
-               try {
-                   myaudio = new Audio(myaudioURL);
+   function playRadio(towerAudio) {
+       if (playing == true)
+           fadeout();
+       else {
+           myaudioURL = "http://api.soundcloud.com/tracks/" + towerAudio[0].id + "/stream?client_id=6a0f1d47b7df82417d31a6947ab0032c";
+           try {
+               myaudio = new Audio(myaudioURL);
 
-                   //myaudio.id = 'playerMyAdio';
-                   myaudio.volume = 1;
+               //myaudio.id = 'playerMyAdio';
+               myaudio.volume = 1;
+               myaudio.play();
+               playing = true;
+               myaudio.addEventListener("ended", function () {
+                   // For looping the sound
+                   myaudio.load();
                    myaudio.play();
-                   playing = true;
-                   myaudio.addEventListener("ended", function(){
-                      // For looping the sound
-                       myaudio.load();
-                       myaudio.play();
-                   })
-               } catch (e) {
-                   alert('no audio support!');
-               }
+               })
+           } catch (e) {
+               alert('no audio support!');
+           }
 
+       }
    }
 
 
