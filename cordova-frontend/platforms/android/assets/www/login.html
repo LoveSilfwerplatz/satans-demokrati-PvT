@@ -1,8 +1,9 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv='Content-Type' content='text/html, charset=utf-8' lang="SE"/>
+    <meta http-equiv='Content-Type' content='text/html, charset=utf-8' lang="SE"/> -->
  <!-- Har ändrat massa säkerhetsinställningar för att få script att köra. Säkert livsfarlig?! /CJ -->
+    <!--
     <meta http-equiv="Content-Security-Policy"
           content="default-src 'self' 'unsafe-inline' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; script-src 'unsafe-inline' *; connect-src https://satans-demokrati-72.herokuapp.com/login 'unsafe-inline' *">
     <meta name="format-detection" content="telephone=no">
@@ -14,9 +15,12 @@
 </head>
 <body>
 <div class="app black white-text">
-    <div data-role="page" id="login">
-        <div data-role="content">
-            <div class="center">
+    -->
+<div data-role="page" id="login">
+    <div data-role="content">
+        <div class="ui-grid-b">
+            <div class="ui-block-a"></div>
+            <div class="ui-block-b">
                 <div class="row">
 
                     <form class ="col s8 offset-s2" name="login-form" id="login-form" action="https://satans-demokrati-72.herokuapp.com/login" method="POST">
@@ -25,6 +29,7 @@
                         <button class="btn waves-effect waves-light grey-darken-4" type="submit" name="action">Submit
 
                         </button>
+
 
 
                     </form>
@@ -38,8 +43,10 @@
 
 
             </div>
+            <div class="ui-block-c"></div>
         </div>
     </div>
+
 
     <script src="https://code.jquery.com/jquery-2.2.3.js"
             integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
@@ -57,7 +64,9 @@
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/test.js"></script>
-
+</div>
+<!--
 </div>
 </body>
 </html>
+-->

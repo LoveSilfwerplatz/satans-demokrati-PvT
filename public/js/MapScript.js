@@ -22,7 +22,7 @@ var TestPos = {
 };
 function initMap() {
    var map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 1, lng: 10},
+        center: {lat: 60.124271, lng: 19.994100},
         zoom: 15, disableDefaultUI: true
 
 

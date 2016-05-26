@@ -1,6 +1,7 @@
 package controllers;
 
 
+import com.avaje.ebean.annotation.Transactional;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import play.api.libs.json.Json;
@@ -17,6 +18,7 @@ import java.util.*;
  */
 public class ConnectionController extends Controller {
 
+    @Transactional
     public Connection getConnection() throws SQLException {
 
         Connection conn = null;

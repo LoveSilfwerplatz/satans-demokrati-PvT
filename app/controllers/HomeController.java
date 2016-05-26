@@ -1,6 +1,7 @@
 package controllers;
 
 import com.avaje.ebean.Model;
+import com.avaje.ebean.annotation.Transactional;
 import models.Tower;
 import models.User;
 import models.Sound;
@@ -29,6 +30,7 @@ public class HomeController extends Controller {
      * this method will be called when the application receives a
      * <code>GET</code> request with a path of <code>/</code>.
      */
+    @Transactional
     public Result index() {
         Connection conn = null;
         Statement stmt = null;
@@ -65,6 +67,7 @@ public class HomeController extends Controller {
     }
 
 
+    @Transactional
     public Result formattedUsers(){
         String tabs = "\t\t\t\t\t";
         String result = "Användare\nID:" + "\t\t" + "Namn:\n";
@@ -82,6 +85,7 @@ public class HomeController extends Controller {
     }
 
 
+    @Transactional
     public Result formattedSounds(){
         String tabs = "\t\t\t\t\t";
         String result = "Ljudfiler\nID:" + "\t\t" + "Namn:\n";
@@ -99,6 +103,7 @@ public class HomeController extends Controller {
 
     }
 
+    @Transactional
     public Result formattedTowers(){
         String tabs = "\t\t";
         String result = "Radiotorn\nID:" + "\t\t" + "Range:" + tabs + "Longitude:" + tabs + "Latitude:" + tabs + "\t\t\tName:" + tabs + "\n";

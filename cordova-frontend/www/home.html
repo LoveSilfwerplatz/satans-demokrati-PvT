@@ -1,54 +1,95 @@
-<div data-role="page" id="home_page" data-title="HOME">
+<div data-role="page" class="pvt-page" id="home_page" data-title="HOME">
     <div data-role="content">
-
-        <div class="ui-grid-a" id="sd-logo-grid">
+        <div class="ui-grid-a" id="home-st-logo-grid">
             <div class="ui-block-a">
-                <div id="home_page_title" class="officialFont">
-                    <p id="title_small">WOLAND PRESENTERAR</p>
-                    <p id="title_large">SATANS TRILOGI</p>
-                    <button id="logout">Logout!</button>
-                </div>
+                <img src="satans-demokrati-logo.png"/>
                 <!-- bilder MÅSTE ligga i samma mapp som html-filerna (?!) och får inte ha ett inledande forward slash. /CJ -->
-                <!-- <img src="satans-demokrati-logo.png"/> -->
                 <!-- Fast bilden nedan gick fint. /MB -->
                 <!-- <img src="img/back_arrow.png" /> -->
             </div>
             <div class="ui-block-b"></div>
         </div>
 
-        <div class="ui-grid-b" id="sd-fasad-grid">
-            <div class="ui-block-b"></div>
+        <div class="ui-grid-b" id="home-st-fasad-grid">
+            <div class="ui-block-a"></div>
             <div class="ui-block-b">
                 <img src="img/satans-demokrati-fasad.png"/>
             </div>
-            <div class="ui-block-b"></div>
+            <div class="ui-block-c"></div>
+        </div>
+<!--
+        <div class="ui-grid-b" id="home-radio-grid">
+            <div class="ui-block-a"></div>
+            <div class="ui-block-b">
+                <div class="ui-btn ui-btn-corner-all" id="radio" onclick="startWatch()">
+                    FIND STATION
+                </div>
+            </div>
+            <div class="ui-block-c">
+            </div>
         </div>
 
-        <div class="ui-grid-b" id="radio-grid">
-            <div class="ui-block-b"></div>
-            <div class="ui-block-b" id="radio" onclick="startWatch()" >
-                <p>Find station</p>
-            </div>
+        <div class="ui-grid-b" id="home-pos-grid">
+            <div class="ui-block-a"></div>
             <div class="ui-block-b">
+                <div class="ui-btn ui-btn-corner-all" id="pos" onclick="defaultPosKista()">
+                    TEST POSITION
+                </div>
+            </div>
+            <div class="ui-block-c">
+            </div>
+        </div>
+
+        <div class="ui-grid-b" id="home-logout-grid">
+            <div class="ui-block-a"></div>
+            <div class="ui-block-b">
+                <div class="ui-btn ui-btn-corner-all" id="logout">
+                    LOGOUT
+                </div>
+            </div>
+            <div class="ui-block-c">
+       </div>
+-->
+
+        <div class="ui-grid-solo" id="home-pos-grid">
+            <div class="ui-block-a middle-grid">
+                <div class="ui-btn ui-btn-corner-all" id="radio" onclick="startWatch()">
+                    FIND STATION
+                </div>
+            </div>
+        </div>
+        <div class="ui-grid-solo" id="home-logout-grid">
+            <div class="ui-block-a middle-grid">
+                <div class="ui-btn ui-btn-corner-all" id="pos" onclick="defaultPosKista()">
+                    TEST POSITION
+                </div>
+            </div>
+        </div>
+        <div class="ui-grid-solo" id="home-radio-grid">
+            <div class="ui-block-a middle-grid">
+                <div class="ui-btn ui-btn-corner-all" id="logout">
+                    LOGOUT
+                </div>
             </div>
         </div>
 
         <div class="ui-grid-b" id="bottom-menu-grid">
-            <div class="ui-block-b">
+            <div class="ui-block-a middle-grid">
                 <a href="audio_new.html" data-transition="slide" data-prefetch="true">
                     <img src="Satan_Knapp_Arkiv_Reversed.png"/>
                 </a>
             </div>
-            <div class="ui-block-b"></div>
             <div class="ui-block-b">
+                <div id="placeholder-black"></div>
+            </div>
+            <div class="ui-block-c">
                 <a href="map.html" data-transition="slide" >
                     <img src="Satan_Knapp_Karta.png"/>
                 </a>
             </div>
         </div>
-
     </div>
-
+<!--
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
     <script src="http://example.gajotres.net/iscrollview/iscroll.js"></script>
@@ -60,5 +101,6 @@
 
     <script type="text/javascript" src="js/watch.js"></script>
     <script type="text/javascript" src="js/test.js"></script>
+    -->
 
 </div>

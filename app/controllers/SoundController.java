@@ -1,6 +1,7 @@
 package controllers;
 
 import com.avaje.ebean.*;
+import com.avaje.ebean.annotation.Transactional;
 import com.google.gson.Gson;
 import models.Sound;
 import models.Tower;
@@ -23,8 +24,7 @@ import static play.libs.Json.toJson;
 
 public class SoundController extends Controller{
 
-
-
+    @Transactional
     public Result addSound(){
 
         Sound sound = new Sound("hej.wav");
@@ -51,6 +51,7 @@ public class SoundController extends Controller{
     }*/
 
     // Currently in-progress setSound method.
+    @Transactional
     public Result setSound(){
         Http.RequestBody body = request().body();
         Map<String, String[]> map = body.asFormUrlEncoded();
@@ -93,6 +94,7 @@ public class SoundController extends Controller{
         return ok(adminAddSound.render("Success"));
     }
 
+    @Transactional
     public Result getTowerSounds(int towerId) {
 
         // get all sounds by junction table
@@ -110,6 +112,7 @@ public class SoundController extends Controller{
         return ok(new Gson().toJson(towerList));
     }
 
+    @Transactional
     public Result getUserSounds(String userName) {
 
         // get user id by user name (email)
@@ -160,7 +163,18 @@ public class SoundController extends Controller{
         return ok(callback.render());
     }
 
+    public Result getDefaultBroadcast() {
+        // TODO Sätt en begränsning så att bara ett sound kan vara default broadcast
+        String query =  "SELECT sound.id, sound.name\n" +
+                        "FROM sound\n" +
+                        "WHERE sound.id IN\n" +
+                        "(SELECT sound FROM default_broadcast)";
+        SqlQuery sqlQuery = Ebean.createSqlQuery(query);
+        SqlRow sound = sqlQuery.findUnique();
 
+        response().setHeader("Access-Control-Allow-Origin", "*");
 
+        return ok(new Gson().toJson(sound));
+    }
 
 }

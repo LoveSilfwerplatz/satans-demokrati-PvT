@@ -4,6 +4,7 @@ import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Model;
 import com.avaje.ebean.SqlQuery;
 import com.avaje.ebean.SqlRow;
+import com.avaje.ebean.annotation.Transactional;
 import com.google.gson.Gson;
 import models.Tower;
 import models.User;
@@ -22,6 +23,7 @@ import static play.libs.Json.toJson;
 
 public class TowerController extends Controller {
 
+    @Transactional
     public Result getTowers() {
         Model.Finder<Integer, Tower> finder = new Model.Finder<>(Tower.class);
         List<Tower> allTowers = finder.all();
@@ -33,6 +35,7 @@ public class TowerController extends Controller {
 
     }
 
+    @Transactional
     public Result getTowerByName(String name) {
 
         List<Tower> tower = Tower.find.select("longCoordDD").select("latCoordDD")
@@ -46,6 +49,7 @@ public class TowerController extends Controller {
 
     }
 
+    @Transactional
     public Result getUserTowers(String userName) {
 
         // TODO refactor to separate method (filter/service?), used by getUserSounds
@@ -67,6 +71,7 @@ public class TowerController extends Controller {
         return ok(new Gson().toJson(list));
     }
 
+    @Transactional
     public Result setTower(){
 
 

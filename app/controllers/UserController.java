@@ -1,6 +1,7 @@
 package controllers;
 
 import com.avaje.ebean.*;
+import com.avaje.ebean.annotation.Transactional;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.gson.GsonBuilder;
 import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
@@ -19,6 +20,7 @@ import static play.libs.Json.toJson;
 public class UserController extends Controller {
 
     // Metod enbart för att hårdkoda en "användare" för att underlätta testning,
+    @Transactional
     public Result addUser() {
         User user = new User("mail@google,com", "hidden", "Arne Anka", false);
         user.save();
@@ -28,10 +30,12 @@ public class UserController extends Controller {
         return redirect(routes.HomeController.index());
     }
 
+    @Transactional
     public User authenticate(String username, String password) {
         return User.find.where().eq("name", username).eq("password", password).findUnique();
     }
 
+    @Transactional
     public Result login() {
         Http.RequestBody body = request().body();
 
@@ -43,12 +47,12 @@ public class UserController extends Controller {
 
         User authUser = authenticate(nm, pw);
 
-        response().setHeader("Access-Control-Allow-Origin", "*");
+
 
         if (authUser == null) {
             return notFound();
         } // ta upp din cmd
-
+        response().setHeader("Access-Control-Allow-Origin", "*");
         return ok(authUser.token);
     }
 
@@ -70,6 +74,7 @@ public class UserController extends Controller {
         return signin(email, "", name, true);
     }
 
+    @Transactional
     public Result signin(String email, String password, String name, boolean isFbUser) {
         User user = new User(email, password, name, isFbUser);
         user.save();
@@ -82,6 +87,7 @@ public class UserController extends Controller {
         //return redirect("http://localhost:9000/signin");
     }
 
+    @Transactional
     public Result getUsers() {
         Model.Finder<Integer, User> finder = new Model.Finder<>(User.class);
         List<User> allUsers = finder.all();
@@ -92,6 +98,7 @@ public class UserController extends Controller {
         return ok(toJson(allUsers));
     }
 
+    @Transactional
     public Result hasUser(String email) {
         User user = User.find.where().eq("email", email).findUnique();
         boolean hasUser = user != null;
@@ -103,6 +110,7 @@ public class UserController extends Controller {
         return ok(toJson(hasUser));
     }
 
+    @Transactional
     public Result addTower(String userName, String towerName) {
         User user = User.find.select("ID")
                 .where().eq("name", userName)
@@ -131,6 +139,7 @@ public class UserController extends Controller {
 
     }
 
+    @Transactional
     public Result getFBFriendsTowers(String userName) {
 
         User user = User.find.select("ID, isFbUser")
@@ -139,10 +148,10 @@ public class UserController extends Controller {
 
         if (user.isFbUser()) {
 
-            String query = "SELECT tower.tower_name\n" +
+            String query = "SELECT tower.tower_name, friends.email\n" +
                     "FROM user_tower\n" +
                     "JOIN\n" +
-                    "  (SELECT users_b.id\n" +
+                    "  (SELECT users_b.id, users_b.email\n" +
                     "  FROM fb_friends\n" +
                     "  JOIN user AS users_a ON fb_friends.user_a = users_a.id\n" +
                     "  JOIN user AS users_b ON fb_friends.user_b = users_b.id\n" +
@@ -159,6 +168,7 @@ public class UserController extends Controller {
         return ok(toJson(user));
     }
 
+    @Transactional
     public Result getUserByToken(String token) {
 
         User user = User.find.select("email")
