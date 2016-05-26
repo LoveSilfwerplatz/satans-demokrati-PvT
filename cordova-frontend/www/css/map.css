@@ -6,9 +6,10 @@
     border-radius: 5px;
 }
 
+
 #map {
+
     position: absolute;
-    float:top;
     top: 0px;
     right: 50px;
     bottom: 50px;

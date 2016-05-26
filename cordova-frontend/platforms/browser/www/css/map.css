@@ -6,14 +6,18 @@
     border-radius: 5px;
 }
 
+
+
+/*
 #map {
+
     position: absolute;
-    float:top;
     top: 0px;
     right: 50px;
     bottom: 50px;
     left: 50px;
 }
+*/
 
 #map-back-button{
     position:absolute;
