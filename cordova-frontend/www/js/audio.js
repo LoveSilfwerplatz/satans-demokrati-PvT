@@ -2,9 +2,7 @@
 var debug = true;
 var play_url = debug ? "http://localhost:9000" : "https://satans-demokrati-72.herokuapp.com";
 
-
-
-
+var soundInit;
 
 $(document).ready(function() {
     if (!soundInit) {
