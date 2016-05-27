@@ -4,6 +4,12 @@ var play_url = debug ? "http://localhost:9000" : "https://satans-demokrati-72.he
 
 var soundInit;
 
+// soundcloud init
+SC.initialize({
+    client_id: '6a0f1d47b7df82417d31a6947ab0032c',
+    redirect_uri: "http://localhost:9000/callback"
+});
+
 $(document).ready(function() {
     if (!soundInit) {
         // alert("bbb");
@@ -24,7 +30,8 @@ $(document).ready(function() {
 
         console(isActive(myaudio));
     });
-    
+
+    console.log("innan fetchStuffFromDB");
     fetchStuffFromDB();
 });
 
@@ -40,6 +47,9 @@ $('#radioList').on('click', 'li', function() {
 */
 
 function fetchStuffFromDB() {
+
+    console.log("fetchStuffFromDB()");
+
     $.getJSON(play_url + "/test", function (radios) {
         // empty List
         $('#radioList').empty();
