@@ -7,8 +7,8 @@ var watch_play_url;     //URL
 var myaudio = new Audio();
 var myaudioURL = null;
 var playing = false;
-var defaultTower = "None" // Default vaule should be None, otherwise it will not no what to do!
-var currentTower = defaultTower // Will Be set to other vaules during script.
+var defaultTower = "None" ;// Default vaule should be None, otherwise it will not no what to do!
+var currentTower;// Will Be set to other vaules during script.
 
 $( document ).ready(function() {
     bind();

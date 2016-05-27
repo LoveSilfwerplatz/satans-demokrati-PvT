@@ -28,14 +28,14 @@ function initMap() {
         $.each(marker,function(i, mark) {
 
 
-            var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+            var iconBase = 'img/WirelessTowerStandard.png';
             var addmark = new google.maps.Marker({
                 position: loadpos = {
                     lat: mark.latCoordDD,
                     lng: mark.longCoordDD
                 },
                 map: map,
-                icon: iconBase + 'schools_maps.png'})
+                icon: iconBase })
             addmark.setPosition(loadpos);
         })})
 
@@ -75,14 +75,14 @@ function markerTest() {
         $.each(marker,function(i, mark) {
 
 
-        var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+        var iconBase = 'img/WirelessTowerStandard.png';
         var addmark = new google.maps.Marker({
             position: loadpos = {
                 lat: mark.latCoordDD,
                 lng: mark.longCoordDD
             },
             map: map,
-            icon: iconBase + 'schools_maps.png'})
+            icon: iconBase})
             addmark.setPosition(loadpos);
         })
 })}

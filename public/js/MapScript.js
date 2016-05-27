@@ -85,14 +85,14 @@ function initMap() {
 
 
     infoWindow = new google.maps.InfoWindow({map: map});
-    var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+    var iconBase = 'public/images/WirelessTowerStandard.png';
     $.getJSON(play_url + '/getTowers', function(tower) {
         $.each( tower, function(i, value) {
             var marker = new google.maps.Marker({
 
                 position: new google.maps.LatLng (value.latCoordDD, value.longCoordDD),
                 map: map,
-                icon: iconBase + 'schools_maps.png'
+                icon: iconBase
 
 
             });
