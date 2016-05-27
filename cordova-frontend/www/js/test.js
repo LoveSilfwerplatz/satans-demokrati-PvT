@@ -103,7 +103,7 @@ function defaultPosKista(){
 var getUsers = function(){
     console.log('test213');
     var xreq = new XMLHttpRequest();
-    xreq.open("POST", "https://satans-demokrati-72.herokuapp.com/signUp", true);
+    xreq.open("POST", play_url + "/signUp", true);
     xreq.send();
 }
 
