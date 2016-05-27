@@ -49,7 +49,7 @@ var app = {
                         cordova.exec(callback, callback, "postrqplugin", "login", str);
                     };
 
-                    requestPlugin(['https://satans-demokrati-72.herokuapp.com/login',
+                    requestPlugin(['localhost:9000/login',
                         'name=' + name + '&password=' + password], function (echoValue) {
 
 
@@ -90,7 +90,7 @@ var app = {
                         cordova.exec(callback, callback, "BackgroundMode", "login", str);
                     };
 
-                    requestPlugin(['https://satans-demokrati-72.herokuapp.com/signin',
+                    requestPlugin(['localhost:9000/signin',
                         'email=' + email + '&password=' + password + '&name=' + name], function (echoValue) {
 
 
@@ -149,7 +149,7 @@ var app = {
                     request.setRequestHeader("X-AUTH-TOKEN", token);
 
                 },
-                url: 'https://satans-demokrati-72.herokuapp.com/sesh',
+                url: 'localhost:9000/sesh',
                 success: function(data, status, request) {
                     $.mobile.changePage("home.html");
                 },
@@ -170,7 +170,7 @@ var app = {
                         request.setRequestHeader("X-AUTH-TOKEN", token);
 
                     },
-                    url: 'https://satans-demokrati-72.herokuapp.com/securedContent',
+                    url: 'localhost:9000/securedContent',
                     success: function(data, status, request) {
                         console.log(data);
                     },
@@ -192,7 +192,7 @@ var app = {
                         request.setRequestHeader("X-AUTH-TOKEN", token);
 
                     },
-                    url: 'https://satans-demokrati-72.herokuapp.com/',
+                    url: 'localhost:9000/',
                     success: function(data, status, request) {
                         console.log(data);
                     },
