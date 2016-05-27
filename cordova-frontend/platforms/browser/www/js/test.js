@@ -11,6 +11,8 @@ var myaudio = new Audio();
 var myaudioURL = null;
 var playing = false;
 
+
+
 $(document).ready(function() {
    fetchStuffFromDB();
 });
@@ -24,6 +26,15 @@ $('#radioList').on('click', 'li', function() {
     // get the element we just clicked and add active css class to it
     $(this).addClass('active-radio-choice');
 });
+
+function setPlayButton(){
+    if(playing){
+        document.getElementById("ppButtonImg").src = "img/Satan_Knapp_Paus.png";
+    }
+    else{
+        document.getElementById("ppButtonImg").src = "img/Satan_Knapp_Play.png";
+    }
+}
 
 function fetchStuffFromDB() {
     $.getJSON(play_url + "/test", function (radios) {

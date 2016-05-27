@@ -12,7 +12,6 @@ SC.initialize({
 
 $(document).ready(function() {
     if (!soundInit) {
-        // alert("bbb");
         myaudio = new Audio();
         myaudioURL = null;
         playing = false;

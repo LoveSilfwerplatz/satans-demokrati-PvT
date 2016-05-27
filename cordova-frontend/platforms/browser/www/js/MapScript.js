@@ -35,8 +35,7 @@ function initMap() {
                     lng: mark.longCoordDD
                 },
                 map: map,
-                icon: iconBase + 'schools_maps.png'
-            });
+                icon: iconBase + 'schools_maps.png'})
             addmark.setPosition(loadpos);
         })})
 
