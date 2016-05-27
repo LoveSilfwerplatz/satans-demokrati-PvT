@@ -6,7 +6,7 @@
     <meta http-equiv='Content-Type' content='text/html, charset=utf-8' lang="SE"/>
     <!-- Har ändrat massa säkerhetsinställningar för att få script att köra. Säkert livsfarlig?! /CJ -->
     <meta http-equiv="Content-Security-Policy"
-          content="default-src 'self' 'unsafe-inline' data: gap: https://ssl.gstatic.com 'unsafe-eval' *; style-src 'self' 'unsafe-inline' *; media-src *; script-src 'unsafe-inline' *; connect-src 'unsafe-inline' *">
+          content="default-src 'self' 'unsafe-inline' data: gap: https://ssl.gstatic.com 'unsafe-eval' *; style-src 'self' 'unsafe-inline' *; media-src *; script-src 'unsafe-inline' 'unsafe-eval' *; connect-src 'unsafe-inline' *">
     <!-- Makes sure numbers in the page don't turn to phone number links. -->
     <meta name="format-detection" content="telephone=no">
     <!-- Turns off touch highlighting. -->
@@ -56,13 +56,16 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+    <script src="http://example.gajotres.net/iscrollview/iscroll.js"></script>
+    <script src="http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview.js"></script>
     <script type="text/javascript" src="js/watch.js"></script>
     <script type="text/javascript" src="js/test.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/ando.js"></script>
-    <script type="text/javascript" src="js/audio.js"></script>
-    <script type="text/javascript" src="/public/js/Soundcloud.js"></script>
+    <!--<script type="text/javascript" src="js/ando.js"></script>-->
+    <!--<script type="text/javascript" src="js/audio.js"></script>-->
+    <!--<script type="text/javascript" src="/public/js/Soundcloud.js"></script>-->
+
 </div>
 
 </body>
