@@ -22,7 +22,7 @@ var TestPos = {
 };
 function initMap() {
    var map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 60.124271, lng: 19.994100},
+        center: {lat: 59.326784654711666, lng: 18.071393966674805},
         zoom: 15, disableDefaultUI: true
 
 
@@ -179,15 +179,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
  function rangeCalc(recPosition){
      $.getJSON(play_url + "/getTowers", function (towers){
+         console.log("TestStart " + recPosition.lng + " " + recPosition.lat);
          $.each(towers,function(i, tower) {
-             console.log("TestStart " + recPosition.lng + " " + recPosition.lat);
              var towerPos = new google.maps.LatLng(tower.latCoordDD,tower.longCoordDD);
              var playerPos = new google.maps.LatLng(recPosition.lat,recPosition.lng);
              if (google.maps.geometry.spherical.computeDistanceBetween(playerPos,towerPos) <= tower.range) {
                  console.log(tower.name+' => is in searchArea');
              }
              else{
-                 console.log(tower.name + " Not Found");
+                 //console.log(tower.name + " Not Found");
              }
              console.log(" ");
 
@@ -212,7 +212,6 @@ function testRange(){
         lat: 59.4069349,
         lng: 13.945128
     };
-    console.log("Test");
     rangeCalc(TestPos);
    // console.log("Test2");
    // rangeCalc(Testpos2);

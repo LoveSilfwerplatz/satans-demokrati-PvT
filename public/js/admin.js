@@ -96,4 +96,39 @@ function map(){
     });
 }
 
+function submitTower(){
+    var $latitude = $("#latitude");
+    var $longitude = $("#longitude");
+    var $range = $("#towerRadius");
+    var crossed = false;
+
+    var addTower = new google.maps.LatLng($latitude.val(), $longitude.val());
+
+    $.getJSON(play_url + "/getTowers", function (towers) {
+
+        $.each(towers, function(row , tower) {
+
+            var checkTower = new google.maps.LatLng(tower.latCoordDD, tower.longCoordDD);
+
+            if (google.maps.geometry.spherical.computeDistanceBetween(addTower,checkTower) <= (($range.val()*2) + (tower.range*2))) {
+                console.log("----INSIDE----\n----"+tower.name+"----");
+                crossed = true;
+                return false;
+            }else{
+                //DO NOTHING
+                console.log("OUTSIDE");
+            }
+
+        });
+        if(!crossed){
+            console.log("Submit");
+            document.myTower.submit();
+        }else{
+            var message = $('#message');
+            message.html('<pre>Tornets räckvidd överlappar med andra torn!\nVar god minska räckvidden.</pre>');
+            console.log("Not allowed");
+        }
+    });
+}
+
 
