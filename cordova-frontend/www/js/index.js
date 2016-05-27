@@ -58,8 +58,7 @@ var app = {
                             alert("Wrong name/password combination");
                         }
                         else {
-                            window.location.replace("home.html");
-
+                            $.mobile.changePage("home.html");
                         }
 
                     });
@@ -68,7 +67,7 @@ var app = {
                     $.post(URL, formData, function(data, textStatus, jqXHR) {
                         console.log(data);
                         window.localStorage.setItem("token", data);
-                        window.location.replace("home.html");
+                        $.mobile.changePage("home.html");
 
                         // För att hämta var value = window.localStorage.getItem("token");
                     }).fail(function(jqXHR, textStatus, errorThrown) {
@@ -101,7 +100,7 @@ var app = {
 
                         }
                         else {
-                            window.location.replace("login.html");
+                            $.mobile.changePage("login.html");
                         }
 
 
@@ -117,7 +116,7 @@ var app = {
                         {
                             window.localStorage.setItem("token", data);
 
-                            window.location.replace("login.html");
+                            $.mobile.changePage("login.html");
                             // För att hämta var value = window.localStorage.getItem("token");
                         }).fail(function(jqXHR, textStatus, errorThrown){
                                 alert("Username already exists!");
@@ -152,8 +151,7 @@ var app = {
                 },
                 url: 'https://satans-demokrati-72.herokuapp.com/sesh',
                 success: function(data, status, request) {
-
-                    window.location.replace("home.html");
+                    $.mobile.changePage("home.html");
                 },
                 error: function(request, status, error) {
                     console.log("Gick inte igenom");
@@ -182,7 +180,7 @@ var app = {
                 });
             });
             $('#register').click(function(e) {
-                window.location.replace("form.html");
+                $.mobile.changePage("form.html");
             });
             $('#sessions').click(function(e) {
                 var token =  window.localStorage.getItem("token");
