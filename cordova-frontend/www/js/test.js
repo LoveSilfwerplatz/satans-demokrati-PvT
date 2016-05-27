@@ -137,7 +137,7 @@ $('#logout').click(function(e) {
     var token =  window.localStorage.getItem("token");
     var data = "";
     window.localStorage.setItem("token", data);
-    window.location.replace("login.html");
+    $.mobile.changePage("login.html");
 });
 
 
