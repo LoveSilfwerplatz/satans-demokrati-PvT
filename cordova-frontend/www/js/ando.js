@@ -81,7 +81,7 @@ $(document).ready(function() {
             request.setRequestHeader("X-AUTH-TOKEN", token);
 
         },
-        url: 'https://satans-demokrati-72.herokuapp.com/sesh',
+        url: 'localhost:9000/sesh',
         success: function(data, status, request) {
             $.mobile.changePage("home.html");
         },
@@ -100,7 +100,7 @@ $(document).ready(function() {
                 request.setRequestHeader("X-AUTH-TOKEN", token);
 
             },
-            url: 'https://satans-demokrati-72.herokuapp.com/securedContent',
+            url: 'localhost:9000/securedContent',
             success: function(data, status, request) {
                 console.log(data);
             },
@@ -122,7 +122,7 @@ $(document).ready(function() {
                 request.setRequestHeader("X-AUTH-TOKEN", token);
 
             },
-            url: 'https://satans-demokrati-72.herokuapp.com/',
+            url: 'localhost:9000/',
             success: function(data, status, request) {
                 console.log(data);
             },

@@ -107,10 +107,12 @@ var getUsers = function(){
     xreq.send();
 }
 
+/*
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('getUser').addEventListener('click', getUsers, false);
 })
 $.post()
+*/
 
 /*
 //testskit ftp 165 hby kenta kofot
@@ -132,20 +134,11 @@ var goToAudio = function(){
 };
 */
 
-
-$('#logout').click(function(e) {
-    var token =  window.localStorage.getItem("token");
-    var data = "";
-    window.localStorage.setItem("token", data);
-    $.mobile.changePage("login.html");
-});
-
-
-
-
+/*
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('takeMeAway').addEventListener('click',takeMeAway,false);
 });
+*/
 
 /*
 var back = function(){
