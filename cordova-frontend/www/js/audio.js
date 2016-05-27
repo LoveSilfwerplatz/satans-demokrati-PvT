@@ -31,7 +31,6 @@ $(document).ready(function() {
         console(isActive(myaudio));
     });
 
-    console.log("innan fetchStuffFromDB");
     fetchStuffFromDB();
 });
 
@@ -47,8 +46,6 @@ $('#radioList').on('click', 'li', function() {
 */
 
 function fetchStuffFromDB() {
-
-    console.log("fetchStuffFromDB()");
 
     $.getJSON(play_url + "/test", function (radios) {
         // empty List

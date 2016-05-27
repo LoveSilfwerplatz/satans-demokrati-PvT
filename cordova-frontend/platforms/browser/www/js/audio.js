@@ -2,9 +2,13 @@
 var debug = true;
 var play_url = debug ? "http://localhost:9000" : "https://satans-demokrati-72.herokuapp.com";
 
+var soundInit;
 
-
-
+// soundcloud init
+SC.initialize({
+    client_id: '6a0f1d47b7df82417d31a6947ab0032c',
+    redirect_uri: "http://localhost:9000/callback"
+});
 
 $(document).ready(function() {
     if (!soundInit) {
@@ -26,7 +30,7 @@ $(document).ready(function() {
 
         console(isActive(myaudio));
     });
-    
+
     fetchStuffFromDB();
 });
 
@@ -42,6 +46,7 @@ $('#radioList').on('click', 'li', function() {
 */
 
 function fetchStuffFromDB() {
+
     $.getJSON(play_url + "/test", function (radios) {
         // empty List
         $('#radioList').empty();

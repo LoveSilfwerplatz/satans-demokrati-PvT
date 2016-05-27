@@ -103,14 +103,16 @@ function defaultPosKista(){
 var getUsers = function(){
     console.log('test213');
     var xreq = new XMLHttpRequest();
-    xreq.open("POST", "https://satans-demokrati-72.herokuapp.com/signUp", true);
+    xreq.open("POST", play_url + "/signUp", true);
     xreq.send();
 }
 
+/*
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('getUser').addEventListener('click', getUsers, false);
 })
 $.post()
+*/
 
 /*
 //testskit ftp 165 hby kenta kofot
@@ -132,20 +134,11 @@ var goToAudio = function(){
 };
 */
 
-
-$('#logout').click(function(e) {
-    var token =  window.localStorage.getItem("token");
-    var data = "";
-    window.localStorage.setItem("token", data);
-    window.location.replace("login.html");
-});
-
-
-
-
+/*
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('takeMeAway').addEventListener('click',takeMeAway,false);
 });
+*/
 
 /*
 var back = function(){

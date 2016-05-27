@@ -49,7 +49,7 @@ var app = {
                         cordova.exec(callback, callback, "postrqplugin", "login", str);
                     };
 
-                    requestPlugin(['https://satans-demokrati-72.herokuapp.com/login',
+                    requestPlugin(['localhost:9000/login',
                         'name=' + name + '&password=' + password], function (echoValue) {
 
 
@@ -58,8 +58,7 @@ var app = {
                             alert("Wrong name/password combination");
                         }
                         else {
-                            window.location.replace("home.html");
-
+                            $.mobile.changePage("home.html");
                         }
 
                     });
@@ -68,7 +67,7 @@ var app = {
                     $.post(URL, formData, function(data, textStatus, jqXHR) {
                         console.log(data);
                         window.localStorage.setItem("token", data);
-                        window.location.replace("home.html");
+                        $.mobile.changePage("home.html");
 
                         // För att hämta var value = window.localStorage.getItem("token");
                     }).fail(function(jqXHR, textStatus, errorThrown) {
@@ -91,7 +90,7 @@ var app = {
                         cordova.exec(callback, callback, "BackgroundMode", "login", str);
                     };
 
-                    requestPlugin(['https://satans-demokrati-72.herokuapp.com/signin',
+                    requestPlugin(['localhost:9000/signin',
                         'email=' + email + '&password=' + password + '&name=' + name], function (echoValue) {
 
 
@@ -101,7 +100,7 @@ var app = {
 
                         }
                         else {
-                            window.location.replace("login.html");
+                            $.mobile.changePage("login.html");
                         }
 
 
@@ -117,7 +116,7 @@ var app = {
                         {
                             window.localStorage.setItem("token", data);
 
-                            window.location.replace("login.html");
+                            $.mobile.changePage("login.html");
                             // För att hämta var value = window.localStorage.getItem("token");
                         }).fail(function(jqXHR, textStatus, errorThrown){
                                 alert("Username already exists!");
@@ -150,10 +149,9 @@ var app = {
                     request.setRequestHeader("X-AUTH-TOKEN", token);
 
                 },
-                url: 'https://satans-demokrati-72.herokuapp.com/sesh',
+                url: 'localhost:9000/sesh',
                 success: function(data, status, request) {
-
-                    window.location.replace("home.html");
+                    $.mobile.changePage("home.html");
                 },
                 error: function(request, status, error) {
                     console.log("Gick inte igenom");
@@ -172,7 +170,7 @@ var app = {
                         request.setRequestHeader("X-AUTH-TOKEN", token);
 
                     },
-                    url: 'https://satans-demokrati-72.herokuapp.com/securedContent',
+                    url: 'localhost:9000/securedContent',
                     success: function(data, status, request) {
                         console.log(data);
                     },
@@ -182,7 +180,7 @@ var app = {
                 });
             });
             $('#register').click(function(e) {
-                window.location.replace("form.html");
+                $.mobile.changePage("form.html");
             });
             $('#sessions').click(function(e) {
                 var token =  window.localStorage.getItem("token");
@@ -194,7 +192,7 @@ var app = {
                         request.setRequestHeader("X-AUTH-TOKEN", token);
 
                     },
-                    url: 'https://satans-demokrati-72.herokuapp.com/',
+                    url: 'localhost:9000/',
                     success: function(data, status, request) {
                         console.log(data);
                     },
