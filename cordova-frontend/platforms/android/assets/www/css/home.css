@@ -1,26 +1,24 @@
 #home-st-logo-grid{
-    max-width:100%;
+    max-width:100% !important;
 }
-#home-st-logo-grid div img{
-    max-width:100%;
+#home-st-logo-grid div div img{
+    max-width:100% !important;
 }
 #home-st-fasad-grid {
-    max-width: 100%;
-    margin-top: 5%;
+    max-width: 100% !important;
+    margin-top: 5% !important;
 }
 #home-st-fasad-grid div img {
-    max-width: 100%;
+    max-width: 100% !important;
 }
 #home-radio-grid {
-    max-width: 100%;
+    max-width: 100% !important;
     margin-top: 10%;
 }
 #radio {
     max-width: 100%;
-    /*
     border: 1px solid #fff;
     text-align: center;
-    */
 }
 #bottom-menu-grid {
     margin-top: 25%;

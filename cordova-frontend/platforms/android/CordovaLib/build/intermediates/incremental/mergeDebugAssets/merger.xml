@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/Users/fredrik/code/satans-demokrati/cordova-frontend/platforms/android/CordovaLib/assets"/></dataSet><dataSet config="debug"><source path="/Users/fredrik/code/satans-demokrati/cordova-frontend/platforms/android/CordovaLib/src/debug/assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="C:\Users\michael\Dropbox\05_VT16\PVT\projekt\satans-demokrati-72_2\cordova-frontend\platforms\android\CordovaLib\assets"/></dataSet><dataSet config="debug"><source path="C:\Users\michael\Dropbox\05_VT16\PVT\projekt\satans-demokrati-72_2\cordova-frontend\platforms\android\CordovaLib\src\debug\assets"/></dataSet></merger>
