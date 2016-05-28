@@ -98,10 +98,6 @@ function stopStream() {
 
 }
 
-// hardcoded method to change default position
-function defaultPosKista(){
-    alert("hej");
-}
 
 
 

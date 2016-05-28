@@ -4,17 +4,18 @@
     <meta http-equiv='Content-Type' content='text/html, charset=utf-8' lang="SE"/>
  <!-- Har ändrat massa säkerhetsinställningar för att få script att köra. Säkert livsfarlig?! /CJ -->
     <meta http-equiv="Content-Security-Policy"
-          content="default-src 'self' 'unsafe-inline' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; script-src 'unsafe-inline' *; connect-src https://satans-demokrati-72.herokuapp.com/login 'unsafe-inline' *">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="msapplication-tap-highlight" content="no">
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-    <link rel="stylesheet" type="text/css" href="css/materialize.css">
-    <link rel="stylesheet" type="text/css" href="css/materialize.min.css">
-    <title>SATANS DEMOKRATI</title>
+          content="default-src 'self' 'unsafe-inline' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; script-src 'unsafe-inline' *; connect-src https://satans-demokrati-72.herokuapp.com/login 'unsafe-inline' *" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+<!--    <link rel="stylesheet" type="text/css" href="css/materialize.css" />
+    <link rel="stylesheet" type="text/css" href="css/materialize.min.css" /> -->
+    <link rel="stylesheet" type="text/css" href="css/jqm_overloads.css" />
+    <title>LOGIN</title>
 </head>
 <body>
-<div class="app black white-text">
-    <div data-role="page" id="login">
+<div class="app">
+    <div data-role="page" class="pvt-page" id="login">
         <div data-role="content">
             <div class="center">
                 <div class="row">
@@ -22,13 +23,13 @@
                     <form class ="col s8 offset-s2" name="login-form" id="login-form" action="https://satans-demokrati-72.herokuapp.com/login" method="POST">
                         <input id="name" name="name" placeholder="Användarnamn" type="text">
                         <input id="password" name="password" placeholder="Lösenord" type="password">
-                        <button class="btn waves-effect waves-light grey-darken-4" type="submit" name="action">Skicka
+                        <button class="btn waves-effect waves-light grey-darken-4" type="submit" name="action">SKICKA
 
                         </button>
 
 
                     </form>
-                    <button id ="register" class="btn waves-effect waves-light grey-darken-4" type="submit" name="action">Skapa konto
+                    <button id ="register" class="btn waves-effect waves-light grey-darken-4" type="submit" name="action">SKAPA KONTO
 
                     </button>
                     <!--<button onclick=fetchStuffFromDB() >GETSTUFF</button>-->

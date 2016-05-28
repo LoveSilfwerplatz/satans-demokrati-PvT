@@ -4,6 +4,7 @@
 var debug = true;
 var play_url = debug ? "http://localhost:9000" : "https://satans-demokrati-72.herokuapp.com";
 
+var hardCodedPos = false;
 
 //Only Temp Script, Should probly be combined later when doing the html dynamically
 var map;
@@ -11,7 +12,23 @@ var testPos = {
     lat: 59.4069349,
     lng: 17.945128
 };
+
+// Hardcoded position for Kista C
+var posKistaCentrum = {
+    lat: 59.40265009817728,
+    lng: 17.944733764648438
+};
+
 function initMap() {
+
+    if(hardCodedPos){
+        $("#kistaButton").hide();
+        $("#gpsButton").show();
+    } else {
+        $("#kistaButton").show();
+        $("#gpsButton").hide();
+    }
+
     var mapCanvas = document.getElementById('map');
         mapOptions = {
         center: {lat: 1, lng: 10},
@@ -35,22 +52,46 @@ function initMap() {
                     lng: mark.longCoordDD
                 },
                 map: map,
-                icon: iconBase })
+                icon: iconBase });
             addmark.setPosition(loadpos);
-        })})
+        })});
 
     var infoWindow = new google.maps.InfoWindow({map: map});
 
-    // Try HTML5 geolocationa.
+    // Try HTML5 geolocation.
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            };
+
+            var pos = {};
+
+            // Om hardcoded är true -> position Kista C annars --> position GPS
+            if(!hardCodedPos){
+                pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+            } else {
+                pos = posKistaCentrum;
+            }
+
+            var iconBase = 'img/hardcodedMarker.png';
+
+            var marker = new google.maps.Marker({
+                position: pos,
+                map: map,
+                icon: iconBase
+            });
 
             infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
+
+            if(!hardCodedPos){
+                infoWindow.setContent('Location found.');
+
+            } else {
+                infoWindow.setContent('Din position (Hårdkodad i MapScript.js)');
+
+            }
+
             map.setCenter(pos);
         }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
@@ -82,8 +123,34 @@ function markerTest() {
                 lng: mark.longCoordDD
             },
             map: map,
-            icon: iconBase})
+            icon: iconBase});
             addmark.setPosition(loadpos);
         })
 })}
+
+
+
+
+// Set position to kista C
+function defaultPosKista(){
+    hardCodedPos = true;
+    $("#gpsButton").show();
+    $("#kistaButton").hide();
+    
+    initMap();
+
+}
+
+// Set position to GPS
+function defaultPosGPS(){
+    hardCodedPos = false;
+    $("#gpsButton").hide();
+    $("#kistaButton").show();
+
+    initMap();
+}
+
+
+
+
 
