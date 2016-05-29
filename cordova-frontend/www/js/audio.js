@@ -1,6 +1,7 @@
 // set to true for local play framework development
 var debug = true;
 var play_url = debug ? "http://localhost:9000" : "https://satans-demokrati-72.herokuapp.com";
+var clientId = "6a0f1d47b7df82417d31a6947ab0032c";
 
 var soundInit;
 
@@ -18,19 +19,8 @@ $(document).ready(function() {
         soundInit = true;
     }
     
-
-    // register onclick function for list items in #radioList
-    $('#radioList').on('click', 'li', function() {
-        // remove active css class from all list items
-        $('#radioList li').removeClass('active-radio-choice');
-
-        // get the element we just clicked and add active css class to it
-        $(this).addClass('active-radio-choice');
-
-        console(isActive(myaudio));
-    });
-
     fetchStuffFromDB();
+
 });
 
 /*
@@ -46,17 +36,39 @@ $('#radioList').on('click', 'li', function() {
 
 function fetchStuffFromDB() {
 
-    $.getJSON(play_url + "/test", function (radios) {
-        // empty List
-        $('#radioList').empty();
+    var token = window.localStorage.getItem("token");
 
-        //add to list
-        $.each(radios, function (i, radio) {
-            $('#radioList').append(generateRadioLink(radio));
+    $.getJSON(play_url + "/getUserByToken?token=" + token, function (user) {
+
+        $.getJSON(play_url + "/getUserSounds?userName=" + user, function (radios) {
+
+            // convert id:s to soundcloud path
+            for (radio in radios) {
+                radios[radio].filepath = "http://api.soundcloud.com/tracks/"
+                radios[radio].filepath += radios[radio].id;
+                radios[radio].filepath += "/stream?client_id=" + clientId;
+                console.log(radios[radio].filepath);
+            }
+
+            appendRadioLinks(radios);
         });
-        // refresh list ( Seem to not do anything atm)
-        $('#radioList').listview("refresh");
+
     });
+
+}
+
+function appendRadioLinks(radios) {
+    // empty List
+    $('#radioList').empty();
+
+    //add to list
+    $.each(radios, function (i, radio) {
+        $('#radioList').append(generateRadioLink(radio));
+    });
+    // refresh list ( Seem to not do anything atm)
+    $('#radioList').listview("refresh");
+
+    addRadioListeners();
 }
 
 function generateRadioLink(radio) {
@@ -66,6 +78,19 @@ function generateRadioLink(radio) {
         + '<img src="img/characters/03.jpg" />'
         + radio.name
         + '</a></li>';
+}
+
+function addRadioListeners() {
+    // register onclick function for list items in #radioList
+    $('#radioList').on('click', 'li', function() {
+        // remove active css class from all list items
+        $('#radioList li').removeClass('active-radio-choice');
+
+        // get the element we just clicked and add active css class to it
+        $(this).addClass('active-radio-choice');
+
+        console(isActive(myaudio));
+    });
 }
 
 function swapRadio(radioName, filepath) {
