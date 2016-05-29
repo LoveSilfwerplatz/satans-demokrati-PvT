@@ -47,8 +47,6 @@ public class UserController extends Controller {
 
         User authUser = authenticate(nm, pw);
 
-
-
         if (authUser == null) {
             return notFound();
         } // ta upp din cmd
