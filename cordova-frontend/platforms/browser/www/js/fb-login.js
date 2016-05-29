@@ -1,6 +1,30 @@
 var userId = {};
 var accessToken = {};
 
+$(document).ready(function() {
+
+    $('#fb-button').click(function (e) {
+        console.log("fb-button!!!");
+        // console.log("NU KÖR VI");
+        // e.preventDefault();
+        //
+        // var formData = $("#login-form").serializeArray();
+        // var URL = $("#login-form").attr("action");
+        //
+        // $.post(URL, formData, function (data, textStatus, jqXHR) {
+        //     console.log(data);
+        //     window.localStorage.setItem("token", data);
+        //     $.mobile.changePage("home.html");
+        //
+        //     // För att hämta var value = window.localStorage.getItem("token");
+        // }).fail(function (jqXHR, textStatus, errorThrown) {
+        //     alert(textStatus + " " + errorThrown);
+        //     Materialize.toast("Wrong password/username provided.", 10000);
+        //
+        // });
+    });
+});
+
 // This is called with the results from from FB.getLoginStatus().
 function statusChangeCallback(response) {
     // The response object is returned with a status field that lets the
@@ -10,6 +34,7 @@ function statusChangeCallback(response) {
     if (response.status === 'connected') {
         // Logged into your app and Facebook.
         getUserData();
+        $.mobile.changePage("home.html");
     } else if (response.status === 'not_authorized') {
         // The person is logged into Facebook, but not your app.
         document.getElementById('status').innerHTML = 'Please log ' +
@@ -92,6 +117,7 @@ function getUserData() {
                 'email': response.email
             },
             success: function(data) {
+                console.log("hasUser:");
                 console.log(data);
             },
         });

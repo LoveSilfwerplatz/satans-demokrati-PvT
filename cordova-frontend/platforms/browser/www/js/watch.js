@@ -7,8 +7,8 @@ var watch_play_url;     //URL
 var myaudio = new Audio();
 var myaudioURL = null;
 var playing = false;
-var defaultTower = "None" // Default vaule should be None, otherwise it will not no what to do!
-var currentTower = defaultTower // Will Be set to other vaules during script.
+var defaultTower = "None" ;// Default vaule should be None, otherwise it will not no what to do!
+var currentTower;// Will Be set to other vaules during script.
 
 $( document ).ready(function() {
     bind();
@@ -42,6 +42,9 @@ $( document ).ready(function() {
         console.log("New position");
         $.getJSON(watch_play_url + "/getTowers", function (towers) {
             console.log("Retrieved JSON");
+
+
+
             $.each(towers, function(i, tower) {
 
                 console.log("TestStart \n userPos: " + pos.coords.latitude + ", " + pos.coords.longitude + "\n towerPos: " + tower.latCoordDD + ", " + tower.longCoordDD + "\n");
@@ -67,28 +70,38 @@ $( document ).ready(function() {
                     if (currentTower != tower.name){
                     $.getJSON(watch_play_url + "/getTowerSounds?towerId="+tower.id, function (towerSounds) {
                         currentTower = tower.name;
-                        playRadio(towerSounds);
-                        
-                    })}
+                        playRadio(towerSounds[0].id);
+                    })};
 
                 }
+
+                /*
                 else{
                     console.log(tower.name + " Not Found");
                     if(currentTower != defaultTower);
                     $.getJSON(watch_play_url + "/getDefaultBroadcast?", function (defaultBroadcast) {
                         currentTower = defaultTower;
                         playRadio(defaultBroadcast);
-                    })
+                    });
                     
                 }
+                */
+
                 console.log(" ");
 
                 if(found) {
                     return false;
                 }
-            })
+            });
 
-        })
+            if (!currentTower) {
+                $.getJSON(watch_play_url + "/getDefaultBroadcast?", function (defaultBroadcast) {
+                    currentTower = defaultTower;
+                    playRadio(defaultBroadcast.id);
+                });
+            }
+
+        });
     }
 
     function startWatch(){
@@ -113,10 +126,10 @@ $( document ).ready(function() {
     function change(){
 
         if(!searching){
-            radio.html('<p>Stop</p>');
+            $('#radio').html('<p>Stop</p>');
             searching = true;
         }else{
-            radio.html('<p>Find station</p>');
+            $('#radio').html('<p>Find station</p>');
             searching = false;
         }
 
@@ -133,10 +146,11 @@ $( document ).ready(function() {
     }
 
    function playRadio(towerAudio) {
-       if (playing == true)
-           fadeout();
+       if (playing == true) {
+           // fadeout();
+       }
        else {
-           myaudioURL = "http://api.soundcloud.com/tracks/" + towerAudio[0].id + "/stream?client_id=6a0f1d47b7df82417d31a6947ab0032c";
+           myaudioURL = "http://api.soundcloud.com/tracks/" + towerAudio + "/stream?client_id=6a0f1d47b7df82417d31a6947ab0032c";
            try {
                myaudio = new Audio(myaudioURL);
 
