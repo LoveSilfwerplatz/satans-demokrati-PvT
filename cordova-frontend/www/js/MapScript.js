@@ -111,7 +111,7 @@ function initMap() {
     });
 
 
-    var infoWindow = new google.maps.InfoWindow({map: map});
+    //var infoWindow = new google.maps.InfoWindow({map: map});
 
     // Try HTML5 geolocation.
     if (navigator.geolocation) {
@@ -129,7 +129,7 @@ function initMap() {
                 pos = posKistaCentrum;
             }
 
-            var iconBase = 'img/hardcodedMarker.png';
+            var iconBase = 'http://maps.google.com/mapfiles/kml/shapes/man.png';
 
             var marker = new google.maps.Marker({
                 position: pos,
@@ -137,15 +137,18 @@ function initMap() {
                 icon: iconBase
             });
 
-            infoWindow.setPosition(pos);
+            // infoWindow.setPosition(pos);
 
-            if(!hardCodedPos){
-                infoWindow.setContent('Location found.');
+            // If we want a text over the position uncomment the following:
 
-            } else {
-                infoWindow.setContent('Din position (Hårdkodad i MapScript.js)');
+            // if(!hardCodedPos){
+            //     infoWindow.setContent('Location found.');
+            //
+            // } else {
+            //     infoWindow.setContent('Din position (Hårdkodad i MapScript.js)');
+            //
+            // }
 
-            }
 
             map.setCenter(pos);
         }, function() {
@@ -181,7 +184,7 @@ function markerTest() {
             icon: iconBase});
             addmark.setPosition(loadpos);
         });
-})};
+})}
 
 
 
