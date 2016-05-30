@@ -146,10 +146,10 @@ public class UserController extends Controller {
 
         if (user.isFbUser()) {
 
-            String query = "SELECT tower.tower_name, tower.lat_coord_dd, tower.long_coord_dd, tower.broadcast_range, friends.email\n" +
+            String query = "SELECT tower.tower_name, tower.lat_coord_dd, tower.long_coord_dd, tower.broadcast_range, friends.email, friends.name\n" +
                     "FROM user_tower\n" +
                     "JOIN\n" +
-                    "  (SELECT users_b.id, users_b.email\n" +
+                    "  (SELECT users_b.id, users_b.email, users_b.name\n" +
                     "  FROM fb_friends\n" +
                     "  JOIN user AS users_a ON fb_friends.user_a = users_a.id\n" +
                     "  JOIN user AS users_b ON fb_friends.user_b = users_b.id\n" +
