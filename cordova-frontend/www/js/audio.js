@@ -3,8 +3,7 @@ var debug = true;
 var play_url = debug ? "http://localhost:9000" : "https://satans-demokrati-72.herokuapp.com";
 var clientId = "6a0f1d47b7df82417d31a6947ab0032c";
 
-var muted;
-var soundInit;
+
 
 // soundcloud init
 SC.initialize({
@@ -12,22 +11,9 @@ SC.initialize({
     redirect_uri: "http://localhost:9000/callback"
 });
 
-$(document).on('pageinit', function() {
-    if(playing){
-        document.getElementById("ppButtonImg").src = "img/Satan_Knapp_Paus.png";
-    }
-    else{
-        document.getElementById("ppButtonImg").src = "img/Satan_Knapp_Play.png";
-    }
 
 
-    if(myaudio.muted){
-        document.getElementById("archive-mute-button").src = "img/Icons/Satans_Knapp_Mute.png";
-    }
-    else if(!!(document.getElementById("archive-mute-button"))){
-        document.getElementById("archive-mute-button").src = "img/Icons/Satans_Knapp_Sound.png";
-    }
-});
+
 
 $(document).ready(function() {
     if (!soundInit) {
