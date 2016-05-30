@@ -58,7 +58,7 @@ public class TowerController extends Controller {
         int userId = user.getID();
 
         // get all towers by junction table
-        String query = "select distinct tower.id, tower.tower_name " +
+        String query = "select distinct tower.id, tower.tower_name, tower.lat_coord_dd, tower.long_coord_dd, tower.broadcast_range " +
                 "from user_tower " +
                 "join user on user_tower.user = user.id " +
                 "join tower on user_tower.tower = tower.id " +

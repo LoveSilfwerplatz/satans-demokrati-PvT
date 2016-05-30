@@ -146,7 +146,7 @@ public class UserController extends Controller {
 
         if (user.isFbUser()) {
 
-            String query = "SELECT tower.tower_name, friends.email\n" +
+            String query = "SELECT tower.tower_name, tower.lat_coord_dd, tower.long_coord_dd, tower.broadcast_range, friends.email\n" +
                     "FROM user_tower\n" +
                     "JOIN\n" +
                     "  (SELECT users_b.id, users_b.email\n" +

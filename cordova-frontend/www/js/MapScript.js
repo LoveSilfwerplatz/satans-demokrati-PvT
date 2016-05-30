@@ -40,10 +40,62 @@ function initMap() {
     var Style = [{"featureType":"all","elementType":"labels.text.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"color":"#000000"},{"lightness":13}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#000000"}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#144b53"},{"lightness":14},{"weight":1.4}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#08304b"}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#0c4152"},{"lightness":5}]},{"featureType":"poi","elementType":"labels","stylers":[{visibility: 'off'}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#000000"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#0b434f"},{"lightness":25}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#000000"}]},{"featureType":"road.arterial","elementType":"geometry.stroke","stylers":[{"color":"#0b3d51"},{"lightness":16}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#000000"}]},{"featureType":"transit","elementType":"all","stylers":[{"color":"#146474"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#021019"}]}]
     map.setOptions({styles: Style});
 
-   // markerTest();
-    $.getJSON("http://localhost:9000" + "/getTowers", function (marker){
-        $.each(marker,function(i, mark) {
+    // get user information
+    var token = window.localStorage.getItem("token");
+    $.getJSON(play_url + "/getUserByToken?token=" + token, function (user) {
 
+        // add user towers
+        $.getJSON(play_url + "/getUserTowers?userName=" + user, function (userTowers) {
+            console.log("User towers:");
+            console.log(userTowers);
+            $.each(userTowers, function(i, tower) {
+                var iconBase = 'img/WirelessTowerStandard.png';
+                var addmark = new google.maps.Marker({
+                    position: loadpos = {
+                        lat: tower.lat_coord_dd,
+                        lng: tower.long_coord_dd
+                    },
+                    map: map,
+                    icon: iconBase });
+                addmark.setPosition(loadpos);
+            });
+        });
+
+        // add fb friends towers
+        $.getJSON(play_url + "/getFBFriendsTowers?userName=" + user, function (friendsTowers) {
+            console.log("Friends towers:");
+            console.log(friendsTowers);
+            $.each(friendsTowers, function(i, tower) {
+                var iconBase = 'img/WirelessTowerFriend.png';
+                var infoWindow = new google.maps.InfoWindow({
+                   content: 'hittad av: ' + tower.email
+                });
+                var addmark = new google.maps.Marker({
+                    position: loadpos = {
+                        lat: tower.lat_coord_dd,
+                        lng: tower.long_coord_dd
+                    },
+                    map: map,
+                    icon: iconBase
+                });
+                addmark.addListener('click', function() {
+                    alert('hest');
+                    infoWindow.open(map, addmark);
+                });
+                addmark.setPosition(loadpos);
+            });
+        });
+
+    });
+
+    // old function
+    $.getJSON("http://localhost:9000" + "/getTowers", function (marker){
+
+        console.log("marker: ");
+        console.log(marker);
+
+        /*
+        $.each(marker,function(i, mark) {
 
             var iconBase = 'img/WirelessTowerStandard.png';
             var addmark = new google.maps.Marker({
@@ -54,7 +106,10 @@ function initMap() {
                 map: map,
                 icon: iconBase });
             addmark.setPosition(loadpos);
-        })});
+        })
+        */
+    });
+
 
     var infoWindow = new google.maps.InfoWindow({map: map});
 
@@ -125,8 +180,8 @@ function markerTest() {
             map: map,
             icon: iconBase});
             addmark.setPosition(loadpos);
-        })
-})}
+        });
+})};
 
 
 
