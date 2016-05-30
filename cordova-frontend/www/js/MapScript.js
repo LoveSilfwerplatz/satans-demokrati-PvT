@@ -47,14 +47,20 @@ function initMap() {
             console.log("User towers:");
             console.log(userTowers);
             $.each(userTowers, function(i, tower) {
-                var iconBase = 'img/WirelessTowerStandard.png';
+                // var iconBase = 'img/WirelessTowerStandard.png';
+
+                var markerIcon = new google.maps.MarkerImage('img/WirelessTowerStandard.png',
+                                new google.maps.Size(30, 30),
+                                new google.maps.Point(0, 0),
+                                new google.maps.Point(15, 15));
+
                 var addmark = new google.maps.Marker({
                     position: loadpos = {
                         lat: tower.lat_coord_dd,
                         lng: tower.long_coord_dd
                     },
                     map: map,
-                    icon: iconBase });
+                    icon: markerIcon });
                 addmark.setPosition(loadpos);
                 var circle = new google.maps.Circle({
                     strokeColor: '#FFFFFF',
@@ -75,7 +81,13 @@ function initMap() {
             console.log("Friends towers:");
             console.log(friendsTowers);
             $.each(friendsTowers, function(i, tower) {
-                var iconBase = 'img/WirelessTowerFriend.png';
+                // var iconBase = 'img/WirelessTowerFriend.png';
+
+                var markerIcon = new google.maps.MarkerImage('img/WirelessTowerFriend.png',
+                    new google.maps.Size(30, 30),
+                    new google.maps.Point(0, 0),
+                    new google.maps.Point(15, 15));
+
                 var infoWindow = new google.maps.InfoWindow({
                    content: 'Hittad av: ' + tower.name
                 });
@@ -85,7 +97,7 @@ function initMap() {
                         lng: tower.long_coord_dd
                     },
                     map: map,
-                    icon: iconBase
+                    icon: markerIcon
                 });
                 addmark.addListener('click', function() {
                     infoWindow.open(map, addmark);
