@@ -58,6 +58,17 @@ function initMap() {
                     map: map,
                     icon: iconBase });
                 addmark.setPosition(loadpos);
+                var circle = new google.maps.Circle({
+                    strokeColor: '#FFFFFF',
+                    strokeOpacity: 0.1,
+                    strokeWeight: 2,
+                    fillColor: '#FFFFFF',
+                    fillOpacity: 0.15,
+                    center: new google.maps.LatLng (tower.lat_coord_dd, tower.long_coord_dd),
+                    map: map,
+                    radius: tower.broadcast_range*2.0
+
+                });
             });
         });
 
@@ -83,6 +94,17 @@ function initMap() {
                     infoWindow.open(map, addmark);
                 });
                 addmark.setPosition(loadpos);
+                var circle = new google.maps.Circle({
+                    strokeColor: '#FFFFFF',
+                    strokeOpacity: 0.1,
+                    strokeWeight: 2,
+                    fillColor: '#FFFFFF',
+                    fillOpacity: 0.15,
+                    center: new google.maps.LatLng (tower.lat_coord_dd, tower.long_coord_dd),
+                    map: map,
+                    radius: tower.broadcast_range*2.0
+
+                });
             });
         });
 
@@ -136,6 +158,7 @@ function initMap() {
                 map: map,
                 icon: iconBase
             });
+
 
             // infoWindow.setPosition(pos);
 
