@@ -10,7 +10,20 @@ $(document).on("mobileinit", function () {
 });
 
 */
+var muted;
 
+$(document).on('pageinit', function() {
+    if(myaudio.muted){
+        document.getElementById("home-mute-button").src = "img/characters/04.jpg";
+    }
+    else if(!!(document.getElementById("home-mute-button"))){
+        document.getElementById("home-mute-button").src = "img/characters/01.jpg";
+    }
+});
+
+$(document).ready(function(){
+    muted = false;
+});
 function logout() {
     var token =  window.localStorage.getItem("token");
     var data = "";

@@ -16,6 +16,12 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
+// used in mapscript.js
+var mapscript_pos = {};
+var hardCodedPos = false;
+
+
 var app = {
     // Application Constructor
     initialize: function() {

@@ -4,8 +4,6 @@
 var debug = true;
 var play_url = debug ? "http://localhost:9000" : "https://satans-demokrati-72.herokuapp.com";
 
-var hardCodedPos = false;
-
 //Only Temp Script, Should probly be combined later when doing the html dynamically
 var map;
 var testPos = {
@@ -49,15 +47,32 @@ function initMap() {
             console.log("User towers:");
             console.log(userTowers);
             $.each(userTowers, function(i, tower) {
-                var iconBase = 'img/WirelessTowerStandard.png';
+                // var iconBase = 'img/WirelessTowerStandard.png';
+
+                var markerIcon = new google.maps.MarkerImage('img/WirelessTowerStandard.png',
+                                new google.maps.Size(30, 30),
+                                new google.maps.Point(0, 0),
+                                new google.maps.Point(15, 15));
+
                 var addmark = new google.maps.Marker({
                     position: loadpos = {
                         lat: tower.lat_coord_dd,
                         lng: tower.long_coord_dd
                     },
                     map: map,
-                    icon: iconBase });
+                    icon: markerIcon });
                 addmark.setPosition(loadpos);
+                var circle = new google.maps.Circle({
+                    strokeColor: '#FFFFFF',
+                    strokeOpacity: 0.1,
+                    strokeWeight: 2,
+                    fillColor: '#FFFFFF',
+                    fillOpacity: 0.15,
+                    center: new google.maps.LatLng (tower.lat_coord_dd, tower.long_coord_dd),
+                    map: map,
+                    radius: tower.broadcast_range*2.0
+
+                });
             });
         });
 
@@ -66,9 +81,15 @@ function initMap() {
             console.log("Friends towers:");
             console.log(friendsTowers);
             $.each(friendsTowers, function(i, tower) {
-                var iconBase = 'img/WirelessTowerFriend.png';
+                // var iconBase = 'img/WirelessTowerFriend.png';
+
+                var markerIcon = new google.maps.MarkerImage('img/WirelessTowerFriend.png',
+                    new google.maps.Size(30, 30),
+                    new google.maps.Point(0, 0),
+                    new google.maps.Point(15, 15));
+
                 var infoWindow = new google.maps.InfoWindow({
-                   content: 'hittad av: ' + tower.email
+                   content: 'Hittad av: ' + tower.name
                 });
                 var addmark = new google.maps.Marker({
                     position: loadpos = {
@@ -76,13 +97,23 @@ function initMap() {
                         lng: tower.long_coord_dd
                     },
                     map: map,
-                    icon: iconBase
+                    icon: markerIcon
                 });
                 addmark.addListener('click', function() {
-                    //alert('hest');
                     infoWindow.open(map, addmark);
                 });
                 addmark.setPosition(loadpos);
+                var circle = new google.maps.Circle({
+                    strokeColor: '#FFFFFF',
+                    strokeOpacity: 0.1,
+                    strokeWeight: 2,
+                    fillColor: '#FFFFFF',
+                    fillOpacity: 0.15,
+                    center: new google.maps.LatLng (tower.lat_coord_dd, tower.long_coord_dd),
+                    map: map,
+                    radius: tower.broadcast_range*2.0
+
+                });
             });
         });
 
@@ -117,25 +148,24 @@ function initMap() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
 
-            var pos = {};
-
             // Om hardcoded är true -> position Kista C annars --> position GPS
             if(!hardCodedPos){
-                pos = {
+                mapscript_pos = {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
                 };
             } else {
-                pos = posKistaCentrum;
+                mapscript_pos = posKistaCentrum;
             }
 
             var iconBase = 'http://maps.google.com/mapfiles/kml/shapes/man.png';
 
             var marker = new google.maps.Marker({
-                position: pos,
+                position: mapscript_pos,
                 map: map,
                 icon: iconBase
             });
+
 
             // infoWindow.setPosition(pos);
 
@@ -150,7 +180,7 @@ function initMap() {
             // }
 
 
-            map.setCenter(pos);
+            map.setCenter(mapscript_pos);
         }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
         });

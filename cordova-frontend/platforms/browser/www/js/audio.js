@@ -3,12 +3,30 @@ var debug = true;
 var play_url = debug ? "http://localhost:9000" : "https://satans-demokrati-72.herokuapp.com";
 var clientId = "6a0f1d47b7df82417d31a6947ab0032c";
 
+var muted;
 var soundInit;
 
 // soundcloud init
 SC.initialize({
     client_id: '6a0f1d47b7df82417d31a6947ab0032c',
     redirect_uri: "http://localhost:9000/callback"
+});
+
+$(document).on('pageinit', function() {
+    if(playing){
+        document.getElementById("ppButtonImg").src = "img/Satan_Knapp_Paus.png";
+    }
+    else{
+        document.getElementById("ppButtonImg").src = "img/Satan_Knapp_Play.png";
+    }
+
+
+    if(myaudio.muted){
+        document.getElementById("archive-mute-button").src = "img/characters/04.jpg";
+    }
+    else if(!!(document.getElementById("archive-mute-button"))){
+        document.getElementById("archive-mute-button").src = "img/characters/01.jpg";
+    }
 });
 
 $(document).ready(function() {
@@ -147,7 +165,7 @@ var playStream = function () {
             playing = true;
             document.getElementById("ppButtonImg").src = "img/Satan_Knapp_Paus.png";
             myaudio.addEventListener("ended", function(){
-                stopStream()
+                stopStream();
                 document.getElementById("ppButtonImg").src = "img/Satan_Knapp_Play.png";
             })
         } catch (e) {
@@ -158,6 +176,9 @@ var playStream = function () {
         myaudio.src = "";
         document.getElementById("ppButtonImg").src = "img/Satan_Knapp_Play.png";
     }
+    if(muted)
+        myaudio.muted = true;
+    
 }
 
 function stopStream() {
@@ -165,15 +186,20 @@ function stopStream() {
     myaudio.src = "";
 }
 
-function muteStream(){
-    fadeout();
-    if(playing){
-        if(myaudio.muted){
-            myaudio.muted = false;
+function muteStream(obj){
+ 
+        if(muted){
+            obj.src = "img/characters/01.jpg";
+            muted = false;
+            if(playing)
+                myaudio.muted = false;
         }
         else{
-            myaudio.muted = true;
+            obj.src = "img/characters/04.jpg";
+            muted = true;
+            if(playing)
+                myaudio.muted = true;
         }
-    }
+    
 
 }
