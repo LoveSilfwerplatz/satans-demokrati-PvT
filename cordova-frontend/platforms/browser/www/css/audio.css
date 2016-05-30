@@ -47,7 +47,7 @@ ul#radioList {
     list-style-type: square;
 }
 
-#audio-back-button-grid div a img{
+#audio-mute-button-grid div img{
     width:60%;
     padding-top:10%;
     display:block;

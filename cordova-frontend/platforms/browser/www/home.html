@@ -1,19 +1,13 @@
 <div data-role="page" class="pvt-page" id="home_page" data-title="HOME">
     <div data-role="content">
 
-        <div class="ui-grid-b" id="home-st-logo-grid">
-            <div class="ui-block-a"></div>
-            <div class="ui-block-b">
+        <div class="ui-grid-a" id="home-st-logo-grid">
+            <div class="ui-block-a">
                 <div id="home_page_title">
                     <img src="satans-demokrati-logo.png"/>
-                    <button id="logout" onclick="logout()">Logga ut</button>
                 </div>
-                <!-- bilder MÅSTE ligga i samma mapp som html-filerna (?!) och får inte ha ett inledande forward slash. /CJ -->
-                <!-- <img src="satans-demokrati-logo.png"/> -->
-                <!-- Fast bilden nedan gick fint. /MB -->
-                <!-- <img src="img/back_arrow.png" /> -->
             </div>
-            <div class="ui-block-c"></div>
+            <div class="ui-block-b"></div>
         </div>
 
         <div class="ui-grid-b" id="home-st-fasad-grid">
@@ -35,20 +29,22 @@
         <div class="ui-grid-b" id="home-mute-grid">
             <div class="ui-block-a"></div>
             <div class="ui-block-b">
-                <img id="home-mute-button" src="img/characters/01.jpg" onclick="muteStream(this)"/>
+                <img id="home-mute-button" src="" onclick="muteStream(this)"/>
             </div>
             <div class="ui-block-c"></div>
 
         <div class="ui-grid-b" id="bottom-menu-grid">
-            <div class="ui-block-b">
+            <div class="ui-block-a">
                 <a href="audio_new.html" data-transition="slide" onclick="setPlayButton()">
-                    <img src="Satan_Knapp_Arkiv_Reversed.png"/>
+                    <img src="img/Icons/Satans_Knapp_Arkiv.png" id="archive"/>
                 </a>
             </div>
-            <div class="ui-block-b"></div>
             <div class="ui-block-b">
+                <img src="img/Icons/Satans_Knapp_Logout.png" id="logout" onclick="logout()"/>
+            </div>
+            <div class="ui-block-c">
                 <a href="map.html" data-transition="slide" >
-                    <img src="Satan_Knapp_Karta.png"/>
+                    <img src="img/Icons/Satans_Knapp_Karta.png" id="home_map_button"/>
                 </a>
             </div>
         </div>
