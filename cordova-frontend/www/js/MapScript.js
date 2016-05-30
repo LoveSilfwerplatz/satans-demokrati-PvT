@@ -4,8 +4,6 @@
 var debug = true;
 var play_url = debug ? "http://localhost:9000" : "https://satans-demokrati-72.herokuapp.com";
 
-var hardCodedPos = false;
-
 //Only Temp Script, Should probly be combined later when doing the html dynamically
 var map;
 var testPos = {
@@ -68,7 +66,7 @@ function initMap() {
             $.each(friendsTowers, function(i, tower) {
                 var iconBase = 'img/WirelessTowerFriend.png';
                 var infoWindow = new google.maps.InfoWindow({
-                   content: 'hittad av: ' + tower.email
+                   content: 'Hittad av: ' + tower.name
                 });
                 var addmark = new google.maps.Marker({
                     position: loadpos = {
@@ -79,7 +77,6 @@ function initMap() {
                     icon: iconBase
                 });
                 addmark.addListener('click', function() {
-                    alert('hest');
                     infoWindow.open(map, addmark);
                 });
                 addmark.setPosition(loadpos);
@@ -117,22 +114,20 @@ function initMap() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
 
-            var pos = {};
-
             // Om hardcoded är true -> position Kista C annars --> position GPS
             if(!hardCodedPos){
-                pos = {
+                mapscript_pos = {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
                 };
             } else {
-                pos = posKistaCentrum;
+                mapscript_pos = posKistaCentrum;
             }
 
             var iconBase = 'http://maps.google.com/mapfiles/kml/shapes/man.png';
 
             var marker = new google.maps.Marker({
-                position: pos,
+                position: mapscript_pos,
                 map: map,
                 icon: iconBase
             });
@@ -150,7 +145,7 @@ function initMap() {
             // }
 
 
-            map.setCenter(pos);
+            map.setCenter(mapscript_pos);
         }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
         });
