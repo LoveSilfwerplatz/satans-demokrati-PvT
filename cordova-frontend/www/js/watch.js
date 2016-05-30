@@ -94,7 +94,7 @@ $( document ).ready(function() {
                 }
             });
 
-            if (!currentTower) {
+            if (currentTower != defaultTower) {
                 $.getJSON(watch_play_url + "/getDefaultBroadcast?", function (defaultBroadcast) {
                     currentTower = defaultTower;
                     playRadio(defaultBroadcast.id);
