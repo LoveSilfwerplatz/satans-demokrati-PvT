@@ -10,20 +10,6 @@ $(document).on("mobileinit", function () {
 });
 
 */
-var muted;
-
-$(document).on('pageinit', function() {
-    if(myaudio.muted){
-        document.getElementById("home-mute-button").src = "img/Icons/Satans_Knapp_Mute.png";
-    }
-    else if(!!(document.getElementById("home-mute-button"))){
-        document.getElementById("home-mute-button").src = "img/Icons/Satans_Knapp_Sound.png";
-    }
-});
-
-$(document).ready(function(){
-    muted = false;
-});
 
 var logOut = function() {
     var token =  window.localStorage.getItem("token");
