@@ -189,13 +189,13 @@ function stopStream() {
 function muteStream(obj){
  
         if(muted){
-            obj.src = "img/Icons/Satans_Knapp_Mute.png";
+            obj.src = "img/Icons/Satans_Knapp_Sound.png";
             muted = false;
             if(playing)
                 myaudio.muted = false;
         }
         else{
-            obj.src = "img/Icons/Satans_Knapp_Sound.png";
+            obj.src = "img/Icons/Satans_Knapp_Mute.png";
             muted = true;
             if(playing)
                 myaudio.muted = true;

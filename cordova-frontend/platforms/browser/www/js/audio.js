@@ -22,10 +22,10 @@ $(document).on('pageinit', function() {
 
 
     if(myaudio.muted){
-        document.getElementById("archive-mute-button").src = "img/characters/04.jpg";
+        document.getElementById("archive-mute-button").src = "img/Icons/Satans_Knapp_Mute.png";
     }
     else if(!!(document.getElementById("archive-mute-button"))){
-        document.getElementById("archive-mute-button").src = "img/characters/01.jpg";
+        document.getElementById("archive-mute-button").src = "img/Icons/Satans_Knapp_Sound.png";
     }
 });
 
@@ -189,13 +189,13 @@ function stopStream() {
 function muteStream(obj){
  
         if(muted){
-            obj.src = "img/characters/01.jpg";
+            obj.src = "img/Icons/Satans_Knapp_Sound.png";
             muted = false;
             if(playing)
                 myaudio.muted = false;
         }
         else{
-            obj.src = "img/characters/04.jpg";
+            obj.src = "img/Icons/Satans_Knapp_Mute.png";
             muted = true;
             if(playing)
                 myaudio.muted = true;
