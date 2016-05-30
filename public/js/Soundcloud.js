@@ -5,7 +5,6 @@
 //When document loads
 $(document).ready(function(){
     hideFields();
-    alert("SoundCloud.start");
 });
 
 
