@@ -20,12 +20,27 @@
     border: 1px solid #fff;
     text-align: center;
 }
+
+#home-mute-grid {
+    max-width: 100% !important;
+    margin-top: 1%;
+}
+
+#home-mute-grid img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    cursor: pointer;
+}
+
 #bottom-menu-grid {
     margin-top: 25%;
 }
 #bottom-menu-grid img {
     max-width: 100%;
 }
+/*
 #placeholder-black{
     min-width:25%;
     max-width:33%;
@@ -35,4 +50,4 @@
     display:block;
     margin-left:auto;
     margin-top:auto;
-}
+}/*
