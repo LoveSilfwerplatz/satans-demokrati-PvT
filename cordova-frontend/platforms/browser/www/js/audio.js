@@ -162,9 +162,20 @@ var playStream = function () {
         myaudio.src = "";
         document.getElementById("ppButtonImg").src = "img/Satan_Knapp_Play.png";
     }
-    if(muted)
-        myaudio.muted = true;
 
+}
+
+function pauseStream() {
+    if(paused){
+        paused = false;
+        myaudio.play();
+        document.getElementById("ppButtonImg").src = "img/Satan_Knapp_Paus.png";
+    }
+    else{
+        paused = true;
+        myaudio.pause();
+        document.getElementById("ppButtonImg").src = "img/Satan_Knapp_Play.png";
+    }
 }
 
 function stopStream() {

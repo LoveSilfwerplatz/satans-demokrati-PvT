@@ -9,6 +9,7 @@ $(document).on("mobileinit", function () {
     $.mobile.ignoreContentEnabled=true;
 });
 
+
 */
 
 var logOut = function() {

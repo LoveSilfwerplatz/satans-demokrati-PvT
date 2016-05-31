@@ -11,6 +11,7 @@ window.onload = function () {
 
 var muted;
 var soundInit;
+var paused;
 
 $(document).on('pageinit', function() {
     if(myaudio.muted){
@@ -23,7 +24,13 @@ $(document).on('pageinit', function() {
     if(!!(playing)){
         if(playing){
             if(!!(document.getElementById("ppButtonImg"))){
-                document.getElementById("ppButtonImg").src = "img/Satan_Knapp_Paus.png";
+                if(paused){
+                    document.getElementById("ppButtonImg").src = "img/Satan_Knapp_Play.png";
+                }
+                else{
+                    document.getElementById("ppButtonImg").src = "img/Satan_Knapp_Paus.png"; 
+                }
+
             }
 
         }
@@ -52,4 +59,5 @@ $(document).on('pageinit', function() {
 
 $(document).ready(function(){
     muted = false;
+    paused = false;
 });

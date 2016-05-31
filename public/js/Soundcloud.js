@@ -4,7 +4,7 @@
 
 //When document loads
 $(document).ready(function(){
-    hideFields();
+    //hideFields();
 });
 
 

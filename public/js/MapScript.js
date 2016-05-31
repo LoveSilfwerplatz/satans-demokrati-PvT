@@ -79,12 +79,12 @@ function initMap() {
         "featureType": "water",
         "elementType": "all",
         "stylers": [{"color": "#021019"}]
-    }]
+    }];
     map.setOptions({styles: Style});
 
 
 
-    infoWindow = new google.maps.InfoWindow({map: map});
+    //infoWindow = new google.maps.InfoWindow({map: map});
     var iconBase = "https://maps.google.com/intl/en_us/mapfiles/ms/micons/purple.png";
     $.getJSON(play_url + '/getTowers', function(tower) {
         $.each( tower, function(i, value) {
@@ -122,8 +122,19 @@ function initMap() {
                 lng: position.coords.longitude
             };
 
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
+            var iconBase = 'http://maps.google.com/mapfiles/kml/shapes/man.png';
+
+            var marker = new google.maps.Marker({
+                position: pos,
+                map: map,
+                icon: iconBase
+            });
+
+            //infoWindow.setPosition(pos);
+            //infoWindow.setContent('Location found.');
+
+            map.setCenter(pos);
+
 
         }, function () {
             handleLocationError(true, infoWindow, map.getCenter());
@@ -137,8 +148,8 @@ function initMap() {
         var lat = event.latLng.lat();
         var lng = event.latLng.lng();
         // populate yor box/field with lat, lng
-        $("#latitude").val(lat)
-        $("#longitude").val(lng)
+        $("#latitude").val(lat);
+        $("#longitude").val(lng);
         console.log(lat, lng);
     });
 
