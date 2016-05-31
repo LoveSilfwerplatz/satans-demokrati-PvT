@@ -3,8 +3,7 @@ var debug = true;
 var play_url = debug ? "http://localhost:9000" : "https://satans-demokrati-72.herokuapp.com";
 var clientId = "6a0f1d47b7df82417d31a6947ab0032c";
 
-var muted;
-var soundInit;
+
 
 // soundcloud init
 SC.initialize({
@@ -12,25 +11,9 @@ SC.initialize({
     redirect_uri: "http://localhost:9000/callback"
 });
 
-$(document).on('pageinit', function() {
-
-    console.log("audio.js pageinit");
-
-    if(playing){
-        document.getElementById("ppButtonImg").src = "img/Satan_Knapp_Paus.png";
-    }
-    else{
-        document.getElementById("ppButtonImg").src = "img/Satan_Knapp_Play.png";
-    }
 
 
-    if(myaudio.muted){
-        document.getElementById("archive-mute-button").src = "img/Icons/Satans_Knapp_Mute.png";
-    }
-    else if(!!(document.getElementById("archive-mute-button"))){
-        document.getElementById("archive-mute-button").src = "img/Icons/Satans_Knapp_Sound.png";
-    }
-});
+
 
 $(document).ready(function() {
     if (!soundInit) {
@@ -39,21 +22,21 @@ $(document).ready(function() {
         playing = false;
         soundInit = true;
     }
-    
+
     fetchStuffFromDB();
 
 });
 
 /*
-// register onclick function for list items in #radioList
-$('#radioList').on('click', 'li', function() {
-    // remove active css class from all list items
-    $('#radioList li').removeClass('active-radio-choice');
+ // register onclick function for list items in #radioList
+ $('#radioList').on('click', 'li', function() {
+ // remove active css class from all list items
+ $('#radioList li').removeClass('active-radio-choice');
 
-    // get the element we just clicked and add active css class to it
-    $(this).addClass('active-radio-choice');
-});
-*/
+ // get the element we just clicked and add active css class to it
+ $(this).addClass('active-radio-choice');
+ });
+ */
 
 function fetchStuffFromDB() {
 
@@ -123,27 +106,27 @@ function fadeout() {
 //var beepTwo = $("#musicBeat");
 //beepTwo[0].play();
 
-  //  $("#dan").click(function () {
-            console.log ("querty if paused");
-        if (myaudio.paused == false) {
-            console.log("Lower it!");
-            // myaudio[0].animate({volume: 0}, 2000, 'swing', function () {
-            console.log("Paused it!");
-            fadeoutAudio();
-            // });
+    //  $("#dan").click(function () {
+    console.log ("querty if paused");
+    if (myaudio.paused == false) {
+        console.log("Lower it!");
+        // myaudio[0].animate({volume: 0}, 2000, 'swing', function () {
+        console.log("Paused it!");
+        fadeoutAudio();
+        // });
 
-        } else {
-            console.log ("restart!");
-            myaudio.volume = 1;
-            myaudio.play();
-            //myaudio[0].animate({volume: 1}, 2000);
-        }
-    };
+    } else {
+        console.log ("restart!");
+        myaudio.volume = 1;
+        myaudio.play();
+        //myaudio[0].animate({volume: 1}, 2000);
+    }
+};
 
 function fadeoutAudio () {
 
     var fadeAudio = setInterval(function () {
-         var tempaudiovar = myaudio.volume;
+        var tempaudiovar = myaudio.volume;
 
         if ((tempaudiovar - 0.1 > 0.0)) {
             console.log("Fading");
@@ -181,7 +164,7 @@ var playStream = function () {
     }
     if(muted)
         myaudio.muted = true;
-    
+
 }
 
 function stopStream() {
@@ -190,19 +173,19 @@ function stopStream() {
 }
 
 function muteStream(obj){
- 
-        if(muted){
-            obj.src = "img/Icons/Satans_Knapp_Sound.png";
-            muted = false;
-            if(playing)
-                myaudio.muted = false;
-        }
-        else{
-            obj.src = "img/Icons/Satans_Knapp_Mute.png";
-            muted = true;
-            if(playing)
-                myaudio.muted = true;
-        }
-    
+
+    if(muted){
+        obj.src = "img/Icons/Satans_Knapp_Sound.png";
+        muted = false;
+        if(playing)
+            myaudio.muted = false;
+    }
+    else{
+        obj.src = "img/Icons/Satans_Knapp_Mute.png";
+        muted = true;
+        if(playing)
+            myaudio.muted = true;
+    }
+
 
 }
