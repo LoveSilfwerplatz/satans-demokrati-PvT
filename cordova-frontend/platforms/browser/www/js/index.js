@@ -22,20 +22,30 @@ $(document).on('pageinit', function() {
     
     if(!!(playing)){
         if(playing){
-            document.getElementById("ppButtonImg").src = "img/Satan_Knapp_Paus.png";
+            if(!!(document.getElementById("ppButtonImg"))){
+                document.getElementById("ppButtonImg").src = "img/Satan_Knapp_Paus.png";
+            }
+
         }
         else{
-            document.getElementById("ppButtonImg").src = "img/Satan_Knapp_Play.png";
+            if(!!(document.getElementById("ppButtonImg"))) {
+                document.getElementById("ppButtonImg").src = "img/Satan_Knapp_Play.png";
+            }
         }
     }
 
 
 
     if(myaudio.muted){
-        document.getElementById("archive-mute-button").src = "img/Icons/Satans_Knapp_Mute.png";
+        if(!!(document.getElementById("archive-mute-button"))){
+            document.getElementById("archive-mute-button").src = "img/Icons/Satans_Knapp_Mute.png";
+        }
+        
     }
     else if(!!(document.getElementById("archive-mute-button"))){
-        document.getElementById("archive-mute-button").src = "img/Icons/Satans_Knapp_Sound.png";
+
+            document.getElementById("archive-mute-button").src = "img/Icons/Satans_Knapp_Sound.png";
+        
     }
     
 });
