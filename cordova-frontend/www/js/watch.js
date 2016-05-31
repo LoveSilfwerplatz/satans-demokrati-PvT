@@ -15,6 +15,9 @@ $( document ).ready(function() {
 });
 
 function bind() {
+
+    console.log("bind()");
+
     radio = $('#radio');
     searching = false;
     lastPos = {
@@ -25,12 +28,47 @@ function bind() {
     watch_play_url = "http://localhost:9000";
 }
 
+function startWatch(){
+
+    console.log("startWatch()");
+
+    if (!searching || playing) {
+        if (hardCodedPos) {
+
+            lastPos.lat == mapscript_pos.lat;
+            lastPos.long == mapscript_pos.lng;
+            posHandler({
+                coords: {
+                    latitude: mapscript_pos.lat,
+                    longitude: mapscript_pos.lng
+                }});
+        }
+        else if (navigator.geolocation) {
+            // timeout at 30 seconds
+            var options = {timeout: 30000};
+            geoLoc = navigator.geolocation;
+            watchID = this.geoLoc.watchPosition(posHandler, errorHandler, options);
+        }
+        else {
+            alert("This browser does not support geolocation!");
+        }
+    } else {
+        navigator.geolocation.clearWatch(watchID);
+    }
+    change();
+
+}
+
 function posHandler(pos) {
+
+    console.log("posHandler()");
+
     console.log("ping");
+
     if(lastPos.lat == pos.coords.latitude &&
         lastPos.long == pos.coords.longitude){
         //Do nothing
-    }else{
+    } else {
         lastPos.lat = pos.coords.latitude;
         lastPos.long = pos.coords.longitude;
 
@@ -39,9 +77,15 @@ function posHandler(pos) {
 }
 
 function tryPos(pos){
+
+    console.log("tryPos()");
+
     console.log("New position");
     $.getJSON(watch_play_url + "/getTowers", function (towers) {
         console.log("Retrieved JSON");
+
+        var foundtower = false;
+
         $.each(towers, function(i, tower) {
 
             console.log("TestStart \n userPos: " + pos.coords.latitude + ", " + pos.coords.longitude + "\n towerPos: " + tower.latCoordDD + ", " + tower.longCoordDD + "\n");
@@ -50,6 +94,7 @@ function tryPos(pos){
             var userPos = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
 
             if (google.maps.geometry.spherical.computeDistanceBetween(userPos,towerPos) <= tower.range) {
+
                 console.log(tower.name+' => is in searchArea');
                 var token = window.localStorage.getItem("token");
 
@@ -61,25 +106,21 @@ function tryPos(pos){
                     }
                 });
 
-                alert("Tower found!");
+                foundtower = true;
+
+                // alert("Tower found!");
 
 
                 if (currentTower != tower.name){
                     $.getJSON(watch_play_url + "/getTowerSounds?towerId="+tower.id, function (towerSounds) {
                         currentTower = tower.name;
-                        playRadio(towerSounds);
+                        playRadio(towerSounds[0].id);
 
                     })}
 
             }
-            else{
+            else {
                 console.log(tower.name + " Not Found");
-                if(currentTower != defaultTower);
-                $.getJSON(watch_play_url + "/getDefaultBroadcast?", function (defaultBroadcast) {
-                    currentTower = defaultTower;
-                    playRadio(defaultBroadcast);
-                })
-
             }
             console.log(" ");
 
@@ -88,26 +129,14 @@ function tryPos(pos){
             }
         })
 
+        if(!foundtower) {
+            $.getJSON(watch_play_url + "/getDefaultBroadcast?", function (defaultBroadcast) {
+                currentTower = defaultTower;
+                playRadio(defaultBroadcast.id);
+            })
+        }
+
     })
-}
-
-function startWatch(){
-
-    if(!searching){
-        if (navigator.geolocation) {
-            // timeout at 30 seconds
-            var options = {timeout: 30000};
-            geoLoc = navigator.geolocation;
-            watchID = this.geoLoc.watchPosition(posHandler, errorHandler, options);
-        }
-        else {
-            alert("This browser does not support geolocation!");
-        }
-    }else{
-        navigator.geolocation.clearWatch(watchID);
-    }
-    change();
-
 }
 
 function change(){
@@ -127,7 +156,7 @@ function change(){
 }
 
 function errorHandler(err) {
-    if(err.code == 1) {
+    if (err.code == 1) {
         alert("Error: Access is denied!");
     }
 
@@ -137,11 +166,21 @@ function errorHandler(err) {
 }
 
 function playRadio(towerAudio) {
-    if (playing == true)
+
+    console.log("playRadio()");
+
+    /*if (playing == true)
         fadeout();
-    else {
-        myaudioURL = "http://api.soundcloud.com/tracks/" + towerAudio[0].id + "/stream?client_id=6a0f1d47b7df82417d31a6947ab0032c";
+    else {*/
+
+        myaudioURL = "http://api.soundcloud.com/tracks/" + towerAudio + "/stream?client_id=6a0f1d47b7df82417d31a6947ab0032c";
         try {
+            // stop previous audio
+            if (playing && !!myaudio) {
+                myaudio.pause();
+                myaudio.currentTime = 0;
+            }
+
             myaudio = new Audio(myaudioURL);
 
             //myaudio.id = 'playerMyAdio';
@@ -157,7 +196,25 @@ function playRadio(towerAudio) {
             alert('no audio support!');
         }
 
+    /*}*/
+}
+
+var mutedRadio = false;
+function muteRadio(obj){
+
+    if(mutedRadio){
+        obj.src = "img/Icons/Satans_Knapp_Sound.png";
+        mutedRadio = false;
+        if(playing)
+            myaudio.muted = false;
     }
+    else{
+        obj.src = "img/Icons/Satans_Knapp_Mute.png";
+        mutedRadio = true;
+        if(playing)
+            myaudio.muted = true;
+    }
+
 }
 
 
