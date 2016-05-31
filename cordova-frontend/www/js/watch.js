@@ -7,215 +7,219 @@ var watch_play_url;     //URL
 var myaudio = new Audio();
 var myaudioURL = null;
 var playing = false;
-var defaultTower = "None" ;// Default vaule should be None, otherwise it will not no what to do!
+var defaultTower = "None";// Default vaule should be None, otherwise it will not no what to do!
 var currentTower;// Will Be set to other vaules during script.
 
-$( document ).ready(function() {
+$(document).ready(function () {
     bind();
 });
 
-    function bind() {
+function bind() {
 
-        console.log("bind()");
+    console.log("bind()");
 
-        radio = $('#radio');
-        searching = false;
-        lastPos = {
-            lat: null,
-            long:  null
-        };
-        found = false;
-        watch_play_url = "http://localhost:9000";
-    }
+    radio = $('#radio');
+    searching = false;
+    lastPos = {
+        lat: null,
+        long: null
+    };
+    found = false;
+    watch_play_url = "http://localhost:9000";
 
-    function posHandler(pos) {
+}
 
-        console.log("posHandler(" + pos + ")");
+// TODO Väntar i 30 sekunder när man kollar igen!!!
+function startWatch() {
 
-        console.log("ping");
-        if (lastPos.lat == pos.coords.latitude &&
-                    lastPos.long == pos.coords.longitude){
-            console.log("do nothing");
-            //Do nothing
-        } else {
-            lastPos.lat = pos.coords.latitude;
-            lastPos.long = pos.coords.longitude;
+    console.log("startWatch()");
+    console.log("searching:");
+    console.log(searching);
 
-            tryPos(pos);
-        }
-    }
+    /*if (!searching) {*/
+        if (navigator.geolocation) {
+            // timeout at 30 seconds
+            var options = {timeout: 30000};
+            geoLoc = navigator.geolocation;
 
-    function tryPos(pos){
-
-        console.log("tryPos()");
-
-        console.log("New position");
-        $.getJSON(watch_play_url + "/getTowers", function (towers) {
-            console.log("Retrieved JSON");
-
-            var userPos;
-
+            // uppdateras automatiskt när position förändras
+            console.log("innan posHandler skickas vidare");
             if (!hardCodedPos) {
-                userPos = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+                watchID = this.geoLoc.watchPosition(posHandler, errorHandler, options);
             } else {
-                alert("hard coded pos");
-                userPos = new google.maps.LatLng(mapscript_pos.lat, mapscript_pos.lng);
+                tryPos();
             }
+        }
+        else {
+            alert("This browser does not support geolocation!");
+        }
+    /*} else {
 
-            $.each(towers, function(i, tower) {
+        // avregistrerar posHandler
+        navigator.geolocation.clearWatch(watchID);
+    }*/
+    change();
+}
 
-                console.log("TestStart \n userPos: " + pos.coords.latitude + ", " + pos.coords.longitude + "\n towerPos: " + tower.latCoordDD + ", " + tower.longCoordDD + "\n");
-                
-                var towerPos = new google.maps.LatLng(tower.latCoordDD, tower.longCoordDD);
+function posHandler(pos) {
 
-                if (google.maps.geometry.spherical.computeDistanceBetween(userPos,towerPos) <= tower.range) {
-                    console.log(tower.name+' => is in searchArea');
-                    var token = window.localStorage.getItem("token");
+    console.log("posHandler(" + pos + ")");
 
-                    $.getJSON(watch_play_url + "/getUserByToken?token="+token, function (userName) {
-                        try {
-                            $.get(watch_play_url + "/addTowerToUser?userName="+userName+"&towerName="+tower.name);
-                        }catch(err){
-                            console.log(err);
-                        }
-                    });
+    if (lastPos.lat == pos.coords.latitude &&
+        lastPos.long == pos.coords.longitude) {
+        //Do nothing
+    } else {
+        lastPos.lat = pos.coords.latitude;
+        lastPos.long = pos.coords.longitude;
 
-                    // alert("Tower found!");
-                   
-                    
-                    if (currentTower != tower.name){
-                    $.getJSON(watch_play_url + "/getTowerSounds?towerId="+tower.id, function (towerSounds) {
+        tryPos(pos);
+    }
+}
+
+function tryPos(pos) {
+
+    console.log("tryPos()");
+
+    console.log("New position");
+    $.getJSON(watch_play_url + "/getTowers", function (towers) {
+        console.log("Retrieved JSON");
+
+        var userPos;
+
+        if (!hardCodedPos) {
+            userPos = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+        } else {
+            console.log("hard coded pos");
+            userPos = new google.maps.LatLng(mapscript_pos.lat, mapscript_pos.lng);
+        }
+
+        $.each(towers, function (i, tower) {
+
+            // console.log("TestStart \n userPos: " + pos.coords.latitude + ", " + pos.coords.longitude + "\n towerPos: " + tower.latCoordDD + ", " + tower.longCoordDD + "\n");
+
+            var towerPos = new google.maps.LatLng(tower.latCoordDD, tower.longCoordDD);
+
+            console.log("inne i each");
+
+            if (google.maps.geometry.spherical.computeDistanceBetween(userPos, towerPos) <= tower.range) {
+                console.log(tower.name + ' => is in searchArea');
+                var token = window.localStorage.getItem("token");
+
+                $.getJSON(watch_play_url + "/getUserByToken?token=" + token, function (userName) {
+                    try {
+                        $.get(watch_play_url + "/addTowerToUser?userName=" + userName + "&towerName=" + tower.name);
+                    } catch (err) {
+                        console.log(err);
+                    }
+                });
+
+                // alert("Tower found!");
+
+
+                if (currentTower != tower.name) {
+                    $.getJSON(watch_play_url + "/getTowerSounds?towerId=" + tower.id, function (towerSounds) {
                         currentTower = tower.name;
                         playRadio(towerSounds[0].id);
-                        searching = false;
-                    })}
-
+                    })
                 }
 
-                /*
-                else{
-                    console.log(tower.name + " Not Found");
-                    if(currentTower != defaultTower);
-                    $.getJSON(watch_play_url + "/getDefaultBroadcast?", function (defaultBroadcast) {
-                        currentTower = defaultTower;
-                        playRadio(defaultBroadcast);
-                    });
-                    
-                }
-                */
-
-                console.log(" ");
-
-                if(found) {
-                    return false;
-                }
-            });
-
-            if (currentTower != defaultTower) {
-                $.getJSON(watch_play_url + "/getDefaultBroadcast?", function (defaultBroadcast) {
-                    currentTower = defaultTower;
-                    playRadio(defaultBroadcast.id);
-                    searching = false;
-                });
             }
 
-            console.log("currentTower: ");
-            console.log(currentTower);
-            console.log("defaultTower: ");
-            console.log(defaultTower);
+            /*
+             else{
+             console.log(tower.name + " Not Found");
+             if(currentTower != defaultTower);
+             $.getJSON(watch_play_url + "/getDefaultBroadcast?", function (defaultBroadcast) {
+             currentTower = defaultTower;
+             playRadio(defaultBroadcast);
+             });
 
+             }
+             */
+
+            console.log(" ");
+
+            if (found) {
+                return false;
+            }
         });
-    }
 
-    // TODO Väntar i 30 sekunder när man kollar igen!!!
-
-    function startWatch() {
-
-        console.log("startWatch()");
-
-        if (!searching){
-            console.log("if (!searching)");
-            if (navigator.geolocation) {
-                console.log("if navigator.geolocation");
-                // timeout at 30 seconds
-                var options = {timeout: 30000};
-                geoLoc = navigator.geolocation;
-                console.log("innan this.geoLoc.watchPosition");
-                watchID = this.geoLoc.watchPosition(posHandler, errorHandler, options);
-                console.log("efter this.geoLoc.watchPosition");
-            }
-            else {
-                alert("This browser does not support geolocation!");
-            }
-        } else {
-            console.log("navigator.geolocation.clearWatch()");
-            navigator.geolocation.clearWatch(watchID);
-        }
-        change();
-
-    }
-
-    function change(){
-
-        console.log("change()");
-        console.log("searching: ");
-        console.log(searching);
-
-        if(!searching){
-            $('#radio').html('<p>Stop</p>');
-            searching = true;
-        }else{
-            $('#radio').html('<p>Find station</p>');
-            searching = false;
+        if (currentTower != defaultTower) {
+            $.getJSON(watch_play_url + "/getDefaultBroadcast?", function (defaultBroadcast) {
+                currentTower = defaultTower;
+                playRadio(defaultBroadcast.id);
+            });
         }
 
+        console.log("currentTower: ");
+        console.log(currentTower);
+        console.log("defaultTower: ");
+        console.log(defaultTower);
+
+    });
+}
+
+function change() {
+
+    console.log("change()");
+
+    if (!searching) {
+        $('#radio').html('<p>Stop</p>');
+        searching = true;
+    } else {
+        $('#radio').html('<p>Find station</p>');
+        searching = false;
     }
 
-    function errorHandler(err) {
-        if(err.code == 1) {
-            alert("Error: Access is denied!");
+}
+
+function playRadio(towerAudio) {
+
+    console.log("playRadio(" + towerAudio + ")");
+    myaudio.pause();
+
+    /*
+    if (playing == true) {
+        // fadeout();
+    }
+    else {*/
+        myaudioURL = "http://api.soundcloud.com/tracks/" + towerAudio + "/stream?client_id=6a0f1d47b7df82417d31a6947ab0032c";
+        try {
+            myaudio = new Audio(myaudioURL);
+
+            //myaudio.id = 'playerMyAdio';
+            myaudio.volume = 1;
+            myaudio.play();
+            playing = true;
+            myaudio.addEventListener("ended", function () {
+                // For looping the sound
+                myaudio.load();
+                myaudio.play();
+            })
+        } catch (e) {
+            alert('no audio support!');
         }
 
-        else if( err.code == 2) {
-            alert("Error: Position is unavailable!");
-        }
+    /*}*/
+}
+
+function errorHandler(err) {
+    if (err.code == 1) {
+        alert("Error: Access is denied!");
     }
 
-   function playRadio(towerAudio) {
+    else if (err.code == 2) {
+        alert("Error: Position is unavailable!");
+    }
+}
 
-       console.log("playRadio(" + towerAudio + ")");
-
-       if (playing == true) {
-           // fadeout();
-       }
-       else {
-           myaudioURL = "http://api.soundcloud.com/tracks/" + towerAudio + "/stream?client_id=6a0f1d47b7df82417d31a6947ab0032c";
-           try {
-               myaudio = new Audio(myaudioURL);
-
-               //myaudio.id = 'playerMyAdio';
-               myaudio.volume = 1;
-               myaudio.play();
-               playing = true;
-               myaudio.addEventListener("ended", function () {
-                   // For looping the sound
-                   myaudio.load();
-                   myaudio.play();
-               })
-           } catch (e) {
-               alert('no audio support!');
-           }
-
-       }
-   }
-
-
+// fadeout functions
 function fadeout() {
     fadeoutAudio();
 
 };
 
-function fadeoutAudio () {
+function fadeoutAudio() {
 
     var fadeAudio = setInterval(function () {
         var tempaudiovar = myaudio.volume;
@@ -232,9 +236,8 @@ function fadeoutAudio () {
     }, 200);
 }
 
-
 //Untested
-function fadeinAudio () {
+function fadeinAudio() {
 
     var fadeAudio = setInterval(function () {
         var tempaudiovar = myaudio.volume;
