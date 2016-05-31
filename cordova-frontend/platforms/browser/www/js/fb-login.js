@@ -10,7 +10,6 @@ $(document).ready(function() {
                 console.log(response);
                 if (response.authResponse) {
                     getUserData();
-                    $.mobile.changePage('home.html');
                 }
             },
             {
@@ -18,23 +17,6 @@ $(document).ready(function() {
                 onlogin: 'checkLoginState();'
             }
         );
-        // console.log("NU KÖR VI");
-        // e.preventDefault();
-        //
-        // var formData = $("#login-form").serializeArray();
-        // var URL = $("#login-form").attr("action");
-        //
-        // $.post(URL, formData, function (data, textStatus, jqXHR) {
-        //     console.log(data);
-        //     window.localStorage.setItem("token", data);
-        //     $.mobile.changePage("home.html");
-        //
-        //     // För att hämta var value = window.localStorage.getItem("token");
-        // }).fail(function (jqXHR, textStatus, errorThrown) {
-        //     alert(textStatus + " " + errorThrown);
-        //     Materialize.toast("Wrong password/username provided.", 10000);
-        //
-        // });
     });
 });
 
@@ -47,7 +29,6 @@ function statusChangeCallback(response) {
     if (response.status === 'connected') {
         // Logged into your app and Facebook.
         getUserData();
-        $.mobile.changePage("home.html");
     } else if (response.status === 'not_authorized') {
         // The person is logged into Facebook, but not your app.
         document.getElementById('status').innerHTML = 'Please log ' +
@@ -124,44 +105,6 @@ function getUserData() {
             }
         });
 
-        /*
-        if (response.friends.data.length > 0) {
-            var friends = "";
-            for (friend in response.friends.data) {
-                console.log(response.friends.data[friend]);
-                friends += response.friends.data[friend].name;
-                document.getElementById('status').innerHTML = 'Gemensamma vänner som använder appen: ' + friends;
-            }
-        }
-        */
-
-        // $.ajax({
-        //
-        //     type: "POST",
-        //     url: "localhost:9000/hasUser",
-        //     dataType: "json",
-        //     data: {
-        //         'email': response.email
-        //     },
-        //     success: function(data) {
-        //         console.log("hasUser:");
-        //         console.log(data);
-        //     },
-        // });
-
-        /*
-         $.ajax({
-         type: "POST",
-         url: "localhost:9000/fbSignIn",
-         dataType: "json",
-         data: {
-         'name' : response.name,
-         'email' : response.email
-         },
-         success: function() {
-         alert("yezzz");
-         }
-         });*/
     });
 
 }
