@@ -11,15 +11,27 @@
 #home-st-fasad-grid div img {
     max-width: 100% !important;
 }
-#home-radio-grid {
-    max-width: 100% !important;
-    margin-top: 3%;
+#home-radio-grid video {
+    height: 100%;
+    width: 150%;
+    margin-left:auto;
+    margin-right:auto;
 }
-#radio {
-    max-width: 100%;
-    border: 1px solid #fff;
-    text-align: center;
+
+#home-radio-grid img {
+    height: 100%;
+    width: 150%;
+    margin-left:auto;
+    margin-right:auto;
 }
+
+#radiovideo{
+
+}
+#home-radio-player{
+
+}
+
 
 #home-mute-grid {
     max-width: 100% !important;

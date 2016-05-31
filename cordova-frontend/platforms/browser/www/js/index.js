@@ -60,4 +60,5 @@ $(document).on('pageinit', function() {
 $(document).ready(function(){
     muted = false;
     paused = false;
+
 });

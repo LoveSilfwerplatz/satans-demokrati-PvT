@@ -112,13 +112,17 @@ function startWatch(){
 
 function change(){
 
-    if(!searching){
-        radio.html('<p>Stop</p>');
-        searching = true;
-    }else{
-        radio.html('<p>Find station</p>');
-        searching = false;
-    }
+        console.log("change()");
+        console.log("searching: ");
+        console.log(searching);
+
+        if(!searching){
+            $('#radio').html('<video id="radioVideo" src="img/radio/Radio_2.mp4"  preload autoplay loop></video>');
+            searching = true;
+        }else{
+            $('#radio').html('<img src="img/radio/Radio_av.png" />');
+            searching = false;
+        }
 
 }
 
