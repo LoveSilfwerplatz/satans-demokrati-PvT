@@ -108,8 +108,11 @@ public class UserController extends Controller {
 
     @Transactional
     public Result addTower(String userName, String towerName) {
+
+        // TODO Kolla om usern har tower!
+
         User user = User.find.select("ID")
-                .where().eq("name", userName)
+                .where().eq("email", userName)
                 .findUnique();
         int userId = user.getID();
 
@@ -118,14 +121,22 @@ public class UserController extends Controller {
                 .findUnique();
         int towerId = tower.getID();
 
-        String update = "INSERT INTO user_tower (user, tower) " +
-                        "VALUES (" + userId + ", " + towerId + ")";
-        try {
-            SqlUpdate sqlUpdate = Ebean.createSqlUpdate(update);
-            sqlUpdate.execute();
-        } catch (Exception e) {
-            // this happens when connection already exists
-            Logger.error(e.toString() + " - caused by: " + update);
+        // test if connection already exists
+        String query = "SELECT * FROM user_tower " +
+                        "WHERE user = '" + userId + "' AND tower = '" + towerId + "'";
+        SqlQuery sqlQuery = Ebean.createSqlQuery(query);
+        List<SqlRow> connection = sqlQuery.findList();
+
+        if (connection == null) {
+            String update = "INSERT INTO user_tower (user, tower) " +
+                    "VALUES (" + userId + ", " + towerId + ")";
+            try {
+                SqlUpdate sqlUpdate = Ebean.createSqlUpdate(update);
+                sqlUpdate.execute();
+            } catch (Exception e) {
+                // this happens when connection already exists
+                Logger.error(e.toString() + " - caused by: " + update);
+            }
         }
 
         response().setHeader("Access-Control-Allow-Origin", "*");

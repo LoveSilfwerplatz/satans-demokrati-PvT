@@ -77,7 +77,6 @@ function appendRadioLinks(radios) {
 
 function generateRadioLink(radio) {
     // Suppose to make the object into proper format, Not sure if working
-    var soundImg = "img/characters/05.jpg";
 
     switch(radio.name) {
         case "Theft":
