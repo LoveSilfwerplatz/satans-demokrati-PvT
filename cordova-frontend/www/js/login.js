@@ -126,7 +126,6 @@ var app = {
                 }
             });
 
-
             function fetchStuffFromDB() {
                 $.getJSON(play_url + "/test", function (radios) {
                     // empty List
