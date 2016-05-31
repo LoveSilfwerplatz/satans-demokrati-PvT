@@ -15,6 +15,9 @@ $( document ).ready(function() {
 });
 
     function bind() {
+
+        console.log("bind()");
+
         radio = $('#radio');
         searching = false;
         lastPos = {
@@ -26,11 +29,15 @@ $( document ).ready(function() {
     }
 
     function posHandler(pos) {
+
+        console.log("posHandler(" + pos + ")");
+
         console.log("ping");
-        if(lastPos.lat == pos.coords.latitude &&
+        if (lastPos.lat == pos.coords.latitude &&
                     lastPos.long == pos.coords.longitude){
+            console.log("do nothing");
             //Do nothing
-        }else{
+        } else {
             lastPos.lat = pos.coords.latitude;
             lastPos.long = pos.coords.longitude;
 
@@ -39,18 +46,27 @@ $( document ).ready(function() {
     }
 
     function tryPos(pos){
+
+        console.log("tryPos()");
+
         console.log("New position");
         $.getJSON(watch_play_url + "/getTowers", function (towers) {
             console.log("Retrieved JSON");
 
+            var userPos;
 
+            if (!hardCodedPos) {
+                userPos = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+            } else {
+                alert("hard coded pos");
+                userPos = new google.maps.LatLng(mapscript_pos.lat, mapscript_pos.lng);
+            }
 
             $.each(towers, function(i, tower) {
 
                 console.log("TestStart \n userPos: " + pos.coords.latitude + ", " + pos.coords.longitude + "\n towerPos: " + tower.latCoordDD + ", " + tower.longCoordDD + "\n");
                 
                 var towerPos = new google.maps.LatLng(tower.latCoordDD, tower.longCoordDD);
-                var userPos = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
 
                 if (google.maps.geometry.spherical.computeDistanceBetween(userPos,towerPos) <= tower.range) {
                     console.log(tower.name+' => is in searchArea');
@@ -64,14 +80,15 @@ $( document ).ready(function() {
                         }
                     });
 
-                    alert("Tower found!");
+                    // alert("Tower found!");
                    
                     
                     if (currentTower != tower.name){
                     $.getJSON(watch_play_url + "/getTowerSounds?towerId="+tower.id, function (towerSounds) {
                         currentTower = tower.name;
                         playRadio(towerSounds[0].id);
-                    })};
+                        searching = false;
+                    })}
 
                 }
 
@@ -98,25 +115,40 @@ $( document ).ready(function() {
                 $.getJSON(watch_play_url + "/getDefaultBroadcast?", function (defaultBroadcast) {
                     currentTower = defaultTower;
                     playRadio(defaultBroadcast.id);
+                    searching = false;
                 });
             }
+
+            console.log("currentTower: ");
+            console.log(currentTower);
+            console.log("defaultTower: ");
+            console.log(defaultTower);
 
         });
     }
 
-    function startWatch(){
+    // TODO Väntar i 30 sekunder när man kollar igen!!!
 
-        if(!searching){
+    function startWatch() {
+
+        console.log("startWatch()");
+
+        if (!searching){
+            console.log("if (!searching)");
             if (navigator.geolocation) {
+                console.log("if navigator.geolocation");
                 // timeout at 30 seconds
                 var options = {timeout: 30000};
                 geoLoc = navigator.geolocation;
+                console.log("innan this.geoLoc.watchPosition");
                 watchID = this.geoLoc.watchPosition(posHandler, errorHandler, options);
+                console.log("efter this.geoLoc.watchPosition");
             }
             else {
                 alert("This browser does not support geolocation!");
             }
-        }else{
+        } else {
+            console.log("navigator.geolocation.clearWatch()");
             navigator.geolocation.clearWatch(watchID);
         }
         change();
@@ -124,6 +156,10 @@ $( document ).ready(function() {
     }
 
     function change(){
+
+        console.log("change()");
+        console.log("searching: ");
+        console.log(searching);
 
         if(!searching){
             $('#radio').html('<p>Stop</p>');
@@ -146,6 +182,9 @@ $( document ).ready(function() {
     }
 
    function playRadio(towerAudio) {
+
+       console.log("playRadio(" + towerAudio + ")");
+
        if (playing == true) {
            // fadeout();
        }

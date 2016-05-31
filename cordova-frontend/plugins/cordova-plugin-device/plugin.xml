@@ -99,7 +99,7 @@
 
     <!-- blackberry10 -->
     <platform name="blackberry10">
-        <source-file src="src/blackberry10/index.js" target-dir="Device" />
+        <source-file src="src/blackberry10/login.js" target-dir="Device" />
         <config-file target="www/config.xml" parent="/widget">
             <feature name="Device" value="Device"/>
         </config-file>

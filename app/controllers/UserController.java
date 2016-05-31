@@ -102,8 +102,6 @@ public class UserController extends Controller {
         boolean hasUser = user != null;
 
         response().setHeader("Access-Control-Allow-Origin", "*");
-        response().setHeader("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, OPTIONS");
-        response().setHeader("Access-Control-Allow-Headers", "Content-Type, Content-Range, Content-Disposition, Content-Description");
 
         return ok(toJson(hasUser));
     }
@@ -176,6 +174,18 @@ public class UserController extends Controller {
         response().setHeader("Access-Control-Allow-Origin", "*");
 
         return ok(toJson(user.getEmail()));
+    }
+
+    @Transactional
+    public Result getTokenByUser(String username) {
+
+        User user = User.find.select("token")
+                .where().eq("email", username)
+                .findUnique();
+
+        response().setHeader("Access-Control-Allow-Origin", "*");
+
+        return ok(toJson(user.getToken()));
     }
 
 }

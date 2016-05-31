@@ -47,7 +47,7 @@ GET     /radio                       controllers.DatabaseController.getRadio(fil
 #Test new user
 
 GET    /getUsers                     controllers.UserController.getUsers
-POST   /hasUser                      controllers.UserController.hasUser(email:String)
+GET    /hasUser                      controllers.UserController.hasUser(email:String)
 
 POST   /signin                       controllers.UserController.signin
 POST   /fbSignin                     controllers.UserController.fbSignIn(name:String, email:String)
@@ -69,5 +69,6 @@ GET    /getFBFriendsTowers           controllers.UserController.getFBFriendsTowe
 GET    /getDefaultBroadcast          controllers.SoundController.getDefaultBroadcast()
 
 GET    /getUserByToken               controllers.UserController.getUserByToken(token:String)
+GET    /getTokenByUser               controllers.UserController.getTokenByUser(username:String)
 
 #kom ihåg att kunna ta bort saker
