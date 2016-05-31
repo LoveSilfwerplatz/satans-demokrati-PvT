@@ -240,6 +240,11 @@ function defaultPosGPS(){
     initMap();
 }
 
+// Delete this function
+var deleteMe = function(){
+    alert("delete");
+};
+
 
 
 
