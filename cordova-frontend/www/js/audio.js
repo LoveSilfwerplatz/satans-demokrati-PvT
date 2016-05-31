@@ -77,11 +77,38 @@ function appendRadioLinks(radios) {
 
 function generateRadioLink(radio) {
     // Suppose to make the object into proper format, Not sure if working
-    return '<li><a href="javascript:void(0)'
-        + '" onclick="swapRadio(\' ' + radio.name + '\',\'' + radio.filepath + '\')">'
-        + '<img src="img/characters/03.jpg" />'
-        + radio.name
-        + '</a></li>';
+
+    switch(radio.name) {
+        case "Theft":
+            return '<li><a href="javascript:void(0)'
+                + '" onclick="swapRadio(\' ' + radio.name + '\',\'' + radio.filepath + '\')">'
+                + '<img src="img/characters/05.jpg" />'
+                + radio.name
+                + '</a></li>';
+            break;
+        case "Glory Of Woland":
+            return '<li><a href="javascript:void(0)'
+                + '" onclick="swapRadio(\' ' + radio.name + '\',\'' + radio.filepath + '\')">'
+                + '<img src="img/characters/03.jpg" />'
+                + radio.name
+                + '</a></li>';
+            break;
+        case "Der Abend":
+            return '<li><a href="javascript:void(0)'
+                + '" onclick="swapRadio(\' ' + radio.name + '\',\'' + radio.filepath + '\')">'
+                + '<img src="img/characters/02.jpg" />'
+                + radio.name
+                + '</a></li>';
+            break;
+        default:
+            return '<li><a href="javascript:void(0)'
+                + '" onclick="swapRadio(\' ' + radio.name + '\',\'' + radio.filepath + '\')">'
+                + '<img src="img/characters/06.jpg" />'
+                + radio.name
+                + '</a></li>';
+    }
+
+
 }
 
 function addRadioListeners() {
