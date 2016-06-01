@@ -145,6 +145,7 @@ function change(){
         console.log("searching: ");
         console.log(searching);
 
+
         if(!searching){
             $('#radio').html('<video id="radioVideo" src="img/radio/Radio_2.mp4"  preload autoplay loop></video>');
             searching = true;

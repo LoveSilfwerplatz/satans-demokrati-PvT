@@ -40,6 +40,15 @@
                     <img src="img/Icons/Satans_Knapp_Arkiv.png" id="archive"/>
                 </a>
             </div>
+
+            <script>
+                if(searching){
+                    $('#radio').html('<video id="radioVideo" src="img/radio/Radio_2.mp4"  preload autoplay loop></video>');
+                }else{
+                    $('#radio').html('<img src="img/radio/Radio_av.png" />');
+                }
+            </script>
+
             <div class="ui-block-b" onclick="logOut()">
                 <img src="img/Icons/Satans_Knapp_Logout.png" id="logout"/>
             </div>
